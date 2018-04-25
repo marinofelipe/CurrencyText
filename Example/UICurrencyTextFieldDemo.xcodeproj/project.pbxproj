@@ -389,9 +389,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/UICurrencyTextField/UICurrencyTextField.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICurrencyTextField.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
