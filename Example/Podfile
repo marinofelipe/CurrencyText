@@ -1,0 +1,16 @@
+platform :ios, '9.0'
+
+target 'UICurrencyTextFieldDemo' do
+  use_frameworks!
+
+  pod 'UICurrencyTextField', :path => '../'  
+
+  target 'UICurrencyTextFieldDemoTests' do
+    inherit! :search_paths
+  end
+
+  target 'UICurrencyTextFieldDemoUITests' do
+    inherit! :search_paths
+  end
+
+end
