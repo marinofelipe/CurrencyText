@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
 
   s.swift_version = "4.1"
-  s.source_files  = "Sources", "Sources/**/*.swift"
+  s.source_files  = "UICurrencyTextField/Sources/**/*.swift"
 end

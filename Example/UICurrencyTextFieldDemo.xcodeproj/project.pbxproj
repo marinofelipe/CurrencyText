@@ -1,0 +1,780 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F0ED13BBA881239E24C0AF9 /* Pods_UICurrencyTextFieldDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12039CDC1FE49806CA5BA273 /* Pods_UICurrencyTextFieldDemoUITests.framework */; };
+		BBD9B298822C182F55E6A3E5 /* Pods_UICurrencyTextFieldDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10F3ED0340ED56D44F2DF30 /* Pods_UICurrencyTextFieldDemo.framework */; };
+		C5A39AE4BE313FA0ED6B652C /* Pods_UICurrencyTextFieldDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F22050D256031805B60D4D /* Pods_UICurrencyTextFieldDemoTests.framework */; };
+		D54170DA209023D5008995D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54170D9209023D5008995D7 /* AppDelegate.swift */; };
+		D54170DC209023D5008995D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54170DB209023D5008995D7 /* ViewController.swift */; };
+		D54170DF209023D5008995D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54170DD209023D5008995D7 /* Main.storyboard */; };
+		D54170E1209023D7008995D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54170E0209023D7008995D7 /* Assets.xcassets */; };
+		D54170E4209023D7008995D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54170E2209023D7008995D7 /* LaunchScreen.storyboard */; };
+		D54170FA209023D8008995D7 /* UICurrencyTextFieldDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54170F9209023D8008995D7 /* UICurrencyTextFieldDemoUITests.swift */; };
+		D541710920902501008995D7 /* UICurrencyTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541710720902501008995D7 /* UICurrencyTextFieldTests.swift */; };
+		D541710A20902501008995D7 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541710820902501008995D7 /* StringTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D54170EB209023D8008995D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D54170CE209023D5008995D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D54170D5209023D5008995D7;
+			remoteInfo = UICurrencyTextFieldDemo;
+		};
+		D54170F6209023D8008995D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D54170CE209023D5008995D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D54170D5209023D5008995D7;
+			remoteInfo = UICurrencyTextFieldDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02D203C4D168C0D51B5C0DF5 /* Pods-UICurrencyTextFieldDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICurrencyTextFieldDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		12039CDC1FE49806CA5BA273 /* Pods_UICurrencyTextFieldDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UICurrencyTextFieldDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C6BA045974D1D224BFCC5BE /* Pods-UICurrencyTextFieldDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICurrencyTextFieldDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UICurrencyTextFieldDemoUITests/Pods-UICurrencyTextFieldDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7D0C11F975DE7306AA7DD88F /* Pods-UICurrencyTextFieldDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICurrencyTextFieldDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo.release.xcconfig"; sourceTree = "<group>"; };
+		A1AAE1A3C0B9E1BF0F157FCD /* Pods-UICurrencyTextFieldDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICurrencyTextFieldDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UICurrencyTextFieldDemoTests/Pods-UICurrencyTextFieldDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		C10F3ED0340ED56D44F2DF30 /* Pods_UICurrencyTextFieldDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UICurrencyTextFieldDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE0EAAB19DCE5B2B1954FF55 /* Pods-UICurrencyTextFieldDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICurrencyTextFieldDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICurrencyTextFieldDemoTests/Pods-UICurrencyTextFieldDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D54170D6209023D5008995D7 /* UICurrencyTextFieldDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UICurrencyTextFieldDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54170D9209023D5008995D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D54170DB209023D5008995D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D54170DE209023D5008995D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D54170E0209023D7008995D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D54170E3209023D7008995D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D54170E5209023D7008995D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D54170EA209023D8008995D7 /* UICurrencyTextFieldDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UICurrencyTextFieldDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54170F0209023D8008995D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D54170F5209023D8008995D7 /* UICurrencyTextFieldDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UICurrencyTextFieldDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54170F9209023D8008995D7 /* UICurrencyTextFieldDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICurrencyTextFieldDemoUITests.swift; sourceTree = "<group>"; };
+		D54170FB209023D8008995D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D541710720902501008995D7 /* UICurrencyTextFieldTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICurrencyTextFieldTests.swift; sourceTree = "<group>"; };
+		D541710820902501008995D7 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
+		E4F22050D256031805B60D4D /* Pods_UICurrencyTextFieldDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UICurrencyTextFieldDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8703DCAE64198EF71A19574 /* Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICurrencyTextFieldDemoUITests/Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D54170D3209023D5008995D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBD9B298822C182F55E6A3E5 /* Pods_UICurrencyTextFieldDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D54170E7209023D8008995D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5A39AE4BE313FA0ED6B652C /* Pods_UICurrencyTextFieldDemoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D54170F2209023D8008995D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F0ED13BBA881239E24C0AF9 /* Pods_UICurrencyTextFieldDemoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3169E90294EAB33F5096B874 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				02D203C4D168C0D51B5C0DF5 /* Pods-UICurrencyTextFieldDemo.debug.xcconfig */,
+				7D0C11F975DE7306AA7DD88F /* Pods-UICurrencyTextFieldDemo.release.xcconfig */,
+				CE0EAAB19DCE5B2B1954FF55 /* Pods-UICurrencyTextFieldDemoTests.debug.xcconfig */,
+				A1AAE1A3C0B9E1BF0F157FCD /* Pods-UICurrencyTextFieldDemoTests.release.xcconfig */,
+				F8703DCAE64198EF71A19574 /* Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig */,
+				7C6BA045974D1D224BFCC5BE /* Pods-UICurrencyTextFieldDemoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D54170CD209023D5008995D7 = {
+			isa = PBXGroup;
+			children = (
+				D54170D8209023D5008995D7 /* UICurrencyTextFieldDemo */,
+				D54170ED209023D8008995D7 /* UICurrencyTextFieldDemoTests */,
+				D54170F8209023D8008995D7 /* UICurrencyTextFieldDemoUITests */,
+				D54170D7209023D5008995D7 /* Products */,
+				3169E90294EAB33F5096B874 /* Pods */,
+				F9651B99EFEEE70983347386 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D54170D7209023D5008995D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D54170D6209023D5008995D7 /* UICurrencyTextFieldDemo.app */,
+				D54170EA209023D8008995D7 /* UICurrencyTextFieldDemoTests.xctest */,
+				D54170F5209023D8008995D7 /* UICurrencyTextFieldDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D54170D8209023D5008995D7 /* UICurrencyTextFieldDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D54170D9209023D5008995D7 /* AppDelegate.swift */,
+				D54170DB209023D5008995D7 /* ViewController.swift */,
+				D54170DD209023D5008995D7 /* Main.storyboard */,
+				D54170E0209023D7008995D7 /* Assets.xcassets */,
+				D54170E2209023D7008995D7 /* LaunchScreen.storyboard */,
+				D54170E5209023D7008995D7 /* Info.plist */,
+			);
+			path = UICurrencyTextFieldDemo;
+			sourceTree = "<group>";
+		};
+		D54170ED209023D8008995D7 /* UICurrencyTextFieldDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				D541710820902501008995D7 /* StringTests.swift */,
+				D541710720902501008995D7 /* UICurrencyTextFieldTests.swift */,
+				D54170F0209023D8008995D7 /* Info.plist */,
+			);
+			path = UICurrencyTextFieldDemoTests;
+			sourceTree = "<group>";
+		};
+		D54170F8209023D8008995D7 /* UICurrencyTextFieldDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D54170F9209023D8008995D7 /* UICurrencyTextFieldDemoUITests.swift */,
+				D54170FB209023D8008995D7 /* Info.plist */,
+			);
+			path = UICurrencyTextFieldDemoUITests;
+			sourceTree = "<group>";
+		};
+		F9651B99EFEEE70983347386 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C10F3ED0340ED56D44F2DF30 /* Pods_UICurrencyTextFieldDemo.framework */,
+				E4F22050D256031805B60D4D /* Pods_UICurrencyTextFieldDemoTests.framework */,
+				12039CDC1FE49806CA5BA273 /* Pods_UICurrencyTextFieldDemoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D54170D5209023D5008995D7 /* UICurrencyTextFieldDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D54170FE209023D8008995D7 /* Build configuration list for PBXNativeTarget "UICurrencyTextFieldDemo" */;
+			buildPhases = (
+				AB55B4C7ED276D63C647F315 /* [CP] Check Pods Manifest.lock */,
+				D54170D2209023D5008995D7 /* Sources */,
+				D54170D3209023D5008995D7 /* Frameworks */,
+				D54170D4209023D5008995D7 /* Resources */,
+				98257E899B6D2AF83528D6F3 /* [CP] Embed Pods Frameworks */,
+				8C9105FAB6A1223148A0A2C0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UICurrencyTextFieldDemo;
+			productName = UICurrencyTextFieldDemo;
+			productReference = D54170D6209023D5008995D7 /* UICurrencyTextFieldDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D54170E9209023D8008995D7 /* UICurrencyTextFieldDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5417101209023D8008995D7 /* Build configuration list for PBXNativeTarget "UICurrencyTextFieldDemoTests" */;
+			buildPhases = (
+				65905C8D491C77806121AF87 /* [CP] Check Pods Manifest.lock */,
+				D54170E6209023D8008995D7 /* Sources */,
+				D54170E7209023D8008995D7 /* Frameworks */,
+				D54170E8209023D8008995D7 /* Resources */,
+				1BB47C375B1E9A445C1EB81A /* [CP] Embed Pods Frameworks */,
+				B3E20A78B887727B778170CB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D54170EC209023D8008995D7 /* PBXTargetDependency */,
+			);
+			name = UICurrencyTextFieldDemoTests;
+			productName = UICurrencyTextFieldDemoTests;
+			productReference = D54170EA209023D8008995D7 /* UICurrencyTextFieldDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D54170F4209023D8008995D7 /* UICurrencyTextFieldDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5417104209023D8008995D7 /* Build configuration list for PBXNativeTarget "UICurrencyTextFieldDemoUITests" */;
+			buildPhases = (
+				E0F8EE8AC0CFBE7340140CC9 /* [CP] Check Pods Manifest.lock */,
+				D54170F1209023D8008995D7 /* Sources */,
+				D54170F2209023D8008995D7 /* Frameworks */,
+				D54170F3209023D8008995D7 /* Resources */,
+				3A43242E5761214A6403DDCB /* [CP] Embed Pods Frameworks */,
+				31ADA25618FCA94A66B2786E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D54170F7209023D8008995D7 /* PBXTargetDependency */,
+			);
+			name = UICurrencyTextFieldDemoUITests;
+			productName = UICurrencyTextFieldDemoUITests;
+			productReference = D54170F5209023D8008995D7 /* UICurrencyTextFieldDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D54170CE209023D5008995D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Felipe Lefèvre Marino";
+				TargetAttributes = {
+					D54170D5209023D5008995D7 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					D54170E9209023D8008995D7 = {
+						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
+						TestTargetID = D54170D5209023D5008995D7;
+					};
+					D54170F4209023D8008995D7 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = D54170D5209023D5008995D7;
+					};
+				};
+			};
+			buildConfigurationList = D54170D1209023D5008995D7 /* Build configuration list for PBXProject "UICurrencyTextFieldDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D54170CD209023D5008995D7;
+			productRefGroup = D54170D7209023D5008995D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D54170D5209023D5008995D7 /* UICurrencyTextFieldDemo */,
+				D54170E9209023D8008995D7 /* UICurrencyTextFieldDemoTests */,
+				D54170F4209023D8008995D7 /* UICurrencyTextFieldDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D54170D4209023D5008995D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D54170E4209023D7008995D7 /* LaunchScreen.storyboard in Resources */,
+				D54170E1209023D7008995D7 /* Assets.xcassets in Resources */,
+				D54170DF209023D5008995D7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D54170E8209023D8008995D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D54170F3209023D8008995D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BB47C375B1E9A445C1EB81A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemoTests/Pods-UICurrencyTextFieldDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		31ADA25618FCA94A66B2786E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemoUITests/Pods-UICurrencyTextFieldDemoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A43242E5761214A6403DDCB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemoUITests/Pods-UICurrencyTextFieldDemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65905C8D491C77806121AF87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UICurrencyTextFieldDemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C9105FAB6A1223148A0A2C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98257E899B6D2AF83528D6F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/UICurrencyTextField/UICurrencyTextField.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICurrencyTextField.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB55B4C7ED276D63C647F315 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UICurrencyTextFieldDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3E20A78B887727B778170CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemoTests/Pods-UICurrencyTextFieldDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0F8EE8AC0CFBE7340140CC9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UICurrencyTextFieldDemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D54170D2209023D5008995D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D54170DC209023D5008995D7 /* ViewController.swift in Sources */,
+				D54170DA209023D5008995D7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D54170E6209023D8008995D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D541710A20902501008995D7 /* StringTests.swift in Sources */,
+				D541710920902501008995D7 /* UICurrencyTextFieldTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D54170F1209023D8008995D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D54170FA209023D8008995D7 /* UICurrencyTextFieldDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D54170EC209023D8008995D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D54170D5209023D5008995D7 /* UICurrencyTextFieldDemo */;
+			targetProxy = D54170EB209023D8008995D7 /* PBXContainerItemProxy */;
+		};
+		D54170F7209023D8008995D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D54170D5209023D5008995D7 /* UICurrencyTextFieldDemo */;
+			targetProxy = D54170F6209023D8008995D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D54170DD209023D5008995D7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D54170DE209023D5008995D7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D54170E2209023D7008995D7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D54170E3209023D7008995D7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D54170FC209023D8008995D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D54170FD209023D8008995D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D54170FF209023D8008995D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02D203C4D168C0D51B5C0DF5 /* Pods-UICurrencyTextFieldDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X9MK4PBNUW;
+				INFOPLIST_FILE = UICurrencyTextFieldDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.UICurrencyTextFieldDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D5417100209023D8008995D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D0C11F975DE7306AA7DD88F /* Pods-UICurrencyTextFieldDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X9MK4PBNUW;
+				INFOPLIST_FILE = UICurrencyTextFieldDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.UICurrencyTextFieldDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D5417102209023D8008995D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE0EAAB19DCE5B2B1954FF55 /* Pods-UICurrencyTextFieldDemoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X9MK4PBNUW;
+				INFOPLIST_FILE = UICurrencyTextFieldDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.UICurrencyTextFieldDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UICurrencyTextFieldDemo.app/UICurrencyTextFieldDemo";
+			};
+			name = Debug;
+		};
+		D5417103209023D8008995D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1AAE1A3C0B9E1BF0F157FCD /* Pods-UICurrencyTextFieldDemoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X9MK4PBNUW;
+				INFOPLIST_FILE = UICurrencyTextFieldDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.UICurrencyTextFieldDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UICurrencyTextFieldDemo.app/UICurrencyTextFieldDemo";
+			};
+			name = Release;
+		};
+		D5417105209023D8008995D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8703DCAE64198EF71A19574 /* Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X9MK4PBNUW;
+				INFOPLIST_FILE = UICurrencyTextFieldDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.UICurrencyTextFieldDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = UICurrencyTextFieldDemo;
+			};
+			name = Debug;
+		};
+		D5417106209023D8008995D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C6BA045974D1D224BFCC5BE /* Pods-UICurrencyTextFieldDemoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X9MK4PBNUW;
+				INFOPLIST_FILE = UICurrencyTextFieldDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.UICurrencyTextFieldDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = UICurrencyTextFieldDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D54170D1209023D5008995D7 /* Build configuration list for PBXProject "UICurrencyTextFieldDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D54170FC209023D8008995D7 /* Debug */,
+				D54170FD209023D8008995D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D54170FE209023D8008995D7 /* Build configuration list for PBXNativeTarget "UICurrencyTextFieldDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D54170FF209023D8008995D7 /* Debug */,
+				D5417100209023D8008995D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5417101209023D8008995D7 /* Build configuration list for PBXNativeTarget "UICurrencyTextFieldDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5417102209023D8008995D7 /* Debug */,
+				D5417103209023D8008995D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5417104209023D8008995D7 /* Build configuration list for PBXNativeTarget "UICurrencyTextFieldDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5417105209023D8008995D7 /* Debug */,
+				D5417106209023D8008995D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D54170CE209023D5008995D7 /* Project object */;
+}
