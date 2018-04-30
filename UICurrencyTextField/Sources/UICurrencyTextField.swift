@@ -13,7 +13,11 @@ public class UICurrencyTextField: UITextField {
     private var numberFormatter = NumberFormatter()
     
     // MARK: Open vars
+    
+    /// if true text field is cleared when resign first responder with value = 0
     public var hasAutoclear: Bool = false
+    
+    /// define maximum amount of integer numbers
     public var maximumIntegers: Int? {
         didSet {
             guard let maxIntegers = maximumIntegers else { return }
@@ -33,6 +37,12 @@ public class UICurrencyTextField: UITextField {
      */
     
     // MARK: Init
+    
+    /// Can be used to pass custom numberFormatter for the currency text field
+    ///
+    /// - Parameters:
+    ///   - numberFormatter: NumberFormatter type to customize currency formating
+    ///   - frame: text field frame
     public convenience init(numberFormatter: NumberFormatter, frame: CGRect) {
         self.init(frame: frame)
         self.numberFormatter = numberFormatter
