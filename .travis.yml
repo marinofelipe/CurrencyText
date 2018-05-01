@@ -1,0 +1,23 @@
+osx_image: xcode9
+language: objective-c
+
+cache:
+- bundler
+- cocoapods
+
+before_install:
+- rvm use $RVM_RUBY_VERSION
+- gem install cocoapods
+- gem install slather
+- gem install coveralls
+
+install:
+- pod repo update --silent
+- pod install --project-directory=Example
+
+script:
+- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/UICurrencyTextFieldDemo.xcworkspace -scheme Example/UICurrencyTextFieldDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7' ONLY_ACTIVE_ARCH=YES | xcpretty
+- pod lib lint
+
+after_success: 
+- cd $TRAVIS_BUILD_DIR && cd Example fastlane test
