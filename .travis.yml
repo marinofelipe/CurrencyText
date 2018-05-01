@@ -16,8 +16,7 @@ install:
 - pod install --project-directory=Example
 
 script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/UICurrencyTextFieldDemo.xcworkspace -scheme UICurrencyTextFieldDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7' ONLY_ACTIVE_ARCH=YES | xcpretty
 - pod lib lint
 
 after_success: 
-- cd $TRAVIS_BUILD_DIR && cd Example fastlane test
+- cd Example && fastlane test
