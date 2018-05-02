@@ -1,5 +1,8 @@
 UICurrencyTextField
 ======================================
+[![Build Status](https://travis-ci.org/marinofelipe/UICurrencyTextField.svg?branch=master)](https://travis-ci.org/marinofelipe/UICurrencyTextField)
+[![Coverage Status](https://coveralls.io/repos/github/marinofelipe/UICurrencyTextField/badge.svg?branch=chore%2Ffastlane_and_ci)](https://coveralls.io/github/marinofelipe/UICurrencyTextField?branch=chore%2Ffastlane_and_ci)
+<a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat" alt="Swift" /></a>
 
 iOS currency text field written in Swift.  
 <br>
@@ -50,7 +53,7 @@ currencyTextField.maximumIntegers = 4
 ```swift
 currencyTextField.hasAutoclear = true
 ``` 
-<br><br>
+<br>
 Please refer to `Example/` and download the demo for more detailed info.
 The demo shows storyboard and programmatically methods.
 
