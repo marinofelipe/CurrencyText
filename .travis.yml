@@ -6,7 +6,7 @@ cache:
 - cocoapods
 
 before_install:
-- rvm install 2.3.3p222
+- rvm install 2.3.3
 - gem install cocoapods
 - gem install slather
 - gem install coveralls
