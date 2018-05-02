@@ -11,6 +11,7 @@ before_install:
 - gem install slather
 - gem install coveralls
 - gem install fastlane --version 2.93.1 --no-document
+- gem cleanup
 
 install:
 - pod repo update --silent
