@@ -1,0 +1,17 @@
+
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Run tests"
+  lane :test do
+    scan(
+    	clean: true, code_coverage: true, scheme: "UICurrencyTextFieldDemo", devices: ["iPhone SE", "iPhone 8"]
+    )
+
+    slather(
+    	proj: "UICurrencyTextFieldDemo.xcodeproj", workspace: "UICurrencyTextFieldDemo.xcworkspace", scheme: "UICurrencyTextFieldDemo", source_directory: "../UICurrencyTextField/Sources", binary_basename: "UICurrencyTextField", travis: true, coveralls: true
+    )
+  end
+end
