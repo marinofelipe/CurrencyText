@@ -10,11 +10,11 @@ before_install:
 - gem install cocoapods
 - gem install slather
 - gem install coveralls
+- gem install fastlane --version 2.18.3 --no-document
 
 install:
 - pod repo update --silent
 - pod install --project-directory=Example
-- gem install fastlane -NV
 
 script:
 - pod lib lint
