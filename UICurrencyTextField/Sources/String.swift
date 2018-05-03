@@ -31,7 +31,6 @@ extension String: CurrencyString {
         return replacingOccurrences(of: "0", with: "").count == 0
     }
     
-    
     func removingCurrencySeparators() -> String {
         return replacingOccurrences(of: ".", with: "")
             .replacingOccurrences(of: ",", with: "")

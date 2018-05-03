@@ -167,15 +167,32 @@ class CurrencyTextFieldTests: XCTestCase {
         XCTAssertEqual(textField?.text, numberFormatter!.currencySymbol + "1,111,115.11", "deleting digits should keep formating and count as expected")
     }
     
+    // MARK: End of editing
+    func testAutoclear() {
+        textField = UICurrencyTextField(numberFormatter: numberFormatter!, frame: CGRect.zero)
+        textField?.hasAutoclear = true
+        
+        for _ in 0...2 {
+            textField!.text!.append("0")
+            textField!.textDidChange(textField!)
+        }
+        
+        textField!.didEndEditing(textField!)
+        XCTAssertTrue(textField!.text!.count == 0, "Text field text count should be zero because hasAutoclear is enabled")
+        
+        
+        textField?.hasAutoclear = false
+        for _ in 0...2 {
+            textField!.text!.append("0")
+            textField!.textDidChange(textField!)
+        }
+        
+        textField!.didEndEditing(textField!)
+        XCTAssertTrue(textField!.text!.count > 0, "Text field text count should not be zero when autoclear is disabled")
+    }
+    
     // MARK: Cursor
     func testCursorPosition() {
         
     }
-    
-    func testPerformanceExample() {
-        self.measure {
-            
-        }
-    }
-    
 }
