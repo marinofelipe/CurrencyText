@@ -21,6 +21,21 @@ or alternatively using `brew cask install fastlane`
 fastlane ios test
 ```
 Run tests
+### ios open_pr
+```
+fastlane ios open_pr
+```
+Create a pull request from the current branch
+### ios tag
+```
+fastlane ios tag
+```
+Tag pod
+### ios publish
+```
+fastlane ios publish
+```
+publish pod
 
 ----
 
