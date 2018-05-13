@@ -14,7 +14,7 @@ end
 
 def cocoapods
 {
-	podspec: "UICurrencyTextField.podspec"
+	podspec: "../UICurrencyTextField.podspec"
 }
 end
 
