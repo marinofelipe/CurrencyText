@@ -12,6 +12,12 @@ def changelogFile
 	"../CHANGELOG.md"
 end
 
+def cocoapods
+{
+	podspec: "./UICurrencyTextField.podspec"
+}
+end
+
 default_platform(:ios)
 
 platform :ios do
@@ -109,7 +115,7 @@ platform :ios do
 	  	write.write(readme)
 	  	write.close
 
-	  	version_bump_podspec(path: './UICurrencyTextField.podspec', version_number: version_number)
+	  	version_bump_podspec(path: "#{cocoapods[:podspec]}", version_number: version_number)
 	  	sh "git commit -am \"Publish pod version: #{version_number} [ci skip]\""
 	  	add_git_tag(tag: version_number)
 	  	push_git_tags
