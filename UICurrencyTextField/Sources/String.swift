@@ -17,20 +17,18 @@ protocol CurrencyString {
 //String Currency Extension
 extension String: CurrencyString {
     
-    //moves separator one character to the right. Keeps currency formated
+    //moves separator one character to the right. Keeps currency formatted
     mutating func addDecimalSeparator() {
         guard count > 2 else { return }
         let lastTwoChars = self[index(endIndex, offsetBy: -2)..<endIndex]
         replaceSubrange(index(endIndex, offsetBy: -2)..<endIndex, with: "." + lastTwoChars)
     }
     
-    @discardableResult
     func numeralFormat() -> String {
         return replacingOccurrences(of:"[^0-9]", with: "", options: .regularExpression)
     }
     
     func representsZero() -> Bool {
-        numeralFormat()
-        return replacingOccurrences(of: "0", with: "").count == 0
+        return numeralFormat().replacingOccurrences(of: "0", with: "").count == 0
     }
 }
