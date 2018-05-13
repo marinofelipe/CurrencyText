@@ -2,24 +2,18 @@ osx_image: xcode9
 language: objective-c
 
 cache:
-- bundler
-- cocoapods
+	- bundler
 
 before_install:
-- rvm install 2.3.3
-- gem install cocoapods
-- gem install CFPropertyList -v 2.3.6
-- gem install slather
-- gem install coveralls
-- gem install fastlane --version 2.93.1 --no-document
-- gem cleanup
+	- rvm install 2.3.3
 
 install:
-- pod repo update --silent
-- pod install --project-directory=Example
+	- bundle install	
+	- pod repo update --silent
+	- pod install --project-directory=Example
 
 script:
-- pod lib lint
+	- pod lib lint
 
 after_success: 
-- cd Example && fastlane test
+	- cd Example && fastlane test
