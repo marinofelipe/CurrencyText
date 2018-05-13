@@ -19,7 +19,7 @@ extension String: CurrencyString {
     
     //moves separator one character to the right. Keeps currency formatted
     mutating func addDecimalSeparator() {
-        guard count > 2 else { return }
+        guard count >= 2 else { return }
         let lastTwoChars = self[index(endIndex, offsetBy: -2)..<endIndex]
         replaceSubrange(index(endIndex, offsetBy: -2)..<endIndex, with: "." + lastTwoChars)
     }
