@@ -1,7 +1,8 @@
 
 # update_fastlane
 
-def branches {
+def branches 
+{
 	dev: "develop",
   	master: "master"
 }
