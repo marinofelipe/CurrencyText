@@ -76,7 +76,7 @@ platform :ios do
     ###-------------------------------- Tag and publish ---------------------------###
 
 	desc "Tag pod"
-    lane :tag do
+    lane :tag do |options|
   		ensure_git_status_clean
   		
   		sh "git fetch --tags"
