@@ -45,6 +45,6 @@ class StringTests: XCTestCase {
     }
     
     func testRemovingCurrencySeparators() {
-        
+        var currencyValue = ""
     }
 }

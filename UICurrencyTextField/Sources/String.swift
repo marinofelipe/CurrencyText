@@ -11,7 +11,7 @@ import UIKit
 protocol CurrencyString {
     mutating func addDecimalSeparator()
     func numeralFormat() -> String
-    func removingCurrencySeparators() -> String
+    func representsZero() -> Bool
 }
 
 //String Currency Extension
@@ -30,10 +30,5 @@ extension String: CurrencyString {
     
     func representsZero() -> Bool {
         return replacingOccurrences(of: "0", with: "").count == 0
-    }
-    
-    func removingCurrencySeparators() -> String {
-        return replacingOccurrences(of: ".", with: "")
-            .replacingOccurrences(of: ",", with: "")
     }
 }
