@@ -3,8 +3,18 @@
 
 def branches 
 {
-  dev: "develop",
-  master: "master"
+	dev: "develop",
+  	master: "master"
+}
+end
+
+def changelogFile
+	"../CHANGELOG.md"
+end
+
+def cocoapods
+{
+	podspec: "../UICurrencyTextField.podspec"
 }
 end
 
@@ -13,61 +23,110 @@ default_platform(:ios)
 platform :ios do
   
   ###-------------------------------- Tests ---------------------------###
-  desc "Run tests"
-  lane :test do
-    scan(
-    	clean: true, code_coverage: true, scheme: "UICurrencyTextFieldDemo", devices: ["iPhone SE", "iPhone 8"]
-    )
+	desc "Run tests"
+	lane :test do
+		scan(
+			clean: true, code_coverage: true, scheme: "UICurrencyTextFieldDemo", devices: ["iPhone SE", "iPhone 8"]
+		)
 
-    slather(
-    	proj: "UICurrencyTextFieldDemo.xcodeproj", workspace: "UICurrencyTextFieldDemo.xcworkspace", scheme: "UICurrencyTextFieldDemo", source_directory: "../UICurrencyTextField/Sources", binary_basename: "UICurrencyTextField", travis: true, coveralls: true
-    )
-  end
+		slather(
+			proj: "UICurrencyTextFieldDemo.xcodeproj", workspace: "UICurrencyTextFieldDemo.xcworkspace", scheme: "UICurrencyTextFieldDemo", source_directory: "../UICurrencyTextField/Sources", binary_basename: "UICurrencyTextField", travis: true, coveralls: true
+		)
+  	end
 
   ###-------------------------------- Pull Request ---------------------------###
   
     desc "Create a pull request from the current branch"
-    lane :pr do |options|
-      ok = system("which hub > /dev/null 2>&1")
-      if (ok == false)
-        raise "Please install https://github.com/github/hub".yellow
-      end
-      ensure_git_status_clean
-      branch = git_branch
-      if (branch == "master") ||(branch == "develop")
-        raise "You can't open a Pull Request from this branch".yellow
-      else
-        UI.success "it is ok you are on branch :#{branch}".green
-        sh "git push origin #{branch}"
-      end
-      pr_title = prompt(text: 'Type pull request title:')
-      sh "hub issue"
-      desc = prompt(text: 'Do you want add a description? It\'s always better :).',boolean:true)
-      prompt_text = "Type pull request description: Fixing any issues? Just write: fixed #issueNumber. "
-      pr_description = desc ? prompt(text: prompt_text) : ""
-      sh "touch pr_file"
-      write = open('pr_file', 'w')
-      write.write(pr_title)
-      write.write("\n")
-      write.write(pr_description)
-      write.close
+    lane :open_pr do |options|
+		
+		ok = system("which hub > /dev/null 2>&1")
+		if (ok == false)
+			raise "Please install https://github.com/github/hub".yellow
+		end
+		
+		ensure_git_status_clean
+		branch = git_branch
+		
+		if (branch == "master") ||(branch == "develop")
+			raise "You can't open a Pull Request from this branch".yellow
+		else
+			UI.success "it is ok you are on branch :#{branch}".green
+			sh "git push origin #{branch}"
+		end
+		
+		pr_title = prompt(text: 'Type pull request title:')
+		sh "hub issue"
+		desc = prompt(text: 'Do you want add a description? It\'s always better :).',boolean:true)
+		prompt_text = "Type pull request description: Fixing any issues? Just write: fixed #issueNumber. "
+		pr_description = desc ? prompt(text: prompt_text) : ""
+		sh "touch pr_file"
+		write = open('pr_file', 'w')
+		write.write(pr_title)
+		write.write("\n")
+		write.write(pr_description)
+		write.close
 
-      masterAsBase = prompt(text: 'Do you want set master as base? ["y" for master and "n" for develop]', boolean: true)
-      if (masterAsBase == true)
-        base = branches[:master]
-      else
-        base = branches[:dev]
-      end
+		masterAsBase = prompt(text: 'Do you want set master as base? ["y" for master and "n" for develop]', boolean: true)
+		if (masterAsBase == true)
+			base = branches[:master]
+		else
+			base = branches[:dev]
+		end
 
-      if base 
-        pr_link = sh "hub pull-request -F pr_file -b #{base} --browse"
-      else 
-        pr_link = sh "hub pull-request -F pr_file --browse"
-      end
+		if base 
+			pr_link = sh "hub pull-request -F pr_file -b #{base} --browse"
+		else 
+			pr_link = sh "hub pull-request -F pr_file --browse"
+		end
 
-      sh "rm pr_file"
-      clipboard(value:pr_link)
+		sh "rm pr_file"
+		clipboard(value:pr_link)
     end
+
+    ###-------------------------------- Tag and publish ---------------------------###
+
+	desc "Tag pod"
+    lane :tag do |options|
+  		ensure_git_status_clean
+  		
+  		sh "git fetch --tags"
+	  	last_tag = last_git_tag
+	  	version_number = get_info_plist_value(path: './Pods/Target Support Files/UICurrencyTextField/Info.plist', key: 'CFBundleShortVersionString')
+
+	  	if (Gem::Version.new(last_tag) >= Gem::Version.new(version_number))
+	    	if options[:force] 
+	      		version_number = patch
+	    	else
+	      	raise "There is already a tag with this number version. If you want to force create a tag do: fastlane tag force:true \nYou should first 		update the version number with : fastlane patch | fastlane minor | fastlane major".yellow
+	    	end
+	  	else
+	    	UI.success "it is ok, all good! last tag #{last_tag} != new version #{version_number} 💪".green
+	  	end
+
+	  	change_log = sh "git log #{last_tag}..HEAD --pretty=format:\"* %s - %an\""
+	  	readme = File.read(changelogFile)
+	  	write = open(changelogFile, 'w')
+	  	write.write("##  ")
+	  	write.write(version_number)
+	  	write.write("\n")
+	  	write.write(change_log)
+	   	write.write("\n")
+	  	write.write("\n")
+	  	write.write(readme)
+	  	write.close
+
+	  	version_bump_podspec(path: "#{cocoapods[:podspec]}", version_number: version_number)
+	  	sh "git commit -am \"Publish pod version: #{version_number} [ci skip]\""
+	  	add_git_tag(tag: version_number)
+	  	push_git_tags
+	  	push_to_git_remote
+	  	
+	end
+
+	desc "publish pod"
+    lane :publish do
+		pod_push(path: "#{cocoapods[:podspec]}")
+	end
 
 end
 
