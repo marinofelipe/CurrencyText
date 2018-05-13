@@ -81,7 +81,7 @@ platform :ios do
   		
   		sh "git fetch --tags"
 	  	last_tag = last_git_tag
-	  	version_number = get_info_plist_value(path: './UICurrencyTextFieldDemo/Info.plist', key: 'CFBundleShortVersionString')
+	  	version_number = get_info_plist_value(path: './Pods/Target Support Files/UICurrencyTextField/Info.plist', key: 'CFBundleShortVersionString')
 
 	  	if (Gem::Version.new(last_tag) >= Gem::Version.new(version_number))
 	    	if options[:force] 
