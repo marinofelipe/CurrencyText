@@ -215,6 +215,12 @@ class CurrencyTextFieldTests: XCTestCase {
     
     // MARK: Cursor
     func testCursorPosition() {
+        guard let textField = textField else { return }
         
+        textField.text = "3"
+        textField.sendActions(for: .editingChanged)
+        
+        XCTAssertEqual(textField.selectedTextRange, textField.textRange(from: textField.endOfDocument, to: textField.endOfDocument), "After first input selected range should be endOfDocument")
+        XCTAssertEqual(textField.cursorOffsetFromEnd, 0, "After first input cursorOffsetFromEnd should be 0")
     }
 }
