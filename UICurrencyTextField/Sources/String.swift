@@ -24,11 +24,13 @@ extension String: CurrencyString {
         replaceSubrange(index(endIndex, offsetBy: -2)..<endIndex, with: "." + lastTwoChars)
     }
     
+    @discardableResult
     func numeralFormat() -> String {
         return replacingOccurrences(of:"[^0-9]", with: "", options: .regularExpression)
     }
     
     func representsZero() -> Bool {
+        numeralFormat()
         return replacingOccurrences(of: "0", with: "").count == 0
     }
 }

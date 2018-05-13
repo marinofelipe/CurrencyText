@@ -123,7 +123,7 @@ public class UICurrencyTextField: UITextField {
     }
     
     @objc func didEndEditing(_ textField: UICurrencyTextField) {
-        if let text = textField.text, text.numeralFormat().representsZero() && hasAutoclear {
+        if let text = textField.text, text.representsZero() && hasAutoclear {
             textField.text = ""
         }
     }

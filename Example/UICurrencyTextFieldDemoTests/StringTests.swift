@@ -44,7 +44,15 @@ class StringTests: XCTestCase {
         XCTAssertEqual(text, "9", "When there aren't enough characters the text should stay the same")
     }
     
-    func testRemovingCurrencySeparators() {
-        var currencyValue = ""
+    func testRepresentsZero() {
+        var currencyValue = "R$ 34.00"
+        
+        XCTAssertFalse(currencyValue.representsZero(), "value \(currencyValue) should not represent zero")
+        
+        currencyValue = "00,34"
+        XCTAssertFalse(currencyValue.representsZero(), "value \(currencyValue) should not represent zero")
+        
+        currencyValue = "0.000,00"
+        XCTAssertTrue(currencyValue.representsZero(), "value \(currencyValue) should represent zero")
     }
 }
