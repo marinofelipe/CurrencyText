@@ -11,14 +11,15 @@ import UIKit
 protocol CurrencyString {
     mutating func addDecimalSeparator()
     func numeralFormat() -> String
-    func removingCurrencySeparators() -> String
+    func representsZero() -> Bool
 }
 
 //String Currency Extension
 extension String: CurrencyString {
     
-    //moves separator one character to the right. Keeps currency formated
+    //moves separator one character to the right. Keeps currency formatted
     mutating func addDecimalSeparator() {
+        guard count >= 2 else { return }
         let lastTwoChars = self[index(endIndex, offsetBy: -2)..<endIndex]
         replaceSubrange(index(endIndex, offsetBy: -2)..<endIndex, with: "." + lastTwoChars)
     }
@@ -28,12 +29,6 @@ extension String: CurrencyString {
     }
     
     func representsZero() -> Bool {
-        return replacingOccurrences(of: "0", with: "").count == 0
-    }
-    
-    
-    func removingCurrencySeparators() -> String {
-        return replacingOccurrences(of: ".", with: "")
-            .replacingOccurrences(of: ",", with: "")
+        return numeralFormat().replacingOccurrences(of: "0", with: "").count == 0
     }
 }

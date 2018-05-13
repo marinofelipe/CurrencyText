@@ -93,7 +93,9 @@ public class UICurrencyTextField: UITextField {
         if var text = textField.text {
             
             var isFirstInput: Bool = false
-            cursorOffsetFromEnd = offset(from: endOfDocument, to: selectedTextRange!.end)
+            if let selectedTextRange = selectedTextRange {
+                cursorOffsetFromEnd = offset(from: endOfDocument, to: selectedTextRange.end)                
+            }
             
             guard text.numeralFormat().count > 0 else {
                 textField.text?.removeAll()
@@ -123,7 +125,7 @@ public class UICurrencyTextField: UITextField {
     }
     
     @objc func didEndEditing(_ textField: UICurrencyTextField) {
-        if let text = textField.text, text.numeralFormat().representsZero() {
+        if let text = textField.text, text.representsZero() && hasAutoclear {
             textField.text = ""
         }
     }

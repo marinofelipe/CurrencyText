@@ -1,9 +1,18 @@
 
 # update_fastlane
 
+def branches 
+{
+  dev: "develop",
+  master: "master"
+}
+end
+
 default_platform(:ios)
 
 platform :ios do
+  
+  ###-------------------------------- Tests ---------------------------###
   desc "Run tests"
   lane :test do
     scan(
@@ -14,4 +23,52 @@ platform :ios do
     	proj: "UICurrencyTextFieldDemo.xcodeproj", workspace: "UICurrencyTextFieldDemo.xcworkspace", scheme: "UICurrencyTextFieldDemo", source_directory: "../UICurrencyTextField/Sources", binary_basename: "UICurrencyTextField", travis: true, coveralls: true
     )
   end
+
+  ###-------------------------------- Pull Request ---------------------------###
+  
+    desc "Create a pull request from the current branch"
+    lane :pr do |options|
+      ok = system("which hub > /dev/null 2>&1")
+      if (ok == false)
+        raise "Please install https://github.com/github/hub".yellow
+      end
+      ensure_git_status_clean
+      branch = git_branch
+      if (branch == "master") ||(branch == "develop")
+        raise "You can't open a Pull Request from this branch".yellow
+      else
+        UI.success "it is ok you are on branch :#{branch}".green
+        sh "git push origin #{branch}"
+      end
+      pr_title = prompt(text: 'Type pull request title:')
+      sh "hub issue"
+      desc = prompt(text: 'Do you want add a description? It\'s always better :).',boolean:true)
+      prompt_text = "Type pull request description: Fixing any issues? Just write: fixed #issueNumber. "
+      pr_description = desc ? prompt(text: prompt_text) : ""
+      sh "touch pr_file"
+      write = open('pr_file', 'w')
+      write.write(pr_title)
+      write.write("\n")
+      write.write(pr_description)
+      write.close
+
+      masterAsBase = prompt(text: 'Do you want set master as base? ["y" for master and "n" for develop]', boolean: true)
+      if (masterAsBase == true)
+        base = branches[:master]
+      else
+        base = branches[:dev]
+      end
+
+      if base 
+        pr_link = sh "hub pull-request -F pr_file -b #{base} --browse"
+      else 
+        pr_link = sh "hub pull-request -F pr_file --browse"
+      end
+
+      sh "rm pr_file"
+      clipboard(value:pr_link)
+    end
+
 end
+
+
