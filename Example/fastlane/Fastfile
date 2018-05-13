@@ -125,7 +125,7 @@ platform :ios do
 
 	desc "publish pod"
     lane :publish do
-		pod_push(path: #{cocoapods[:podspec]}")
+		pod_push(path: "#{cocoapods[:podspec]}")
 	end
 
 end
