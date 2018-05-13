@@ -37,7 +37,7 @@ class StringTests: XCTestCase {
         
         text = "99"
         text.addDecimalSeparator()
-        XCTAssertEqual(text, "99", "When there aren't enough characters the text should stay the same")
+        XCTAssertEqual(text, ".99", "Text format should be .99")
         
         text = "9"
         text.addDecimalSeparator()
