@@ -1,4 +1,4 @@
-UICurrencyTextField
+UICurrencyTextField 💶✏️
 ======================================
 [![Build Status](https://travis-ci.org/marinofelipe/UICurrencyTextField.svg?branch=master)](https://travis-ci.org/marinofelipe/UICurrencyTextField)
 [![Coverage Status](https://coveralls.io/repos/github/marinofelipe/UICurrencyTextField/badge.svg?branch=chore%2Ffastlane_and_ci)](https://coveralls.io/github/marinofelipe/UICurrencyTextField?branch=chore%2Ffastlane_and_ci)
