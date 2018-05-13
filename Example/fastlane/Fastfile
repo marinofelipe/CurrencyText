@@ -14,7 +14,7 @@ end
 
 def cocoapods
 {
-	podspec: "./UICurrencyTextField.podspec"
+	podspec: "UICurrencyTextField.podspec"
 }
 end
 
@@ -125,7 +125,7 @@ platform :ios do
 
 	desc "publish pod"
     lane :publish do
-		sh "pod trunk push UICurrencyTextField.podspec"
+		pod_push(path: #{cocoapods[:podspec]}")
 	end
 
 end
