@@ -1,11 +1,14 @@
 
 # update_fastlane
 
-def branches 
-{
-  dev: "develop",
-  master: "master"
+def branches {
+	dev: "develop",
+  	master: "master"
 }
+end
+
+def changelogFile
+	"../CHANGELOG.md"
 end
 
 default_platform(:ios)
@@ -90,7 +93,7 @@ platform :ios do
 	      	raise "There is already a tag with this number version. If you want to force create a tag do: fastlane tag force:true \nYou should first 		update the version number with : fastlane patch | fastlane minor | fastlane major".yellow
 	    	end
 	  	else
-	    	UI.success "it is ok, all good! #{last_tag} != #{version_number}💪".green
+	    	UI.success "it is ok, all good! last tag #{last_tag} != new version #{version_number} 💪".green
 	  	end
 
 	  	change_log = sh "git log #{last_tag}..HEAD --pretty=format:\"* %s - %an\""
