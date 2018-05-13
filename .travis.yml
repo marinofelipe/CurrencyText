@@ -2,18 +2,18 @@ osx_image: xcode9
 language: objective-c
 
 cache:
-	- bundler
+- bundler
 
 before_install:
-	- rvm install 2.3.3
+- rvm install 2.3.3
 
 install:
-	- bundle install	
-	- pod repo update --silent
-	- pod install --project-directory=Example
+- bundle install
+- pod repo update --silent
+- pod install --project-directory=Example
 
 script:
-	- pod lib lint
+- pod lib lint
 
 after_success: 
-	- cd Example && fastlane test
+- cd Example && fastlane test
