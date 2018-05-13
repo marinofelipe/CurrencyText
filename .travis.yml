@@ -3,10 +3,12 @@ language: objective-c
 
 cache:
 - bundler
+- cocoapods
 
 before_install:
 - rvm install 2.3.3
 - gem install cocoapods
+- gem install slather
 - gem install coveralls
 - gem install fastlane --version 2.93.1 --no-document
 - gem cleanup
