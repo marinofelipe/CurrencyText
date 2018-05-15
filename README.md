@@ -1,7 +1,7 @@
 UICurrencyTextField 💶✏️
 ======================================
 [![Build Status](https://travis-ci.org/marinofelipe/UICurrencyTextField.svg?branch=master)](https://travis-ci.org/marinofelipe/UICurrencyTextField)
-[![Coverage Status](https://coveralls.io/repos/github/marinofelipe/UICurrencyTextField/badge.svg?branch=chore%2Ffastlane_and_ci)](https://coveralls.io/github/marinofelipe/UICurrencyTextField?branch=chore%2Ffastlane_and_ci)
+[![Coverage Status](https://coveralls.io/repos/github/marinofelipe/UICurrencyTextField/badge.svg?branch=master)](https://coveralls.io/github/marinofelipe/UICurrencyTextField?branch=master)
 <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat" alt="Swift" /></a>
 
 iOS currency text field written in Swift.  
