@@ -49,7 +49,7 @@ let currencyTextField = UICurrencyTextField(frame: frame)
 currencyTextField.maximumIntegers = 4
 ```
 
-###### enables autoclear - text will remove content when value is 0
+###### enables autoclear - text field removes it's content when value is 0
 ```swift
 currencyTextField.hasAutoclear = true
 ``` 
@@ -58,8 +58,7 @@ Please refer to `Example/` and download the demo for more detailed info.
 The demo shows storyboard and programmatically methods.
 
 ## Contributing
-Please feel free to contribute. Together we can make better reusable code.
-Follow [Kanban project](https://github.com/marinofelipe/UICurrencyTextField/projects/1) or open new issues in your fork.
+Cnntributions are always welcome. Please feel free to fork, follow [Kanban project](https://github.com/marinofelipe/UICurrencyTextField/projects/1) or open new issues.
 Every PR will be first validated by the CI service which will run the demo tests.
 If you develop new features or solve any issues please verify if tests keep succeeding. Feel free to help adding more tets as well.
 
