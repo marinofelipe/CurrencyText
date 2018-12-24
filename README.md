@@ -4,9 +4,9 @@ UICurrencyTextField 💶✏️
 [![Coverage Status](https://coveralls.io/repos/github/marinofelipe/UICurrencyTextField/badge.svg?branch=master)](https://coveralls.io/github/marinofelipe/UICurrencyTextField?branch=master)
 <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat" alt="Swift" /></a>
 
-iOS currency text field written in Swift.  
+iOS currency text field.
 <br>
-Inputed numbers are automatically formatted to user Locale currency format.  
+Inputed numbers are automatically formatted to user Locale currency format by default.
 ###### Language: English, Region: Brazil  
 `R$ - brazilian reais`  
 ###### Language: English, Region: United States  
@@ -49,7 +49,7 @@ let currencyTextField = UICurrencyTextField(frame: frame)
 currencyTextField.maximumIntegers = 4
 ```
 
-###### enables autoclear - text field removes it's content when gets unselected with value of zero
+###### enables autoclear - text field text is removed when resigns as first responder with value of zero
 ```swift
 currencyTextField.hasAutoclear = true
 ``` 
