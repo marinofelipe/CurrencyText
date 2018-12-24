@@ -7,14 +7,16 @@ UICurrencyTextField 💶✏️
 iOS currency text field.
 <br>
 Inputed numbers are automatically formatted to user Locale currency format by default.
-###### Language: English, Region: Brazil  
-`R$ - brazilian reais`  
-###### Language: English, Region: United States  
-`$ - dollars`
+##### Language: english, region: Brazil  
+`brazilian reais`  
+`R$3.000,00`
+##### Language: english, region: United States  
+`dollars`  
+`$3,000.00`
 
 ## Requirements
 
-* Swift >= 3
+Swift >= 3
 
 ## Installation
 
