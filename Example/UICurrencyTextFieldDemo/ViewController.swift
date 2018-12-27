@@ -11,31 +11,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var textField: UICurrencyTextField!
-    @IBOutlet weak var programaticallyAddedLabel: UILabel!
+    @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configTextFieldOutlet()
-        programaticallyAddTextField()
+        setupTextFieldWithCurrencyDelegate()
     }
+    
+    private func setupTextFieldWithCurrencyDelegate() {
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    private func configTextFieldOutlet() {
-        textField.maximumIntegers = 4
-        textField.hasAutoclear = true
-    }
-    
-    private func programaticallyAddTextField() {
-        let textFieldFrame = CGRect(x: view.frame.width / 2 - 87.5, y: programaticallyAddedLabel.frame.origin.y + programaticallyAddedLabel.frame.height + 30, width: 175, height: 30)
-        let currencyTextField = UICurrencyTextField(frame: textFieldFrame)
-        currencyTextField.borderStyle = .roundedRect
+        let currencyDelegate = UICurrencyTextFieldDelegate()
+        currencyDelegate.maximumIntegers = 4
+        currencyDelegate.hasAutoclear = true
         
-        view.addSubview(currencyTextField)
+        textField.delegate = currencyDelegate
+        textField.keyboardType = .numberPad
     }
 }

@@ -1,16 +1,16 @@
 PODS:
-  - UICurrencyTextField (1.0.0)
+  - UICurrencyTextField (1.0.1)
 
 DEPENDENCIES:
   - UICurrencyTextField (from `../`)
 
 EXTERNAL SOURCES:
   UICurrencyTextField:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  UICurrencyTextField: 430e138eb267d0a611066186b2cae06ddb19d489
+  UICurrencyTextField: e25f901a3f56058979d4e03fc3133c78b42278c3
 
-PODFILE CHECKSUM: 19b6f59242ad2c88c1c4894247bde01767db10b6
+PODFILE CHECKSUM: c11a68e55cffd71554631b3519fcc79e18d99ecf
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

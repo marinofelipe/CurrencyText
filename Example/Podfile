@@ -1,4 +1,5 @@
 platform :ios, '9.0'
+workspace '../UICurrencyTextField'
 
 target 'UICurrencyTextFieldDemo' do
   use_frameworks!

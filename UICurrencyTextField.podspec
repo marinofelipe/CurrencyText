@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "UICurrencyTextField"
   s.version      = "1.0.1"
-  s.summary      = "Currency text field written in Swift"
+  s.summary      = "Format text field text as currency"
 
   s.homepage     = "https://github.com/marinofelipe/UICurrencyTextField"
   s.license = { :type => 'MIT', :file => 'LICENSE' }
@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
 
   s.swift_version = "4.1"
-  s.source_files  = "UICurrencyTextField/Sources/**/*.swift"
+  s.source_files  = "Sources/**/*.swift"
 end

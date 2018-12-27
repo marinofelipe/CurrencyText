@@ -179,8 +179,7 @@
 				D54170D2209023D5008995D7 /* Sources */,
 				D54170D3209023D5008995D7 /* Frameworks */,
 				D54170D4209023D5008995D7 /* Resources */,
-				98257E899B6D2AF83528D6F3 /* [CP] Embed Pods Frameworks */,
-				8C9105FAB6A1223148A0A2C0 /* [CP] Copy Pods Resources */,
+				191B0EEC670DDD8B2D0E4422 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,8 +198,6 @@
 				D54170E6209023D8008995D7 /* Sources */,
 				D54170E7209023D8008995D7 /* Frameworks */,
 				D54170E8209023D8008995D7 /* Resources */,
-				1BB47C375B1E9A445C1EB81A /* [CP] Embed Pods Frameworks */,
-				B3E20A78B887727B778170CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,8 +217,6 @@
 				D54170F1209023D8008995D7 /* Sources */,
 				D54170F2209023D8008995D7 /* Frameworks */,
 				D54170F3209023D8008995D7 /* Resources */,
-				3A43242E5761214A6403DDCB /* [CP] Embed Pods Frameworks */,
-				31ADA25618FCA94A66B2786E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,7 +252,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D54170D1209023D5008995D7 /* Build configuration list for PBXProject "UICurrencyTextFieldDemo" */;
+			buildConfigurationList = D54170D1209023D5008995D7 /* Build configuration list for PBXProject "UICurrencyTextField" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -305,49 +300,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1BB47C375B1E9A445C1EB81A /* [CP] Embed Pods Frameworks */ = {
+		191B0EEC670DDD8B2D0E4422 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/UICurrencyTextField/UICurrencyTextField.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICurrencyTextField.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemoTests/Pods-UICurrencyTextFieldDemoTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		31ADA25618FCA94A66B2786E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemoUITests/Pods-UICurrencyTextFieldDemoUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3A43242E5761214A6403DDCB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemoUITests/Pods-UICurrencyTextFieldDemoUITests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		65905C8D491C77806121AF87 /* [CP] Check Pods Manifest.lock */ = {
@@ -368,39 +340,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8C9105FAB6A1223148A0A2C0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		98257E899B6D2AF83528D6F3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/UICurrencyTextField/UICurrencyTextField.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICurrencyTextField.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemo/Pods-UICurrencyTextFieldDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		AB55B4C7ED276D63C647F315 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -417,21 +356,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B3E20A78B887727B778170CB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UICurrencyTextFieldDemoTests/Pods-UICurrencyTextFieldDemoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E0F8EE8AC0CFBE7340140CC9 /* [CP] Check Pods Manifest.lock */ = {
@@ -762,7 +686,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D54170D1209023D5008995D7 /* Build configuration list for PBXProject "UICurrencyTextFieldDemo" */ = {
+		D54170D1209023D5008995D7 /* Build configuration list for PBXProject "UICurrencyTextField" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D54170FC209023D8008995D7 /* Debug */,

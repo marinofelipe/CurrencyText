@@ -1,15 +1,15 @@
 //
-//  CurrencyTextField.swift
+//  UICurrencyTextFieldDelegate.swift
 //  CurrencyTextField
 //
-//  Created by Felipe Lefèvre Marino on 3/21/18.
+//  Created by Felipe Lefèvre Marino on 12/26/18.
 //  Copyright © 2018 Felipe Lefèvre Marino. All rights reserved.
 //
 
 import UIKit
 
 // can be extended
-class UICurrencyTextFieldDelegate: NSObject, UITextFieldDelegate {
+public class UICurrencyTextFieldDelegate: NSObject, UITextFieldDelegate {
     
     private var numberFormatter = NumberFormatter()
     
@@ -25,7 +25,11 @@ class UICurrencyTextFieldDelegate: NSObject, UITextFieldDelegate {
         }
     }
     
-    override init() {
+    var maxDigitsCount: Int {
+        return numberFormatter.maximumIntegerDigits + numberFormatter.maximumFractionDigits
+    }
+    
+    override public init() {
         super.init()
         numberFormatter = NumberFormatter()
         configureFormatter()
@@ -43,32 +47,37 @@ class UICurrencyTextFieldDelegate: NSObject, UITextFieldDelegate {
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        var textToReplace = ""
+        
+        guard !string.isEmpty else {
+            textToReplace = textField.text!
+            textToReplace.removeLast()
+            
+            textField.text = numberFormatter.string(from: Double(textToReplace.currencyFormat()))
+            return false
+        }
         guard string.isNumber else { return false }
         
         let offset = textField.text!.count <= 0 ? 0 : textField.offset(from: textField.endOfDocument, to: textField.selectedTextRange!.end)
         
-        var textToReplace = ""
-        if string.count == 1 { textToReplace = "0.0" + string }
+        if textField.text!.isEmpty {
+            textToReplace = "0.0" + string
+        } else {
+            textToReplace = textField.text!.appending(string)
+        }
         
-        textToReplace = textToReplace.numeralFormat()
-        
-        let maxDigitsCount = numberFormatter.maximumIntegerDigits + numberFormatter.maximumFractionDigits
         if textToReplace.numeralFormat().count > maxDigitsCount {
-            textField.text?.removeLast()
-            return false
+            textToReplace.removeLast()
         }
         
-        textToReplace.addDecimalSeparator()
-        if let doubleValue = Double(textToReplace.replacingOccurrences(of: numberFormatter.currencySymbol, with: "")) {
-            textField.text = numberFormatter.string(from: NSNumber(value: doubleValue))
-        }
+        textField.text = numberFormatter.string(from: Double(textToReplace.currencyFormat()))
         
         textField.updateSelectedTextRange(offset: offset)
         
         return false
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    private func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let text = textField.text, text.isZero && hasAutoclear {
             textField.text = ""
         }

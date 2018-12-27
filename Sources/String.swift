@@ -33,6 +33,12 @@ extension String: CurrencyString {
         replaceSubrange(index(endIndex, offsetBy: -2)..<endIndex, with: "." + lastTwoChars)
     }
     
+    func currencyFormat() -> String {
+        var currencyString = numeralFormat()
+        currencyString.addDecimalSeparator()
+        return currencyString
+    }
+    
     func numeralFormat() -> String {
         return replacingOccurrences(of:"[^0-9]", with: "", options: .regularExpression)
     }
