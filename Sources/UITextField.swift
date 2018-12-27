@@ -14,4 +14,8 @@ extension UITextField {
             selectedTextRange = textRange(from: updatedCursorPosition, to: updatedCursorPosition)
         }
     }
+    
+    func offsetFromEnd() -> Int {
+        return offset(from: endOfDocument, to: selectedTextRange?.end ?? endOfDocument)
+    }
 }

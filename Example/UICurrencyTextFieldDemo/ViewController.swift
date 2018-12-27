@@ -11,7 +11,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak private var textField: UITextField!
+    
+    private var textFieldDelegate: UICurrencyTextFieldDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +23,19 @@ class ViewController: UIViewController {
     
     private func setupTextFieldWithCurrencyDelegate() {
 
-        let currencyDelegate = UICurrencyTextFieldDelegate()
-        currencyDelegate.maximumIntegers = 4
-        currencyDelegate.hasAutoclear = true
+        textFieldDelegate = UICurrencyTextFieldDelegate()
+        textFieldDelegate.maximumIntegers = 4
+        textFieldDelegate.hasAutoclear = true
         
-        textField.delegate = currencyDelegate
+        textField.delegate = textFieldDelegate
         textField.keyboardType = .numberPad
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resignAnyFirstReponder()
+    }
+    
+    @objc func resignAnyFirstReponder() {
+        self.view.endEditing(false)
     }
 }

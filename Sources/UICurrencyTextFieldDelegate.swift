@@ -8,8 +8,7 @@
 
 import UIKit
 
-// can be extended
-public class UICurrencyTextFieldDelegate: NSObject, UITextFieldDelegate {
+public class UICurrencyTextFieldDelegate: NSObject {
     
     private var numberFormatter = NumberFormatter()
     
@@ -44,35 +43,21 @@ public class UICurrencyTextFieldDelegate: NSObject, UITextFieldDelegate {
         
         numberFormatter.numberStyle = .currency
     }
+}
+
+extension UICurrencyTextFieldDelegate: UITextFieldDelegate {
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        var textToReplace = ""
-        
         guard !string.isEmpty else {
-            textToReplace = textField.text!
-            textToReplace.removeLast()
-            
-            textField.text = numberFormatter.string(from: Double(textToReplace.currencyFormat()))
+            handleDeletion(in: textField)
             return false
         }
         guard string.isNumber else { return false }
         
-        let offset = textField.text!.count <= 0 ? 0 : textField.offset(from: textField.endOfDocument, to: textField.selectedTextRange!.end)
-        
-        if textField.text!.isEmpty {
-            textToReplace = "0.0" + string
-        } else {
-            textToReplace = textField.text!.appending(string)
-        }
-        
-        if textToReplace.numeralFormat().count > maxDigitsCount {
-            textToReplace.removeLast()
-        }
-        
-        textField.text = numberFormatter.string(from: Double(textToReplace.currencyFormat()))
-        
-        textField.updateSelectedTextRange(offset: offset)
+        let previousCursorOffsetFromEnd = textField.offsetFromEnd()
+        setFormattedText(in: textField, inputString: string, range: range)
+        updateSelectedTextRange(in: textField, previousOffsetFromEnd: previousCursorOffsetFromEnd)
         
         return false
     }
@@ -82,5 +67,44 @@ public class UICurrencyTextFieldDelegate: NSObject, UITextFieldDelegate {
             textField.text = ""
         }
         return true
+    }
+}
+
+// add to another file??
+extension UICurrencyTextFieldDelegate {
+    
+    private func handleDeletion(in textField: UITextField) {
+        if var text = textField.text {
+            text.removeLast()
+            textField.text = numberFormatter.string(from: Double(text.currencyFormat()))
+        }
+    }
+    
+    private func updateSelectedTextRange(in textField: UITextField, previousOffsetFromEnd: Int) {
+        var offset = previousOffsetFromEnd
+        if let text = textField.text, text.isEmpty {
+            offset = 0
+        }
+        textField.updateSelectedTextRange(offset: offset)
+    }
+    
+    private func setFormattedText(in textField: UITextField, inputString: String, range: NSRange) {
+        var updatedText = ""
+        
+        if let text = textField.text {
+            if text.isEmpty {
+                updatedText = "0.0" + inputString
+            } else if let range = Range(range, in: text) {
+                updatedText = text.replacingCharacters(in: range, with: inputString)
+            } else {
+                updatedText = text.appending(inputString)
+            }
+        }
+        
+        if updatedText.numeralFormat().count > maxDigitsCount {
+            updatedText.removeLast()
+        }
+        
+        textField.text = numberFormatter.string(from: Double(updatedText.currencyFormat()))
     }
 }
