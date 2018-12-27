@@ -10,7 +10,7 @@ import UIKit
 
 public class UICurrencyTextFieldDelegate: NSObject {
     
-    private var numberFormatter = NumberFormatter()
+    public var numberFormatter = NumberFormatter()
     
     /// if true text field is cleared when resign first responder with value = 0
     public var hasAutoclear: Bool = false
@@ -30,7 +30,6 @@ public class UICurrencyTextFieldDelegate: NSObject {
     
     override public init() {
         super.init()
-        numberFormatter = NumberFormatter()
         configureFormatter()
     }
     
@@ -55,9 +54,9 @@ extension UICurrencyTextFieldDelegate: UITextFieldDelegate {
         }
         guard string.isNumber else { return false }
         
-        let previousCursorOffsetFromEnd = textField.offsetFromEnd()
+        let previousSelectedTextRangeOffsetFromEnd = textField.selectedTextRangeOffsetFromEnd
         setFormattedText(in: textField, inputString: string, range: range)
-        updateSelectedTextRange(in: textField, previousOffsetFromEnd: previousCursorOffsetFromEnd)
+        updateSelectedTextRange(in: textField, previousOffsetFromEnd: previousSelectedTextRangeOffsetFromEnd)
         
         return false
     }
@@ -85,7 +84,7 @@ extension UICurrencyTextFieldDelegate {
         if let text = textField.text, text.isEmpty {
             offset = 0
         }
-        textField.updateSelectedTextRange(offset: offset)
+        textField.updateSelectedTextRange(offsetFromEnd: offset)
     }
     
     private func setFormattedText(in textField: UITextField, inputString: String, range: NSRange) {

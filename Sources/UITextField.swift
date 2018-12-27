@@ -7,15 +7,15 @@
 
 import UIKit
 
-extension UITextField {
+public extension UITextField {
     
-    func updateSelectedTextRange(offset: Int) {
-        if let updatedCursorPosition = position(from: endOfDocument, offset: offset) {
+    public func updateSelectedTextRange(offsetFromEnd: Int) {
+        if let updatedCursorPosition = position(from: endOfDocument, offset: offsetFromEnd) {
             selectedTextRange = textRange(from: updatedCursorPosition, to: updatedCursorPosition)
         }
     }
     
-    func offsetFromEnd() -> Int {
+    public var selectedTextRangeOffsetFromEnd: Int {
         return offset(from: endOfDocument, to: selectedTextRange?.end ?? endOfDocument)
     }
 }
