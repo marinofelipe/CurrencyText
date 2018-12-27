@@ -9,13 +9,22 @@
 import UIKit
 
 protocol CurrencyString {
+    var isZero: Bool {get}
+    var isNumber: Bool {get}
     mutating func addDecimalSeparator()
     func numeralFormat() -> String
-    func representsZero() -> Bool
 }
 
 //String Currency Extension
 extension String: CurrencyString {
+    
+    var isZero: Bool {
+        return numeralFormat().replacingOccurrences(of: "0", with: "").count == 0
+    }
+    
+    var isNumber: Bool {
+        return numeralFormat().count > 0
+    }
     
     //moves separator one character to the right. Keeps currency formatted
     mutating func addDecimalSeparator() {
@@ -26,9 +35,5 @@ extension String: CurrencyString {
     
     func numeralFormat() -> String {
         return replacingOccurrences(of:"[^0-9]", with: "", options: .regularExpression)
-    }
-    
-    func representsZero() -> Bool {
-        return numeralFormat().replacingOccurrences(of: "0", with: "").count == 0
     }
 }
