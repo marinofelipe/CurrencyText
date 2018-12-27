@@ -20,6 +20,34 @@
                ReferencedContainer = "container:UICurrencyTextField.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D54170E9209023D8008995D7"
+               BuildableName = "UICurrencyTextFieldDemoTests.xctest"
+               BlueprintName = "UICurrencyTextFieldDemoTests"
+               ReferencedContainer = "container:UICurrencyTextField.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D54170F4209023D8008995D7"
+               BuildableName = "UICurrencyTextFieldDemoUITests.xctest"
+               BlueprintName = "UICurrencyTextFieldDemoUITests"
+               ReferencedContainer = "container:UICurrencyTextField.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
