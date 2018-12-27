@@ -16,8 +16,10 @@
 		D54170E1209023D7008995D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54170E0209023D7008995D7 /* Assets.xcassets */; };
 		D54170E4209023D7008995D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54170E2209023D7008995D7 /* LaunchScreen.storyboard */; };
 		D54170FA209023D8008995D7 /* UICurrencyTextFieldDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54170F9209023D8008995D7 /* UICurrencyTextFieldDemoUITests.swift */; };
-		D541710920902501008995D7 /* UICurrencyTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541710720902501008995D7 /* UICurrencyTextFieldTests.swift */; };
+		D541710920902501008995D7 /* CurrencyTextFieldDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541710720902501008995D7 /* CurrencyTextFieldDelegateTests.swift */; };
 		D541710A20902501008995D7 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541710820902501008995D7 /* StringTests.swift */; };
+		D54A412221D582C100281AD2 /* UITextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A412121D582C100281AD2 /* UITextFieldTests.swift */; };
+		D54A412421D582CE00281AD2 /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +59,10 @@
 		D54170F5209023D8008995D7 /* UICurrencyTextFieldDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UICurrencyTextFieldDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54170F9209023D8008995D7 /* UICurrencyTextFieldDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICurrencyTextFieldDemoUITests.swift; sourceTree = "<group>"; };
 		D54170FB209023D8008995D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D541710720902501008995D7 /* UICurrencyTextFieldTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICurrencyTextFieldTests.swift; sourceTree = "<group>"; };
+		D541710720902501008995D7 /* CurrencyTextFieldDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyTextFieldDelegateTests.swift; sourceTree = "<group>"; };
 		D541710820902501008995D7 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
+		D54A412121D582C100281AD2 /* UITextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldTests.swift; sourceTree = "<group>"; };
+		D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
 		E4F22050D256031805B60D4D /* Pods_UICurrencyTextFieldDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UICurrencyTextFieldDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8703DCAE64198EF71A19574 /* Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICurrencyTextFieldDemoUITests/Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,7 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				D541710820902501008995D7 /* StringTests.swift */,
-				D541710720902501008995D7 /* UICurrencyTextFieldTests.swift */,
+				D541710720902501008995D7 /* CurrencyTextFieldDelegateTests.swift */,
+				D54A412121D582C100281AD2 /* UITextFieldTests.swift */,
+				D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */,
 				D54170F0209023D8008995D7 /* Info.plist */,
 			);
 			path = UICurrencyTextFieldDemoTests;
@@ -393,7 +399,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D541710A20902501008995D7 /* StringTests.swift in Sources */,
-				D541710920902501008995D7 /* UICurrencyTextFieldTests.swift in Sources */,
+				D54A412421D582CE00281AD2 /* NumberFormatterTests.swift in Sources */,
+				D54A412221D582C100281AD2 /* UITextFieldTests.swift in Sources */,
+				D541710920902501008995D7 /* CurrencyTextFieldDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
