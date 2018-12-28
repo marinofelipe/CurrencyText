@@ -10,7 +10,7 @@ import UIKit
 
 protocol CurrencyString {
     var isZero: Bool {get}
-    var isNumber: Bool {get}
+    var hasNumbers: Bool {get}
     mutating func addDecimalSeparator()
     func numeralFormat() -> String
 }
@@ -22,7 +22,7 @@ extension String: CurrencyString {
         return numeralFormat().replacingOccurrences(of: "0", with: "").count == 0
     }
     
-    var isNumber: Bool {
+    var hasNumbers: Bool {
         return numeralFormat().count > 0
     }
     

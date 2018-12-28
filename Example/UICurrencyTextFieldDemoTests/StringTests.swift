@@ -11,16 +11,6 @@ import XCTest
 
 class StringTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
     func testNumeralFormat() {
         let nonNumeralString = "*235&Q@6634(355$Q9_-$0_Q8$*64_!@1:'/.,.a"
         XCTAssertEqual(nonNumeralString.numeralFormat(), "2356634355908641", "numeralFormat() should restrict string to only numerals")
@@ -47,12 +37,29 @@ class StringTests: XCTestCase {
     func testRepresentsZero() {
         var currencyValue = "R$ 34.00"
         
-        XCTAssertFalse(currencyValue.representsZero(), "value \(currencyValue) should not represent zero")
+        XCTAssertFalse(currencyValue.isZero, "value \(currencyValue) should not represent zero")
         
         currencyValue = "00,34"
-        XCTAssertFalse(currencyValue.representsZero(), "value \(currencyValue) should not represent zero")
+        XCTAssertFalse(currencyValue.isZero, "value \(currencyValue) should not represent zero")
         
         currencyValue = "0.000,00"
-        XCTAssertTrue(currencyValue.representsZero(), "value \(currencyValue) should represent zero")
+        XCTAssertTrue(currencyValue.isZero, "value \(currencyValue) should represent zero")
+    }
+    
+    func testHasNumbers() {
+        var string = "R$"
+        XCTAssertFalse(string.hasNumbers)
+        
+        string = ","
+        XCTAssertFalse(string.hasNumbers)
+        
+        string = "#$a"
+        XCTAssertFalse(string.hasNumbers)
+        
+        string = "34164"
+        XCTAssertTrue(string.hasNumbers)
+        
+        string = "sa12"
+        XCTAssertTrue(string.hasNumbers)
     }
 }
