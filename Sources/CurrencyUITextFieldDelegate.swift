@@ -1,5 +1,5 @@
 //
-//  UICurrencyTextFieldDelegate.swift
+//  CurrencyUITextFieldDelegate.swift
 //  CurrencyTextField
 //
 //  Created by Felipe Lefèvre Marino on 12/26/18.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-public class UICurrencyTextFieldDelegate: NSObject {
+public class CurrencyUITextFieldDelegate: NSObject {
     
     public var numberFormatter = NumberFormatter()
     
     /// if true text field is cleared when resign first responder with value = 0
     public var hasAutoclear: Bool = false
-    // should autoclear ?? block to decide when?? or condition ??
+    // TODO: should autoclear ?? block to decide when ?? or condition ??
     
     /// define maximum amount of integer numbers
-    public var maximumIntegers: Int? {
+    public var maxIntegers: Int? {
         didSet {
-            guard let maxIntegers = maximumIntegers else { return }
+            guard let maxIntegers = maxIntegers else { return }
             numberFormatter.maximumIntegerDigits = maxIntegers
         }
     }
@@ -44,24 +44,28 @@ public class UICurrencyTextFieldDelegate: NSObject {
     }
 }
 
-extension UICurrencyTextFieldDelegate: UITextFieldDelegate {
+extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
     
+    @discardableResult
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        let previousSelectedTextRangeOffsetFromEnd = textField.selectedTextRangeOffsetFromEnd
+        
         guard !string.isEmpty else {
-            handleDeletion(in: textField)
+            handleDeletion(in: textField, at: range)
+            updateSelectedTextRange(in: textField, previousOffsetFromEnd: previousSelectedTextRangeOffsetFromEnd)
             return false
         }
-        guard string.isNumber else { return false }
+        guard string.hasNumbers else { return false }
         
-        let previousSelectedTextRangeOffsetFromEnd = textField.selectedTextRangeOffsetFromEnd
         setFormattedText(in: textField, inputString: string, range: range)
         updateSelectedTextRange(in: textField, previousOffsetFromEnd: previousSelectedTextRangeOffsetFromEnd)
         
         return false
     }
     
-    private func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    @discardableResult
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let text = textField.text, text.isZero && hasAutoclear {
             textField.text = ""
         }
@@ -70,11 +74,15 @@ extension UICurrencyTextFieldDelegate: UITextFieldDelegate {
 }
 
 // add to another file??
-extension UICurrencyTextFieldDelegate {
+extension CurrencyUITextFieldDelegate {
     
-    private func handleDeletion(in textField: UITextField) {
+    private func handleDeletion(in textField: UITextField, at range: NSRange) {
         if var text = textField.text {
-            text.removeLast()
+            if let textRange = Range(range, in: text) {
+                text.removeSubrange(textRange)
+            } else {
+                text.removeLast()
+            }
             textField.text = numberFormatter.string(from: Double(text.currencyFormat()))
         }
     }

@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak private var textField: UITextField!
     
-    private var textFieldDelegate: UICurrencyTextFieldDelegate!
+    private var textFieldDelegate: CurrencyUITextFieldDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +23,8 @@ class ViewController: UIViewController {
     
     private func setupTextFieldWithCurrencyDelegate() {
 
-        textFieldDelegate = UICurrencyTextFieldDelegate()
-        textFieldDelegate.maximumIntegers = 4
+        textFieldDelegate = CurrencyUITextFieldDelegate()
+        textFieldDelegate.maxIntegers = 4
         textFieldDelegate.hasAutoclear = true
         
         textField.delegate = textFieldDelegate

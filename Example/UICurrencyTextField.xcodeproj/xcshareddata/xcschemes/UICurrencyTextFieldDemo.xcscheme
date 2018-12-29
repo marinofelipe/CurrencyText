@@ -56,6 +56,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D54170E9209023D8008995D7"
+               BuildableName = "UICurrencyTextFieldDemoTests.xctest"
+               BlueprintName = "UICurrencyTextFieldDemoTests"
+               ReferencedContainer = "container:UICurrencyTextField.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
