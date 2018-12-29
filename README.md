@@ -12,6 +12,7 @@ Feel free to adopt to your text fields and extend it when necessary as well.
 
 ### Currency format
 By default the text is formatted accorndingly to user locale settings.
+
 ##### Language: english, region: Brazil  
 `brazilian reais`  
 `R$3.000,00`
