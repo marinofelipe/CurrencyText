@@ -10,8 +10,4 @@ target 'UICurrencyTextFieldDemo' do
     inherit! :search_paths
   end
 
-  target 'UICurrencyTextFieldDemoUITests' do
-    inherit! :search_paths
-  end
-
 end
