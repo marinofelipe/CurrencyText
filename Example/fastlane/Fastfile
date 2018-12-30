@@ -25,7 +25,7 @@ platform :ios do
 	desc "Run tests"
 	lane :test do
 		scan(
-			workspace: "../UICurrencyTextField.xcworkspace", clean: true, code_coverage: true, scheme: "UICurrencyTextFieldDemo", devices: ["iPhone SE (12.0)", "iPhone 8 (11.4)"]
+			workspace: "../UICurrencyTextField.xcworkspace", clean: true, code_coverage: true, scheme: "UICurrencyTextFieldDemo", device: "iPhone XS Max"
 		)
 
 		slather(
