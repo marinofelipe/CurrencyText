@@ -11,31 +11,31 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var textField: UICurrencyTextField!
-    @IBOutlet weak var programaticallyAddedLabel: UILabel!
+    @IBOutlet weak private var textField: UITextField!
+    
+    private var textFieldDelegate: CurrencyUITextFieldDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configTextFieldOutlet()
-        programaticallyAddTextField()
+        setupTextFieldWithCurrencyDelegate()
     }
+    
+    private func setupTextFieldWithCurrencyDelegate() {
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    private func configTextFieldOutlet() {
-        textField.maximumIntegers = 4
-        textField.hasAutoclear = true
-    }
-    
-    private func programaticallyAddTextField() {
-        let textFieldFrame = CGRect(x: view.frame.width / 2 - 87.5, y: programaticallyAddedLabel.frame.origin.y + programaticallyAddedLabel.frame.height + 30, width: 175, height: 30)
-        let currencyTextField = UICurrencyTextField(frame: textFieldFrame)
-        currencyTextField.borderStyle = .roundedRect
+        textFieldDelegate = CurrencyUITextFieldDelegate()
+        textFieldDelegate.maxIntegers = 4
+        textFieldDelegate.hasAutoclear = true
         
-        view.addSubview(currencyTextField)
+        textField.delegate = textFieldDelegate
+        textField.keyboardType = .numberPad
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resignAnyFirstReponder()
+    }
+    
+    @objc func resignAnyFirstReponder() {
+        self.view.endEditing(false)
     }
 }
