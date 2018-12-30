@@ -8,13 +8,9 @@ cache:
 - cocoapods
 
 before_install:
-- gem install cocoapods
-- gem install slather
-- gem install coveralls
-- gem install fastlane --version 2.112.0 --no-document
+- cd Example && bundle install && cd ..
 
 install:
-- pod repo update --silent
 - pod install --project-directory=Example
 
 script:
