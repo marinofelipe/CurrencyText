@@ -99,7 +99,7 @@ platform :ios do
 	  	end
 
 	  	version_bump_podspec(path: "#{cocoapods[:podspec]}", version_number: version_number)
-	  	sh "git commit -am \"Publish pod version: #{version_number} [ci skip]\""
+	  	sh "git commit -am \"bump pod version: #{version_number} [ci skip]\""
 	  	add_git_tag(tag: version_number)
 	  	push_git_tags
 	  	push_to_git_remote
