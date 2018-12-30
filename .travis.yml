@@ -21,4 +21,4 @@ script:
 - pod lib lint
 
 after_success: 
-- cd Example && fastlane test
+- cd Example && bundle exec fastlane test
