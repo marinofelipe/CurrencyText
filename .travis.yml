@@ -11,7 +11,7 @@ before_install:
 - gem install cocoapods
 - gem install slather
 - gem install coveralls
-- gem install fastlane --version 2.104.0 --no-document
+- gem install fastlane --version 2.112.0 --no-document
 
 install:
 - pod repo update --silent
