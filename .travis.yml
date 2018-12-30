@@ -6,12 +6,12 @@ cache:
 - cocoapods
 
 install:
-- bundle install
+- cd Example && bundle install
 - pod repo update --silent
 - pod install --project-directory=Example
 
 script:
-- pod lib lint
+- cd .. && pod lib lint
 
 after_success: 
 - cd Example && fastlane test
