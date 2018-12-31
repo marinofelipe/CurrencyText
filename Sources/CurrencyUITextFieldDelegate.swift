@@ -12,9 +12,8 @@ public class CurrencyUITextFieldDelegate: NSObject {
     
     public var numberFormatter = NumberFormatter()
     
-    /// if true text field is cleared when resign first responder with value = 0
+    /// if true text field is cleared when resign as first responder with value = 0
     public var hasAutoclear: Bool = false
-    // TODO: should autoclear ?? block to decide when ?? or condition ??
     
     /// define maximum amount of integer numbers
     public var maxIntegers: Int? {

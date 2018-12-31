@@ -11,8 +11,6 @@ import XCTest
 
 class CurrencyTextFieldDelegateTests: XCTestCase {
     
-    // TODO: test replace with empty string, deletion to see if selected text range keeps working
-    
     var textField: UITextField!
     var delegate: CurrencyUITextFieldDelegate!
     var numberFormatter = NumberFormatter()

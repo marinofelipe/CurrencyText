@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         textFieldDelegate = CurrencyUITextFieldDelegate()
         textFieldDelegate.maxIntegers = 4
         textFieldDelegate.hasAutoclear = true
+        textFieldDelegate.numberFormatter.locale = Locale(identifier: "en_US")
         
         textField.delegate = textFieldDelegate
         textField.keyboardType = .numberPad
