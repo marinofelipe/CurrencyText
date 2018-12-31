@@ -1,12 +1,12 @@
 platform :ios, '9.0'
-workspace '../UICurrencyTextField'
+workspace '../CurrencyText'
 
-target 'UICurrencyTextFieldDemo' do
+target 'CurrencyTextDemo' do
   use_frameworks!
 
-  pod 'UICurrencyTextField', :path => '../'  
+  pod 'CurrencyText', :path => '../'  
 
-  target 'UICurrencyTextFieldDemoTests' do
+  target 'CurrencyTextDemoTests' do
     inherit! :search_paths
   end
 

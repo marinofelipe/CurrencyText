@@ -7,13 +7,9 @@ def branches
 }
 end
 
-def changelogFile
-	"../CHANGELOG.md"
-end
-
 def cocoapods
 {
-	podspec: "../UICurrencyTextField.podspec"
+	podspec: "../CurrencyText.podspec"
 }
 end
 
@@ -102,20 +98,8 @@ platform :ios do
 	    	UI.success "it is ok, all good! last tag #{last_tag} != new version #{version_number} 💪".green
 	  	end
 
-	  	change_log = sh "git log #{last_tag}..HEAD --pretty=format:\"* %s - %an\""
-	  	readme = File.read(changelogFile)
-	  	write = open(changelogFile, 'w')
-	  	write.write("##  ")
-	  	write.write(version_number)
-	  	write.write("\n")
-	  	write.write(change_log)
-	   	write.write("\n")
-	  	write.write("\n")
-	  	write.write(readme)
-	  	write.close
-
 	  	version_bump_podspec(path: "#{cocoapods[:podspec]}", version_number: version_number)
-	  	sh "git commit -am \"Publish pod version: #{version_number} [ci skip]\""
+	  	sh "git commit -am \"bump pod version: #{version_number} [ci skip]\""
 	  	add_git_tag(tag: version_number)
 	  	push_git_tags
 	  	push_to_git_remote

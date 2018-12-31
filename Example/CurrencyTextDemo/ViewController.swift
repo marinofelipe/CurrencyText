@@ -1,12 +1,12 @@
 //
 //  ViewController.swift
-//  UICurrencyTextFieldDemo
+//  CurrencyTextDemo
 //
 //  Created by Felipe Lefèvre Marino on 4/24/18.
 //  Copyright © 2018 Felipe Lefèvre Marino. All rights reserved.
 //
 
-import UICurrencyTextField
+import CurrencyText
 import UIKit
 
 class ViewController: UIViewController {
@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         textFieldDelegate = CurrencyUITextFieldDelegate()
         textFieldDelegate.maxIntegers = 4
         textFieldDelegate.hasAutoclear = true
+        textFieldDelegate.numberFormatter.locale = Locale(identifier: "en_US")
         
         textField.delegate = textFieldDelegate
         textField.keyboardType = .numberPad
