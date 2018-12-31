@@ -6,7 +6,7 @@
 //  Copyright © 2018 Felipe Lefèvre Marino. All rights reserved.
 //
 
-import UICurrencyTextField
+import CurrencyText
 import UIKit
 
 class ViewController: UIViewController {
