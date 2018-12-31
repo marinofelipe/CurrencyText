@@ -1,6 +1,6 @@
 //
 //  CurrencyUITextFieldDelegate.swift
-//  CurrencyTextField
+//  CurrencyText
 //
 //  Created by Felipe Lefèvre Marino on 12/26/18.
 //  Copyright © 2018 Felipe Lefèvre Marino. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  UICurrencyTextFieldDemo
+//  CurrencyTextDemo
 //
 //  Created by Felipe Lefèvre Marino on 4/24/18.
 //  Copyright © 2018 Felipe Lefèvre Marino. All rights reserved.

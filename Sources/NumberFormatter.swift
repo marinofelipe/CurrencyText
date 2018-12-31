@@ -1,6 +1,6 @@
 //
 //  NumberFormatter.swift
-//  UICurrencyTextField
+//  CurrencyText
 //
 //  Created by Felipe Lefèvre Marino on 12/27/18.
 //

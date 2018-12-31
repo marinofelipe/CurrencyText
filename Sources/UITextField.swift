@@ -1,6 +1,6 @@
 //
 //  UITextField.swift
-//  UICurrencyTextField
+//  CurrencyText
 //
 //  Created by Felipe Lefèvre Marino on 12/26/18.
 //
