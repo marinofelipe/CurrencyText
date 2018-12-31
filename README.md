@@ -7,7 +7,7 @@ CurrencyText 💶✏️
 [![Platform](https://img.shields.io/cocoapods/p/CurrencyText.svg?style=flat)]()
 [![Twitter](https://img.shields.io/badge/twitter-@_marinofelipe-blue.svg?style=flat)](https://twitter.com/_marinofelipe)
 
-CurrencyText is a custom text field delegate that formats inputs as currency. It doesn't require a specific subclass of UITextField. 🙌  
+CurrencyText has a custom text field delegate that formats inputs as currency. It doesn't require a specific subclass of UITextField. 🙌  
 Just adopt it to your text fields and extend it when necessary.
 
 #### Important
@@ -39,7 +39,7 @@ $ pod install
 ```
 
 ## How to use
-`CurrencyUITextFieldDelegate` must be adopted as your currency text field delegate.
+As said before, an instance of `CurrencyUITextFieldDelegate` must be adopted as your currency text field's delegate.
 By default it allows a maximum of 7 integers and 2 decimals, shows decimal separator and do not autoclears the text when resigning first responder. However if needed you can customize it as you wish.
 
 ### Basics
@@ -54,18 +54,18 @@ textField.delegate = currencyDelegate
 ```swift
 public class CurrencyUITextFieldDelegate: NSObject {
 
-public var numberFormatter = NumberFormatter()
+  public var numberFormatter = NumberFormatter()
 
-/// if true text field is cleared when resign as first responder with value = 0
-public var hasAutoclear: Bool = false
+  /// if true text field is cleared when resign as first responder with value = 0
+  public var hasAutoclear: Bool = false
 
-/// define maximum amount of integer numbers
-public var maxIntegers: Int? {
-didSet {
-guard let maxIntegers = maxIntegers else { return }
-numberFormatter.maximumIntegerDigits = maxIntegers
-}
-}
+  /// define maximum amount of integer numbers
+  public var maxIntegers: Int? {
+    didSet {
+      guard let maxIntegers = maxIntegers else { return }
+      numberFormatter.maximumIntegerDigits = maxIntegers
+    }
+  }
 }
 ```  
 ```swift
@@ -105,12 +105,12 @@ delegate.numberFormatter = numberFormatter
 ```
 
 <br>
-Please refer to `Example/` and download if you want to take a deeper look.
+Please refer to the demo project at `Example/` if you want to take a deeper look.
 
 ## Contributing
-Cnntributions are always welcome. Please feel free to fork, follow [Kanban project](https://github.com/marinofelipe/CurrencyText/projects/1) or open new issues.
+Contributions are always welcome. Please feel free to fork, follow [Kanban project](https://github.com/marinofelipe/CurrencyText/projects/1) or open new issues.
 Every PR will be first validated by the CI service which will run the demo tests.
-If you develop new features or solve any issues please verify if tests keep succeeding. Feel free to help adding more tets as well.
+If you develop new features or solve any issues please verify if tests keep succeeding.
 
 ## License
 CurrencyText is released under the MIT license. [See LICENSE](https://github.com/marinofelipe/CurrencyText/blob/master/LICENSE) for details.
