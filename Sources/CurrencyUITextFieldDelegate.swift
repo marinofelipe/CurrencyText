@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom text field delegate
 public class CurrencyUITextFieldDelegate: NSObject {
     
     public var numberFormatter = NumberFormatter()
@@ -38,7 +39,6 @@ public class CurrencyUITextFieldDelegate: NSObject {
         numberFormatter.maximumIntegerDigits = 7
         numberFormatter.minimumIntegerDigits = 1
         numberFormatter.alwaysShowsDecimalSeparator = true
-        
         numberFormatter.numberStyle = .currency
     }
 }
