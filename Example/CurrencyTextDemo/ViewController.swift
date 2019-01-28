@@ -22,11 +22,17 @@ class ViewController: UIViewController {
     }
     
     private func setupTextFieldWithCurrencyDelegate() {
-
-        textFieldDelegate = CurrencyUITextFieldDelegate()
-        textFieldDelegate.maxIntegers = 4
-        textFieldDelegate.hasAutoclear = true
-        textFieldDelegate.numberFormatter.locale = Locale(identifier: "en_US")
+        let currencyFormatter = CurrencyFormatter {
+            // TODO: handle both location and currency -
+            // setting a currency should update locale based on it.
+            // Also should be documented that one overlapps the other
+            $0.locale = CurrencyLocale.portugueseBrazil
+            $0.maxValue = 1000000 // TODO: improve express by string, float or int
+            $0.currency = .brazilianReal
+        }
+        
+        textFieldDelegate = CurrencyUITextFieldDelegate(formatter: currencyFormatter)
+        textFieldDelegate.clearsWhenValueIsZero = true
         
         textField.delegate = textFieldDelegate
         textField.keyboardType = .numberPad

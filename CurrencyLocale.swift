@@ -15,15 +15,12 @@ import Foundation
 
 /// LocaleConvertible defines the behavior to convert locale info to system Locale type
 public protocol LocaleConvertible {
-    var systemLocale: Locale { get }
+    var locale: Locale { get }
 }
 
-//public var currencySymbol: String? { get }
-//
-///// Returns the currency code of the locale.
-/////
-///// For example, for "zh-Hant-HK", returns "HKD".
-//public var currencyCode: String? { get }
+extension Locale: LocaleConvertible {
+    public var locale: Locale { return self }
+}
 
 /// Defines locales available in system
 public enum CurrencyLocale: String, LocaleConvertible {
@@ -748,7 +745,7 @@ public enum CurrencyLocale: String, LocaleConvertible {
     case zuluSouthAfrica = "zu_ZA"
     
     /// Return a valid `Locale` instance from currency locale enum
-    public var systemLocale: Locale {
+    public var locale: Locale {
         switch self {
         case .current:          return Locale.current
         case .autoUpdating:     return Locale.autoupdatingCurrent

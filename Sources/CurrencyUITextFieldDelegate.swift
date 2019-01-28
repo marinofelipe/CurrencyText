@@ -11,35 +11,21 @@ import UIKit
 /// Custom text field delegate
 public class CurrencyUITextFieldDelegate: NSObject {
     
-    public var numberFormatter = NumberFormatter()
+    public var formatter: CurrencyFormatterProtocol!
     
-    /// if true text field is cleared when resign as first responder with value = 0
-    public var hasAutoclear: Bool = false
+    /// Text field clears its text when value value is equal to zero
+    public var clearsWhenValueIsZero: Bool = false
     
-    /// define maximum amount of integer numbers
-    public var maxIntegers: Int? {
-        didSet {
-            guard let maxIntegers = maxIntegers else { return }
-            numberFormatter.maximumIntegerDigits = maxIntegers
-        }
-    }
-    
-    var maxDigitsCount: Int {
-        return numberFormatter.maximumIntegerDigits + numberFormatter.maximumFractionDigits
-    }
+    /// Text field clears when this condition is satisfied
+    public var clearCondition: (() -> Void)?
     
     override public init() {
         super.init()
-        configureFormatter()
+        self.formatter = CurrencyFormatter()
     }
     
-    private func configureFormatter() {
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits = 2
-        numberFormatter.maximumIntegerDigits = 7
-        numberFormatter.minimumIntegerDigits = 1
-        numberFormatter.alwaysShowsDecimalSeparator = true
-        numberFormatter.numberStyle = .currency
+    public init(formatter: CurrencyFormatter) {
+        self.formatter = formatter
     }
 }
 
@@ -65,7 +51,7 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
     
     @discardableResult
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let text = textField.text, text.isZero && hasAutoclear {
+        if let text = textField.text, text.isZero && clearsWhenValueIsZero {
             textField.text = ""
         }
         return true
@@ -82,7 +68,7 @@ extension CurrencyUITextFieldDelegate {
             } else {
                 text.removeLast()
             }
-            textField.text = numberFormatter.string(from: Double(text.currencyFormat()))
+            textField.text = formatter.string(from: Double(text.currencyFormat()))
         }
     }
     
@@ -107,10 +93,10 @@ extension CurrencyUITextFieldDelegate {
             }
         }
         
-        if updatedText.numeralFormat().count > maxDigitsCount {
+        if updatedText.numeralFormat().count > formatter.maxDigitsCount {
             updatedText.removeLast()
         }
         
-        textField.text = numberFormatter.string(from: Double(updatedText.currencyFormat()))
+        textField.text = formatter.string(from: Double(updatedText.currencyFormat()))
     }
 }

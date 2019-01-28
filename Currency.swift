@@ -12,7 +12,7 @@ import Foundation
 /// composed of a country’s two-character Internet country code plus an extra character
 /// to denote the currency unit. For example, the currency code for the Australian
 /// dollar is “AUD”. Currency codes are based on the ISO 4217 standard
-enum Currency: String {
+public enum Currency: String {
     case afghani = "AFN",
     algerianDinar = "DZD",
     argentinePeso = "ARS",
