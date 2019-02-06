@@ -68,7 +68,9 @@ extension CurrencyUITextFieldDelegate {
             } else {
                 text.removeLast()
             }
-            textField.text = formatter.string(from: Double(text.currencyFormat()))
+            
+            let value = getAdjustedForDefinedInterval(value: Double(text.currencyFormat()))
+            textField.text = formatter.string(from: value)
         }
     }
     
@@ -97,6 +99,16 @@ extension CurrencyUITextFieldDelegate {
             updatedText.removeLast()
         }
         
-        textField.text = formatter.string(from: Double(updatedText.currencyFormat()))
+        let value = getAdjustedForDefinedInterval(value: Double(updatedText.currencyFormat()))
+        textField.text = formatter.string(from: value)
+    }
+    
+    private func getAdjustedForDefinedInterval(value: Double?) -> Double? {
+        if let minValue = formatter.minValue, value ?? 0 < minValue {
+            return minValue
+        } else if let maxValue = formatter.maxValue, value ?? 0 > maxValue {
+            return maxValue
+        }
+        return value
     }
 }

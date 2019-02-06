@@ -8,6 +8,9 @@
 public protocol CurrencyFormatterProtocol {
     var numberFormatter: NumberFormatter! { get set }
     var maxDigitsCount: Int { get }
+    var decimalDigits: Int { get }
+    var maxValue: Double? { get }
+    var minValue: Double? { get }
     func string(from double: Double?) -> String?
 }
 
@@ -31,18 +34,34 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     
     /// The lowest number allowed as input
     /// This value is initially set to the text field text
-    /// when set
-    public var minValue: NSNumber? {
-        set { numberFormatter.minimum = newValue }
-        get { return numberFormatter.minimum }
+    /// when defined
+    public var minValue: Double? {
+        set {
+            guard let newValue = newValue else { return }
+            numberFormatter.minimum = NSNumber(value: newValue)
+        }
+        get {
+            if let minValue = numberFormatter.minimum {
+                return Double(truncating: minValue)
+            }
+            return nil
+        }
     }
     
     /// The highest number allowed as input
     /// The text field will not allow the user to increase the input
     /// value beyond it, when defined
-    public var maxValue: NSNumber? {
-        set { numberFormatter.maximum = newValue }
-        get { return numberFormatter.maximum }
+    public var maxValue: Double? {
+        set {
+            guard let newValue = newValue else { return }
+            numberFormatter.maximum = NSNumber(value: newValue)
+        }
+        get {
+            if let maxValue = numberFormatter.maximum {
+                return Double(truncating: maxValue)
+            }
+            return nil
+        }
     }
     
     /// The number of decimal digits shown
@@ -56,6 +75,21 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
             numberFormatter.maximumFractionDigits = newValue
         }
         get { return numberFormatter.minimumFractionDigits }
+    }
+    
+    /// Set decimal numbers behavior.
+    /// When set to true decimalDigits are automatically set to 2 (most currencies pattern),
+    /// and the decimal separator is presented. Otherwise decimal digits are not shown and
+    /// the separator gets hidden as well
+    /// When reading it returns the current pattern based on the setup.
+    /// Note: Setting decimal digits after, or alwaysShowsDecimalSeparator can overlap this definitios,
+    /// and should be only done if you need specific cases
+    public var hasDecimals: Bool {
+        set {
+            self.decimalDigits = hasDecimals ? 2 : 0
+            self.numberFormatter.alwaysShowsDecimalSeparator = hasDecimals ? true : false
+        }
+        get { return decimalDigits != 0 }
     }
     
     /// Value that will be presented when the text field
@@ -93,7 +127,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     /// - Parameter handler: configuration handler callback.
     public init(_ handler: InitHandler? = nil) {
         numberFormatter = NumberFormatter()
-        numberFormatter.alwaysShowsDecimalSeparator = true
+        numberFormatter.alwaysShowsDecimalSeparator = false
         numberFormatter.numberStyle = .currency
         
         numberFormatter.minimumFractionDigits = 2
