@@ -13,4 +13,14 @@ Pod::Spec.new do |s|
 
   s.swift_version = "4.2"
   s.source_files  = "Sources/**/*.swift"
+  
+  s.subspec 'Formatter' do |ss|
+      ss.requires_arc = true
+      ss.source_files = "Sources/Formatter"
+  end
+  
+  s.subspec 'TextFieldDelegate' do |ss|
+      ss.requires_arc = true
+      ss.source_files = "Sources/TextField"
+  end
 end
