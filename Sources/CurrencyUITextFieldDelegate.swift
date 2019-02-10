@@ -87,7 +87,7 @@ extension CurrencyUITextFieldDelegate {
         
         if let text = textField.text {
             if text.isEmpty {
-                updatedText = "0.0" + inputString
+                updatedText = initialText() + inputString
             } else if let range = Range(range, in: text) {
                 updatedText = text.replacingCharacters(in: range, with: inputString)
             } else {
@@ -99,7 +99,9 @@ extension CurrencyUITextFieldDelegate {
             updatedText.removeLast()
         }
         
-        let value = getAdjustedForDefinedInterval(value: Double(updatedText.currencyFormat()))
+        updatedText = updatedText.numeralFormat()
+        addDecimalSeparatorsIfNeeded(to: &updatedText)
+        let value = getAdjustedForDefinedInterval(value: formatter.double(from: updatedText))
         textField.text = formatter.string(from: value)
     }
     
@@ -110,5 +112,21 @@ extension CurrencyUITextFieldDelegate {
             return maxValue
         }
         return value
+    }
+    
+    private func addDecimalSeparatorsIfNeeded(to text: inout String) {
+        guard formatter.decimalDigits != 0 && text.count >= formatter.decimalDigits else { return }
+        let decimalsRange = text.index(text.endIndex, offsetBy: -formatter.decimalDigits)..<text.endIndex
+        
+        let decimalChars = text[decimalsRange]
+        text.replaceSubrange(decimalsRange, with: "." + decimalChars)
+    }
+    
+    private func initialText() -> String {
+        switch formatter.decimalDigits {
+        case 0: return ""
+        case 1: return "0."
+        default: return "0.0"
+        }
     }
 }

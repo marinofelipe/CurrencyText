@@ -11,7 +11,10 @@ public protocol CurrencyFormatterProtocol {
     var decimalDigits: Int { get }
     var maxValue: Double? { get }
     var minValue: Double? { get }
+    
     func string(from double: Double?) -> String?
+    func unformatted(string: String) -> String?
+    func double(from string: String) -> Double?
 }
 
 public class CurrencyFormatter: CurrencyFormatterProtocol {
@@ -86,8 +89,8 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     /// and should be only done if you need specific cases
     public var hasDecimals: Bool {
         set {
-            self.decimalDigits = hasDecimals ? 2 : 0
-            self.numberFormatter.alwaysShowsDecimalSeparator = hasDecimals ? true : false
+            self.decimalDigits = newValue ? 2 : 0
+            self.numberFormatter.alwaysShowsDecimalSeparator = newValue ? true : false
         }
         get { return decimalDigits != 0 }
     }
@@ -140,14 +143,16 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
 
 // MARK: Format
 extension CurrencyFormatter {
+    
     public func string(from double: Double?) -> String? {
         return numberFormatter.string(from: double)
     }
+    
+    public func double(from string: String) -> Double? {
+        return NumberFormatter().number(from: string)?.doubleValue
+    }
+    
+    public func unformatted(string: String) -> String? {
+        return string.numeralFormat()
+    }
 }
-
-// TODO: See if would be better to use an specify monetary type
-//extension CurrencyFormatter: CustomStringConvertible {
-//    var description: String {
-//        return numberFormatter.string(from: <#T##Double?#>)
-//    }
-//}
