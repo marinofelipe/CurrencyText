@@ -14,7 +14,7 @@ extension UITextField {
         return text?.count ?? 0
     }
     
-    func sendTextLastCharDeleteAction() {
+    func sendDeleteKeyboardAction() {
         let _ = delegate?.textField?(self, shouldChangeCharactersIn: NSRange(location: textLength, length: 1), replacementString: "")
     }
 }

@@ -16,9 +16,6 @@ public class CurrencyUITextFieldDelegate: NSObject {
     /// Text field clears its text when value value is equal to zero
     public var clearsWhenValueIsZero: Bool = false
     
-    /// Text field clears when this condition is satisfied
-    public var clearCondition: (() -> Void)?
-    
     override public init() {
         super.init()
         self.formatter = CurrencyFormatter()
@@ -58,7 +55,6 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
     }
 }
 
-// add to another file??
 extension CurrencyUITextFieldDelegate {
     
     private func handleDeletion(in textField: UITextField, at range: NSRange) {
@@ -99,33 +95,5 @@ extension CurrencyUITextFieldDelegate {
         }
         
         textField.text = formatter.updatedFormattedString(from: updatedText)
-    }
-}
-
-extension CurrencyFormatter {
-    
-    public func updatedFormattedString(from string: String) -> String? {
-        var updatedString = string.numeralFormat()
-        addDecimalSeparatorsIfNeeded(to: &updatedString)
-        
-        let value = getAdjustedForDefinedInterval(value: double(from: updatedString))
-        return self.string(from: value)
-    }
-    
-    private func getAdjustedForDefinedInterval(value: Double?) -> Double? {
-        if let minValue = minValue, value ?? 0 < minValue {
-            return minValue
-        } else if let maxValue = maxValue, value ?? 0 > maxValue {
-            return maxValue
-        }
-        return value
-    }
-    
-    private func addDecimalSeparatorsIfNeeded(to text: inout String) {
-        guard decimalDigits != 0 && text.count >= decimalDigits else { return }
-        let decimalsRange = text.index(text.endIndex, offsetBy: -decimalDigits)..<text.endIndex
-        
-        let decimalChars = text[decimalsRange]
-        text.replaceSubrange(decimalsRange, with: "." + decimalChars)
     }
 }

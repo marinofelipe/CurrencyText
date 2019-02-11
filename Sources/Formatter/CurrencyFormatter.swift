@@ -12,6 +12,7 @@ public protocol CurrencyFormatterProtocol {
     var maxValue: Double? { get }
     var minValue: Double? { get }
     var initialText: String { get }
+    var currencySymbol: String { get }
     
     func string(from double: Double?) -> String?
     func unformatted(string: String) -> String?
@@ -23,23 +24,31 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     
     /// Set the locale to retrieve the currency from
     /// You can pass a Swift type Locale or one of the
-    /// Locales enum options - that encapsulates all available locales
+    /// Locales enum options - that encapsulates all available locales.
     public var locale: LocaleConvertible {
         set { self.numberFormatter.locale = newValue.locale }
         get { return self.numberFormatter.locale }
     }
     
-    /// Set the locale to retrieve the currency from
-    /// You can pass a Swift type Locale or one of the
-    /// Locales enum options - that encapsulates all available locales
+    /// Set the desired currency type
+    /// * Note: The currency take effetcs above the displayed currency symbol,
+    /// however details such as decimal separators, grouping separators and others
+    /// will be set based on the defined locale. So for a precise experience, please
+    /// preferarbly setup both, when you are setting a currency that does not match the
+    /// default/current user locale.
     public var currency: Currency {
         set { numberFormatter.currencyCode = newValue.rawValue }
         get { return Currency(rawValue: numberFormatter.currencyCode) ?? .dollar }
     }
     
-    /// The lowest number allowed as input
+    /// Returns the currency symbol
+    public var currencySymbol: String {
+        get { return numberFormatter.currencySymbol }
+    }
+    
+    /// The lowest number allowed as input.
     /// This value is initially set to the text field text
-    /// when defined
+    /// when defined.
     public var minValue: Double? {
         set {
             guard let newValue = newValue else { return }
@@ -53,9 +62,9 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
         }
     }
     
-    /// The highest number allowed as input
+    /// The highest number allowed as input.
     /// The text field will not allow the user to increase the input
-    /// value beyond it, when defined
+    /// value beyond it, when defined.
     public var maxValue: Double? {
         set {
             guard let newValue = newValue else { return }
@@ -69,8 +78,8 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
         }
     }
     
-    /// The number of decimal digits shown
-    /// default is set to zero
+    /// The number of decimal digits shown.
+    /// default is set to zero.
     /// * Example: With decimal digits set to 3, if the value to represent is "1",
     /// the formatted text in the fractions will be ",001".
     /// Other than that with the value as 1, the formatted text fractions will be ",1".
@@ -175,5 +184,25 @@ extension CurrencyFormatter {
     /// - Returns: numerical representation
     public func unformatted(string: String) -> String? {
         return string.numeralFormat()
+    }
+}
+
+extension CurrencyFormatter {
+    
+    public func updatedFormattedString(from string: String) -> String? {
+        var updatedString = string.numeralFormat()
+        updatedString.updateDecimalSeparator(decimalDigits: decimalDigits)
+        
+        let value = getAdjustedForDefinedInterval(value: double(from: updatedString))
+        return self.string(from: value)
+    }
+    
+    private func getAdjustedForDefinedInterval(value: Double?) -> Double? {
+        if let minValue = minValue, value ?? 0 < minValue {
+            return minValue
+        } else if let maxValue = maxValue, value ?? 0 > maxValue {
+            return maxValue
+        }
+        return value
     }
 }

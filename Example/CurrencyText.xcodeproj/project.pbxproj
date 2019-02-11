@@ -19,6 +19,7 @@
 		D54A412221D582C100281AD2 /* UITextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A412121D582C100281AD2 /* UITextFieldTests.swift */; };
 		D54A412421D582CE00281AD2 /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */; };
 		D54A412621D73FA500281AD2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A412521D73FA400281AD2 /* UITextField.swift */; };
+		D56D7C242211D4830032F684 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D7C232211D4830032F684 /* CurrencyFormatterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		D54A412121D582C100281AD2 /* UITextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldTests.swift; sourceTree = "<group>"; };
 		D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
 		D54A412521D73FA400281AD2 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		D56D7C232211D4830032F684 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		E4F22050D256031805B60D4D /* Pods_UICurrencyTextFieldDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UICurrencyTextFieldDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8703DCAE64198EF71A19574 /* Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICurrencyTextFieldDemoUITests/Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +144,7 @@
 				D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */,
 				D54A412521D73FA400281AD2 /* UITextField.swift */,
 				D54170F0209023D8008995D7 /* Info.plist */,
+				D56D7C232211D4830032F684 /* CurrencyFormatterTests.swift */,
 			);
 			path = CurrencyTextDemoTests;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				D54A412421D582CE00281AD2 /* NumberFormatterTests.swift in Sources */,
 				D54A412221D582C100281AD2 /* UITextFieldTests.swift in Sources */,
 				D541710920902501008995D7 /* CurrencyTextFieldDelegateTests.swift in Sources */,
+				D56D7C242211D4830032F684 /* CurrencyFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +536,6 @@
 			baseConfigurationReference = 667F9E75F23304777B3C8F18 /* Pods-CurrencyTextDemoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X9MK4PBNUW;
@@ -556,7 +559,6 @@
 			baseConfigurationReference = C0A1E792CE0221D9555FCDCF /* Pods-CurrencyTextDemoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X9MK4PBNUW;
