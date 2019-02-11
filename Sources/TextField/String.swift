@@ -9,36 +9,40 @@
 import UIKit
 
 protocol CurrencyString {
-    var isZero: Bool {get}
+    var representsZero: Bool {get}
     var hasNumbers: Bool {get}
-    mutating func addDecimalSeparator()
     func numeralFormat() -> String
+    mutating func updateDecimalSeparator(decimalDigits: Int)
 }
 
-//String Currency Extension
+//Currency String Extension
 extension String: CurrencyString {
     
-    var isZero: Bool {
+    /// Informs with the string represents the value of zero
+    var representsZero: Bool {
         return numeralFormat().replacingOccurrences(of: "0", with: "").count == 0
     }
     
+    /// Returns if the string does have any character that represents numbers
     var hasNumbers: Bool {
         return numeralFormat().count > 0
     }
     
-    //moves separator one character to the right. Keeps currency formatted
-    mutating func addDecimalSeparator() {
-        guard count >= 2 else { return }
-        let lastTwoChars = self[index(endIndex, offsetBy: -2)..<endIndex]
-        replaceSubrange(index(endIndex, offsetBy: -2)..<endIndex, with: "." + lastTwoChars)
+    /// Updates a currency string decimal separator position based on
+    /// the amount of decimal digits desired
+    ///
+    /// - Parameter decimalDigits: The amount of decimal digits of the currency formatted string
+    mutating func updateDecimalSeparator(decimalDigits: Int) {
+        guard decimalDigits != 0 && count >= decimalDigits else { return }
+        let decimalsRange = index(endIndex, offsetBy: -decimalDigits)..<endIndex
+        
+        let decimalChars = self[decimalsRange]
+        replaceSubrange(decimalsRange, with: "." + decimalChars)
     }
     
-    func currencyFormat() -> String {
-        var currencyString = numeralFormat()
-        currencyString.addDecimalSeparator()
-        return currencyString
-    }
-    
+    /// The numeral format of a string - remove all non numerical ocurrences
+    ///
+    /// - Returns: itself without the non numerical characters ocurrences
     func numeralFormat() -> String {
         return replacingOccurrences(of:"[^0-9]", with: "", options: .regularExpression)
     }

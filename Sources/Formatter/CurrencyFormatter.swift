@@ -11,10 +11,12 @@ public protocol CurrencyFormatterProtocol {
     var decimalDigits: Int { get }
     var maxValue: Double? { get }
     var minValue: Double? { get }
+    var initialText: String { get }
     
     func string(from double: Double?) -> String?
     func unformatted(string: String) -> String?
     func double(from string: String) -> Double?
+    func updatedFormattedString(from string: String) -> String?
 }
 
 public class CurrencyFormatter: CurrencyFormatterProtocol {
@@ -120,6 +122,11 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
         return numberFormatter.maximumIntegerDigits + numberFormatter.maximumFractionDigits
     }
     
+    /// Initial
+    public var initialText: String {
+        return string(from: 0) ?? "0.0"
+    }
+    
     //MARK: - INIT
     
     /// Handler to initialize a new style.
@@ -144,14 +151,28 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
 // MARK: Format
 extension CurrencyFormatter {
     
+    
+    /// Returns a currency string from a given double value.
+    ///
+    /// - Parameter double: the monetary amount.
+    /// - Returns: formatted currency string.
     public func string(from double: Double?) -> String? {
         return numberFormatter.string(from: double)
     }
     
+    /// Returns a double from a string that represents a numerical value.
+    ///
+    /// - Parameter string: string that describes the numerical value.
+    /// - Returns: the value as a Double.
     public func double(from string: String) -> Double? {
         return NumberFormatter().number(from: string)?.doubleValue
     }
     
+    /// Receives a currency formatted string and returns its
+    /// numerical/unformatted representation.
+    ///
+    /// - Parameter string: currency formatted string
+    /// - Returns: numerical representation
     public func unformatted(string: String) -> String? {
         return string.numeralFormat()
     }

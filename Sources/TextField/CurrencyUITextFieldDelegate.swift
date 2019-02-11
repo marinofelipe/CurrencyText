@@ -51,7 +51,7 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
     
     @discardableResult
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let text = textField.text, text.isZero && clearsWhenValueIsZero {
+        if let text = textField.text, text.representsZero && clearsWhenValueIsZero {
             textField.text = ""
         }
         return true
@@ -69,8 +69,7 @@ extension CurrencyUITextFieldDelegate {
                 text.removeLast()
             }
             
-            let value = getAdjustedForDefinedInterval(value: Double(text.currencyFormat()))
-            textField.text = formatter.string(from: value)
+            textField.text = formatter.updatedFormattedString(from: text)
         }
     }
     
@@ -87,7 +86,7 @@ extension CurrencyUITextFieldDelegate {
         
         if let text = textField.text {
             if text.isEmpty {
-                updatedText = initialText() + inputString
+                updatedText = formatter.initialText + inputString
             } else if let range = Range(range, in: text) {
                 updatedText = text.replacingCharacters(in: range, with: inputString)
             } else {
@@ -99,34 +98,34 @@ extension CurrencyUITextFieldDelegate {
             updatedText.removeLast()
         }
         
-        updatedText = updatedText.numeralFormat()
-        addDecimalSeparatorsIfNeeded(to: &updatedText)
-        let value = getAdjustedForDefinedInterval(value: formatter.double(from: updatedText))
-        textField.text = formatter.string(from: value)
+        textField.text = formatter.updatedFormattedString(from: updatedText)
+    }
+}
+
+extension CurrencyFormatter {
+    
+    public func updatedFormattedString(from string: String) -> String? {
+        var updatedString = string.numeralFormat()
+        addDecimalSeparatorsIfNeeded(to: &updatedString)
+        
+        let value = getAdjustedForDefinedInterval(value: double(from: updatedString))
+        return self.string(from: value)
     }
     
     private func getAdjustedForDefinedInterval(value: Double?) -> Double? {
-        if let minValue = formatter.minValue, value ?? 0 < minValue {
+        if let minValue = minValue, value ?? 0 < minValue {
             return minValue
-        } else if let maxValue = formatter.maxValue, value ?? 0 > maxValue {
+        } else if let maxValue = maxValue, value ?? 0 > maxValue {
             return maxValue
         }
         return value
     }
     
     private func addDecimalSeparatorsIfNeeded(to text: inout String) {
-        guard formatter.decimalDigits != 0 && text.count >= formatter.decimalDigits else { return }
-        let decimalsRange = text.index(text.endIndex, offsetBy: -formatter.decimalDigits)..<text.endIndex
+        guard decimalDigits != 0 && text.count >= decimalDigits else { return }
+        let decimalsRange = text.index(text.endIndex, offsetBy: -decimalDigits)..<text.endIndex
         
         let decimalChars = text[decimalsRange]
         text.replaceSubrange(decimalsRange, with: "." + decimalChars)
-    }
-    
-    private func initialText() -> String {
-        switch formatter.decimalDigits {
-        case 0: return ""
-        case 1: return "0."
-        default: return "0.0"
-        }
     }
 }
