@@ -41,6 +41,9 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
     
     func testInit() {
         XCTAssertNotNil(delegate.formatter, "formatter should not be nil")
+        
+        delegate = CurrencyUITextFieldDelegate()
+        XCTAssertNotNil(delegate.formatter, "formatter should not be nil")
     }
     
     // MARK: max digits

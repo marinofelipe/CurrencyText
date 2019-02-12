@@ -17,7 +17,7 @@ public protocol CurrencyFormatterProtocol {
     func string(from double: Double?) -> String?
     func unformatted(string: String) -> String?
     func double(from string: String) -> Double?
-    func updatedFormattedString(from string: String) -> String?
+    func updated(formattedString string: String) -> String?
 }
 
 public class CurrencyFormatter: CurrencyFormatterProtocol {
@@ -38,7 +38,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     /// default/current user locale.
     public var currency: Currency {
         set { numberFormatter.currencyCode = newValue.rawValue }
-        get { return Currency(rawValue: numberFormatter.currencyCode) }
+        get { return Currency(rawValue: numberFormatter.currencyCode) ?? .dollar }
     }
     
     /// Returns the currency symbol
@@ -188,14 +188,23 @@ extension CurrencyFormatter {
 
 extension CurrencyFormatter {
     
-    public func updatedFormattedString(from string: String) -> String? {
+    /// Returns the update of an already formatted string, replacing its decimal separator
+    /// and adjusting it to formater's min and max values if needed.
+    ///
+    /// - Parameter string: formatted string
+    /// - Returns: updated formatted string
+    public func updated(formattedString string: String) -> String? {
         var updatedString = string.numeralFormat()
         updatedString.updateDecimalSeparator(decimalDigits: decimalDigits)
-        
         let value = getAdjustedForDefinedInterval(value: double(from: updatedString))
         return self.string(from: value)
     }
     
+    /// Returns the given value adjusted to respect
+    /// formatter's max an min values.
+    ///
+    /// - Parameter value: value to be adjusted if needed
+    /// - Returns: Ajusted value
     private func getAdjustedForDefinedInterval(value: Double?) -> Double? {
         if let minValue = minValue, value ?? 0 < minValue {
             return minValue

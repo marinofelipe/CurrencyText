@@ -65,7 +65,7 @@ extension CurrencyUITextFieldDelegate {
                 text.removeLast()
             }
             
-            textField.text = formatter.updatedFormattedString(from: text)
+            textField.text = formatter.updated(formattedString: text)
         }
     }
     
@@ -94,6 +94,6 @@ extension CurrencyUITextFieldDelegate {
             updatedText.removeLast()
         }
         
-        textField.text = formatter.updatedFormattedString(from: updatedText)
+        textField.text = formatter.updated(formattedString: updatedText)
     }
 }
