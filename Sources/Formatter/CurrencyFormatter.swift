@@ -38,7 +38,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     /// default/current user locale.
     public var currency: Currency {
         set { numberFormatter.currencyCode = newValue.rawValue }
-        get { return Currency(rawValue: numberFormatter.currencyCode) ?? .dollar }
+        get { return Currency(rawValue: numberFormatter.currencyCode) }
     }
     
     /// Returns the currency symbol
@@ -159,7 +159,6 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
 
 // MARK: Format
 extension CurrencyFormatter {
-    
     
     /// Returns a currency string from a given double value.
     ///

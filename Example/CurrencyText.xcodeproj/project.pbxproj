@@ -20,6 +20,7 @@
 		D54A412421D582CE00281AD2 /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */; };
 		D54A412621D73FA500281AD2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A412521D73FA400281AD2 /* UITextField.swift */; };
 		D56D7C242211D4830032F684 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D7C232211D4830032F684 /* CurrencyFormatterTests.swift */; };
+		D56D7C2822124D160032F684 /* CurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D7C2722124D160032F684 /* CurrencyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
 		D54A412521D73FA400281AD2 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		D56D7C232211D4830032F684 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
+		D56D7C2722124D160032F684 /* CurrencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTests.swift; sourceTree = "<group>"; };
 		E4F22050D256031805B60D4D /* Pods_UICurrencyTextFieldDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UICurrencyTextFieldDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8703DCAE64198EF71A19574 /* Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UICurrencyTextFieldDemoUITests/Pods-UICurrencyTextFieldDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +147,7 @@
 				D54A412521D73FA400281AD2 /* UITextField.swift */,
 				D54170F0209023D8008995D7 /* Info.plist */,
 				D56D7C232211D4830032F684 /* CurrencyFormatterTests.swift */,
+				D56D7C2722124D160032F684 /* CurrencyTests.swift */,
 			);
 			path = CurrencyTextDemoTests;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				D54A412621D73FA500281AD2 /* UITextField.swift in Sources */,
 				D54A412421D582CE00281AD2 /* NumberFormatterTests.swift in Sources */,
 				D54A412221D582C100281AD2 /* UITextFieldTests.swift in Sources */,
+				D56D7C2822124D160032F684 /* CurrencyTests.swift in Sources */,
 				D541710920902501008995D7 /* CurrencyTextFieldDelegateTests.swift in Sources */,
 				D56D7C242211D4830032F684 /* CurrencyFormatterTests.swift in Sources */,
 			);

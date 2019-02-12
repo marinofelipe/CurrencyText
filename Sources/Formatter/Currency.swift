@@ -173,5 +173,16 @@ public enum Currency: String {
     yuanRenminbi = "CNY",
     zambianKwacha = "ZMW",
     zimbabweDollar = "ZWL",
-    zloty = "PLN"
+    zloty = "PLN",
+    none
+    
+    public typealias RawValue = String
+    
+    public init(rawValue: String?) {
+        if let rawValue = rawValue, let currency = Currency(rawValue: rawValue) {
+            self = currency
+        } else {
+            self = .none
+        }
+    }
 }

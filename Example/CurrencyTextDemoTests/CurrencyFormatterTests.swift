@@ -16,6 +16,8 @@ class CurrencyFormatterTests: XCTestCase {
     override func setUp() {
         super.setUp()
         formatter = CurrencyFormatter()
+        formatter.locale = CurrencyLocale.englishIreland
+        formatter.currency = .euro
     }
 
     override func tearDown() {
@@ -25,13 +27,32 @@ class CurrencyFormatterTests: XCTestCase {
 
     func testComposing() {
         formatter = CurrencyFormatter {
-            $0.locale = CurrencyLocale.italian
+            $0.locale = CurrencyLocale.italianItaly
+            $0.currency = .euro
             $0.hasDecimals = false
         }
         
-        XCTAssert(formatter.decimalDigits == 0)
-        XCTAssert(formatter.hasDecimals == false)
-        XCTAssert(formatter.locale.locale == CurrencyLocale.italian.locale)
+        XCTAssertEqual(formatter.decimalDigits, 0)
+        XCTAssertEqual(formatter.hasDecimals, false)
+        XCTAssertEqual(formatter.locale.locale, CurrencyLocale.italianItaly.locale)
+        XCTAssertEqual(formatter.currencySymbol, "€")
+    }
+    
+    func testMinAndMaxValues() {
+        formatter.minValue = nil
+        formatter.maxValue = nil
+        
+        var formattedString = formatter.string(from: 300000.54)
+        XCTAssertEqual(formattedString, "€300,000.54")
+        
+        formatter.minValue = 10
+        formatter.maxValue = 100.31
+        
+        formattedString = formatter.updatedFormattedString(from: "€300,000.54")
+        XCTAssertEqual(formattedString, "€100.31")
+        
+        formattedString = formatter.updatedFormattedString(from: "€2.03")
+        XCTAssertEqual(formattedString, "€10.00")
     }
     
     func testFormatting() {
