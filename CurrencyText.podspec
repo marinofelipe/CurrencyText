@@ -22,5 +22,7 @@ Pod::Spec.new do |s|
   s.subspec 'TextFieldDelegate' do |ss|
       ss.requires_arc = true
       ss.source_files = "Sources/TextField"
+      ss.source_files = "Sources/TextField"
+      ss.ios.dependency 'CurrencyText/Formatter'
   end
 end
