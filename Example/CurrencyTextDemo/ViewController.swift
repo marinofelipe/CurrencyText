@@ -23,11 +23,11 @@ class ViewController: UIViewController {
     
     private func setupTextFieldWithCurrencyDelegate() {
         let currencyFormatter = CurrencyFormatter {
-            $0.maxValue = 1000000 // TODO: improve express by string, float or int
+            $0.maxValue = 1000000
             $0.minValue = 3
             $0.currency = .euro
             $0.locale = CurrencyLocale.frenchFrance
-            $0.hasDecimals = true
+            $0.hasDecimals = false
         }
         
         textFieldDelegate = CurrencyUITextFieldDelegate(formatter: currencyFormatter)

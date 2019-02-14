@@ -53,6 +53,12 @@ class CurrencyFormatterTests: XCTestCase {
         
         formattedString = formatter.updated(formattedString: "€2.03")
         XCTAssertEqual(formattedString, "€10.00")
+        
+        formattedString = formatter.string(from: 88888888)
+        XCTAssertEqual(formattedString, "€100.31")
+        
+        formattedString = formatter.string(from: 1)
+        XCTAssertEqual(formattedString, "€10.00")
     }
     
     func testFormatting() {

@@ -106,6 +106,67 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
         get { return decimalDigits != 0 }
     }
     
+    /// Defines the string that is the decimal separator
+    /// Note: only presented when hasDecimals is true OR decimalDigits
+    /// is greater than 0.
+    public var decimalSeparator: String {
+        set { self.numberFormatter.currencyDecimalSeparator = newValue }
+        get { return numberFormatter.currencyDecimalSeparator }
+    }
+    
+    /// Can be used to set a custom currency code string
+    public var currencyCode: String {
+        set { self.numberFormatter.currencyCode = newValue }
+        get { return numberFormatter.currencyCode }
+    }
+    
+    /// Sets if decimal separator should always be presented,
+    /// even when decimal digits are disabled
+    public var alwaysShowsDecimalSeparator: Bool {
+        set { self.numberFormatter.alwaysShowsDecimalSeparator = newValue }
+        get { return numberFormatter.alwaysShowsDecimalSeparator }
+    }
+    
+    /// The amount of grouped numbers. This definition is fixed for at least
+    /// the first non-decimal group of numbers, and is applied to all other
+    /// groups if secondaryGroupingSize does not have another value.
+    public var groupingSize: Int {
+        set { self.numberFormatter.groupingSize = newValue }
+        get { return numberFormatter.groupingSize }
+    }
+    
+    /// The amount of grouped numbers after the first group.
+    /// Example: for the given value of 99999999999, when grouping size
+    /// is set to 3 and secondaryGroupingSize has 4 as value,
+    /// the number is represented as: (9999) (9999) [999].
+    /// Beign [] grouping size and () secondary grouping size.
+    public var secondaryGroupingSize: Int {
+        set { self.numberFormatter.secondaryGroupingSize = newValue }
+        get { return numberFormatter.secondaryGroupingSize }
+    }
+    
+    /// Defines the string that is shown between groups of numbers
+    /// * Example: a monetary value of a thousand (1000) with a grouping
+    /// separator == "." is represented as `1.000` *.
+    /// Note: It automatically sets hasGroupingSeparator to true.
+    public var groupingSeparator: String {
+        set {
+            self.numberFormatter.currencyGroupingSeparator = newValue
+            self.numberFormatter.usesGroupingSeparator = true
+        }
+        get { return self.numberFormatter.currencyGroupingSeparator }
+    }
+    
+    /// Sets if has separator between all group of numbers.
+    /// * Example: when set to false, a bug number such as a million
+    /// is represented by tight numbers "1000000". Otherwise if set
+    /// to true each group is separated by the defined `groupingSeparator`. *
+    /// Note: When set to true only works by defining a grouping separator.
+    public var hasGroupingSeparator: Bool {
+        set { self.numberFormatter.usesGroupingSeparator = newValue }
+        get { return self.numberFormatter.usesGroupingSeparator }
+    }
+    
     /// Value that will be presented when the text field
     /// text values matches zero (0)
     public var zeroSymbol: String?
@@ -165,7 +226,8 @@ extension CurrencyFormatter {
     /// - Parameter double: the monetary amount.
     /// - Returns: formatted currency string.
     public func string(from double: Double?) -> String? {
-        return numberFormatter.string(from: double)
+        let validValue = getAdjustedForDefinedInterval(value: double)
+        return numberFormatter.string(from: validValue)
     }
     
     /// Returns a double from a string that represents a numerical value.
