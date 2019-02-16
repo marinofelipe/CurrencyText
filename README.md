@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/marinofelipe/UICurrencyTextField.svg?branch=master)](https://travis-ci.org/marinofelipe/UICurrencyTextField)
+[![Build Status](https://travis-ci.org/marinofelipe/CurrencyText.svg?branch=master)](https://travis-ci.org/marinofelipe/CurrencyText)
 [![Coverage Status](https://coveralls.io/repos/github/marinofelipe/CurrencyText/badge.svg?branch=master)](https://coveralls.io/github/marinofelipe/CurrencyText?branch=master)
 <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat" alt="Swift" /></a>
 [![CocoaPods Compatible](https://img.shields.io/badge/pod-v2.0.0-blue.svg)](https://cocoapods.org/pods/CurrencyText)
@@ -23,13 +23,13 @@ If you need to present currency text or allow users to input currency data, Curr
 ## Documentation
 
 - [Introduction to `CurrencyFormatter`](#currencyformatter)
-	- [Basic Setup](#basics)
+  - [Basic Setup](#basics)
   - [`Currency and locale` - easily defining style](#currencyandlocale)
   - [`Locale` - setting currency's locale](#locale)
   - [`Currency` - how to choose a specific currency from it's name](#currency)
   - [Advanced setup](#advancedsetup)
 - [The `CurrencyTextFieldDelegate`](#delegate)
-	- [Setting your text field to format the inputs](#setting)
+  - [Setting your text field to format the inputs](#setting)
 - [All properties of `CurrencyFormatter`](#properties)
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -52,8 +52,8 @@ Creating a `CurrencyFormatter` instance is pretty simple; you can use the readab
 
 ```swift
 let formatter = CurrencyFormatter {
-	$0.currency = .euro
-	// ... set any other attribute
+  $0.currency = .euro
+  // ... set any other attribute
 }
 
 let formattedString = formatter.string(from: 30.0) //€30.00
@@ -107,7 +107,7 @@ Note that defining currency does not always goes as planned, because the most pa
 
 ```swift
 let formatter = CurrencyFormatter {
-	$0.currency = .dollar
+  $0.currency = .dollar
   $0.locale = CurrencyLocale.englishUnitedStates
 }
 
@@ -123,8 +123,8 @@ We can remove decimals, set a maximum allowed value, customize grouping size or 
 
 ```swift
 let formatter = CurrencyFormatter {
-	$0.hasDecimals = false
-	$0.maxValue = 999999
+  $0.hasDecimals = false
+  $0.maxValue = 999999
   $0.groupingSize = 2
   $0.groupingSeparator = ";"
   $0.currencySymbol = 💶
@@ -162,24 +162,23 @@ The following properties are available:
 
 | PROPERTY                      | TYPE                                  | DESCRIPTION                                                                                                                                | 
 |-------------------------------|---------------------------------------|--------------------------------------------|
-| locale                        | `LocaleConvertible`                   | locale of the currency                     |
-| currency                      | `Currency`                            | currency used to format                    |                                                                     
-| currencySymbol                | `String`                              | returns the formatter currency symbol      |                                                                       
+| locale                        | `LocaleConvertible`                   | Locale of the currency                     |
+| currency                      | `Currency`                            | Currency used to format                    |                                                                     
+| currencySymbol                | `String`                              | Returns the formatter currency symbol      |                                                                       
 | minValue                      | `Double?`                             | The lowest number allowed as input         |                                                            
 | maxValue                      | `Double?`                             | The highest number allowed as input        |
 | decimalDigits                 | `Int`                                 | The number of decimal digits shown         |                
 | hasDecimals                   | `Bool?`                               | Decimal digits are shown or not            |                        
-| decimalSeparator              | `String`                              | text used to separate the decimal digits   |
+| decimalSeparator              | `String`                              | Text used to separate the decimal digits   |
 | currencyCode                  | `String`                              | Currency raw code value                    | 
-| alwaysShowsDecimalSeparator   | `Bool`                                | shows decimal separator even when there are no decimal digits | 
+| alwaysShowsDecimalSeparator   | `Bool`                                | Shows decimal separator even when there are no decimal digits | 
 | groupingSize                  | `Int`                                 | The amount of grouped numbers              |
 | secondaryGroupingSize         | `Int`                                 | The amount of grouped numbers after the first group  |
 | groupingSeparator             | `String`                              | String that is shown between groups of numbers  |
-| hasGroupingSeparator          | `Bool`                                |  adds separator between all group of numbers |
+| hasGroupingSeparator          | `Bool`                                | Adds separator between all group of numbers |
 | maxIntegers                   | `Int`                                 | Maximum allowed number of integers         |
 | maxDigitsCount                | `Int`                                 | Returns the maximum amount of digits (integers + decimals) | 
-| zeroSymbol                    | `String`                              | ... |
-| nilSymbol                     | `String`                              | ... |
+| zeroSymbol                    | `String`                              | Text shown when string's value is equal zero |
 
 <a name="requirements"/>
 
