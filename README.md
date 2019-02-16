@@ -237,10 +237,10 @@ _Carthage support is comming soon. If you want to help, please contribute :smile
 <a name="contributing" />
 
 ## Contributing
-Contributions are always welcome. Please feel free to fork, follow, open issues and pull requests. The issues, milestones, and what we are currently working on can be seen in the main [Project](https://github.com/marinofelipe/CurrencyText/projects/1).
+Contributions and feedbacks are always welcome. Please feel free to fork, follow, open issues and pull requests. The issues, milestones, and what we are currently working on can be seen in the main [Project](https://github.com/marinofelipe/CurrencyText/projects/1).
 
 ## Special Thanks
-The readme and the init with builder pattern are inspired by (swiftRichString). Also the CurencyLocale was detailed based on SwiftDate's Locale class, which already had all needed locales as an enum.
+Some details of the readme, CurrencyLocale type and the init with handler callback were inspired by [@malcommac](https://github.com/malcommac) and his awesome work with SwiftRichString and SwfitDate.
 
 ## Copyright
 CurrencyText is released under the MIT license. [See LICENSE](https://github.com/marinofelipe/CurrencyText/blob/master/LICENSE) for details.
