@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/marinofelipe/UICurrencyTextField.svg?branch=master)](https://travis-ci.org/marinofelipe/UICurrencyTextField)
 [![Coverage Status](https://coveralls.io/repos/github/marinofelipe/CurrencyText/badge.svg?branch=master)](https://coveralls.io/github/marinofelipe/CurrencyText?branch=master)
 <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat" alt="Swift" /></a>
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v1.0.2-blue.svg)](https://cocoapods.org/pods/CurrencyText)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v2.0.0-blue.svg)](https://cocoapods.org/pods/CurrencyText)
 [![Platform](https://img.shields.io/cocoapods/p/CurrencyText.svg?style=flat)]()
 [![Twitter](https://img.shields.io/badge/twitter-@_marinofelipe-blue.svg?style=flat)](https://twitter.com/_marinofelipe)
 
@@ -208,7 +208,7 @@ $ sudo gem install cocoapods
 
 To integrate CurrencyText into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
-**Tested with `pod --version`: `1.0.2`**
+**Tested with `pod --version`: `2.0.0`**
 
 ```ruby
 # Podfile
