@@ -36,6 +36,27 @@ class CurrencyFormatterTests: XCTestCase {
         XCTAssertEqual(formatter.hasDecimals, false)
         XCTAssertEqual(formatter.locale.locale, CurrencyLocale.italianItaly.locale)
         XCTAssertEqual(formatter.currencySymbol, "€")
+        
+        formatter.decimalSeparator = ";"
+        XCTAssertEqual(formatter.numberFormatter.currencyDecimalSeparator, ";")
+        
+        formatter.currencyCode = "^"
+        XCTAssertEqual(formatter.numberFormatter.currencyCode, "^")
+        
+        formatter.alwaysShowsDecimalSeparator = true
+        XCTAssertEqual(formatter.numberFormatter.alwaysShowsDecimalSeparator, true)
+        
+        formatter.groupingSize = 4
+        XCTAssertEqual(formatter.numberFormatter.groupingSize, 4)
+        
+        formatter.secondaryGroupingSize = 1
+        XCTAssertEqual(formatter.numberFormatter.secondaryGroupingSize, 1)
+        
+        formatter.groupingSeparator = "-"
+        XCTAssertEqual(formatter.numberFormatter.currencyGroupingSeparator, "-")
+        
+        formatter.hasGroupingSeparator = false
+        XCTAssertEqual(formatter.numberFormatter.usesGroupingSeparator, false)
     }
     
     func testMinAndMaxValues() {
