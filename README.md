@@ -26,7 +26,7 @@ If you need to present currency text or allow users to input currency data, Curr
 	- [Basic Setup](#basics)
   - [`Currency and locale` - easily defining style](#currencyandlocale)
   - [`Locale` - setting currency's locale](#locale)
-  - [`Currency` - how to chose a specific currency from it's name](#currency)
+  - [`Currency` - how to choose a specific currency from it's name](#currency)
   - [Advanced setup](#advancedsetup)
 - [The `CurrencyTextFieldDelegate`](#delegate)
 	- [Setting your text field to format the inputs](#setting)
@@ -90,7 +90,7 @@ public enum CurrencyLocale: String, LocaleConvertible {
 
 <a name="currency"/>
 
-#### `Currency` - how to chose a specific currency from it's name
+#### `Currency` - how to choose a specific currency from it's name
 ###### encapsulates the cases of [ISO 4217 international standard for currency codes](https://www.iso.org/iso-4217-currency-codes.html)
 The `Currency` type contains the currency codes as enum cases raw values, what makes it easier to set up the formatter with the currency that you want, such as .euro, .dollar, .brazilianReal.
 
@@ -240,7 +240,7 @@ _Carthage support is comming soon. If you want to help, please contribute :smile
 Contributions and feedbacks are always welcome. Please feel free to fork, follow, open issues and pull requests. The issues, milestones, and what we are currently working on can be seen in the main [Project](https://github.com/marinofelipe/CurrencyText/projects/1).
 
 ## Special Thanks
-Some details of the readme, CurrencyLocale type and the init with handler callback were inspired by [@malcommac](https://github.com/malcommac) and his awesome work with SwiftRichString and SwfitDate.
+Some readme details, "CurrencyLocale" enum and the init with handler callback were inspired by [@malcommac](https://github.com/malcommac) and his awesome work with SwiftRichString and SwfitDate.
 
 ## Copyright
 CurrencyText is released under the MIT license. [See LICENSE](https://github.com/marinofelipe/CurrencyText/blob/master/LICENSE) for details.
