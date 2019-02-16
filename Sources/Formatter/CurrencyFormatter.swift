@@ -6,11 +6,11 @@
 //
 
 public protocol CurrencyFormatterProtocol {
-    var numberFormatter: NumberFormatter! { get set }
+    var numberFormatter: NumberFormatter! { get }
     var maxDigitsCount: Int { get }
-    var decimalDigits: Int { get }
-    var maxValue: Double? { get }
-    var minValue: Double? { get }
+    var decimalDigits: Int { get set }
+    var maxValue: Double? { get set }
+    var minValue: Double? { get set }
     var initialText: String { get }
     var currencySymbol: String { get }
     
@@ -169,13 +169,19 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     
     /// Value that will be presented when the text field
     /// text values matches zero (0)
-    public var zeroSymbol: String?
+    public var zeroSymbol: String? {
+        set { numberFormatter.zeroSymbol = newValue }
+        get { return numberFormatter.zeroSymbol }
+    }
     
     /// Value that will be presented when the text field
     /// is empty. The default is "" - empty string
-    public var nilSymbol: String = ""
+    public var nilSymbol: String {
+        set { numberFormatter.nilSymbol = newValue }
+        get { return numberFormatter.nilSymbol }
+    }
     
-    /// Encapsulated Number formatter - TODO:
+    /// Encapsulated Number formatter
     public var numberFormatter: NumberFormatter!
     
     /// Maximum allowed number of integers

@@ -1,5 +1,4 @@
-CurrencyText 💶✏️
-======================================
+
 [![Build Status](https://travis-ci.org/marinofelipe/UICurrencyTextField.svg?branch=master)](https://travis-ci.org/marinofelipe/UICurrencyTextField)
 [![Coverage Status](https://coveralls.io/repos/github/marinofelipe/CurrencyText/badge.svg?branch=master)](https://coveralls.io/github/marinofelipe/CurrencyText?branch=master)
 <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat" alt="Swift" /></a>
@@ -7,19 +6,207 @@ CurrencyText 💶✏️
 [![Platform](https://img.shields.io/cocoapods/p/CurrencyText.svg?style=flat)]()
 [![Twitter](https://img.shields.io/badge/twitter-@_marinofelipe-blue.svg?style=flat)](https://twitter.com/_marinofelipe)
 
-CurrencyText has a custom text field delegate that formats inputs as currency. It doesn't require a specific subclass of UITextField. 🙌  
-Just adopt it to your text fields and extend it when necessary.
+<p align="center">
+  <img src="images/logo.png" width="350" title="Currency Text's logo">
+</p>
 
-#### Important
-~~UICurrencyTextField~~ was deprecated in favor of `CurrencyText`.
+<p align="center" >⭐️ <b>Star me to follow the project </b> ⭐️<br>
+</p>
+
+
+CurrencyText is a lightweight library that allows to format text field inputs as currency. It provides a easy to use and extendable UITextFieldDelegate, so there's no need to use a specific UITextField subclass. _You can keep your text field subclasses_ and just make use of this nice custom delegate.
+
+Its main core, the CurrencyFormatter class, can also be used _a part from text fields_ to format any value that can be monetary represented.
+
+If you need to present currency text or allow users to input currency data, CurrencyText help you do it in a highly readable and configurable matter.
+
+## Documentation
+
+- [Introduction to `CurrencyFormatter`](#currencyformatter)
+	- [Basic Setup](#basics)
+  - [`Currency and locale` - easily defining style](#currencyandlocale)
+  - [`Locale` - setting currency's locale](#locale)
+  - [`Currency` - how to chose a specific currency from it's name](#currency)
+  - [Advanced setup](#advancedsetup)
+- [The `CurrencyTextFieldDelegate`](#delegate)
+	- [Setting your text field to format the inputs](#setting)
+- [All properties of `CurrencyFormatter`](#properties)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [Copyright](#copyright)
+
+<a name="currencyformatter"/>
+
+## Introduction to `CurrencyFormatter`
+
+CurrencyText is made upon `CurrencyFormatter`, which is an abstraction of number formatter with currency number style. It can be used alone or injected into a `CurrencyTextFieldDelegate` to auto format text field's inputs.
+
+<a name="basics"/>
+
+### Basic setup
+
+The `CurrencyFormatter` encapsulates number formatter's currency properties.
+
+Creating a `CurrencyFormatter` instance is pretty simple; you can use the readable builder pattern approach where the init class require a callback in which the self instance is passed, allowing you to configure your properties by keeping the code clean and readable ([Inspired by SwiftRichString](https://github.com/malcommac/SwiftRichString)):
+
+```swift
+let formatter = CurrencyFormatter {
+	$0.currency = .euro
+	// ... set any other attribute
+}
+
+let formattedString = formatter.string(from: 30.0) //€30.00
+```
+
+<a name="currencyandlocale"/>
+
+### `Currency and locale` - easily defining formatting style
+
+To define the currency style (symbol, formatting, separators) you must make use of `currency` and `locale` properties.
+It's important to say that when these are not defined, the current user locale is automatically set, and so is the curency formatting. 
+For example if the user Locale's is set to `pt_BR` (indentifier), the amount of 100 would be shown as `R$ 100,00`. What can be made by setting currency to brazilianReal and locale to portugueseBrazil when needed.
+
+<a name="locale"/>
+
+#### `Locale` - setting currency's locale
+###### All locales were extracted from [jacobbubu - ioslocaleidentifiers](https://gist.github.com/jacobbubu/1836273)
+The `CurrencyLocale` type wraps all available Locale identifiers in an enum type. 
+Formatter's `locale` property can be set passing a common system Locale or one of CurrencyLocale's cases, such as .italian, .danish or .chinese. 
+Note that you can define locale and compose it with a different currency of your choice, what is going to change generally only the currency symbol.
+
+```swift
+public enum CurrencyLocale: String, LocaleConvertible {
+    
+    case current = "current"
+    case autoUpdating = "currentAutoUpdating"
+    
+    case afrikaans = "af"
+    case afrikaansNamibia = "af_NA"
+    case afrikaansSouthAfrica = "af_ZA"
+    //...
+}
+```
+
+<a name="currency"/>
+
+#### `Currency` - how to chose a specific currency from it's name
+###### encapsulates the cases of [ISO 4217 international standard for currency codes](https://www.iso.org/iso-4217-currency-codes.html)
+The `Currency` type contains the currency codes as enum cases raw values, what makes it easier to set up the formatter with the currency that you want, such as .euro, .dollar, .brazilianReal.
+
+```swift
+public enum Currency: String {
+    case afghani = "AFN",
+    algerianDinar = "DZD",
+    argentinePeso = "ARS"
+    //...
+}
+```
+
+Note that defining currency does not always goes as planned, because the most part of the format generally changes accordingly to user locale. For example, setting .euro as currency but with default user locale (Brazil), has the euro's currency symbol with separators and remaining style as used in Brazil.
+
+```swift
+let formatter = CurrencyFormatter {
+	$0.currency = .dollar
+  $0.locale = CurrencyLocale.englishUnitedStates
+}
+
+let formattedString = formatter.string(from: 30.0) //$30.00
+```
+
+<a name="advancedsetup"/>
+
+### Advanced setup
+
+For those cases where your design requires a custom presentation you are able to heavily customize the formatter.
+We can remove decimals, set a maximum allowed value, customize grouping size or even set a hole new currency symbol. It is all up to you.
+
+```swift
+let formatter = CurrencyFormatter {
+	$0.hasDecimals = false
+	$0.maxValue = 999999
+  $0.groupingSize = 2
+  $0.groupingSeparator = ";"
+  $0.currencySymbol = 💶
+}
+
+let formattedString = formatter.string(from: 100000000) //💶 99;99;99
+```
+
+<a name="delegate"/>
+
+## The `CurrencyTextFieldDelegate` - formatting user input as currency
+
+This project started as a way to format user inputs as currency. In the old days it used to be a custom UITextField class, but we changed it to work acting only as a custom delegate, without needing to force users to use an specific UITextField class.
+`CurrencyTextFieldDelegate` class comes in hand to act formatting inputs respecting the setup of its currency formatter.
+
+<a name="setting"/>
+
+### Setting your text field to format the inputs
+To start formatting your user's numeric text as currency you need to initialize a `CurrencyTextFieldDelegate`, configure it with a formatter with you want to, and then set it as the text field's delegate.
+
+```Swift
+let currencyFormatter = CurrencyFormatter()
+textFieldDelegate = CurrencyUITextFieldDelegate(formatter: currencyFormatter)
+textFieldDelegate.clearsWhenValueIsZero = true
+
+textField.delegate = textFieldDelegate
+```
+
+Just by setting a currency text field delegate object to your text field, with given formatter behaviour, the user inputs are going to be formatter as expected.
+
+<a name="properties"/>
+
+## Properties available via `CurrencyFormatter` class
+The following properties are available:
+
+| PROPERTY                      | TYPE                                  | DESCRIPTION                                                                                                                                | 
+|-------------------------------|---------------------------------------|--------------------------------------------|
+| locale                        | `LocaleConvertible`                   | locale of the currency                     |
+| currency                      | `Currency`                            | currency used to format                    |                                                                     
+| currencySymbol                | `String`                              | returns the formatter currency symbol      |                                                                       
+| minValue                      | `Double?`                             | The lowest number allowed as input         |                                                            
+| maxValue                      | `Double?`                             | The highest number allowed as input        |
+| decimalDigits                 | `Int`                                 | The number of decimal digits shown         |                
+| hasDecimals                   | `Bool?`                               | Decimal digits are shown or not            |                        
+| decimalSeparator              | `String`                              | text used to separate the decimal digits   |
+| currencyCode                  | `String`                              | Currency raw code value                    | 
+| alwaysShowsDecimalSeparator   | `Bool`                                | shows decimal separator even when there are no decimal digits | 
+| groupingSize                  | `Int`                                 | The amount of grouped numbers              |
+| secondaryGroupingSize         | `Int`                                 | The amount of grouped numbers after the first group  |
+| groupingSeparator             | `String`                              | String that is shown between groups of numbers  |
+| hasGroupingSeparator          | `Bool`                                |  adds separator between all group of numbers |
+| maxIntegers                   | `Int`                                 | Maximum allowed number of integers         |
+| maxDigitsCount                | `Int`                                 | Returns the maximum amount of digits (integers + decimals) | 
+| zeroSymbol                    | `String`                              | ... |
+| nilSymbol                     | `String`                              | ... |
+
+<a name="requirements"/>
 
 ## Requirements
 
-Swift >= 3
+CurrencyText is compatible with Swift 3.x.
+Only `iOS 8.0+` is supported.
+_But we are planning to support other apple OS's soon._
+
+<a name="installation"/>
 
 ## Installation
 
-### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
+<a name="cocoapods" />
+
+### Install via CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Swift and Objective-C Cocoa projects. It has over 57 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly.
+
+#### Installing CocoaPods
+```bash
+$ sudo gem install cocoapods
+```
+
+#### Integrating CurrencyText
+
+To integrate CurrencyText into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 **Tested with `pod --version`: `1.0.2`**
 
@@ -38,79 +225,24 @@ Replace `YOUR_TARGET_NAME` and then, in the `Podfile` directory, type:
 $ pod install
 ```
 
-## How to use
-As said before, an instance of `CurrencyUITextFieldDelegate` must be adopted as your currency text field's delegate.
-By default it allows a maximum of 7 integers and 2 decimals, shows decimal separator and do not autoclears the text when resigning first responder. However if needed you can customize it as you wish.
+##### For those who doesn't need `UICurrencyTextField`, you are able to donwload only the subspec `CurrencyText/Formatter`.
 
-### Basics
+<a name="carthage" />
 
-##### Set as textField's UITextFieldDelegate
-```swift
-let currencyDelegate = CurrencyUITextFieldDelegate()
-textField.delegate = currencyDelegate
-```  
+### Carthage
 
-##### Configuring
-```swift
-public class CurrencyUITextFieldDelegate: NSObject {
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+_Carthage support is comming soon. If you want to help, please contribute :smile._
 
-  public var numberFormatter = NumberFormatter()
-
-  /// if true text field is cleared when resign as first responder with value = 0
-  public var hasAutoclear: Bool = false
-
-  /// define maximum amount of integer numbers
-  public var maxIntegers: Int? {
-    didSet {
-      guard let maxIntegers = maxIntegers else { return }
-      numberFormatter.maximumIntegerDigits = maxIntegers
-    }
-  }
-}
-```  
-```swift
-currencyDelegate.maxIntegers = 4
-currencyDelegate.hasAutoclear = true
-```
-
-### Currency format
-By default the text is formatted accordingly to user locale settings.
-
-#### Language: english, region: Brazil  
-`brazilian reais`  
-`R$3.000,00`
-#### Language: english, region: United States  
-`dollars`  
-`$3,000.00`
-
-#### Custom currency
-To format with a different currency you can change the delegate's `numberFormater` locale.
-
-```swift
-delegate.numberFormatter.locale = Locale(identifier: "en_US")
-```
-
-#### Advanced set up
-If you want to customize more, you are able to create your own number formatter.
-
-```swift
-var numberFormatter = NumberFormatter()
-numberFormatter.locale = Locale(identifier: "en_US")
-numberFormatter.minimumFractionDigits = 1
-numberFormatter.maximumFractionDigits = 1
-numberFormatter.minimumIntegerDigits = 3
-numberFormatter.alwaysShowsDecimalSeparator = false
-
-delegate.numberFormatter = numberFormatter
-```
-
-<br>
-Please refer to the demo project at `Example/` if you want to take a deeper look.
+<a name="contributing" />
 
 ## Contributing
-Contributions are always welcome. Please feel free to fork, follow [Kanban project](https://github.com/marinofelipe/CurrencyText/projects/1) or open new issues.
-Every PR will be first validated by the CI service which will run the demo tests.
-If you develop new features or solve any issues please verify if tests keep succeeding.
+Contributions are always welcome. Please feel free to fork, follow, open issues and pull requests. The issues, milestones, and what we are currently working on can be seen in the main [Project](https://github.com/marinofelipe/CurrencyText/projects/1).
 
-## License
+## Special Thanks
+The readme and the init with builder pattern are inspired by (swiftRichString). Also the CurencyLocale was detailed based on SwiftDate's Locale class, which already had all needed locales as an enum.
+
+## Copyright
 CurrencyText is released under the MIT license. [See LICENSE](https://github.com/marinofelipe/CurrencyText/blob/master/LICENSE) for details.
+
+Felipe Marino: [felipemarino91@gmail.com](mailto:felipemarino91@gmail.com), [@_marinofelipe](https://twitter.com/_marinofelipe)
