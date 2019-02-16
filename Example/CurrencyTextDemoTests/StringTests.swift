@@ -18,32 +18,36 @@ class StringTests: XCTestCase {
     
     func testAddingDecimalSeparator() {
         var text = "14349"
-        text.addDecimalSeparator()
+        text.updateDecimalSeparator(decimalDigits: 2)
         XCTAssertEqual(text, "143.49", "Text format should be 143.49")
         
         text = "349"
-        text.addDecimalSeparator()
-        XCTAssertEqual(text, "3.49", "Text format should be 3.49")
+        text.updateDecimalSeparator(decimalDigits: 1)
+        XCTAssertEqual(text, "34.9", "Text format should be 34.9")
         
         text = "99"
-        text.addDecimalSeparator()
-        XCTAssertEqual(text, ".99", "Text format should be .99")
+        text.updateDecimalSeparator(decimalDigits: 0)
+        XCTAssertEqual(text, "99", "Text format should be 99")
         
         text = "9"
-        text.addDecimalSeparator()
+        text.updateDecimalSeparator(decimalDigits: 2)
         XCTAssertEqual(text, "9", "When there aren't enough characters the text should stay the same")
+        
+        text = "9"
+        text.updateDecimalSeparator(decimalDigits: 1)
+        XCTAssertEqual(text, ".9", "When there aren't enough characters the text should stay the same")
     }
     
     func testRepresentsZero() {
         var currencyValue = "R$ 34.00"
         
-        XCTAssertFalse(currencyValue.isZero, "value \(currencyValue) should not represent zero")
+        XCTAssertFalse(currencyValue.representsZero, "value \(currencyValue) should not represent zero")
         
         currencyValue = "00,34"
-        XCTAssertFalse(currencyValue.isZero, "value \(currencyValue) should not represent zero")
+        XCTAssertFalse(currencyValue.representsZero, "value \(currencyValue) should not represent zero")
         
         currencyValue = "0.000,00"
-        XCTAssertTrue(currencyValue.isZero, "value \(currencyValue) should represent zero")
+        XCTAssertTrue(currencyValue.representsZero, "value \(currencyValue) should represent zero")
     }
     
     func testHasNumbers() {

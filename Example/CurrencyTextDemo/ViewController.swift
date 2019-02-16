@@ -22,11 +22,16 @@ class ViewController: UIViewController {
     }
     
     private func setupTextFieldWithCurrencyDelegate() {
-
-        textFieldDelegate = CurrencyUITextFieldDelegate()
-        textFieldDelegate.maxIntegers = 4
-        textFieldDelegate.hasAutoclear = true
-        textFieldDelegate.numberFormatter.locale = Locale(identifier: "en_US")
+        let currencyFormatter = CurrencyFormatter {
+            $0.maxValue = 1000000
+            $0.minValue = 3
+            $0.currency = .euro
+            $0.locale = CurrencyLocale.frenchFrance
+            $0.hasDecimals = false
+        }
+        
+        textFieldDelegate = CurrencyUITextFieldDelegate(formatter: currencyFormatter)
+        textFieldDelegate.clearsWhenValueIsZero = true
         
         textField.delegate = textFieldDelegate
         textField.keyboardType = .numberPad

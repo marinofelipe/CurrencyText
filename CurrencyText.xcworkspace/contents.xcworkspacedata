@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/marinofelipe/Documents/Programming/Mobile/iOS/Pods/UICurrencyTextField/Example/CurrencyText.xcodeproj">
+      location = "group:Example/CurrencyText.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Example/Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Example/CurrencyText.xcodeproj">
    </FileRef>
 </Workspace>
