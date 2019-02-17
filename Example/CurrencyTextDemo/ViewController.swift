@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     private func setupTextFieldWithCurrencyDelegate() {
         let currencyFormatter = CurrencyFormatter {
             $0.maxValue = 1000000
-            $0.minValue = 3
+            $0.minValue = -1000000
             $0.currency = .euro
             $0.locale = CurrencyLocale.frenchFrance
             $0.hasDecimals = false
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         textFieldDelegate.clearsWhenValueIsZero = true
         
         textField.delegate = textFieldDelegate
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .numbersAndPunctuation
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

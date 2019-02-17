@@ -106,6 +106,40 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
     }
 
     // MARK: input/paste
+    
+    func testAddingNegativeSymbol() {
+        // testing with numeric pad
+        delegate.textField(textField, shouldChangeCharactersIn: NSRange(location: textField.textLength, length: 0), replacementString: .negativeSymbol)
+        
+        XCTAssertEqual(textField.text, "", "after first input the text should be correctly formated")
+        
+        // testing with numbersAndPunctuation pad
+        textField.keyboardType = .numbersAndPunctuation
+        delegate.textField(textField, shouldChangeCharactersIn: NSRange(location: textField.textLength, length: 0), replacementString: .negativeSymbol)
+        XCTAssertEqual(textField.text, .negativeSymbol, "after first input the text should be correctly formated")
+        
+        delegate.textField(textField, shouldChangeCharactersIn: NSRange(location: textField.textLength, length: 0), replacementString: "3451")
+        XCTAssertEqual(textField.text, .negativeSymbol + formatter.currencySymbol + "34.51")
+        
+        //delete negative symbol
+        textField.sendDeleteKeyboardAction(at: 0)
+        XCTAssertEqual(textField.text, formatter.currencySymbol + "34.51")
+        
+        //try to add negative symbol to non negative value
+        delegate.textField(textField, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: .negativeSymbol)
+        XCTAssertEqual(textField.text, .negativeSymbol + formatter.currencySymbol + "34.51")
+        
+        // add negative symbol with range selected - should be added when range contains first index
+        textField.sendDeleteKeyboardAction(at: 0)
+        delegate.textField(textField, shouldChangeCharactersIn: NSRange(location: 0, length: 3), replacementString: .negativeSymbol)
+        XCTAssertEqual(textField.text, .negativeSymbol + formatter.currencySymbol + "34.51")
+        
+        // add negative symbol with range selected - should not be added when range does contains first index
+        textField.sendDeleteKeyboardAction(at: 0)
+        delegate.textField(textField, shouldChangeCharactersIn: NSRange(location: 1, length: 2), replacementString: .negativeSymbol)
+        XCTAssertEqual(textField.text, formatter.currencySymbol + "34.51")
+    }
+    
     func testFormatAfterFirstNumber() {
         delegate.textField(textField, shouldChangeCharactersIn: NSRange(location: textField.textLength, length: 0), replacementString: "1")
 

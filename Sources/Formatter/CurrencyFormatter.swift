@@ -278,7 +278,12 @@ extension CurrencyFormatter {
     /// - Returns: updated formatted string
     public func updated(formattedString string: String) -> String? {
         var updatedString = string.numeralFormat()
+        
+        let isNegative: Bool = string.contains(String.negativeSymbol)
+        updatedString = isNegative ? .negativeSymbol + updatedString : updatedString
+        
         updatedString.updateDecimalSeparator(decimalDigits: decimalDigits)
+        
         let value = getAdjustedForDefinedInterval(value: double(from: updatedString))
         return self.string(from: value)
     }

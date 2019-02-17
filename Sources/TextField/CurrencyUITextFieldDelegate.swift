@@ -38,7 +38,10 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
             updateSelectedTextRange(in: textField, previousOffsetFromEnd: previousSelectedTextRangeOffsetFromEnd)
             return false
         }
-        guard string.hasNumbers else { return false }
+        guard string.hasNumbers else {
+            addNegativeSymbolIfNeeded(in: textField, at: range, replacementString: string)
+            return false
+        }
         
         setFormattedText(in: textField, inputString: string, range: range)
         updateSelectedTextRange(in: textField, previousOffsetFromEnd: previousSelectedTextRangeOffsetFromEnd)
@@ -57,6 +60,30 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
 
 extension CurrencyUITextFieldDelegate {
     
+    /// Verifies if user inputed a negative symbol at the first lowest
+    /// bound of the text field and add it.
+    ///
+    /// - Parameters:
+    ///   - textField: text field that user interacted with
+    ///   - range: user input range
+    ///   - string: user input string
+    private func addNegativeSymbolIfNeeded(in textField: UITextField, at range: NSRange, replacementString string: String) {
+        guard textField.keyboardType == .numbersAndPunctuation else { return }
+        
+        if string == .negativeSymbol && textField.text?.isEmpty == true {
+            textField.text = .negativeSymbol
+        } else if range.lowerBound == 0 && string == .negativeSymbol &&
+            textField.text?.contains(String.negativeSymbol) == false {
+            
+            textField.text = .negativeSymbol + (textField.text ?? "")
+        }
+    }
+    
+    /// Correctly delete characters when user taps remove key.
+    ///
+    /// - Parameters:
+    ///   - textField: text field that user interacted with
+    ///   - range: range to be removed
     private func handleDeletion(in textField: UITextField, at range: NSRange) {
         if var text = textField.text {
             if let textRange = Range(range, in: text) {
@@ -69,6 +96,11 @@ extension CurrencyUITextFieldDelegate {
         }
     }
     
+    /// Update selected text range after changing it's text.
+    ///
+    /// - Parameters:
+    ///   - textField: text field that user interacted with
+    ///   - previousOffsetFromEnd: offset from end before string has changed
     private func updateSelectedTextRange(in textField: UITextField, previousOffsetFromEnd: Int) {
         var offset = previousOffsetFromEnd
         if let text = textField.text, text.isEmpty {
@@ -77,6 +109,12 @@ extension CurrencyUITextFieldDelegate {
         textField.updateSelectedTextRange(offsetFromEnd: offset)
     }
     
+    /// Formats text field's text with new input string and changed range
+    ///
+    /// - Parameters:
+    ///   - textField: text field that user interacted with
+    ///   - inputString: typed string
+    ///   - range: range where the string should be added
     private func setFormattedText(in textField: UITextField, inputString: String, range: NSRange) {
         var updatedText = ""
         

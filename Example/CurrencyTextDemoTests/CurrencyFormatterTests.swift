@@ -90,6 +90,13 @@ class CurrencyFormatterTests: XCTestCase {
         
         formattedString = formatter.string(from: 1)
         XCTAssertEqual(formattedString, "€10.00")
+        
+        formatter.minValue = -351
+        formattedString = formatter.string(from: -24)
+        XCTAssertEqual(formattedString, "-€24.00")
+        
+        formattedString = formatter.string(from: -400)
+        XCTAssertEqual(formattedString, "-€351.00")
     }
     
     func testFormatting() {

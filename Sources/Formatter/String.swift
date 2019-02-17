@@ -47,3 +47,7 @@ extension String: CurrencyString {
         return replacingOccurrences(of:"[^0-9]", with: "", options: .regularExpression)
     }
 }
+
+extension String {
+    static let negativeSymbol = "-"
+}
