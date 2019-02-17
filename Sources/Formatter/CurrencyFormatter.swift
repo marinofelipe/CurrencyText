@@ -12,7 +12,7 @@ public protocol CurrencyFormatterProtocol {
     var maxValue: Double? { get set }
     var minValue: Double? { get set }
     var initialText: String { get }
-    var currencySymbol: String { get }
+    var currencySymbol: String { get set }
     
     func string(from double: Double?) -> String?
     func unformatted(string: String) -> String?
@@ -41,8 +41,23 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
         get { return Currency(rawValue: numberFormatter.currencyCode) ?? .dollar }
     }
     
-    /// Returns the currency symbol
+    /// Define if currency symbol should be presented or not.
+    /// Note: when set to false the current currency symbol is removed
+    public var showCurrencySymbol: Bool = true {
+        didSet {
+            numberFormatter.currencySymbol = showCurrencySymbol ? numberFormatter.currencySymbol : ""
+        }
+    }
+    
+    /// The currency's symbol.
+    /// Can be used to read or set a custom symbol.
+    /// Note: showCurrencySymbol must be set to true for
+    /// the currencySymbol to be correctly changed.
     public var currencySymbol: String {
+        set {
+            guard showCurrencySymbol else { return }
+            numberFormatter.currencySymbol = newValue
+        }
         get { return numberFormatter.currencySymbol }
     }
     

@@ -28,6 +28,7 @@ class ViewController: UIViewController {
             $0.currency = .euro
             $0.locale = CurrencyLocale.frenchFrance
             $0.hasDecimals = false
+            $0.currencySymbol = "💶"
         }
         
         textFieldDelegate = CurrencyUITextFieldDelegate(formatter: currencyFormatter)

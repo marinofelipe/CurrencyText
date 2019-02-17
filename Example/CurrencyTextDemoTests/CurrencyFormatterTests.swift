@@ -57,6 +57,16 @@ class CurrencyFormatterTests: XCTestCase {
         
         formatter.hasGroupingSeparator = false
         XCTAssertEqual(formatter.numberFormatter.usesGroupingSeparator, false)
+        
+        formatter.currencySymbol = "%"
+        formatter.showCurrencySymbol = false
+        XCTAssertEqual(formatter.showCurrencySymbol, false)
+        XCTAssertEqual(formatter.numberFormatter.currencySymbol, "")
+        
+        formatter.showCurrencySymbol = true
+        formatter.currencySymbol = "%"
+        XCTAssertEqual(formatter.showCurrencySymbol, true)
+        XCTAssertEqual(formatter.numberFormatter.currencySymbol, "%")
     }
     
     func testMinAndMaxValues() {
