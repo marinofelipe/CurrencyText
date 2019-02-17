@@ -130,7 +130,7 @@ let formatter = CurrencyFormatter {
   $0.currencySymbol = "💶"
 }
 
-let formattedString = formatter.string(from: 100000000) //💶 99;99;99
+let formattedString = formatter.string(from: 100000000) //💶99;99;99
 ```
 
 <a name="delegate"/>
@@ -164,9 +164,8 @@ The following properties are available:
 |-------------------------------|---------------------------------------|--------------------------------------------|
 | locale                        | `LocaleConvertible`                   | Locale of the currency                     |
 | currency                      | `Currency`                            | Currency used to format                    |                                                                     
-| currencySymbol                | `String`                              | formatter currency symbol      |
-
-| showCurrencySymbol            | `Bool`                                | Show currency symbol          |                                                                       
+| currencySymbol                | `String`                              | String shown as currency symbol            |
+| showCurrencySymbol            | `Bool`                                | Show/hide currency symbol                  |                                                                       
 | minValue                      | `Double?`                             | The lowest number allowed as input         |                                                            
 | maxValue                      | `Double?`                             | The highest number allowed as input        |
 | decimalDigits                 | `Int`                                 | The number of decimal digits shown         |                
