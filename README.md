@@ -159,7 +159,7 @@ Just by setting a currency text field delegate object to your text field, with g
 <a name="negative"/>
 
 ### Allowing users to input `negative values`
-It's possible to allow users to input negative values. For it just set the keyboardType to .numbersAndPunctuation so whenever users try to add the negative symbol it will be correctly presented and handled.
+If you want your users to be able to input negative values just set textField's `keyboardType` to `.numbersAndPunctuation`, so whenever users tap the negative symbol it will be correctly presented and handled.
 
 ```Swift
 textField.keyboardType = .numbersAndPunctuation
