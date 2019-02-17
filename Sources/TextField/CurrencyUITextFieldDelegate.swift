@@ -68,12 +68,14 @@ extension CurrencyUITextFieldDelegate {
     ///   - range: user input range
     ///   - string: user input string
     private func addNegativeSymbolIfNeeded(in textField: UITextField, at range: NSRange, replacementString string: String) {
-        if textField.keyboardType == .numbersAndPunctuation {
-            if string == "-" && textField.text?.isEmpty == true {
-                textField.text = "-"
-            } else if range.lowerBound == 0 && string == "-" {
-                textField.text = "-" + (textField.text ?? "")
-            }
+        guard textField.keyboardType == .numbersAndPunctuation else { return }
+        
+        if string == .negativeSymbol && textField.text?.isEmpty == true {
+            textField.text = .negativeSymbol
+        } else if range.lowerBound == 0 && string == .negativeSymbol &&
+            textField.text?.contains(String.negativeSymbol) == false {
+            
+            textField.text = .negativeSymbol + (textField.text ?? "")
         }
     }
     

@@ -277,10 +277,13 @@ extension CurrencyFormatter {
     /// - Parameter string: formatted string
     /// - Returns: updated formatted string
     public func updated(formattedString string: String) -> String? {
-        let isNegative: Bool = string.contains("-")
         var updatedString = string.numeralFormat()
-        updatedString = isNegative ? "-" + updatedString : updatedString
+        
+        let isNegative: Bool = string.contains(String.negativeSymbol)
+        updatedString = isNegative ? .negativeSymbol + updatedString : updatedString
+        
         updatedString.updateDecimalSeparator(decimalDigits: decimalDigits)
+        
         let value = getAdjustedForDefinedInterval(value: double(from: updatedString))
         return self.string(from: value)
     }
