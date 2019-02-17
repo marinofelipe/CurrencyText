@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/marinofelipe/CurrencyText.svg?branch=master)](https://travis-ci.org/marinofelipe/CurrencyText)
 [![Coverage Status](https://coveralls.io/repos/github/marinofelipe/CurrencyText/badge.svg?branch=master)](https://coveralls.io/github/marinofelipe/CurrencyText?branch=master)
 <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat" alt="Swift" /></a>
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v2.0.1-blue.svg)](https://cocoapods.org/pods/CurrencyText)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v2.0.2-blue.svg)](https://cocoapods.org/pods/CurrencyText)
 [![Platform](https://img.shields.io/cocoapods/p/CurrencyText.svg?style=flat)]()
 [![Twitter](https://img.shields.io/badge/twitter-@_marinofelipe-blue.svg?style=flat)](https://twitter.com/_marinofelipe)
 
@@ -30,6 +30,7 @@ If you need to present currency text or allow users to input currency data, Curr
   - [Advanced setup](#advancedsetup)
 - [The `CurrencyTextFieldDelegate`](#delegate)
   - [Setting your text field to format the inputs](#setting)
+  - [Allowing users to input `negative values`](#negative)
 - [All properties of `CurrencyFormatter`](#properties)
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -153,7 +154,19 @@ textFieldDelegate.clearsWhenValueIsZero = true
 textField.delegate = textFieldDelegate
 ```
 
-Just by setting a currency text field delegate object to your text field, with given formatter behaviour, the user inputs are going to be formatter as expected.
+Just by setting a currency text field delegate object to your text field, with given formatter behaviour, the user inputs are going to be formatted as expected.
+
+<a name="negative"/>
+
+### Allowing users to input `negative values`
+It's possible to allow users to input negative values. For it just set the keyboardType to .numbersAndPunctuation so whenever users try to add the negative symbol it will be correctly presented and handled.
+
+```Swift
+textField.keyboardType = .numbersAndPunctuation
+
+// users inputs "-3456"
+// -R$ 34.56
+```
 
 <a name="properties"/>
 
@@ -208,7 +221,7 @@ $ sudo gem install cocoapods
 
 To integrate CurrencyText into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
-**Tested with `pod --version`: `2.0.1`**
+**Tested with `pod --version`: `2.0.2`**
 
 ```ruby
 # Podfile
@@ -240,7 +253,9 @@ _Carthage support is comming soon. If you want to help, please contribute :smile
 Contributions and feedbacks are always welcome. Please feel free to fork, follow, open issues and pull requests. The issues, milestones, and what we are currently working on can be seen in the main [Project](https://github.com/marinofelipe/CurrencyText/projects/1).
 
 ## Special Thanks
-Some readme details, "CurrencyLocale" enum and the init with handler callback were inspired by [@malcommac](https://github.com/malcommac) and his awesome work with SwiftRichString and SwfitDate.
+To [@malcommac](https://github.com/malcommac) for his awesome work with SwiftRichString and SwfitDate, that inspired some readme details, "CurrencyLocale" enum and the init with handler callback.
+Also to [myanalysis](https://github.com/myanalysis) for contributing so much by finding issues and giving nice suggestions.
+
 
 ## Copyright
 CurrencyText is released under the MIT license. [See LICENSE](https://github.com/marinofelipe/CurrencyText/blob/master/LICENSE) for details.
