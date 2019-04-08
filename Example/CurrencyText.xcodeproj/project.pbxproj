@@ -270,7 +270,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CurrencyText/CurrencyText.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -281,7 +281,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		65905C8D491C77806121AF87 /* [CP] Check Pods Manifest.lock */ = {
