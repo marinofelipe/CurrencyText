@@ -113,4 +113,26 @@ class CurrencyFormatterTests: XCTestCase {
         let doubleValue = formatter.double(from: "30000054")
         XCTAssertEqual(doubleValue, 30000054.00)
     }
+    
+    func testDoubleFromStringForDifferentFormatters() {
+        formatter.locale = CurrencyLocale.portugueseBrazil
+        formatter.currency = .euro
+        formatter.hasDecimals = true
+        
+        var doubleValue = formatter.double(from: "00.02")
+        XCTAssertEqual(doubleValue, 0.02)
+        
+        formatter.locale = CurrencyLocale.dutchBelgium
+        formatter.currency = .dollar
+        formatter.hasDecimals = false
+        
+        doubleValue = formatter.double(from: "00.02")
+        XCTAssertEqual(doubleValue, 0.02)
+        
+        formatter.locale = CurrencyLocale.zarma
+        formatter.hasDecimals = false
+        
+        doubleValue = formatter.double(from: "100.12")
+        XCTAssertEqual(doubleValue, 100.12)
+    }
 }
