@@ -143,8 +143,8 @@
 				D54A412121D582C100281AD2 /* UITextFieldTests.swift */,
 				D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */,
 				D54A412521D73FA400281AD2 /* UITextField.swift */,
-				D54170F0209023D8008995D7 /* Info.plist */,
 				D56D7C232211D4830032F684 /* CurrencyFormatterTests.swift */,
+				D54170F0209023D8008995D7 /* Info.plist */,
 			);
 			path = CurrencyTextDemoTests;
 			sourceTree = "<group>";
@@ -270,7 +270,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CurrencyText/CurrencyText.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -281,7 +281,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		65905C8D491C77806121AF87 /* [CP] Check Pods Manifest.lock */ = {
