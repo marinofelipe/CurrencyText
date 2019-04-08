@@ -256,7 +256,7 @@ extension CurrencyFormatter {
     /// - Parameter string: string that describes the numerical value.
     /// - Returns: the value as a Double.
     public func double(from string: String) -> Double? {
-        return NumberFormatter().number(from: string)?.doubleValue
+        return Double(string)
     }
     
     /// Receives a currency formatted string and returns its
