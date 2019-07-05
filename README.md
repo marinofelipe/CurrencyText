@@ -256,7 +256,6 @@ Contributions and feedbacks are always welcome. Please feel free to fork, follow
 To [@malcommac](https://github.com/malcommac) for his awesome work with SwiftRichString and SwfitDate, that inspired some readme details, "CurrencyLocale" enum and the init with handler callback.
 Also to [myanalysis](https://github.com/myanalysis) for contributing so much by finding issues and giving nice suggestions.
 
-
 ## Copyright
 CurrencyText is released under the MIT license. [See LICENSE](https://github.com/marinofelipe/CurrencyText/blob/master/LICENSE) for details.
 
