@@ -7,7 +7,7 @@
 
 public extension NumberFormatter {
     
-    public func string(from doubleValue: Double?) -> String? {
+    func string(from doubleValue: Double?) -> String? {
         if let doubleValue = doubleValue {
             return string(from: NSNumber(value: doubleValue))
         }
