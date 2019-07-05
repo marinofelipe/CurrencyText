@@ -9,13 +9,13 @@ import UIKit
 
 public extension UITextField {
     
-    public func updateSelectedTextRange(offsetFromEnd: Int) {
+    func updateSelectedTextRange(offsetFromEnd: Int) {
         if let updatedCursorPosition = position(from: endOfDocument, offset: offsetFromEnd) {
             selectedTextRange = textRange(from: updatedCursorPosition, to: updatedCursorPosition)
         }
     }
     
-    public var selectedTextRangeOffsetFromEnd: Int {
+    var selectedTextRangeOffsetFromEnd: Int {
         return offset(from: endOfDocument, to: selectedTextRange?.end ?? endOfDocument)
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -214,10 +214,11 @@
 				TargetAttributes = {
 					D54170D5209023D5008995D7 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1020;
 					};
 					D54170E9209023D8008995D7 = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1020;
 						TestTargetID = D54170D5209023D5008995D7;
 					};
 				};
@@ -268,16 +269,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CurrencyText/CurrencyText.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CurrencyText.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -506,7 +502,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.CurrencyTextDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -526,7 +522,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.CurrencyTextDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -548,7 +544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.CurrencyTextDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CurrencyTextDemo.app/CurrencyTextDemo";
 			};
@@ -570,7 +566,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.CurrencyTextDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CurrencyTextDemo.app/CurrencyTextDemo";
 			};
