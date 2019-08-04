@@ -5,6 +5,8 @@
 //  Created by Felipe Lefèvre Marino on 1/27/19.
 //
 
+import Foundation
+
 public protocol CurrencyFormatterProtocol {
     var numberFormatter: NumberFormatter! { get }
     var maxDigitsCount: Int { get }

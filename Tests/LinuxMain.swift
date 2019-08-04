@@ -1,7 +1,4 @@
 import XCTest
+import Tests
 
-import CurrencyTextTests
-
-var tests = [XCTestCaseEntry]()
-tests += CurrencyTextTests.allTests()
-XCTMain(tests)
+XCTMain(XCTest.allTests)

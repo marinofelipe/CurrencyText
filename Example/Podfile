@@ -1,12 +1,13 @@
 platform :ios, '9.0'
+project 'Example'
 workspace '../CurrencyText'
 
-target 'CurrencyTextDemo' do
+target 'Example' do
   use_frameworks!
 
   pod 'CurrencyText', :path => '../'  
 
-  target 'CurrencyTextDemoTests' do
+  target 'ExampleTests' do
     inherit! :search_paths
   end
 

@@ -7,52 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51700CED9DF334B12B8EDD29 /* Pods_CurrencyTextDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355BAB4FA339F52EE381E913 /* Pods_CurrencyTextDemo.framework */; };
-		BA6327180A7CBA2B24AA7299 /* Pods_CurrencyTextDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7046DF4A92C1C0DE56DCA1EE /* Pods_CurrencyTextDemoTests.framework */; };
+		82D32F3F4B44C5E99F63EB5D /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A219D66B03AC142BAF8DCB85 /* Pods_Example.framework */; };
 		D54170DA209023D5008995D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54170D9209023D5008995D7 /* AppDelegate.swift */; };
 		D54170DC209023D5008995D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54170DB209023D5008995D7 /* ViewController.swift */; };
 		D54170DF209023D5008995D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54170DD209023D5008995D7 /* Main.storyboard */; };
 		D54170E1209023D7008995D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54170E0209023D7008995D7 /* Assets.xcassets */; };
 		D54170E4209023D7008995D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54170E2209023D7008995D7 /* LaunchScreen.storyboard */; };
-		D541710920902501008995D7 /* CurrencyTextFieldDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541710720902501008995D7 /* CurrencyTextFieldDelegateTests.swift */; };
-		D541710A20902501008995D7 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541710820902501008995D7 /* StringTests.swift */; };
-		D54A412221D582C100281AD2 /* UITextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A412121D582C100281AD2 /* UITextFieldTests.swift */; };
-		D54A412421D582CE00281AD2 /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */; };
-		D54A412621D73FA500281AD2 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A412521D73FA400281AD2 /* UITextField.swift */; };
-		D56D7C242211D4830032F684 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D7C232211D4830032F684 /* CurrencyFormatterTests.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		D54170EB209023D8008995D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D54170CE209023D5008995D7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D54170D5209023D5008995D7;
-			remoteInfo = UICurrencyTextFieldDemo;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		0627C30856FCF3556609F3DD /* Pods_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E53B0BB8040DD5359A1938 /* Pods-CurrencyTextDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyTextDemo.release.xcconfig"; path = "Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo.release.xcconfig"; sourceTree = "<group>"; };
 		355BAB4FA339F52EE381E913 /* Pods_CurrencyTextDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CurrencyTextDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4379DEB9399AD965E35EBE7D /* Pods-CurrencyTextDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyTextDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyTextDemoTests/Pods-CurrencyTextDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7046DF4A92C1C0DE56DCA1EE /* Pods_CurrencyTextDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CurrencyTextDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A219D66B03AC142BAF8DCB85 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53EF90022C2BAF6101C7512 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		A5FB000AD1B2B910E7FF57A9 /* Pods-CurrencyTextDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyTextDemoTests.release.xcconfig"; path = "Target Support Files/Pods-CurrencyTextDemoTests/Pods-CurrencyTextDemoTests.release.xcconfig"; sourceTree = "<group>"; };
-		D54170D6209023D5008995D7 /* CurrencyTextDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyTextDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEAD494EABDFA44962B0BD80 /* Pods-ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-ExampleTests/Pods-ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B255C988E2023432BAD8C913 /* Pods-ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTests.release.xcconfig"; path = "Target Support Files/Pods-ExampleTests/Pods-ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		BB7471FB1939633BFA51A854 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		D54170D6209023D5008995D7 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54170D9209023D5008995D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D54170DB209023D5008995D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D54170DE209023D5008995D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D54170E0209023D7008995D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D54170E3209023D7008995D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D54170E5209023D7008995D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D54170EA209023D8008995D7 /* CurrencyTextDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyTextDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D54170F0209023D8008995D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D541710720902501008995D7 /* CurrencyTextFieldDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyTextFieldDelegateTests.swift; sourceTree = "<group>"; };
-		D541710820902501008995D7 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
-		D54A412121D582C100281AD2 /* UITextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldTests.swift; sourceTree = "<group>"; };
-		D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
-		D54A412521D73FA400281AD2 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
-		D56D7C232211D4830032F684 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		FAACD1F37769839327F70002 /* Pods-CurrencyTextDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyTextDemo.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,15 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51700CED9DF334B12B8EDD29 /* Pods_CurrencyTextDemo.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D54170E7209023D8008995D7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BA6327180A7CBA2B24AA7299 /* Pods_CurrencyTextDemoTests.framework in Frameworks */,
+				82D32F3F4B44C5E99F63EB5D /* Pods_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,16 +55,18 @@
 				15E53B0BB8040DD5359A1938 /* Pods-CurrencyTextDemo.release.xcconfig */,
 				4379DEB9399AD965E35EBE7D /* Pods-CurrencyTextDemoTests.debug.xcconfig */,
 				A5FB000AD1B2B910E7FF57A9 /* Pods-CurrencyTextDemoTests.release.xcconfig */,
+				BB7471FB1939633BFA51A854 /* Pods-Example.debug.xcconfig */,
+				A53EF90022C2BAF6101C7512 /* Pods-Example.release.xcconfig */,
+				AEAD494EABDFA44962B0BD80 /* Pods-ExampleTests.debug.xcconfig */,
+				B255C988E2023432BAD8C913 /* Pods-ExampleTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		D54170CD209023D5008995D7 = {
 			isa = PBXGroup;
 			children = (
-				D54170D8209023D5008995D7 /* CurrencyTextDemo */,
-				D54170ED209023D8008995D7 /* CurrencyTextDemoTests */,
+				D54170D8209023D5008995D7 /* Example */,
 				D54170D7209023D5008995D7 /* Products */,
 				CFE5CB0773053BF416CDB872 /* Pods */,
 				F9CF738495E8A5833627DF9E /* Frameworks */,
@@ -102,13 +76,12 @@
 		D54170D7209023D5008995D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D54170D6209023D5008995D7 /* CurrencyTextDemo.app */,
-				D54170EA209023D8008995D7 /* CurrencyTextDemoTests.xctest */,
+				D54170D6209023D5008995D7 /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D54170D8209023D5008995D7 /* CurrencyTextDemo */ = {
+		D54170D8209023D5008995D7 /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				D54170D9209023D5008995D7 /* AppDelegate.swift */,
@@ -118,28 +91,15 @@
 				D54170E2209023D7008995D7 /* LaunchScreen.storyboard */,
 				D54170E5209023D7008995D7 /* Info.plist */,
 			);
-			path = CurrencyTextDemo;
-			sourceTree = "<group>";
-		};
-		D54170ED209023D8008995D7 /* CurrencyTextDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				D541710820902501008995D7 /* StringTests.swift */,
-				D541710720902501008995D7 /* CurrencyTextFieldDelegateTests.swift */,
-				D54A412121D582C100281AD2 /* UITextFieldTests.swift */,
-				D54A412321D582CE00281AD2 /* NumberFormatterTests.swift */,
-				D54A412521D73FA400281AD2 /* UITextField.swift */,
-				D56D7C232211D4830032F684 /* CurrencyFormatterTests.swift */,
-				D54170F0209023D8008995D7 /* Info.plist */,
-			);
-			path = CurrencyTextDemoTests;
+			path = Example;
 			sourceTree = "<group>";
 		};
 		F9CF738495E8A5833627DF9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				355BAB4FA339F52EE381E913 /* Pods_CurrencyTextDemo.framework */,
-				7046DF4A92C1C0DE56DCA1EE /* Pods_CurrencyTextDemoTests.framework */,
+				A219D66B03AC142BAF8DCB85 /* Pods_Example.framework */,
+				0627C30856FCF3556609F3DD /* Pods_ExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D54170D5209023D5008995D7 /* CurrencyTextDemo */ = {
+		D54170D5209023D5008995D7 /* Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D54170FE209023D8008995D7 /* Build configuration list for PBXNativeTarget "CurrencyTextDemo" */;
+			buildConfigurationList = D54170FE209023D8008995D7 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
 				4E13B8FD48218D97A21823F0 /* [CP] Check Pods Manifest.lock */,
 				D54170D2209023D5008995D7 /* Sources */,
@@ -161,29 +121,10 @@
 			);
 			dependencies = (
 			);
-			name = CurrencyTextDemo;
+			name = Example;
 			productName = UICurrencyTextFieldDemo;
-			productReference = D54170D6209023D5008995D7 /* CurrencyTextDemo.app */;
+			productReference = D54170D6209023D5008995D7 /* Example.app */;
 			productType = "com.apple.product-type.application";
-		};
-		D54170E9209023D8008995D7 /* CurrencyTextDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D5417101209023D8008995D7 /* Build configuration list for PBXNativeTarget "CurrencyTextDemoTests" */;
-			buildPhases = (
-				AA6066A9358F00A807AA3BB6 /* [CP] Check Pods Manifest.lock */,
-				D54170E6209023D8008995D7 /* Sources */,
-				D54170E7209023D8008995D7 /* Frameworks */,
-				D54170E8209023D8008995D7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D54170EC209023D8008995D7 /* PBXTargetDependency */,
-			);
-			name = CurrencyTextDemoTests;
-			productName = UICurrencyTextFieldDemoTests;
-			productReference = D54170EA209023D8008995D7 /* CurrencyTextDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -199,15 +140,10 @@
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 1020;
 					};
-					D54170E9209023D8008995D7 = {
-						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1020;
-						TestTargetID = D54170D5209023D5008995D7;
-					};
 				};
 			};
-			buildConfigurationList = D54170D1209023D5008995D7 /* Build configuration list for PBXProject "CurrencyText" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = D54170D1209023D5008995D7 /* Build configuration list for PBXProject "Example" */;
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -219,8 +155,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D54170D5209023D5008995D7 /* CurrencyTextDemo */,
-				D54170E9209023D8008995D7 /* CurrencyTextDemoTests */,
+				D54170D5209023D5008995D7 /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -233,13 +168,6 @@
 				D54170E4209023D7008995D7 /* LaunchScreen.storyboard in Resources */,
 				D54170E1209023D7008995D7 /* Assets.xcassets in Resources */,
 				D54170DF209023D5008995D7 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D54170E8209023D8008995D7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +189,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CurrencyTextDemo-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -274,37 +202,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CurrencyTextDemo/Pods-CurrencyTextDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AA6066A9358F00A807AA3BB6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CurrencyTextDemoTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -319,28 +225,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D54170E6209023D8008995D7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D541710A20902501008995D7 /* StringTests.swift in Sources */,
-				D54A412621D73FA500281AD2 /* UITextField.swift in Sources */,
-				D54A412421D582CE00281AD2 /* NumberFormatterTests.swift in Sources */,
-				D54A412221D582C100281AD2 /* UITextFieldTests.swift in Sources */,
-				D541710920902501008995D7 /* CurrencyTextFieldDelegateTests.swift in Sources */,
-				D56D7C242211D4830032F684 /* CurrencyFormatterTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D54170EC209023D8008995D7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D54170D5209023D5008995D7 /* CurrencyTextDemo */;
-			targetProxy = D54170EB209023D8008995D7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D54170DD209023D5008995D7 /* Main.storyboard */ = {
@@ -480,18 +365,18 @@
 		};
 		D54170FF209023D8008995D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAACD1F37769839327F70002 /* Pods-CurrencyTextDemo.debug.xcconfig */;
+			baseConfigurationReference = BB7471FB1939633BFA51A854 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X9MK4PBNUW;
-				INFOPLIST_FILE = CurrencyTextDemo/Info.plist;
+				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.CurrencyTextDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,73 +385,28 @@
 		};
 		D5417100209023D8008995D7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15E53B0BB8040DD5359A1938 /* Pods-CurrencyTextDemo.release.xcconfig */;
+			baseConfigurationReference = A53EF90022C2BAF6101C7512 /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X9MK4PBNUW;
-				INFOPLIST_FILE = CurrencyTextDemo/Info.plist;
+				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.CurrencyTextDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D5417102209023D8008995D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4379DEB9399AD965E35EBE7D /* Pods-CurrencyTextDemoTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X9MK4PBNUW;
-				INFOPLIST_FILE = CurrencyTextDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.CurrencyTextDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CurrencyTextDemo.app/CurrencyTextDemo";
-			};
-			name = Debug;
-		};
-		D5417103209023D8008995D7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5FB000AD1B2B910E7FF57A9 /* Pods-CurrencyTextDemoTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X9MK4PBNUW;
-				INFOPLIST_FILE = CurrencyTextDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.CurrencyTextDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CurrencyTextDemo.app/CurrencyTextDemo";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D54170D1209023D5008995D7 /* Build configuration list for PBXProject "CurrencyText" */ = {
+		D54170D1209023D5008995D7 /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D54170FC209023D8008995D7 /* Debug */,
@@ -575,20 +415,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D54170FE209023D8008995D7 /* Build configuration list for PBXNativeTarget "CurrencyTextDemo" */ = {
+		D54170FE209023D8008995D7 /* Build configuration list for PBXNativeTarget "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D54170FF209023D8008995D7 /* Debug */,
 				D5417100209023D8008995D7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D5417101209023D8008995D7 /* Build configuration list for PBXNativeTarget "CurrencyTextDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D5417102209023D8008995D7 /* Debug */,
-				D5417103209023D8008995D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

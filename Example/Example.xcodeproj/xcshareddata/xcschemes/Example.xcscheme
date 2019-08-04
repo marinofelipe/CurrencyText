@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D54170D5209023D5008995D7"
-               BuildableName = "CurrencyTextDemo.app"
-               BlueprintName = "CurrencyTextDemo"
-               ReferencedContainer = "container:CurrencyText.xcodeproj">
+               BuildableName = "Example.app"
+               BlueprintName = "Example"
+               ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D54170E9209023D8008995D7"
-               BuildableName = "CurrencyTextDemoTests.xctest"
-               BlueprintName = "CurrencyTextDemoTests"
-               ReferencedContainer = "container:CurrencyText.xcodeproj">
+               BuildableName = "ExampleTests.xctest"
+               BlueprintName = "ExampleTests"
+               ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D54170E9209023D8008995D7"
-               BuildableName = "CurrencyTextDemoTests.xctest"
-               BlueprintName = "CurrencyTextDemoTests"
-               ReferencedContainer = "container:CurrencyText.xcodeproj">
+               BuildableName = "ExampleTests.xctest"
+               BlueprintName = "ExampleTests"
+               ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D54170D5209023D5008995D7"
-            BuildableName = "CurrencyTextDemo.app"
-            BlueprintName = "CurrencyTextDemo"
-            ReferencedContainer = "container:CurrencyText.xcodeproj">
+            BuildableName = "Example.app"
+            BlueprintName = "Example"
+            ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D54170D5209023D5008995D7"
-            BuildableName = "CurrencyTextDemo.app"
-            BlueprintName = "CurrencyTextDemo"
-            ReferencedContainer = "container:CurrencyText.xcodeproj">
+            BuildableName = "Example.app"
+            BlueprintName = "Example"
+            ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -99,9 +99,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D54170D5209023D5008995D7"
-            BuildableName = "CurrencyTextDemo.app"
-            BlueprintName = "CurrencyTextDemo"
-            ReferencedContainer = "container:CurrencyText.xcodeproj">
+            BuildableName = "Example.app"
+            BlueprintName = "Example"
+            ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

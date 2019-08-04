@@ -1,0 +1,745 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"CurrencyText::CurrencyText::ProductTarget" /* CurrencyText */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_36 /* Build configuration list for PBXAggregateTarget "CurrencyText" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_39 /* PBXTargetDependency */,
+				OBJ_41 /* PBXTargetDependency */,
+			);
+			name = CurrencyText;
+			productName = CurrencyText;
+		};
+		"CurrencyText::CurrencyTextPackageTests::ProductTarget" /* CurrencyTextPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_50 /* Build configuration list for PBXAggregateTarget "CurrencyTextPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_53 /* PBXTargetDependency */,
+			);
+			name = CurrencyTextPackageTests;
+			productName = CurrencyTextPackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		ED8286ED22F65B7F00DD65A5 /* UITextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8286E722F65B7F00DD65A5 /* UITextFieldTests.swift */; };
+		ED8286EE22F65B7F00DD65A5 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8286E822F65B7F00DD65A5 /* UITextField.swift */; };
+		ED8286EF22F65B7F00DD65A5 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8286E922F65B7F00DD65A5 /* CurrencyFormatterTests.swift */; };
+		ED8286F022F65B7F00DD65A5 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8286EA22F65B7F00DD65A5 /* StringTests.swift */; };
+		ED8286F122F65B7F00DD65A5 /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8286EB22F65B7F00DD65A5 /* NumberFormatterTests.swift */; };
+		ED8286F222F65B7F00DD65A5 /* CurrencyTextFieldDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8286EC22F65B7F00DD65A5 /* CurrencyTextFieldDelegateTests.swift */; };
+		ED82870322F6650000DD65A5 /* XCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED82870222F6650000DD65A5 /* XCTest.swift */; };
+		OBJ_48 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_59 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Currency.swift */; };
+		OBJ_60 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* CurrencyFormatter.swift */; };
+		OBJ_61 /* CurrencyLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CurrencyLocale.swift */; };
+		OBJ_62 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* NumberFormatter.swift */; };
+		OBJ_63 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* String.swift */; };
+		OBJ_70 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* XCTestManifests.swift */; };
+		OBJ_72 /* TextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "CurrencyText::TextField::Product" /* TextField.framework */; };
+		OBJ_73 /* Formatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "CurrencyText::Formatter::Product" /* Formatter.framework */; };
+		OBJ_80 /* CurrencyUITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* CurrencyUITextFieldDelegate.swift */; };
+		OBJ_81 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* UITextField.swift */; };
+		OBJ_83 /* Formatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "CurrencyText::Formatter::Product" /* Formatter.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ED8286E122F65B4100DD65A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "CurrencyText::Formatter";
+			remoteInfo = Formatter;
+		};
+		ED8286E222F65B4200DD65A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "CurrencyText::TextField";
+			remoteInfo = TextField;
+		};
+		ED8286E322F65B4200DD65A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "CurrencyText::Formatter";
+			remoteInfo = Formatter;
+		};
+		ED8286E422F65B4200DD65A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "CurrencyText::Formatter";
+			remoteInfo = Formatter;
+		};
+		ED8286E522F65B4200DD65A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "CurrencyText::TextField";
+			remoteInfo = TextField;
+		};
+		ED8286E622F65B4200DD65A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "CurrencyText::Tests";
+			remoteInfo = Tests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		"CurrencyText::Formatter::Product" /* Formatter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Formatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"CurrencyText::Tests::Product" /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"CurrencyText::TextField::Product" /* TextField.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED8286E722F65B7F00DD65A5 /* UITextFieldTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldTests.swift; sourceTree = "<group>"; };
+		ED8286E822F65B7F00DD65A5 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		ED8286E922F65B7F00DD65A5 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
+		ED8286EA22F65B7F00DD65A5 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
+		ED8286EB22F65B7F00DD65A5 /* NumberFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
+		ED8286EC22F65B7F00DD65A5 /* CurrencyTextFieldDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyTextFieldDelegateTests.swift; sourceTree = "<group>"; };
+		ED8286F522F65C6200DD65A5 /* LinuxMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = Tests/LinuxMain.swift; sourceTree = "<group>"; };
+		ED82870222F6650000DD65A5 /* XCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTest.swift; sourceTree = "<group>"; };
+		OBJ_10 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
+		OBJ_11 /* CurrencyLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLocale.swift; sourceTree = "<group>"; };
+		OBJ_12 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		OBJ_13 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		OBJ_15 /* CurrencyUITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyUITextFieldDelegate.swift; sourceTree = "<group>"; };
+		OBJ_16 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		OBJ_21 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
+		OBJ_34 /* CurrencyText.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = CurrencyText.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_9 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_72 /* TextField.framework in Frameworks */,
+				OBJ_73 /* Formatter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_83 /* Formatter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED8286F722F662D000DD65A5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ED8286E822F65B7F00DD65A5 /* UITextField.swift */,
+				ED82870222F6650000DD65A5 /* XCTest.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		ED8286F822F662E100DD65A5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ED8286F522F65C6200DD65A5 /* LinuxMain.swift */,
+				OBJ_21 /* XCTestManifests.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		OBJ_14 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_15 /* CurrencyUITextFieldDelegate.swift */,
+				OBJ_16 /* UITextField.swift */,
+			);
+			name = TextField;
+			path = Sources/TextField;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_17 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				ED8286E922F65B7F00DD65A5 /* CurrencyFormatterTests.swift */,
+				ED8286EC22F65B7F00DD65A5 /* CurrencyTextFieldDelegateTests.swift */,
+				ED8286EB22F65B7F00DD65A5 /* NumberFormatterTests.swift */,
+				ED8286EA22F65B7F00DD65A5 /* StringTests.swift */,
+				ED8286E722F65B7F00DD65A5 /* UITextFieldTests.swift */,
+				ED8286F822F662E100DD65A5 /* Utils */,
+				ED8286F722F662D000DD65A5 /* Extensions */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"CurrencyText::Tests::Product" /* Tests.xctest */,
+				"CurrencyText::TextField::Product" /* TextField.framework */,
+				"CurrencyText::Formatter::Product" /* Formatter.framework */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_34 /* CurrencyText.podspec */,
+				OBJ_7 /* Sources */,
+				OBJ_17 /* Tests */,
+				OBJ_22 /* Products */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* Formatter */,
+				OBJ_14 /* TextField */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* Currency.swift */,
+				OBJ_10 /* CurrencyFormatter.swift */,
+				OBJ_11 /* CurrencyLocale.swift */,
+				OBJ_12 /* NumberFormatter.swift */,
+				OBJ_13 /* String.swift */,
+			);
+			name = Formatter;
+			path = Sources/Formatter;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"CurrencyText::Formatter" /* Formatter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_55 /* Build configuration list for PBXNativeTarget "Formatter" */;
+			buildPhases = (
+				OBJ_58 /* Sources */,
+				OBJ_64 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Formatter;
+			productName = Formatter;
+			productReference = "CurrencyText::Formatter::Product" /* Formatter.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"CurrencyText::SwiftPMPackageDescription" /* CurrencyTextPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_44 /* Build configuration list for PBXNativeTarget "CurrencyTextPackageDescription" */;
+			buildPhases = (
+				OBJ_47 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CurrencyTextPackageDescription;
+			productName = CurrencyTextPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"CurrencyText::Tests" /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_65 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				OBJ_68 /* Sources */,
+				OBJ_71 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_74 /* PBXTargetDependency */,
+				OBJ_75 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = "CurrencyText::Tests::Product" /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"CurrencyText::TextField" /* TextField */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_76 /* Build configuration list for PBXNativeTarget "TextField" */;
+			buildPhases = (
+				OBJ_79 /* Sources */,
+				OBJ_82 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_84 /* PBXTargetDependency */,
+			);
+			name = TextField;
+			productName = TextField;
+			productReference = "CurrencyText::TextField::Product" /* TextField.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 9999;
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "CurrencyText" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_22 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"CurrencyText::CurrencyText::ProductTarget" /* CurrencyText */,
+				"CurrencyText::SwiftPMPackageDescription" /* CurrencyTextPackageDescription */,
+				"CurrencyText::CurrencyTextPackageTests::ProductTarget" /* CurrencyTextPackageTests */,
+				"CurrencyText::Formatter" /* Formatter */,
+				"CurrencyText::TextField" /* TextField */,
+				"CurrencyText::Tests" /* Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_48 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_59 /* Currency.swift in Sources */,
+				OBJ_60 /* CurrencyFormatter.swift in Sources */,
+				OBJ_61 /* CurrencyLocale.swift in Sources */,
+				OBJ_62 /* NumberFormatter.swift in Sources */,
+				OBJ_63 /* String.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				ED8286F222F65B7F00DD65A5 /* CurrencyTextFieldDelegateTests.swift in Sources */,
+				ED8286ED22F65B7F00DD65A5 /* UITextFieldTests.swift in Sources */,
+				ED82870322F6650000DD65A5 /* XCTest.swift in Sources */,
+				ED8286EF22F65B7F00DD65A5 /* CurrencyFormatterTests.swift in Sources */,
+				ED8286F122F65B7F00DD65A5 /* NumberFormatterTests.swift in Sources */,
+				OBJ_70 /* XCTestManifests.swift in Sources */,
+				ED8286F022F65B7F00DD65A5 /* StringTests.swift in Sources */,
+				ED8286EE22F65B7F00DD65A5 /* UITextField.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_80 /* CurrencyUITextFieldDelegate.swift in Sources */,
+				OBJ_81 /* UITextField.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "CurrencyText::Formatter" /* Formatter */;
+			targetProxy = ED8286E422F65B4200DD65A5 /* PBXContainerItemProxy */;
+		};
+		OBJ_41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "CurrencyText::TextField" /* TextField */;
+			targetProxy = ED8286E522F65B4200DD65A5 /* PBXContainerItemProxy */;
+		};
+		OBJ_53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "CurrencyText::Tests" /* Tests */;
+			targetProxy = ED8286E622F65B4200DD65A5 /* PBXContainerItemProxy */;
+		};
+		OBJ_74 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "CurrencyText::TextField" /* TextField */;
+			targetProxy = ED8286E222F65B4200DD65A5 /* PBXContainerItemProxy */;
+		};
+		OBJ_75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "CurrencyText::Formatter" /* Formatter */;
+			targetProxy = ED8286E322F65B4200DD65A5 /* PBXContainerItemProxy */;
+		};
+		OBJ_84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "CurrencyText::Formatter" /* Formatter */;
+			targetProxy = ED8286E122F65B4100DD65A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = CurrencyText.xcodeproj/Formatter_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Formatter;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Formatter;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = CurrencyText.xcodeproj/Formatter_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Formatter;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Formatter;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = CurrencyText.xcodeproj/Tests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Tests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = CurrencyText.xcodeproj/Tests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Tests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = CurrencyText.xcodeproj/TextField_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = TextField;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = TextField;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = CurrencyText.xcodeproj/TextField_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = TextField;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = TextField;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_2 /* Build configuration list for PBXProject "CurrencyText" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_36 /* Build configuration list for PBXAggregateTarget "CurrencyText" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_37 /* Debug */,
+				OBJ_38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_44 /* Build configuration list for PBXNativeTarget "CurrencyTextPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_45 /* Debug */,
+				OBJ_46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_50 /* Build configuration list for PBXAggregateTarget "CurrencyTextPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_51 /* Debug */,
+				OBJ_52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_55 /* Build configuration list for PBXNativeTarget "Formatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_56 /* Debug */,
+				OBJ_57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_65 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_66 /* Debug */,
+				OBJ_67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_76 /* Build configuration list for PBXNativeTarget "TextField" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_77 /* Debug */,
+				OBJ_78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}

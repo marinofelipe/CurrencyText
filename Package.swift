@@ -14,14 +14,14 @@ let package = Package(
         .target(
             name: "Formatter",
             dependencies: [],
-		  path: "Sources/Formatter"),
+            path: "Sources/Formatter"),
         .target(
             name: "TextField",
             dependencies: ["Formatter"],
-		  path: "Sources/TextField"),
+            path: "Sources/TextField"),
         .testTarget(
             name: "Tests",
             dependencies: ["Formatter", "TextField"],
-		  path: "Tests"),
+            path: "Tests"),
     ]
 )

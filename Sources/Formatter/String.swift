@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CurrencyString {
+public protocol CurrencyString {
     var representsZero: Bool { get }
     var hasNumbers: Bool { get }
     var lastNumberOffsetFromEnd: Int? { get }
@@ -22,19 +22,19 @@ extension String: CurrencyString {
     // MARK: Properties
     
     /// Informs with the string represents the value of zero
-    var representsZero: Bool {
+    public var representsZero: Bool {
         return numeralFormat().replacingOccurrences(of: "0", with: "").count == 0
     }
     
     /// Returns if the string does have any character that represents numbers
-    var hasNumbers: Bool {
+    public var hasNumbers: Bool {
         return numeralFormat().count > 0
     }
 
     /// The offset from end index to the index _right after_ the last number in the String.
     /// e.g. For the String "123some", the last number position is 4, because from the _end index_ to the index of _3_
     /// there is an offset of 4, "e, m, o and s".
-    var lastNumberOffsetFromEnd: Int? {
+    public var lastNumberOffsetFromEnd: Int? {
         guard let indexOfLastNumber = lastIndex(where: { $0.isNumber }) else { return nil }
         let indexAfterLastNumber = index(after: indexOfLastNumber)
         return distance(from: endIndex, to: indexAfterLastNumber)
@@ -46,7 +46,7 @@ extension String: CurrencyString {
     /// the amount of decimal digits desired
     ///
     /// - Parameter decimalDigits: The amount of decimal digits of the currency formatted string
-    mutating func updateDecimalSeparator(decimalDigits: Int) {
+    public mutating func updateDecimalSeparator(decimalDigits: Int) {
         guard decimalDigits != 0 && count >= decimalDigits else { return }
         let decimalsRange = index(endIndex, offsetBy: -decimalDigits)..<endIndex
         
@@ -57,7 +57,7 @@ extension String: CurrencyString {
     /// The numeral format of a string - remove all non numerical ocurrences
     ///
     /// - Returns: itself without the non numerical characters ocurrences
-    func numeralFormat() -> String {
+    public func numeralFormat() -> String {
         return replacingOccurrences(of:"[^0-9]", with: "", options: .regularExpression)
     }
 }
@@ -65,5 +65,5 @@ extension String: CurrencyString {
 // MARK: - Static constants
 
 extension String {
-    static let negativeSymbol = "-"
+    public static let negativeSymbol = "-"
 }

@@ -1,6 +1,6 @@
 //
 //  CurrencyFormatterTests.swift
-//  CurrencyTextDemoTests
+//  ExampleTests
 //
 //  Created by Felipe Lefèvre Marino on 2/11/19.
 //  Copyright © 2019 Felipe Lefèvre Marino. All rights reserved.
