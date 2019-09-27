@@ -9,14 +9,17 @@
 import UIKit
 
 protocol CurrencyString {
-    var representsZero: Bool {get}
-    var hasNumbers: Bool {get}
+    var representsZero: Bool { get }
+    var hasNumbers: Bool { get }
+    var lastNumberOffsetFromEnd: Int? { get }
     func numeralFormat() -> String
     mutating func updateDecimalSeparator(decimalDigits: Int)
 }
 
 //Currency String Extension
 extension String: CurrencyString {
+
+    // MARK: Properties
     
     /// Informs with the string represents the value of zero
     var representsZero: Bool {
@@ -27,6 +30,17 @@ extension String: CurrencyString {
     var hasNumbers: Bool {
         return numeralFormat().count > 0
     }
+
+    /// The offset from end index to the index _right after_ the last number in the String.
+    /// e.g. For the String "123some", the last number position is 4, because from the _end index_ to the index of _3_
+    /// there is an offset of 4, "e, m, o and s".
+    var lastNumberOffsetFromEnd: Int? {
+        guard let indexOfLastNumber = lastIndex(where: { $0.isNumber }) else { return nil }
+        let indexAfterLastNumber = index(after: indexOfLastNumber)
+        return distance(from: endIndex, to: indexAfterLastNumber)
+    }
+
+    // MARK: Functions
     
     /// Updates a currency string decimal separator position based on
     /// the amount of decimal digits desired
@@ -47,6 +61,8 @@ extension String: CurrencyString {
         return replacingOccurrences(of:"[^0-9]", with: "", options: .regularExpression)
     }
 }
+
+// MARK: - Static constants
 
 extension String {
     static let negativeSymbol = "-"
