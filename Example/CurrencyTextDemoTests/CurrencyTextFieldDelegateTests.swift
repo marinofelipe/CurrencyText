@@ -214,15 +214,49 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
     }
 
     // MARK: Cursor
+
     func testSelectedTextRange() {
         sendTextFieldChanges(at: NSRange(location: textField.textLength, length: 0), inputString: "3")
 
-        XCTAssertEqual(textField.selectedTextRange, textField.textRange(from: textField.endOfDocument, to: textField.endOfDocument), "After first input selected range should be endOfDocument")
+        XCTAssertEqual(textField.selectedTextRange, textField.textRange(from: textField.endOfDocument,
+                                                                        to: textField.endOfDocument),
+                       "After first input selected range should be endOfDocument")
 
         textField.text = "3523623623"
-        textField.selectedTextRange = textField.textRange(from: textField.position(from: textField.endOfDocument, offset: -5)!, to: textField.position(from: textField.endOfDocument, offset: -5)!)
+        textField.selectedTextRange = textField.textRange(from: textField.position(from: textField.endOfDocument,
+                                                                                   offset: -5)!,
+                                                          to: textField.position(from: textField.endOfDocument,
+                                                                                 offset: -5)!)
 
         sendTextFieldChanges(at: NSRange(location: textField.textLength, length: 0), inputString: "3")
-        XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, -5, "Selected text range offset from end should not change after inputs")
+        XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, -5,
+                       "Selected text range offset from end should not change after inputs")
+    }
+
+    func testSelectedTextRangeWhenCurrencySymbolIsAtTheEnd() {
+        // Updates formatter to a currency with symbol at the end
+        formatter.locale = CurrencyLocale.french
+        formatter.currency = .euro
+
+        // Trigger text field with a new character as input
+        sendTextFieldChanges(at: NSRange(location: textField.textLength, length: 0), inputString: "3")
+
+        // Then
+        XCTAssertNotEqual(textField.selectedTextRange,
+                          textField.textRange(from: textField.endOfDocument,
+                                              to: textField.endOfDocument),
+                          "It has not the selected text range at the end")
+
+        // Manually update text field text, and its selected text range to the end
+        textField.text = "3523623623"
+        textField.selectedTextRange = textField.textRange(from: textField.endOfDocument,
+                                                          to: textField.endOfDocument)
+
+        // Trigger text field with a new character as input
+        sendTextFieldChanges(at: NSRange(location: textField.textLength, length: 0), inputString: "3")
+
+        // Then
+        XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, -2,
+                       "It has the selected text field range with an offset from the end that is less than zero, or in other words, set before the currency symbol.")
     }
 }
