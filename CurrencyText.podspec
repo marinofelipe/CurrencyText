@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CurrencyText"
-  s.version      = "2.0.4"
+  s.version      = "2.0.5"
   s.summary      = "Currency text formatter that fits your UITextField subclass."
 
   s.homepage     = "https://github.com/marinofelipe/CurrencyText"
