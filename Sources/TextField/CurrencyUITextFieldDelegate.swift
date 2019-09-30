@@ -103,9 +103,22 @@ extension CurrencyUITextFieldDelegate {
     ///   - previousOffsetFromEnd: offset from end before string has changed
     private func updateSelectedTextRange(in textField: UITextField, previousOffsetFromEnd: Int) {
         var offset = previousOffsetFromEnd
+
+        /// If text is empty the offset is set to zero, or end of the string.
         if let text = textField.text, text.isEmpty {
             offset = 0
         }
+
+        /// Adjust offset if needed. When the last number character offset from end is less than the current offset,
+        /// or in other words, is more distant to the end of the string, the offset is readjusted to it,
+        /// so the selected text range is correctly set to the last index with a number.
+        if let lastNumberOffsetFromEnd = textField.text?.lastNumberOffsetFromEnd,
+            case let shouldOffsetBeAdjusted = lastNumberOffsetFromEnd < offset,
+            shouldOffsetBeAdjusted {
+
+            offset = lastNumberOffsetFromEnd
+        }
+
         textField.updateSelectedTextRange(offsetFromEnd: offset)
     }
     

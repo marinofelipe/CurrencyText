@@ -66,4 +66,21 @@ class StringTests: XCTestCase {
         string = "sa12"
         XCTAssertTrue(string.hasNumbers)
     }
+
+    // MARK: - Test last number offset from end
+
+    func testWithoutNumbers() {
+        let string = "nonNumeralString"
+        XCTAssertNil(string.lastNumberOffsetFromEnd, "It has a nil lastNumberOffsetFromEnd")
+    }
+
+    func testWithNumberAsLastCharacter() {
+        let string = "number123"
+        XCTAssertEqual(string.lastNumberOffsetFromEnd, 0, "It has the correct lastNumberOffsetFromEnd")
+    }
+
+    func testWithNumberNotAtTheEnd() {
+        let string = "123number"
+        XCTAssertEqual(string.lastNumberOffsetFromEnd, -6, "It has the correct lastNumberOffsetFromEnd")
+    }
 }
