@@ -10,10 +10,14 @@ import XCTest
 @testable import CurrencyText
 
 class CurrencyTextFieldDelegateTests: XCTestCase {
+
+    // MARK: Properties
     
     var textField: UITextField!
     var delegate: CurrencyUITextFieldDelegate!
     var formatter: CurrencyFormatter!
+
+    // MARK: Lifecycle
     
     override func setUp() {
         super.setUp()
@@ -38,6 +42,8 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
         formatter = nil
         super.tearDown()
     }
+
+    // MARK: Tests
     
     func testInit() {
         XCTAssertNotNil(delegate.formatter, "formatter should not be nil")
@@ -46,7 +52,8 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
         XCTAssertNotNil(delegate.formatter, "formatter should not be nil")
     }
     
-    // MARK: max digits
+    // MARK: Max digits
+
     func testMaxDigitsCount() {
         formatter.maxIntegers = 5
         
@@ -60,6 +67,7 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
     }
 
     // MARK: Deletion
+
     func testDeleting() {
         // simulates keyboard actions - expected to set textField text to "$11,111,111.11"
         for _ in 0...9 {
@@ -105,7 +113,7 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
         }
     }
 
-    // MARK: input/paste
+    // MARK: Input/paste
     
     func testAddingNegativeSymbol() {
         // testing with numeric pad
@@ -193,6 +201,7 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
     }
 
     // MARK: End of editing
+
     func testClearsWhenValueIsZero() {
         delegate.clearsWhenValueIsZero = true
 
@@ -258,5 +267,43 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
         // Then
         XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, -2,
                        "It has the selected text field range with an offset from the end that is less than zero, or in other words, set before the currency symbol.")
+    }
+
+    // MARK: Initial selected text range
+
+    func testInitialSelectedTextRangeWithCurrencySymbolAtTheBeginning() {
+        // Set text field with a formatted string
+        let initialFormattedString = formatter.string(from: 30000)
+        textField.text = initialFormattedString
+
+        // Trigger didBeginEditing
+        textField.delegate?.textFieldDidBeginEditing?(textField)
+
+        // Then
+        let expectedSelectedTextRange = textField.textRange(from: textField.endOfDocument, to: textField.endOfDocument)
+        XCTAssertEqual(textField.selectedTextRange, expectedSelectedTextRange,
+                       "It has the text range at the end")
+    }
+
+    func testInitialSelectedTextRangeWithCurrencySymbolAtTheEnd() throws {
+        // Updates formatter to a currency with symbol at the end
+        formatter.locale = CurrencyLocale.french
+        formatter.currency = .euro
+
+        // Set text field with a formatted string
+        let initialFormattedString = formatter.string(from: 30000)
+        textField.text = initialFormattedString
+
+        // Trigger didBeginEditing
+        textField.delegate?.textFieldDidBeginEditing?(textField)
+
+        // Then
+        let lastNumberOffsetFromEnd = try XCTUnwrap(textField.text?.lastNumberOffsetFromEnd)
+        let expectedPositionAfterLastNumber = try XCTUnwrap(textField.position(from: textField.endOfDocument,
+                                                                               offset: lastNumberOffsetFromEnd))
+        let expectedSelectedTextRange = textField.textRange(from: expectedPositionAfterLastNumber,
+                                                            to: expectedPositionAfterLastNumber)
+        XCTAssertEqual(textField.selectedTextRange, expectedSelectedTextRange,
+                       "It has the text range before the currency symbol")
     }
 }

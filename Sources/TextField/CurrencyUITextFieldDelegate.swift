@@ -26,7 +26,18 @@ public class CurrencyUITextFieldDelegate: NSObject {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
+
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        // force selected text range to be at the end, even when it already has text
+        textField.selectedTextRange = textField.textRange(from: textField.endOfDocument, to: textField.endOfDocument)
+        let previousSelectedTextRangeOffsetFromEnd = textField.selectedTextRangeOffsetFromEnd
+
+        // update selected text range if needed
+        updateSelectedTextRange(in: textField, previousOffsetFromEnd: previousSelectedTextRangeOffsetFromEnd)
+    }
     
     @discardableResult
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -57,6 +68,8 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
         return true
     }
 }
+
+// MARK: - Private
 
 extension CurrencyUITextFieldDelegate {
     
