@@ -8,46 +8,136 @@
 
 import XCTest
 
-class UITextFieldTests: XCTestCase {
-    
-    var textField: UITextField!
+final class UITextFieldTests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
-        textField = UITextField()
+    // System under test.
+    let textField = UITextField()
+
+    // MARK: - selectedTextRangeOffsetFromEnd
+
+    func testOffsetFromEndWhenSelectedTextRangeIsAtTheEnd() {
+        setTextFieldWithNumericText()
+
+        // Set selected text range to the end
+        textField.selectedTextRange = textField.textRange(from: textField.endOfDocument,
+                                                          to: textField.endOfDocument)
+
+        // Then
+        XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, 0, "It has no offset from end")
     }
 
-    override func tearDown() {
-        textField = nil
-        super.tearDown()
+    func testOffsetFromEndWhenSelectedTextRangeIsNotAtTheEnd() throws {
+        setTextFieldWithNumericText()
+
+        // Set selected text range to a text position that is not at the end
+        let offset = -4
+        let textPosition = try XCTUnwrap(textField.position(from: textField.endOfDocument, offset: offset))
+        textField.selectedTextRange = textField.textRange(from: textPosition,
+                                                          to: textPosition)
+
+        // Then
+        XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, offset, "It has the correct offset from end")
+
     }
 
-    func testUpdatingSelectedTextRange() {
-        textField.text?.append("352450260")
-        
-        textField.updateSelectedTextRange(offsetFromEnd: 0)
-        XCTAssertEqual(textField.selectedTextRange?.end, textField.position(from: textField.endOfDocument, offset: 0))
-        
-        textField.updateSelectedTextRange(offsetFromEnd: -5)
-        XCTAssertEqual(textField.selectedTextRange?.end, textField.position(from: textField.endOfDocument, offset: -5))
+    // MARK: - Initial selected text range
+
+    func testSettingInitialSelectedTextRangeWithLastNumberAtTheNEnd() {
+        setTextFieldWithNumericText()
+
+        // Set initial selected text range
+        textField.setInitialSelectedTextRange()
+
+        // Then
+        XCTAssertEqual(textField.selectedTextRange,
+                       textField.textRange(from: textField.endOfDocument,
+                                           to: textField.endOfDocument),
+                       "It has the selected text range at the end")
     }
-    
-    func testGettingOffsetFromEnd() {
-        textField.text?.append("450")
-        
-        var position = textField.position(from: textField.endOfDocument, offset: 0)
-        textField.selectedTextRange = textField.textRange(from: position!, to: position!)
-        
-        XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, 0)
-        
-        textField.text?.append("35")
-        position = textField.position(from: textField.endOfDocument, offset: -4)
-        textField.selectedTextRange = textField.textRange(from: position!, to: position!)
-        XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, -4)
-        
-        textField.text?.removeLast()
-        position = textField.position(from: textField.endOfDocument, offset: -1)
-        textField.selectedTextRange = textField.textRange(from: position!, to: position!)
-        XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, -1)
+
+    func testSettingInitialSelectedTextRangeWithLastNumberNotAtTheNEnd() throws {
+        setTextFieldWithCurrencySymbolAtTheEnd()
+
+        // Set initial selected text range
+        textField.setInitialSelectedTextRange()
+
+        // Then
+        let lastNumberTextPosition = try XCTUnwrap(textField.position(from: textField.endOfDocument, offset: -2))
+        XCTAssertEqual(textField.selectedTextRange,
+                       textField.textRange(from: lastNumberTextPosition,
+                                           to: lastNumberTextPosition),
+                       "It has the correct selected text range")
+    }
+
+    // MARK: - Update selected text range
+
+    func testUpdatingSelectedTextRangeWithoutOffsetFromEnd() {
+        setTextFieldWithNumericText()
+
+        // Call update selected text range with no offset
+        textField.updateSelectedTextRange(lastOffsetFromEnd: 0)
+
+        // Then
+        XCTAssertEqual(textField.selectedTextRange,
+                       textField.textRange(from: textField.endOfDocument,
+                                           to: textField.endOfDocument),
+                       "It has the correct selected text range")
+    }
+
+    func testUpdatingSelectedTextRangeWithoutOffsetFromEndButLastNumberNotAtTheEnd() throws {
+        setTextFieldWithCurrencySymbolAtTheEnd()
+
+        // Call update selected text range with no offset
+        textField.updateSelectedTextRange(lastOffsetFromEnd: 0)
+
+        // Then
+        let lastNumberTextPosition = try XCTUnwrap(textField.position(from: textField.endOfDocument, offset: -2))
+        XCTAssertEqual(textField.selectedTextRange,
+                       textField.textRange(from: lastNumberTextPosition,
+                                           to: lastNumberTextPosition),
+                       "It has the correct selected text range")
+    }
+
+    func testUpdatingSelectedTextRangeWithOffsetFromEndAndBeforeLastNumber() throws {
+        setTextFieldWithCurrencySymbolAtTheEnd()
+
+        // Call update selected text range with offset before last number
+        let offset = -6
+        textField.updateSelectedTextRange(lastOffsetFromEnd: offset)
+
+        // Then
+        let textPositionForGivenOffset = try XCTUnwrap(textField.position(from: textField.endOfDocument, offset: offset))
+        XCTAssertEqual(textField.selectedTextRange,
+                       textField.textRange(from: textPositionForGivenOffset,
+                                           to: textPositionForGivenOffset),
+                       "It has the correct selected text range")
+    }
+
+    func testUpdatingSelectedTextRangeWithOffsetFromEndButAfterLastNumber() throws {
+        setTextFieldWithCurrencySymbolAtTheEnd()
+
+        // Call update selected text range with offset before last number
+        let offset = -1
+        textField.updateSelectedTextRange(lastOffsetFromEnd: offset)
+
+        // Then
+        let lastNumberTextPosition = try XCTUnwrap(textField.position(from: textField.endOfDocument, offset: -2))
+        XCTAssertEqual(textField.selectedTextRange,
+                       textField.textRange(from: lastNumberTextPosition,
+                                           to: lastNumberTextPosition),
+                       "It has the correct selected text range")
+    }
+}
+
+// MARK: - Helpers
+
+extension UITextFieldTests {
+
+    func setTextFieldWithNumericText() {
+        textField.text = "352450260"
+    }
+
+    func setTextFieldWithCurrencySymbolAtTheEnd() {
+        textField.text = "3.524,50 $"
     }
 }

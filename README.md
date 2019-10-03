@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/marinofelipe/CurrencyText.svg?branch=master)](https://travis-ci.org/marinofelipe/CurrencyText)
 [![Coverage Status](https://coveralls.io/repos/github/marinofelipe/CurrencyText/badge.svg?branch=master)](https://coveralls.io/github/marinofelipe/CurrencyText?branch=master)
 <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat" alt="Swift" /></a>
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v2.0.4-blue.svg)](https://cocoapods.org/pods/CurrencyText)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v2.0.6-blue.svg)](https://cocoapods.org/pods/CurrencyText)
 [![Platform](https://img.shields.io/cocoapods/p/CurrencyText.svg?style=flat)]()
 [![Twitter](https://img.shields.io/badge/twitter-@_marinofelipe-blue.svg?style=flat)](https://twitter.com/_marinofelipe)
 
@@ -14,7 +14,7 @@
 </p>
 
 
-CurrencyText is a lightweight library that allows to format text field inputs as currency. It provides a easy to use and extendable UITextFieldDelegate, so there's no need to use a specific UITextField subclass. _You can keep your text field subclasses_ and just make use of this nice custom delegate.
+CurrencyText is a lightweight library that helps with formating text field inputs as currency. It provides an easy to use and extendable UITextFieldDelegate, so there's no need to use a specific UITextField subclass. _You can keep your text field subclasses_ and just make use of this nice custom delegate.
 
 Its main core, the CurrencyFormatter class, can also be used _a part from text fields_ to format any value that can be monetary represented.
 
@@ -41,7 +41,7 @@ If you need to present currency text or allow users to input currency data, Curr
 
 ## Introduction to `CurrencyFormatter`
 
-CurrencyText is made upon `CurrencyFormatter`, which is an abstraction of number formatter with currency number style. It can be used alone or injected into a `CurrencyTextFieldDelegate` to auto format text field's inputs.
+CurrencyText is made upon `CurrencyFormatter`, which is an a wrapper around number formatter with currency number style. It can be used alone or injected into a `CurrencyTextFieldDelegate` to auto format text field's inputs.
 
 <a name="basics"/>
 
@@ -221,7 +221,7 @@ $ sudo gem install cocoapods
 
 To integrate CurrencyText into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
-**Tested with `pod --version`: `2.0.2`**
+**Tested with `pod --version`: `2.0.6`**
 
 ```ruby
 # Podfile
