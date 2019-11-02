@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "CurrencyText",
+    platforms: [.iOS(.v9)],
     products: [
         .library(
             name: "CurrencyText",
