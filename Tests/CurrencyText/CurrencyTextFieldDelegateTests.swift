@@ -7,8 +7,8 @@
 //
 
 import XCTest
-@testable import TextField
-@testable import Formatter
+@testable import CurrencyText
+@testable import CurrencyFormatter
 
 class CurrencyTextFieldDelegateTests: XCTestCase {
     

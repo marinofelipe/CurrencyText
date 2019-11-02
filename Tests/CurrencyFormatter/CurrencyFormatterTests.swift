@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Formatter
+@testable import CurrencyFormatter
 
 class CurrencyFormatterTests: XCTestCase {
     

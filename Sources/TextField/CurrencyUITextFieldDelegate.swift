@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Formatter
+import CurrencyFormatter
 
 /// Custom text field delegate
 public class CurrencyUITextFieldDelegate: NSObject {
