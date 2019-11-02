@@ -6,8 +6,13 @@
 //  Copyright © 2018 Felipe Lefèvre Marino. All rights reserved.
 //
 
-import CurrencyText
 import UIKit
+import CurrencyText
+/// *Note*: When using SPM you need to import each target, such as below:
+///import CurrencyUITextFieldDelegate
+///import CurrencyFormatter
+///
+/// If you are using CocoaPods you are able to import both `CurrencyText` and the subspecs mentioned above.
 
 class ViewController: UIViewController {
 

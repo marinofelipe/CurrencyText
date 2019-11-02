@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import CurrencyText
+@testable import CurrencyUITextFieldDelegate
 
 class UITextFieldTests: XCTestCase {
     

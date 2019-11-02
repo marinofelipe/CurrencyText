@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CurrencyText::CurrencyText"
-               BuildableName = "CurrencyText.framework"
-               BlueprintName = "CurrencyText"
+               BlueprintIdentifier = "CurrencyText::CurrencyFormatter"
+               BuildableName = "CurrencyFormatter.framework"
+               BlueprintName = "CurrencyFormatter"
                ReferencedContainer = "container:CurrencyText.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CurrencyText::CurrencyFormatter"
-               BuildableName = "CurrencyFormatter.framework"
-               BlueprintName = "CurrencyFormatter"
+               BlueprintIdentifier = "CurrencyText::CurrencyUITextFieldDelegate"
+               BuildableName = "CurrencyUITextFieldDelegate.framework"
+               BlueprintName = "CurrencyUITextFieldDelegate"
                ReferencedContainer = "container:CurrencyText.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

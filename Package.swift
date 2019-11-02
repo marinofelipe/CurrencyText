@@ -8,7 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "CurrencyText",
-            targets: ["CurrencyFormatter", "CurrencyText"]),
+            targets: ["CurrencyFormatter", "CurrencyUITextFieldDelegate"]),
     ],
     targets: [
         // Can be imported and used to have access to `CurrencyFormatter`.
@@ -17,15 +17,15 @@ let package = Package(
             name: "CurrencyFormatter",
             dependencies: [],
             path: "Sources/Formatter"),
-        // Can be imported and used to have access to both `CurrencyUITextFieldDelegate` and `CurrencyFormatter`.
+        // Can be imported and used to have access to `CurrencyUITextFieldDelegate`.
         // Useful to format text field inputs as currency, based on a the settings of a CurrencyFormatter.
         .target(
-            name: "CurrencyText",
+            name: "CurrencyUITextFieldDelegate",
             dependencies: ["CurrencyFormatter"],
-            path: "Sources/TextField"),
+            path: "Sources/UITextFieldDelegate"),
         .testTarget(
             name: "Tests",
-            dependencies: ["CurrencyFormatter", "CurrencyText"],
+            dependencies: ["CurrencyFormatter", "CurrencyUITextFieldDelegate"],
             path: "Tests"),
     ]
 )
