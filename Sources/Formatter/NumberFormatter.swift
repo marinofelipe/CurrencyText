@@ -5,6 +5,8 @@
 //  Created by Felipe Lefèvre Marino on 12/27/18.
 //
 
+import Foundation
+
 public extension NumberFormatter {
     
     func string(from doubleValue: Double?) -> String? {

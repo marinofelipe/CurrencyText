@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CurrencyText"
-  s.version      = "2.0.4"
+  s.version      = "2.0.6"
   s.summary      = "Currency text formatter that fits your UITextField subclass."
 
   s.homepage     = "https://github.com/marinofelipe/CurrencyText"
@@ -12,8 +12,14 @@ Pod::Spec.new do |s|
   s.swift_version = "5.0"
   s.source_files  = "Sources/**/*.swift"
   
-  s.subspec 'Formatter' do |ss|
+  s.subspec 'CurrencyFormatter' do |ss|
       ss.requires_arc = true
       ss.source_files = "Sources/Formatter"
+  end
+
+  s.subspec 'CurrencyUITextField' do |ss|
+      ss.requires_arc = true
+      ss.source_files = "Sources/UITextFieldDelegate"
+      ss.dependency 'CurrencyText/CurrencyFormatter'
   end
 end
