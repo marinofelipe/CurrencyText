@@ -26,15 +26,19 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
-
 # CocoaPods
 Pods/
 
-# fastlane
+# Fastlane
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
 */fastlane/test_output
+
+# Swift Package Manager
+
+# *.xcodeproj/
+
+.DS_Store
+.build
+Packages

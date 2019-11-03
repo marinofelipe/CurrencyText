@@ -19,11 +19,11 @@ platform :ios do
 	desc "Run tests"
 	lane :test do
 		scan(
-			workspace: "../CurrencyText.xcworkspace", clean: true, code_coverage: true, scheme: "CurrencyTextDemo", device: "iPhone XS Max"
+			workspace: "../CurrencyText.xcworkspace", clean: true, code_coverage: true, scheme: "CurrencyText-Package", device: "iPhone XS Max"
 		)
 
 		slather(
-			proj: "CurrencyText.xcodeproj", workspace: "../CurrencyText.xcworkspace", scheme: "CurrencyTextDemo", source_directory: "../Sources", binary_basename: "CurrencyText", travis: true, coveralls: true
+			proj: "../CurrencyText.xcodeproj", workspace: "../CurrencyText.xcworkspace", scheme: "CurrencyText-Package", source_directory: "Sources", travis: true, coveralls: true
 		)
   	end
 

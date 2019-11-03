@@ -12,8 +12,14 @@ Pod::Spec.new do |s|
   s.swift_version = "5.0"
   s.source_files  = "Sources/**/*.swift"
   
-  s.subspec 'Formatter' do |ss|
+  s.subspec 'CurrencyFormatter' do |ss|
       ss.requires_arc = true
       ss.source_files = "Sources/Formatter"
+  end
+
+  s.subspec 'CurrencyUITextField' do |ss|
+      ss.requires_arc = true
+      ss.source_files = "Sources/UITextFieldDelegate"
+      ss.dependency 'CurrencyText/CurrencyFormatter'
   end
 end
