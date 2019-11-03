@@ -23,7 +23,7 @@ platform :ios do
 		)
 
 		slather(
-			proj: "CurrencyText.xcodeproj", workspace: "../CurrencyText.xcworkspace", scheme: "CurrencyText-Package", source_directory: "../Sources", binary_basename: "CurrencyText", travis: true, coveralls: true
+			proj: "../CurrencyText.xcodeproj", workspace: "../CurrencyText.xcworkspace", scheme: "CurrencyText-Package", source_directory: "Sources", travis: true, coveralls: true
 		)
   	end
 

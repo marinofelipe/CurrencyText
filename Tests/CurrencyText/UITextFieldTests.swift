@@ -26,10 +26,10 @@ class UITextFieldTests: XCTestCase {
     func testUpdatingSelectedTextRange() {
         textField.text?.append("352450260")
         
-        textField.updateSelectedTextRange(offsetFromEnd: 0)
+        textField.updateSelectedTextRange(lastOffsetFromEnd: 0)
         XCTAssertEqual(textField.selectedTextRange?.end, textField.position(from: textField.endOfDocument, offset: 0))
         
-        textField.updateSelectedTextRange(offsetFromEnd: -5)
+        textField.updateSelectedTextRange(lastOffsetFromEnd: -5)
         XCTAssertEqual(textField.selectedTextRange?.end, textField.position(from: textField.endOfDocument, offset: -5))
     }
     
