@@ -1,9 +1,9 @@
-
 [![Build Status](https://travis-ci.org/marinofelipe/CurrencyText.svg?branch=master)](https://travis-ci.org/marinofelipe/CurrencyText)
 [![Coverage Status](https://coveralls.io/repos/github/marinofelipe/CurrencyText/badge.svg?branch=master)](https://coveralls.io/github/marinofelipe/CurrencyText?branch=master)
 <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat" alt="Swift" /></a>
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v2.0.6-blue.svg)](https://cocoapods.org/pods/CurrencyText)
 [![Platform](https://img.shields.io/cocoapods/p/CurrencyText.svg?style=flat)]()
+[![Swift Package Manager](https://rawgit.com/jlyonsmith/artwork/master/SwiftPackageManager/swiftpackagemanager-compatible.svg)](https://swift.org/package-manager/)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v2.1.0-blue.svg)](https://cocoapods.org/pods/CurrencyText)
 [![Twitter](https://img.shields.io/badge/twitter-@_marinofelipe-blue.svg?style=flat)](https://twitter.com/_marinofelipe)
 
 <p align="center">
@@ -14,11 +14,11 @@
 </p>
 
 
-CurrencyText is a lightweight library that helps with formating text field inputs as currency. It provides an easy to use and extendable UITextFieldDelegate, so there's no need to use a specific UITextField subclass. _You can keep your text field subclasses_ and just make use of this nice custom delegate.
+CurrencyText is a lightweight framework for formating text field text as currency 💲. It provides an _easy to use_, and _extendable_ `UITextFieldDelegate`, that can be plugged to _any_ text field. Yes, *no* need to use a specific UITextField subclass 😉.
 
-Its main core, the CurrencyFormatter class, can also be used _a part from text fields_ to format any value that can be monetary represented.
+Its main core, the `CurrencyFormatter` class, can also be used _a part from text fields_ to format any value that can be monetary represented.
 
-If you need to present currency text or allow users to input currency data, CurrencyText help you do it in a highly readable and configurable matter.
+If you need to present currency formatted text or allow users to input currency data, `CurrencyText` is going to help you do it in a highly readable and configurable matter.
 
 ## Documentation
 
@@ -206,46 +206,34 @@ _But we are planning to support other apple OS's soon._
 
 ## Installation
 
+<a name="spm" />
+
+### Swift Package Manager
+
+To install it using Swift Package Manager, just add this repository through Xcode built-in `Swift Packages`, or by manually adding it to your `Package.swift` Package's dependencies:
+
+```
+dependencies: [
+    .package(url: "https://github.com/marinofelipe/CurrencyText.git", from: "2.1.0")
+]
+```
+
 <a name="cocoapods" />
 
 ### Install via CocoaPods
 
-[CocoaPods](http://cocoapods.org) is a dependency manager for Swift and Objective-C Cocoa projects. It has over 57 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly.
-
-#### Installing CocoaPods
-```bash
-$ sudo gem install cocoapods
-```
-
-#### Integrating CurrencyText
-
 To integrate CurrencyText into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-**Tested with `pod --version`: `2.0.6`**
 
 ```ruby
 # Podfile
 use_frameworks!
 
 target 'YOUR_TARGET_NAME' do
-pod 'CurrencyText'
+     pod 'CurrencyText'
 end
 ```
 
-Replace `YOUR_TARGET_NAME` and then, in the `Podfile` directory, type:
-
-```bash
-$ pod install
-```
-
-##### For those who doesn't need `UICurrencyTextField`, you are able to donwload only the subspec `CurrencyText/Formatter`.
-
-<a name="carthage" />
-
-### Carthage
-
-[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
-_Carthage support is comming soon. If you want to help, please contribute :smile._
+##### For those who doesn't need `CurrencyUITextField`, you are able to download only the subspec `CurrencyText/Formatter`.
 
 <a name="contributing" />
 
