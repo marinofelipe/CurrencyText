@@ -7,7 +7,9 @@
 //
 
 import UIKit
-import CurrencyText
+import CurrencyUITextFieldDelegate
+import CurrencyFormatter
+
 /// *Note*: When using SPM you need to import each target, such as below:
 ///import CurrencyUITextFieldDelegate
 ///import CurrencyFormatter
@@ -30,8 +32,8 @@ class ViewController: UIViewController {
         let currencyFormatter = CurrencyFormatter {
             $0.maxValue = 1000000
             $0.minValue = -1000000
-            $0.currency = .euro
-            $0.locale = CurrencyLocale.german
+            $0.currency = .dollar
+            $0.locale = CurrencyLocale.englishUnitedStates
             $0.hasDecimals = false
         }
         

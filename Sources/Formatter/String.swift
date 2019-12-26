@@ -35,7 +35,10 @@ extension String: CurrencyString {
     /// e.g. For the String "123some", the last number position is 4, because from the _end index_ to the index of _3_
     /// there is an offset of 4, "e, m, o and s".
     public var lastNumberOffsetFromEnd: Int? {
-        guard let indexOfLastNumber = lastIndex(where: { $0.isNumber }) else { return nil }
+        guard let lastNumber = last(where: { CharacterSet.decimalDigits.contains( $0.unicodeScalars.first! ) } ) else {
+            return nil
+        }
+        guard let indexOfLastNumber = index(of: lastNumber) else { return nil }
         let indexAfterLastNumber = index(after: indexOfLastNumber)
         return distance(from: endIndex, to: indexAfterLastNumber)
     }

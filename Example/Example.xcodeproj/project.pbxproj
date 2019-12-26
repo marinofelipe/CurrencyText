@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7606859CC2958C971102F500 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 978CFBD655B243A245601F7E /* Pods_Example.framework */; };
+		C14486E923B566C300BCA68C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C14486E823B566C300BCA68C /* Podfile */; };
+		C144870523B56C0200BCA68C /* CurrencyUITextFieldDelegate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C144870423B56C0200BCA68C /* CurrencyUITextFieldDelegate.framework */; };
+		C144870623B56C0200BCA68C /* CurrencyUITextFieldDelegate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C144870423B56C0200BCA68C /* CurrencyUITextFieldDelegate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D54170DA209023D5008995D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54170D9209023D5008995D7 /* AppDelegate.swift */; };
 		D54170DC209023D5008995D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54170DB209023D5008995D7 /* ViewController.swift */; };
 		D54170DF209023D5008995D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54170DD209023D5008995D7 /* Main.storyboard */; };
@@ -15,10 +17,25 @@
 		D54170E4209023D7008995D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54170E2209023D7008995D7 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C144870723B56C0200BCA68C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C144870623B56C0200BCA68C /* CurrencyUITextFieldDelegate.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		518E8343A17679893337F5CA /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		530FF63F62F6E6995B19F045 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
-		978CFBD655B243A245601F7E /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14486E823B566C300BCA68C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		C14486FD23B569D000BCA68C /* CurrencyFormatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CurrencyFormatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C144870023B569D000BCA68C /* CurrencyUITextFieldDelegate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CurrencyUITextFieldDelegate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C144870423B56C0200BCA68C /* CurrencyUITextFieldDelegate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CurrencyUITextFieldDelegate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54170D6209023D5008995D7 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54170D9209023D5008995D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D54170DB209023D5008995D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,37 +50,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7606859CC2958C971102F500 /* Pods_Example.framework in Frameworks */,
+				C144870523B56C0200BCA68C /* CurrencyUITextFieldDelegate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B0924BF86E53AF6668D45B5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				978CFBD655B243A245601F7E /* Pods_Example.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CFE5CB0773053BF416CDB872 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				518E8343A17679893337F5CA /* Pods-Example.debug.xcconfig */,
-				530FF63F62F6E6995B19F045 /* Pods-Example.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		D54170CD209023D5008995D7 = {
 			isa = PBXGroup;
 			children = (
+				C144870423B56C0200BCA68C /* CurrencyUITextFieldDelegate.framework */,
+				C144870023B569D000BCA68C /* CurrencyUITextFieldDelegate.framework */,
+				C14486FD23B569D000BCA68C /* CurrencyFormatter.framework */,
+				C14486E823B566C300BCA68C /* Podfile */,
 				D54170D8209023D5008995D7 /* Example */,
 				D54170D7209023D5008995D7 /* Products */,
-				CFE5CB0773053BF416CDB872 /* Pods */,
-				4B0924BF86E53AF6668D45B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,11 +97,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D54170FE209023D8008995D7 /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
-				E7049CC37F461C3FCF691C98 /* [CP] Check Pods Manifest.lock */,
 				D54170D2209023D5008995D7 /* Sources */,
 				D54170D3209023D5008995D7 /* Frameworks */,
 				D54170D4209023D5008995D7 /* Resources */,
-				77087F178403C86BC5410314 /* [CP] Embed Pods Frameworks */,
+				C144870723B56C0200BCA68C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,53 +152,12 @@
 			files = (
 				D54170E4209023D7008995D7 /* LaunchScreen.storyboard in Resources */,
 				D54170E1209023D7008995D7 /* Assets.xcassets in Resources */,
+				C14486E923B566C300BCA68C /* Podfile in Resources */,
 				D54170DF209023D5008995D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		77087F178403C86BC5410314 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E7049CC37F461C3FCF691C98 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D54170D2209023D5008995D7 /* Sources */ = {
@@ -349,7 +309,6 @@
 		};
 		D54170FF209023D8008995D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 518E8343A17679893337F5CA /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -362,14 +321,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		D5417100209023D8008995D7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 530FF63F62F6E6995B19F045 /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -382,7 +340,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.felipemarino.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

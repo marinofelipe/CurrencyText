@@ -5,7 +5,7 @@ workspace '../CurrencyText'
 target 'Example' do
   use_frameworks!
 
-  pod 'CurrencyText', :path => '../'
+#  pod 'CurrencyText', :path => '../'
 #  pod 'CurrencyText/CurrencyFormatter', :path => '../'
 #  pod 'CurrencyText/CurrencyUITextField', :path => '../'
 
