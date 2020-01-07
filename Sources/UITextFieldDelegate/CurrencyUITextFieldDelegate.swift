@@ -38,7 +38,7 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
     
     @discardableResult
     open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return passthroughDelegate?.textFieldShouldEndEditing?(textField) ?? true
+        return passthroughDelegate?.textFieldShouldBeginEditing?(textField) ?? true
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -51,7 +51,7 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
         if let text = textField.text, text.representsZero && clearsWhenValueIsZero {
             textField.text = ""
         }
-        return true
+        return passthroughDelegate?.textFieldShouldEndEditing?(textField) ?? true
     }
     
     open func textFieldDidEndEditing(_ textField: UITextField) {
