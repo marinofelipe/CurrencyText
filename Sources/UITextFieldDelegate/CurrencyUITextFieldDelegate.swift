@@ -75,25 +75,22 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
             return false
         }
         
-        // Store selected text range offset from end, before updating and reformatting the currency string.
-        let lastSelectedTextRangeOffsetFromEnd = textField.selectedTextRangeOffsetFromEnd
-        
-        // Before leaving the scope, update selected text range,
-        // respecting previous selected text range offset from end.
-        defer {
-            textField.updateSelectedTextRange(lastOffsetFromEnd: lastSelectedTextRangeOffsetFromEnd)
-        }
-        
         guard !string.isEmpty else {
-            handleDeletion(in: textField, at: range)
+            handleCursor(textField: textField, changingCharactersIn: range) {
+                handleDeletion(in: textField, at: range)
+            }
             return false
         }
         guard string.hasNumbers else {
-            addNegativeSymbolIfNeeded(in: textField, at: range, replacementString: string)
+            handleCursor(textField: textField, changingCharactersIn: range) {
+                addNegativeSymbolIfNeeded(in: textField, at: range, replacementString: string)
+            }
             return false
         }
         
-        setFormattedText(in: textField, inputString: string, range: range)
+        handleCursor(textField: textField, changingCharactersIn: range) {
+            setFormattedText(in: textField, inputString: string, range: range)
+        }
         
         return false
     }
@@ -102,6 +99,17 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
 // MARK: - Private
 
 extension CurrencyUITextFieldDelegate {
+    
+    private func handleCursor(textField: UITextField, changingCharactersIn range: NSRange, _ fieldAlterationAction: () -> Void ) {
+        let preFormatLen = textField.text?.count ?? 0
+        fieldAlterationAction()
+        let postFormatLen = textField.text?.count ?? 0
+        let lengthChange = postFormatLen - preFormatLen
+        let cursorPos = range.location + range.length + lengthChange
+        if let newPosition = textField.position(from: textField.beginningOfDocument, offset: cursorPos) {
+            textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+        }
+    }
     
     /// Verifies if user inputed a negative symbol at the first lowest
     /// bound of the text field and add it.
@@ -135,7 +143,11 @@ extension CurrencyUITextFieldDelegate {
                 text.removeLast()
             }
             
-            textField.text = formatter.updated(formattedString: text)
+            if text.count > 0 {
+                textField.text = formatter.updated(formattedString: text)
+            } else {
+                textField.text = text
+            }
         }
     }
     
@@ -150,7 +162,11 @@ extension CurrencyUITextFieldDelegate {
         
         if let text = textField.text {
             if text.isEmpty {
-                updatedText = formatter.initialText + inputString
+                if text.count > 0 {
+                    updatedText = formatter.initialText + inputString
+                } else {
+                    updatedText = formatter.string(from: Double(inputString)) ?? "0.0"
+                }
             } else if let range = Range(range, in: text) {
                 updatedText = text.replacingCharacters(in: range, with: inputString)
             } else {
@@ -165,3 +181,4 @@ extension CurrencyUITextFieldDelegate {
         textField.text = formatter.updated(formattedString: updatedText)
     }
 }
+
