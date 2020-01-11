@@ -13,6 +13,4 @@ install:
 
 script:
 - cd .. && pod lib lint
-
-after_success: 
 - cd Example && bundle exec fastlane test
