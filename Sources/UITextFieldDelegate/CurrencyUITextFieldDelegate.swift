@@ -100,7 +100,7 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
 
 extension CurrencyUITextFieldDelegate {
     
-    private func handleCursor(textField: UITextField, changingCharactersIn range: NSRange, _ fieldAlterationAction: () -> Void ) {
+    private func handleCursor(on textField: UITextField, changingCharactersIn range: NSRange, after textFieldUpdate: () -> Void) {
         let preFormatLen = textField.text?.count ?? 0
         fieldAlterationAction()
         let postFormatLen = textField.text?.count ?? 0
@@ -181,4 +181,3 @@ extension CurrencyUITextFieldDelegate {
         textField.text = formatter.updated(formattedString: updatedText)
     }
 }
-
