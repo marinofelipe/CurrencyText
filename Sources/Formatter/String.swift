@@ -6,7 +6,7 @@
 //  Copyright © 2018 Felipe Lefèvre Marino. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public protocol CurrencyString {
     var representsZero: Bool { get }

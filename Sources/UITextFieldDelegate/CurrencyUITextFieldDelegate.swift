@@ -6,7 +6,9 @@
 //  Copyright © 2018 Felipe Lefèvre Marino. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
+
 #if canImport(CurrencyFormatter)
 import CurrencyFormatter
 #endif
@@ -184,3 +186,4 @@ extension CurrencyUITextFieldDelegate {
         textField.text = formatter.updated(formattedString: updatedText)
     }
 }
+#endif
