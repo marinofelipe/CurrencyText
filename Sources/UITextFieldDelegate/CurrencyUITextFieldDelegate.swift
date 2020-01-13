@@ -100,13 +100,20 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
 
 extension CurrencyUITextFieldDelegate {
     
+    /// Capture current cursor position, allow the field to be altered, 
+    /// then restore the cursor position to the correct location.
+    ///
+    /// - Parameters:
+    ///   - textField: text field that user interacted with
+    ///   - range: range of characters changing
+    ///   - textFieldUpdate: closure that updates text field text
     private func handleCursor(on textField: UITextField, changingCharactersIn range: NSRange, after textFieldUpdate: () -> Void) {
-        let preFormatLen = textField.text?.count ?? 0
+        let preFormatLength = textField.text?.count ?? 0
         fieldAlterationAction()
-        let postFormatLen = textField.text?.count ?? 0
-        let lengthChange = postFormatLen - preFormatLen
-        let cursorPos = range.location + range.length + lengthChange
-        if let newPosition = textField.position(from: textField.beginningOfDocument, offset: cursorPos) {
+        let postFormatLength = textField.text?.count ?? 0
+        let lengthChange = postFormatLength - preFormatLength
+        let cursorPosition = range.location + range.length + lengthChange
+        if let newPosition = textField.position(from: textField.beginningOfDocument, offset: cursorPosition) {
             textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
         }
     }
@@ -143,10 +150,10 @@ extension CurrencyUITextFieldDelegate {
                 text.removeLast()
             }
             
-            if text.count > 0 {
-                textField.text = formatter.updated(formattedString: text)
-            } else {
+            if text.isEmpty {
                 textField.text = text
+            } else {
+                textField.text = formatter.updated(formattedString: text)
             }
         }
     }
@@ -162,11 +169,7 @@ extension CurrencyUITextFieldDelegate {
         
         if let text = textField.text {
             if text.isEmpty {
-                if text.count > 0 {
-                    updatedText = formatter.initialText + inputString
-                } else {
-                    updatedText = formatter.string(from: Double(inputString)) ?? "0.0"
-                }
+                updatedText = formatter.string(from: Double(inputString)) ?? "0.0"
             } else if let range = Range(range, in: text) {
                 updatedText = text.replacingCharacters(in: range, with: inputString)
             } else {
