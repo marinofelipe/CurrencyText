@@ -16,14 +16,14 @@ import CurrencyFormatter
 
 /// Custom text field delegate
 public class CurrencyUITextFieldDelegate: NSObject {
-    
+
     public var formatter: CurrencyFormatterProtocol!
-    
+
     /// Text field clears its text when value value is equal to zero
     public var clearsWhenValueIsZero: Bool = false
-    
+
     weak public var passthroughDelegate: UITextFieldDelegate?
-    
+
     override public init() {
         super.init()
         self.formatter = CurrencyFormatter()
@@ -78,19 +78,19 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
         }
         
         guard !string.isEmpty else {
-            handleCursor(textField: textField, changingCharactersIn: range) {
+            handleCursor(on: textField, changingCharactersIn: range) {
                 handleDeletion(in: textField, at: range)
             }
             return false
         }
         guard string.hasNumbers else {
-            handleCursor(textField: textField, changingCharactersIn: range) {
+            handleCursor(on: textField, changingCharactersIn: range) {
                 addNegativeSymbolIfNeeded(in: textField, at: range, replacementString: string)
             }
             return false
         }
         
-        handleCursor(textField: textField, changingCharactersIn: range) {
+        handleCursor(on: textField, changingCharactersIn: range) {
             setFormattedText(in: textField, inputString: string, range: range)
         }
         
@@ -111,7 +111,7 @@ extension CurrencyUITextFieldDelegate {
     ///   - textFieldUpdate: closure that updates text field text
     private func handleCursor(on textField: UITextField, changingCharactersIn range: NSRange, after textFieldUpdate: () -> Void) {
         let preFormatLength = textField.text?.count ?? 0
-        fieldAlterationAction()
+        textFieldUpdate()
         let postFormatLength = textField.text?.count ?? 0
         let lengthChange = postFormatLength - preFormatLength
         let cursorPosition = range.location + range.length + lengthChange
