@@ -13,16 +13,25 @@ import UIKit
 import CurrencyFormatter
 #endif
 
-
-/// Custom text field delegate
+/// Custom text field delegate, that formats user inputs based on a given currency formatter.
 public class CurrencyUITextFieldDelegate: NSObject {
 
     public var formatter: CurrencyFormatterProtocol!
 
-    /// Text field clears its text when value value is equal to zero
+    /// Text field clears its text when value value is equal to zero.
     public var clearsWhenValueIsZero: Bool = false
 
-    weak public var passthroughDelegate: UITextFieldDelegate?
+    /// A delegate object to receive and potentially handle `UITextFieldDelegate events` that are sent to `CurrencyUITextFieldDelegate`.
+    /// _Note_: Make sure the implementation of this object does not wrongly interfere with currency formatting.
+    /// By returning `false` on`textField(textField:shouldChangeCharactersIn:replacementString:)` no currency formatting is done.
+    public var passthroughDelegate: UITextFieldDelegate? {
+        get { return _passthroughDelegate }
+        set {
+            guard newValue !== self else { return }
+            _passthroughDelegate = newValue
+        }
+    }
+    weak private var _passthroughDelegate: UITextFieldDelegate?
 
     override public init() {
         super.init()
@@ -72,8 +81,10 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
     
     @discardableResult
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if !(passthroughDelegate?.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true) {
+        let shouldChangeCharactersInRange = passthroughDelegate?.textField?(textField,
+                                                                            shouldChangeCharactersIn: range,
+                                                                            replacementString: string) ?? true
+        guard shouldChangeCharactersInRange else {
             return false
         }
         
