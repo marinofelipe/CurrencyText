@@ -215,9 +215,9 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
         return numberFormatter.maximumIntegerDigits + numberFormatter.maximumFractionDigits
     }
     
-    /// Initial
+    /// The value zero formatted to serve as initial text.
     public var initialText: String {
-        return string(from: 0) ?? "0.0"
+        numberFormatter.string(from: 0) ?? "0.0"
     }
     
     //MARK: - INIT
