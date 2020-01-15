@@ -21,7 +21,9 @@ public class CurrencyUITextFieldDelegate: NSObject {
     public var clearsWhenValueIsZero: Bool = false
 
     /// A delegate object to receive and potentially handle `UITextFieldDelegate events` that are sent to `CurrencyUITextFieldDelegate`.
-    /// _Note_: Make sure the implementation of this object does not wrongly interfere with currency formatting.
+    ///
+    /// Note: Make sure the implementation of this object does not wrongly interfere with currency formatting.
+    ///
     /// By returning `false` on`textField(textField:shouldChangeCharactersIn:replacementString:)` no currency formatting is done.
     public var passthroughDelegate: UITextFieldDelegate? {
         get { return _passthroughDelegate }
@@ -86,23 +88,26 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
         guard shouldChangeCharactersInRange else {
             return false
         }
+
+        // Store selected text range offset from end, before updating and reformatting the currency string.
+        let lastSelectedTextRangeOffsetFromEnd = textField.selectedTextRangeOffsetFromEnd
+
+        // Before leaving the scope, update selected text range,
+        // respecting previous selected text range offset from end.
+        defer {
+            textField.updateSelectedTextRange(lastOffsetFromEnd: lastSelectedTextRangeOffsetFromEnd)
+        }
         
         guard !string.isEmpty else {
-            handleCursor(on: textField, changingCharactersIn: range) {
-                handleDeletion(in: textField, at: range)
-            }
+            handleDeletion(in: textField, at: range)
             return false
         }
         guard string.hasNumbers else {
-            handleCursor(on: textField, changingCharactersIn: range) {
-                addNegativeSymbolIfNeeded(in: textField, at: range, replacementString: string)
-            }
+            addNegativeSymbolIfNeeded(in: textField, at: range, replacementString: string)
             return false
         }
         
-        handleCursor(on: textField, changingCharactersIn: range) {
-            setFormattedText(in: textField, inputString: string, range: range)
-        }
+        setFormattedText(in: textField, inputString: string, range: range)
         
         return false
     }
@@ -111,25 +116,7 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
 // MARK: - Private
 
 extension CurrencyUITextFieldDelegate {
-    
-    /// Capture current cursor position, allow the field to be altered, 
-    /// then restore the cursor position to the correct location.
-    ///
-    /// - Parameters:
-    ///   - textField: text field that user interacted with
-    ///   - range: range of characters changing
-    ///   - textFieldUpdate: closure that updates text field text
-    private func handleCursor(on textField: UITextField, changingCharactersIn range: NSRange, after textFieldUpdate: () -> Void) {
-        let preFormatLength = textField.text?.count ?? 0
-        textFieldUpdate()
-        let postFormatLength = textField.text?.count ?? 0
-        let lengthChange = postFormatLength - preFormatLength
-        let cursorPosition = range.location + range.length + lengthChange
-        if let newPosition = textField.position(from: textField.beginningOfDocument, offset: cursorPosition) {
-            textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
-        }
-    }
-    
+
     /// Verifies if user inputed a negative symbol at the first lowest
     /// bound of the text field and add it.
     ///
