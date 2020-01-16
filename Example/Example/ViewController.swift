@@ -17,7 +17,9 @@ import CurrencyText
 class ViewController: UIViewController {
 
     @IBOutlet weak private var textField: UITextField!
-    
+    @IBOutlet weak private var formattedLabel: UILabel!
+    @IBOutlet weak private var unformattedLabel: UILabel!
+
     private var textFieldDelegate: CurrencyUITextFieldDelegate!
     
     override func viewDidLoad() {
@@ -28,15 +30,16 @@ class ViewController: UIViewController {
     
     private func setupTextFieldWithCurrencyDelegate() {
         let currencyFormatter = CurrencyFormatter {
-            $0.maxValue = 1000000
-            $0.minValue = -1000000
-            $0.currency = .euro
-            $0.locale = CurrencyLocale.german
+            $0.maxValue = 100000000
+            $0.minValue = 1
+            $0.currency = .dollar
+            $0.locale = CurrencyLocale.englishUnitedStates
             $0.hasDecimals = false
         }
         
         textFieldDelegate = CurrencyUITextFieldDelegate(formatter: currencyFormatter)
         textFieldDelegate.clearsWhenValueIsZero = true
+        textFieldDelegate.passthroughDelegate = self
         
         textField.delegate = textFieldDelegate
         textField.keyboardType = .numbersAndPunctuation
@@ -48,5 +51,12 @@ class ViewController: UIViewController {
     
     @objc func resignAnyFirstReponder() {
         self.view.endEditing(false)
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        formattedLabel.text = textField.text
+        unformattedLabel.text = textFieldDelegate.formatter.unformatted(string: textField.text ?? "0")
     }
 }

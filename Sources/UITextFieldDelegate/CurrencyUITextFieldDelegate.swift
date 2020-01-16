@@ -7,24 +7,38 @@
 //
 
 import UIKit
+
 #if canImport(CurrencyFormatter)
 import CurrencyFormatter
 #endif
 
-
-/// Custom text field delegate
+/// Custom text field delegate, that formats user inputs based on a given currency formatter.
 public class CurrencyUITextFieldDelegate: NSObject {
 
     public var formatter: CurrencyFormatterProtocol!
 
-    /// Text field clears its text when value value is equal to zero
+    /// Text field clears its text when value value is equal to zero.
     public var clearsWhenValueIsZero: Bool = false
+
+    /// A delegate object to receive and potentially handle `UITextFieldDelegate events` that are sent to `CurrencyUITextFieldDelegate`.
+    ///
+    /// Note: Make sure the implementation of this object does not wrongly interfere with currency formatting.
+    ///
+    /// By returning `false` on`textField(textField:shouldChangeCharactersIn:replacementString:)` no currency formatting is done.
+    public var passthroughDelegate: UITextFieldDelegate? {
+        get { return _passthroughDelegate }
+        set {
+            guard newValue !== self else { return }
+            _passthroughDelegate = newValue
+        }
+    }
+    weak private var _passthroughDelegate: UITextFieldDelegate?
 
     override public init() {
         super.init()
         self.formatter = CurrencyFormatter()
     }
-
+    
     public init(formatter: CurrencyFormatter) {
         self.formatter = formatter
     }
@@ -33,13 +47,47 @@ public class CurrencyUITextFieldDelegate: NSObject {
 // MARK: - UITextFieldDelegate
 
 extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
-
+    
+    @discardableResult
+    open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return passthroughDelegate?.textFieldShouldBeginEditing?(textField) ?? true
+    }
+    
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.setInitialSelectedTextRange()
+        passthroughDelegate?.textFieldDidBeginEditing?(textField)
     }
-
+    
+    @discardableResult
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if let text = textField.text, text.representsZero && clearsWhenValueIsZero {
+            textField.text = ""
+        }
+        return passthroughDelegate?.textFieldShouldEndEditing?(textField) ?? true
+    }
+    
+    open func textFieldDidEndEditing(_ textField: UITextField) {
+        passthroughDelegate?.textFieldDidEndEditing?(textField)
+    }
+    
+    @discardableResult
+    open func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return passthroughDelegate?.textFieldShouldClear?(textField) ?? true
+    }
+    
+    @discardableResult
+    open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return passthroughDelegate?.textFieldShouldReturn?(textField) ?? true
+    }
+    
     @discardableResult
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let shouldChangeCharactersInRange = passthroughDelegate?.textField?(textField,
+                                                                            shouldChangeCharactersIn: range,
+                                                                            replacementString: string) ?? true
+        guard shouldChangeCharactersInRange else {
+            return false
+        }
 
         // Store selected text range offset from end, before updating and reformatting the currency string.
         let lastSelectedTextRangeOffsetFromEnd = textField.selectedTextRangeOffsetFromEnd
@@ -49,7 +97,7 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
         defer {
             textField.updateSelectedTextRange(lastOffsetFromEnd: lastSelectedTextRangeOffsetFromEnd)
         }
-
+        
         guard !string.isEmpty else {
             handleDeletion(in: textField, at: range)
             return false
@@ -58,18 +106,10 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
             addNegativeSymbolIfNeeded(in: textField, at: range, replacementString: string)
             return false
         }
-
+        
         setFormattedText(in: textField, inputString: string, range: range)
-
+        
         return false
-    }
-
-    @discardableResult
-    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if let text = textField.text, text.representsZero && clearsWhenValueIsZero {
-            textField.text = ""
-        }
-        return true
     }
 }
 
@@ -86,16 +126,16 @@ extension CurrencyUITextFieldDelegate {
     ///   - string: user input string
     private func addNegativeSymbolIfNeeded(in textField: UITextField, at range: NSRange, replacementString string: String) {
         guard textField.keyboardType == .numbersAndPunctuation else { return }
-
+        
         if string == .negativeSymbol && textField.text?.isEmpty == true {
             textField.text = .negativeSymbol
         } else if range.lowerBound == 0 && string == .negativeSymbol &&
             textField.text?.contains(String.negativeSymbol) == false {
-
+            
             textField.text = .negativeSymbol + (textField.text ?? "")
         }
     }
-
+    
     /// Correctly delete characters when user taps remove key.
     ///
     /// - Parameters:
@@ -108,11 +148,15 @@ extension CurrencyUITextFieldDelegate {
             } else {
                 text.removeLast()
             }
-
-            textField.text = formatter.updated(formattedString: text)
+            
+            if text.isEmpty {
+                textField.text = text
+            } else {
+                textField.text = formatter.updated(formattedString: text)
+            }
         }
     }
-
+    
     /// Formats text field's text with new input string and changed range
     ///
     /// - Parameters:
@@ -121,7 +165,7 @@ extension CurrencyUITextFieldDelegate {
     ///   - range: range where the string should be added
     private func setFormattedText(in textField: UITextField, inputString: String, range: NSRange) {
         var updatedText = ""
-
+        
         if let text = textField.text {
             if text.isEmpty {
                 updatedText = formatter.initialText + inputString
@@ -131,11 +175,11 @@ extension CurrencyUITextFieldDelegate {
                 updatedText = text.appending(inputString)
             }
         }
-
+        
         if updatedText.numeralFormat().count > formatter.maxDigitsCount {
             updatedText.removeLast()
         }
-
+        
         textField.text = formatter.updated(formattedString: updatedText)
     }
 }
