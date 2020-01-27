@@ -14,26 +14,18 @@ import CurrencyText
 ///
 /// If you are using CocoaPods you are able to import both `CurrencyText` and the subspecs mentioned above.
 
-class ViewController: UIViewController {
-
+class FieldDisplay: NSObject {
     @IBOutlet weak private var textField: UITextField!
     @IBOutlet weak private var formattedLabel: UILabel!
     @IBOutlet weak private var unformattedLabel: UILabel!
-
     private var textFieldDelegate: CurrencyUITextFieldDelegate!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupTextFieldWithCurrencyDelegate()
-    }
-    
-    private func setupTextFieldWithCurrencyDelegate() {
+    fileprivate func setupCurrencyDelegate(currency: CurrencyText.Currency, locale: CurrencyText.CurrencyLocale) {
         let currencyFormatter = CurrencyFormatter {
             $0.maxValue = 100000000
             $0.minValue = 1
-            $0.currency = .dollar
-            $0.locale = CurrencyLocale.englishUnitedStates
+            $0.currency = currency
+            $0.locale = locale
             $0.hasDecimals = false
         }
         
@@ -45,6 +37,64 @@ class ViewController: UIViewController {
         textField.keyboardType = .numbersAndPunctuation
     }
     
+    fileprivate func setupDecimalMode() {
+        let formatter = textFieldDelegate.formatter as! CurrencyFormatter
+        formatter.hasDecimals = true
+    }
+    
+    fileprivate func setupEditingText() {
+        guard let formatter = textFieldDelegate.formatter as? CurrencyFormatter else { return }
+        let initialText = formatter.hasDecimals ? "123456.78" : "123456"
+        textField.text = formatter.updated(formattedString: initialText)
+    }
+
+}
+
+extension FieldDisplay: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        formattedLabel.text = textField.text
+        unformattedLabel.text = textFieldDelegate.formatter.unformatted(string: textField.text ?? "0")
+    }
+}
+    
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak private var euroFieldNew: FieldDisplay!
+    @IBOutlet weak private var euroFieldEditing: FieldDisplay!
+    @IBOutlet weak private var euroFieldDecimalNew: FieldDisplay!
+    @IBOutlet weak private var euroFieldDecimalEditing: FieldDisplay!
+
+    @IBOutlet weak private var dollarFieldNew: FieldDisplay!
+    @IBOutlet weak private var dollarFieldEditing: FieldDisplay!
+    @IBOutlet weak private var dollarFieldDecimalNew: FieldDisplay!
+    @IBOutlet weak private var dollarFieldDecimalEditing: FieldDisplay!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.isUserInteractionEnabled = true
+        
+        euroFieldNew.setupCurrencyDelegate(currency: .euro, locale: .french)
+        euroFieldEditing.setupCurrencyDelegate(currency: .euro, locale: .french)
+        euroFieldDecimalNew.setupCurrencyDelegate(currency: .euro, locale: .french)
+        euroFieldDecimalNew.setupDecimalMode()
+        euroFieldDecimalEditing.setupCurrencyDelegate(currency: .euro, locale: .french)
+        euroFieldDecimalEditing.setupDecimalMode()
+        
+        dollarFieldNew.setupCurrencyDelegate(currency: .dollar, locale: .englishUnitedStates)
+        dollarFieldEditing.setupCurrencyDelegate(currency: .dollar, locale: .englishUnitedStates)
+        dollarFieldDecimalNew.setupCurrencyDelegate(currency: .dollar, locale: .englishUnitedStates)
+        dollarFieldDecimalNew.setupDecimalMode()
+        dollarFieldDecimalEditing.setupCurrencyDelegate(currency: .dollar, locale: .englishUnitedStates)
+        dollarFieldDecimalEditing.setupDecimalMode()
+
+        euroFieldEditing.setupEditingText()
+        euroFieldDecimalEditing.setupEditingText()
+        dollarFieldEditing.setupEditingText()
+        dollarFieldDecimalEditing.setupEditingText()
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         resignAnyFirstReponder()
     }
@@ -54,9 +104,4 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        formattedLabel.text = textField.text
-        unformattedLabel.text = textFieldDelegate.formatter.unformatted(string: textField.text ?? "0")
-    }
-}
+
