@@ -21,7 +21,7 @@ final class PassthroughDelegateMock: NSObject, UITextFieldDelegate {
     private(set) var didCallTextFieldShouldReturn: Bool = false
     private(set) var didCallTextFieldShouldChangeCharacters: Bool = false
     private(set) var lastRange: NSRange?
-    private(set) var replacementString: String?
+    private(set) var lastReplacementString: String?
 
     @discardableResult
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -67,8 +67,8 @@ final class PassthroughDelegateMock: NSObject, UITextFieldDelegate {
         didCallTextFieldShouldChangeCharacters = true
         lastTextField = textField
         lastRange = range
-        replacementString = string
+        lastReplacementString = string
 
-        return false
+        return true
     }
 }
