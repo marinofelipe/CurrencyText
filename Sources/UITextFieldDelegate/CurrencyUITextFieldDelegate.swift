@@ -32,7 +32,7 @@ public class CurrencyUITextFieldDelegate: NSObject {
             _passthroughDelegate = newValue
         }
     }
-    weak private var _passthroughDelegate: UITextFieldDelegate?
+    weak private(set) var _passthroughDelegate: UITextFieldDelegate?
 
     override public init() {
         super.init()
