@@ -3,7 +3,7 @@
 <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat" alt="Swift" /></a>
 [![Platform](https://img.shields.io/cocoapods/p/CurrencyText.svg?style=flat)]()
 [![Swift Package Manager](https://rawgit.com/jlyonsmith/artwork/master/SwiftPackageManager/swiftpackagemanager-compatible.svg)](https://swift.org/package-manager/)
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v2.1.0-blue.svg)](https://cocoapods.org/pods/CurrencyText)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v2.1.1-blue.svg)](https://cocoapods.org/pods/CurrencyText)
 [![Twitter](https://img.shields.io/badge/twitter-@_marinofelipe-blue.svg?style=flat)](https://twitter.com/_marinofelipe)
 
 <p align="center">
@@ -30,6 +30,7 @@ If you need to present currency formatted text or allow users to input currency 
   - [Advanced setup](#advancedsetup)
 - [The `CurrencyTextFieldDelegate`](#delegate)
   - [Setting your text field to format the inputs](#setting)
+  - [Using the passthrough delegate](#passthrough)
   - [Allowing users to input `negative values`](#negative)
 - [All properties of `CurrencyFormatter`](#properties)
 - [Requirements](#requirements)
@@ -138,13 +139,12 @@ let formattedString = formatter.string(from: 100000000) //💶99;99;99
 
 ## The `CurrencyTextFieldDelegate` - formatting user input as currency
 
-This project started as a way to format user inputs as currency. In the old days it used to be a custom UITextField class, but we changed it to work acting only as a custom delegate, without needing to force users to use an specific UITextField class.
-`CurrencyTextFieldDelegate` class comes in hand to act formatting inputs respecting the setup of its currency formatter.
+`CurrencyTextFieldDelegate` is a type that inherits from `UITextFieldDelegate`, and provide a simple interface to configure how the inputs are configured as currency. It can be used with any `UITextField`.
 
 <a name="setting"/>
 
 ### Setting your text field to format the inputs
-To start formatting your user's numeric text as currency you need to initialize a `CurrencyTextFieldDelegate`, configure it with a formatter with you want to, and then set it as the text field's delegate.
+To start formatting user's input as currency, you need to initialize a `CurrencyTextFieldDelegate` instance passing in a currency formatter configured as you wish, and then set it as the text field's delegate.
 
 ```Swift
 let currencyFormatter = CurrencyFormatter()
@@ -154,7 +154,25 @@ textFieldDelegate.clearsWhenValueIsZero = true
 textField.delegate = textFieldDelegate
 ```
 
-Just by setting a currency text field delegate object to your text field, with given formatter behaviour, the user inputs are going to be formatted as expected.
+Just by setting a currency text field delegate object to your text field, with given formatter behavior, the user inputs are going to be formatted as expected.
+
+<a name="passthrough"/>
+
+### Using the passthrough delegate
+The `passthroughDelegate` property on a `CurrencyTextFieldDelegate` instance, can be used to 
+listen and pottentially handle `UITextFieldDelegate events` that are sent to `CurrencyUITextFieldDelegate`.
+It can be useful to intercept the delegate calls when `e.g.` tracking analytics events.
+
+But be **aware** and **make sure** the implementation of this object _does not wrongly interfere with currency formatting_, `e.g.` by returning `false` on`textField(textField:shouldChangeCharactersIn:replacementString:)` no currency formatting is done.
+
+```Swift
+let currencyTextFieldDelegate = CurrencyUITextFieldDelegate(formatter: currencyFormatter)
+currencyTextFieldDelegate.passthroughDelegate = selfTextFieldDelegateListener
+
+textField.delegate = currencyTextFieldDelegate
+
+// all call to `currencyTextFieldDelegate` `UITextField` delegate methods will be forwarded to `selfTextFieldDelegateListener`.
+```
 
 <a name="negative"/>
 
@@ -199,8 +217,8 @@ The following properties are available:
 ## Requirements
 
 CurrencyText is compatible with Swift 3.x.
-Only `iOS 8.0+` is supported.
-_But we are planning to support other apple OS's soon._
+Only `iOS 9.0+` is supported.
+_But there are plans to support other apple OS's soon._
 
 <a name="installation"/>
 

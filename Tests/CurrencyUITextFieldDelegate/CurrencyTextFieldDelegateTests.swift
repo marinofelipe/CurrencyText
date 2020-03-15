@@ -10,17 +10,20 @@ import XCTest
 @testable import CurrencyUITextFieldDelegate
 @testable import CurrencyFormatter
 
-class CurrencyTextFieldDelegateTests: XCTestCase {
-    
-    var textField: UITextField!
-    var delegate: CurrencyUITextFieldDelegate!
-    var formatter: CurrencyFormatter!
+final class CurrencyTextFieldDelegateTests: XCTestCase {
+    // MARK: - Properties
+
+    // system under test
+    private var delegate: CurrencyUITextFieldDelegate!
+
+    private var textField: UITextField! = .init()
+    private var formatter: CurrencyFormatter!
+    private var passthroughDelegateMock: PassthroughDelegateMock! = .init()
+
+    // MARK: - Life cycle
     
     override func setUp() {
         super.setUp()
-        textField = UITextField()
-        
-        print(name)
 
         formatter = CurrencyFormatter {
             $0.currency = .dollar
@@ -39,17 +42,23 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
         textField = nil
         delegate = nil
         formatter = nil
+        passthroughDelegateMock = nil
+
         super.tearDown()
     }
+
+    // MARK: - Tests - Init
     
     func testInit() {
         XCTAssertNotNil(delegate.formatter, "formatter should not be nil")
+        XCTAssertNil(delegate.passthroughDelegate, "passthroughDelegate should be nil")
         
         delegate = CurrencyUITextFieldDelegate()
         XCTAssertNotNil(delegate.formatter, "formatter should not be nil")
     }
     
-    // MARK: max digits
+    // MARK: - Tests - Max digits
+
     func testMaxDigitsCount() {
         formatter.maxIntegers = 5
         
@@ -62,7 +71,8 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
         }
     }
 
-    // MARK: Deletion
+    // MARK: - Tests - Deletion
+
     func testDeleting() {
         // simulates keyboard actions - expected to set textField text to "$11,111,111.11"
         for _ in 0...9 {
@@ -108,7 +118,7 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
         }
     }
 
-    // MARK: input/paste
+    // MARK: - Tests - Input/paste
     
     func testAddingNegativeSymbol() {
         // testing with numeric pad
@@ -195,7 +205,8 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
         XCTAssertEqual(textField.text, formatter.currencySymbol + "1,231,506.78", "deleting digits should keep formating and count as expected")
     }
 
-    // MARK: End of editing
+    // MARK: - Tests - End of editing
+
     func testClearsWhenValueIsZero() {
         delegate.clearsWhenValueIsZero = true
 
@@ -216,7 +227,8 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
         XCTAssertFalse(textField.textLength == 0, "Text field text count should not be zero when autoclear is disabled")
     }
 
-    // MARK: Cursor
+    // MARK: - Tests - Cursor
+
     func testSelectedTextRange() {
         sendTextFieldChanges(at: NSRange(location: textField.textLength, length: 0), inputString: "3")
 
@@ -228,9 +240,85 @@ class CurrencyTextFieldDelegateTests: XCTestCase {
         sendTextFieldChanges(at: NSRange(location: textField.textLength, length: 0), inputString: "3")
         XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, -5, "Selected text range offset from end should not change after inputs")
     }
+
+    // MARK: - Tests - Passthrough delegate
+
+    func testSettingPassthroughDelegate() {
+        delegate.passthroughDelegate = passthroughDelegateMock
+
+        XCTAssert(delegate.passthroughDelegate === passthroughDelegateMock, "It has the correct passthroughDelegate")
+        XCTAssert(delegate._passthroughDelegate === passthroughDelegateMock, "It has the correct private passthroughDelegate")
+    }
+
+    // MARK: - Tests - UITextFieldDelegate
+
+    func testTextFieldShouldBeginEditing() {
+        delegate.passthroughDelegate = passthroughDelegateMock
+        delegate.textFieldShouldBeginEditing(textField)
+
+        XCTAssertTrue(passthroughDelegateMock.didCallTextFieldShouldBeginEditing, "It has called the correct passthrough delegate mock function")
+        XCTAssertEqual(passthroughDelegateMock.lastTextField, textField, "It has passed the correct text field")
+    }
+
+    func testTextFieldDidBeginEditing() {
+        delegate.passthroughDelegate = passthroughDelegateMock
+        delegate.textFieldDidBeginEditing(textField)
+
+        XCTAssertTrue(passthroughDelegateMock.didCallTextFieldDidBeginEditing, "It has called the correct passthrough delegate mock function")
+        XCTAssertEqual(passthroughDelegateMock.lastTextField, textField, "It has passed the correct text field")
+    }
+
+    func testTextFieldShouldEndEditing() {
+        delegate.passthroughDelegate = passthroughDelegateMock
+        delegate.textFieldShouldEndEditing(textField)
+
+        XCTAssertTrue(passthroughDelegateMock.didCallTextFieldShouldEndEditing, "It has called the correct passthrough delegate mock function")
+        XCTAssertEqual(passthroughDelegateMock.lastTextField, textField, "It has passed the correct text field")
+    }
+
+    func testTextFieldDidEndEditing() {
+        delegate.passthroughDelegate = passthroughDelegateMock
+        delegate.textFieldDidEndEditing(textField)
+
+        XCTAssertTrue(passthroughDelegateMock.didCallTextFieldDidEndEditing, "It has called the correct passthrough delegate mock function")
+        XCTAssertEqual(passthroughDelegateMock.lastTextField, textField, "It has passed the correct text field")
+    }
+
+    func testTextFieldShouldClear() {
+        delegate.passthroughDelegate = passthroughDelegateMock
+        delegate.textFieldShouldClear(textField)
+
+        XCTAssertTrue(passthroughDelegateMock.didCallTextFieldShouldClear, "It has called the correct passthrough delegate mock function")
+        XCTAssertEqual(passthroughDelegateMock.lastTextField, textField, "It has passed the correct text field")
+    }
+
+    func testTextFieldShouldReturn() {
+        delegate.passthroughDelegate = passthroughDelegateMock
+        delegate.textFieldShouldReturn(textField)
+
+        XCTAssertTrue(passthroughDelegateMock.didCallTextFieldShouldReturn, "It has called the correct passthrough delegate mock function")
+        XCTAssertEqual(passthroughDelegateMock.lastTextField, textField, "It has passed the correct text field")
+    }
+
+    func testTextFieldShouldChangeCharacters() {
+        let expectedRange = NSRange(location: textField.textLength, length: 0)
+        let expectedReplacementString = "string"
+
+        delegate.passthroughDelegate = passthroughDelegateMock
+        delegate.textField(textField,
+                           shouldChangeCharactersIn: expectedRange,
+                           replacementString: expectedReplacementString)
+
+        XCTAssertTrue(passthroughDelegateMock.didCallTextFieldShouldChangeCharacters, "It has called the correct passthrough delegate mock function")
+        XCTAssertEqual(passthroughDelegateMock.lastTextField, textField, "It has passed the correct text field")
+        XCTAssertEqual(passthroughDelegateMock.lastRange, expectedRange, "It has passed the correct range")
+        XCTAssertEqual(passthroughDelegateMock.lastReplacementString, expectedReplacementString,
+                       "It has passed the correct replacement string")
+    }
 }
 
-// MARK: All Tests
+// MARK: - All Tests
+
 extension CurrencyTextFieldDelegateTests {
     static var allTests = {
         return [
