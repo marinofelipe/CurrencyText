@@ -7,8 +7,9 @@
 
 import Foundation
 
-public protocol CurrencyFormatterProtocol {
-    var numberFormatter: NumberFormatter! { get }
+// MARK: - Currency protocols
+
+public protocol CurrencyFormatting {
     var maxDigitsCount: Int { get }
     var decimalDigits: Int { get set }
     var maxValue: Double? { get set }
@@ -16,20 +17,26 @@ public protocol CurrencyFormatterProtocol {
     var initialText: String { get }
     var currencySymbol: String { get set }
     
-    func string(from double: Double?) -> String?
+    func string(from double: Double) -> String?
     func unformatted(string: String) -> String?
     func double(from string: String) -> Double?
-    func updated(formattedString string: String) -> String?
 }
 
-public class CurrencyFormatter: CurrencyFormatterProtocol {
+public protocol CurrencyAdjusting {
+    func formattedStringWithAdjustedDecimalSeparator(from string: String) -> String?
+    func formattedStringAdjustedToFitAllowedValues(from string: String) -> String?
+}
+
+// MARK: - Currency formatter
+
+public class CurrencyFormatter: CurrencyFormatting {
     
     /// Set the locale to retrieve the currency from
     /// You can pass a Swift type Locale or one of the
     /// Locales enum options - that encapsulates all available locales.
     public var locale: LocaleConvertible {
         set { self.numberFormatter.locale = newValue.locale }
-        get { return self.numberFormatter.locale }
+        get { self.numberFormatter.locale }
     }
     
     /// Set the desired currency type
@@ -40,7 +47,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     /// default/current user locale.
     public var currency: Currency {
         set { numberFormatter.currencyCode = newValue.rawValue }
-        get { return Currency(rawValue: numberFormatter.currencyCode) ?? .dollar }
+        get { Currency(rawValue: numberFormatter.currencyCode) ?? .dollar }
     }
     
     /// Define if currency symbol should be presented or not.
@@ -60,7 +67,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
             guard showCurrencySymbol else { return }
             numberFormatter.currencySymbol = newValue
         }
-        get { return numberFormatter.currencySymbol }
+        get { numberFormatter.currencySymbol }
     }
     
     /// The lowest number allowed as input.
@@ -105,7 +112,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
             numberFormatter.minimumFractionDigits = newValue
             numberFormatter.maximumFractionDigits = newValue
         }
-        get { return numberFormatter.minimumFractionDigits }
+        get { numberFormatter.minimumFractionDigits }
     }
     
     /// Set decimal numbers behavior.
@@ -120,7 +127,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
             self.decimalDigits = newValue ? 2 : 0
             self.numberFormatter.alwaysShowsDecimalSeparator = newValue ? true : false
         }
-        get { return decimalDigits != 0 }
+        get { decimalDigits != 0 }
     }
     
     /// Defines the string that is the decimal separator
@@ -128,20 +135,20 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     /// is greater than 0.
     public var decimalSeparator: String {
         set { self.numberFormatter.currencyDecimalSeparator = newValue }
-        get { return numberFormatter.currencyDecimalSeparator }
+        get { numberFormatter.currencyDecimalSeparator }
     }
     
     /// Can be used to set a custom currency code string
     public var currencyCode: String {
         set { self.numberFormatter.currencyCode = newValue }
-        get { return numberFormatter.currencyCode }
+        get { numberFormatter.currencyCode }
     }
     
     /// Sets if decimal separator should always be presented,
     /// even when decimal digits are disabled
     public var alwaysShowsDecimalSeparator: Bool {
         set { self.numberFormatter.alwaysShowsDecimalSeparator = newValue }
-        get { return numberFormatter.alwaysShowsDecimalSeparator }
+        get { numberFormatter.alwaysShowsDecimalSeparator }
     }
     
     /// The amount of grouped numbers. This definition is fixed for at least
@@ -149,7 +156,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     /// groups if secondaryGroupingSize does not have another value.
     public var groupingSize: Int {
         set { self.numberFormatter.groupingSize = newValue }
-        get { return numberFormatter.groupingSize }
+        get { numberFormatter.groupingSize }
     }
     
     /// The amount of grouped numbers after the first group.
@@ -159,7 +166,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     /// Beign [] grouping size and () secondary grouping size.
     public var secondaryGroupingSize: Int {
         set { self.numberFormatter.secondaryGroupingSize = newValue }
-        get { return numberFormatter.secondaryGroupingSize }
+        get { numberFormatter.secondaryGroupingSize }
     }
     
     /// Defines the string that is shown between groups of numbers
@@ -171,7 +178,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
             self.numberFormatter.currencyGroupingSeparator = newValue
             self.numberFormatter.usesGroupingSeparator = true
         }
-        get { return self.numberFormatter.currencyGroupingSeparator }
+        get { self.numberFormatter.currencyGroupingSeparator }
     }
     
     /// Sets if has separator between all group of numbers.
@@ -181,14 +188,14 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     /// Note: When set to true only works by defining a grouping separator.
     public var hasGroupingSeparator: Bool {
         set { self.numberFormatter.usesGroupingSeparator = newValue }
-        get { return self.numberFormatter.usesGroupingSeparator }
+        get { self.numberFormatter.usesGroupingSeparator }
     }
     
     /// Value that will be presented when the text field
     /// text values matches zero (0)
     public var zeroSymbol: String? {
         set { numberFormatter.zeroSymbol = newValue }
-        get { return numberFormatter.zeroSymbol }
+        get { numberFormatter.zeroSymbol }
     }
     
     /// Value that will be presented when the text field
@@ -199,7 +206,7 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
     }
     
     /// Encapsulated Number formatter
-    public var numberFormatter: NumberFormatter!
+    let numberFormatter: NumberFormatter
     
     /// Maximum allowed number of integers
     public var maxIntegers: Int? {
@@ -210,9 +217,9 @@ public class CurrencyFormatter: CurrencyFormatterProtocol {
         get { return numberFormatter.maximumIntegerDigits }
     }
     
-    /// Returns the maximium allowed number of numerical characters
+    /// Returns the maximum allowed number of numerical characters
     public var maxDigitsCount: Int {
-        return numberFormatter.maximumIntegerDigits + numberFormatter.maximumFractionDigits
+        numberFormatter.maximumIntegerDigits + numberFormatter.maximumFractionDigits
     }
     
     /// The value zero formatted to serve as initial text.
@@ -248,8 +255,8 @@ extension CurrencyFormatter {
     ///
     /// - Parameter double: the monetary amount.
     /// - Returns: formatted currency string.
-    public func string(from double: Double?) -> String? {
-        let validValue = getAdjustedForDefinedInterval(value: double)
+    public func string(from double: Double) -> String? {
+        let validValue = valueAdjustedToFitAllowedValues(from: double)
         return numberFormatter.string(from: validValue)
     }
     
@@ -258,7 +265,7 @@ extension CurrencyFormatter {
     /// - Parameter string: string that describes the numerical value.
     /// - Returns: the value as a Double.
     public func double(from string: String) -> Double? {
-        return Double(string)
+        Double(string)
     }
     
     /// Receives a currency formatted string and returns its
@@ -267,40 +274,68 @@ extension CurrencyFormatter {
     /// - Parameter string: currency formatted string
     /// - Returns: numerical representation
     public func unformatted(string: String) -> String? {
-        return string.numeralFormat()
+        string.numeralFormat()
     }
 }
 
-extension CurrencyFormatter {
-    
-    /// Returns the update of an already formatted string, replacing its decimal separator
-    /// and adjusting it to formater's min and max values if needed.
+// MARK: - Currency adjusting conformance
+
+extension CurrencyFormatter: CurrencyAdjusting {
+
+    /// Receives a currency formatted String, and returns it with its decimal separator adjusted.
     ///
-    /// - Parameter string: formatted string
-    /// - Returns: updated formatted string
-    public func updated(formattedString string: String) -> String? {
-        var updatedString = string.numeralFormat()
-        
-        let isNegative: Bool = string.contains(String.negativeSymbol)
-        updatedString = isNegative ? .negativeSymbol + updatedString : updatedString
-        
-        updatedString.updateDecimalSeparator(decimalDigits: decimalDigits)
-        
-        let value = getAdjustedForDefinedInterval(value: double(from: updatedString))
-        return self.string(from: value)
+    /// _Note_: Useful when appending values to a currency formatted String.
+    /// E.g. "$ 23.24" after users taps an additional number, is equal = "$ 23.247".
+    /// Which gets updated to "$ 232.47".
+    ///
+    /// - Parameter string: The currency formatted String
+    /// - Returns: The currency formatted received String with its decimal separator adjusted
+    public func formattedStringWithAdjustedDecimalSeparator(from string: String) -> String? {
+        let adjustedString = numeralStringWithAdjustedDecimalSeparator(from: string)
+        guard let value = double(from: adjustedString) else { return nil }
+
+        return self.numberFormatter.string(from: value)
     }
-    
-    /// Returns the given value adjusted to respect
-    /// formatter's max an min values.
+
+    /// Receives a currency formatted String, and returns it to fit the formatter's min and max values, when needed.
     ///
-    /// - Parameter value: value to be adjusted if needed
-    /// - Returns: Ajusted value
-    private func getAdjustedForDefinedInterval(value: Double?) -> Double? {
-        if let minValue = minValue, value ?? 0 < minValue {
+    /// - Parameter string: The currency formatted String
+    /// - Returns: The currency formatted String, or the formatted version of its closes allowed value, min or max, depending on the closest boundary.
+    public func formattedStringAdjustedToFitAllowedValues(from string: String) -> String? {
+        let adjustedString = numeralStringWithAdjustedDecimalSeparator(from: string)
+        guard let originalValue = double(from: adjustedString) else { return nil }
+
+        return self.string(from: originalValue)
+    }
+
+    /// Receives a currency formatted String, and returns a numeral version of it with its decimal separator adjusted.
+    ///
+    /// E.g. "$ 23.24", after users taps an additional number, get equal as "$ 23.247". The returned value would be "232.47".
+    ///
+    /// - Parameter string: The currency formatted String
+    /// - Returns: The received String with numeral format and with its decimal separator adjusted
+    private func numeralStringWithAdjustedDecimalSeparator(from string: String) -> String {
+        var updatedString = string.numeralFormat()
+        let isNegative: Bool = string.contains(String.negativeSymbol)
+
+        updatedString = isNegative ? .negativeSymbol + updatedString : updatedString
+        updatedString.updateDecimalSeparator(decimalDigits: decimalDigits)
+
+        return updatedString
+    }
+
+    /// Receives a Double value, and returns it adjusted to fit min and max allowed values, when needed.
+    /// If the value respect number formatter's min and max, it will be returned without changes.
+    ///
+    /// - Parameter value: The value to be adjusted if needed
+    /// - Returns: The value updated or not, depending on the formatter's settings
+    private func valueAdjustedToFitAllowedValues(from value: Double) -> Double {
+        if let minValue = minValue, value < minValue {
             return minValue
-        } else if let maxValue = maxValue, value ?? 0 > maxValue {
+        } else if let maxValue = maxValue, value > maxValue {
             return maxValue
         }
+
         return value
     }
 }

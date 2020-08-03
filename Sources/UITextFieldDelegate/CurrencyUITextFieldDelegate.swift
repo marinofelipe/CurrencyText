@@ -15,7 +15,7 @@ import CurrencyFormatter
 /// Custom text field delegate, that formats user inputs based on a given currency formatter.
 public class CurrencyUITextFieldDelegate: NSObject {
 
-    public var formatter: CurrencyFormatterProtocol!
+    public var formatter: (CurrencyFormatting & CurrencyAdjusting)!
 
     /// Text field clears its text when value value is equal to zero.
     public var clearsWhenValueIsZero: Bool = false
@@ -62,6 +62,9 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if let text = textField.text, text.representsZero && clearsWhenValueIsZero {
             textField.text = ""
+        }
+        else if let text = textField.text, let updated = formatter.formattedStringAdjustedToFitAllowedValues(from: text), updated != text {
+            textField.text = updated
         }
         return passthroughDelegate?.textFieldShouldEndEditing?(textField) ?? true
     }
@@ -152,7 +155,7 @@ extension CurrencyUITextFieldDelegate {
             if text.isEmpty {
                 textField.text = text
             } else {
-                textField.text = formatter.updated(formattedString: text)
+                textField.text = formatter.formattedStringWithAdjustedDecimalSeparator(from: text)
             }
         }
     }
@@ -180,6 +183,6 @@ extension CurrencyUITextFieldDelegate {
             updatedText.removeLast()
         }
         
-        textField.text = formatter.updated(formattedString: updatedText)
+        textField.text = formatter.formattedStringWithAdjustedDecimalSeparator(from: updatedText)
     }
 }
