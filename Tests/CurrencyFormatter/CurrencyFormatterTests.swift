@@ -79,10 +79,10 @@ class CurrencyFormatterTests: XCTestCase {
         formatter.minValue = 10
         formatter.maxValue = 100.31
         
-        formattedString = formatter.updated(formattedString: "€300,000.54")
+        formattedString = formatter.formattedStringAdjustedToFitAllowedValues(from: "€300,000.54")
         XCTAssertEqual(formattedString, "€100.31")
         
-        formattedString = formatter.updated(formattedString: "€2.03")
+        formattedString = formatter.formattedStringAdjustedToFitAllowedValues(from: "€2.03")
         XCTAssertEqual(formattedString, "€10.00")
         
         formattedString = formatter.string(from: 88888888)

@@ -34,7 +34,7 @@ class ViewController: UIViewController {
             $0.minValue = 1
             $0.currency = .dollar
             $0.locale = CurrencyLocale.englishUnitedStates
-            $0.hasDecimals = false
+            $0.hasDecimals = true
         }
         
         textFieldDelegate = CurrencyUITextFieldDelegate(formatter: currencyFormatter)

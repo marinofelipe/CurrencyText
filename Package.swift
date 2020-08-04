@@ -12,14 +12,15 @@ let package = Package(
             targets: ["CurrencyFormatter", "CurrencyUITextFieldDelegate"]),
     ],
     targets: [
-        // Can be imported and used to have access to `CurrencyFormatter`.
-        // Useful to format and represent currency values.
+        /// Can be imported and used to have access to `CurrencyFormatter`.
+        /// Useful to `format and represent currency values`.
         .target(
             name: "CurrencyFormatter",
             dependencies: [],
             path: "Sources/Formatter"),
-        // Can be imported and used to have access to `CurrencyUITextFieldDelegate`.
-        // Useful to format text field inputs as currency, based on a the settings of a CurrencyFormatter.
+
+        /// Can be imported and used to have access to `CurrencyUITextFieldDelegate`.
+        /// Useful to `format text field inputs as currency`, based on a the settings of a CurrencyFormatter.
         .target(
             name: "CurrencyUITextFieldDelegate",
             dependencies: ["CurrencyFormatter"],
