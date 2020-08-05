@@ -41,36 +41,48 @@ platform :ios do
 		)
   	end
 
-    ###-------------------------------- Tag and publish ---------------------------###
+    ###-------------------------------- Release ---------------------------###
 
-	desc "Tag pod"
+    desc "Release the framework next version. Available bump types are: [patch, minor, major]."
+    lane :release do |options|
+    	bump_type = options[:bump_type] || "patch"
+		tag bump_type:bump_type
+		publish_pod
+	end
+
+	desc "Tag the next release. Available bump types are: patch, minor, major"
     lane :tag do |options|
   		ensure_git_status_clean
   		
   		sh "git fetch --tags"
 	  	last_tag = last_git_tag
-	  	version_number = get_info_plist_value(path: './Pods/Target Support Files/CurrencyText/Info.plist', key: 'CFBundleShortVersionString')
 
-	  	if (Gem::Version.new(last_tag) >= Gem::Version.new(version_number))
-	    	if options[:force] 
-	      		version_number = patch
-	    	else
-	      	raise "There is already a tag with this number version. If you want to force create a tag do: fastlane tag force:true \nYou should first 		update the version number with : fastlane patch | fastlane minor | fastlane major".yellow
-	    	end
+	  	bump_type = options[:bump_type] || "patch"
+		bump_podspec bump_type:bump_type
+
+	  	spec = read_podspec(path: "#{cocoapods[:podspec]}")
+		version_number = spec["version"]
+
+	  	if (Gem::Version.new(version_number) >= Gem::Version.new(last_tag))
+	      	UI.success "All good! New tag is valid: #{version_number} 💪".green
 	  	else
-	    	UI.success "it is ok, all good! last tag #{last_tag} != new version #{version_number} 💪".green
+	      	raise "New version: #{version_number} is <= last tag: #{last_tag}".yellow
 	  	end
 
-	  	version_bump_podspec(path: "#{cocoapods[:podspec]}", version_number: version_number)
-	  	sh "git commit -am \"bump pod version: #{version_number} [ci skip]\""
+	  	sh "git commit -am \"Bump podspec version: #{version_number} [ci skip]\""
 	  	add_git_tag(tag: version_number)
 	  	push_git_tags
 	  	push_to_git_remote
-	  	
 	end
 
-	desc "publish pod"
-    lane :publish do
+	desc "Bump the podspec version. Available bump types are: patch, minor, major."
+    lane :bump_podspec do |options|
+    	bump_type = options[:bump_type] || "patch"
+    	version_bump_podspec(path: "#{cocoapods[:podspec]}", bump_type: bump_type)
+    end
+
+	desc "Publish the new pod version!"
+    lane :publish_pod do
 		pod_push(path: "#{cocoapods[:podspec]}")
 	end
 end
