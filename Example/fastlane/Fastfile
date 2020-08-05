@@ -69,7 +69,7 @@ platform :ios do
 	      	raise "New version: #{version_number} is <= last tag: #{last_tag}".yellow
 	  	end
 
-	  	sh "git commit -am \"Bump podspec version: #{version_number} [ci skip]\""
+	  	sh "git commit -am \"Bump podspec version: #{version_number}\""
 	  	add_git_tag(tag: version_number)
 	  	push_git_tags
 	  	push_to_git_remote
