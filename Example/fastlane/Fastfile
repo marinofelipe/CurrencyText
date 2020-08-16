@@ -19,96 +19,70 @@ platform :ios do
 	desc "Run tests"
 	lane :test do
 		scan(
-			workspace: "../CurrencyText.xcworkspace", clean: true, code_coverage: true, scheme: "CurrencyText-Package", device: "iPhone XS Max"
+			workspace: "../CurrencyText.xcworkspace", 
+			clean: true, 
+			code_coverage: true, 
+			scheme: "CurrencyText-Package", 
+			device: "iPhone XS Max"
 		)
 
+		coverage_files_to_ignore = [
+    		'Tests/*'
+		]
+
 		slather(
-			proj: "../CurrencyText.xcodeproj", workspace: "../CurrencyText.xcworkspace", scheme: "CurrencyText-Package", source_directory: "Sources", travis: true, coveralls: true
+			proj: "../CurrencyText.xcodeproj", 
+			workspace: "../CurrencyText.xcworkspace",
+			 scheme: "CurrencyText-Package", 
+			 source_directory: "Sources", 
+			 travis: true, 
+			 coveralls: true,
+			 ignore: coverage_files_to_ignore
 		)
   	end
 
-  ###-------------------------------- Pull Request ---------------------------###
-  
-    desc "Create a pull request from the current branch"
-    lane :open_pr do |options|
-		
-		ok = system("which hub > /dev/null 2>&1")
-		if (ok == false)
-			raise "Please install https://github.com/github/hub".yellow
-		end
-		
-		ensure_git_status_clean
-		branch = git_branch
-		
-		if (branch == "master") ||(branch == "develop")
-			raise "You can't open a Pull Request from this branch".yellow
-		else
-			UI.success "it is ok you are on branch :#{branch}".green
-			sh "git push origin #{branch}"
-		end
-		
-		pr_title = prompt(text: 'Type pull request title:')
-		sh "hub issue"
-		desc = prompt(text: 'Do you want add a description? It\'s always better :).',boolean:true)
-		prompt_text = "Type pull request description: Fixing any issues? Just write: fixed #issueNumber. "
-		pr_description = desc ? prompt(text: prompt_text) : ""
-		sh "touch pr_file"
-		write = open('pr_file', 'w')
-		write.write(pr_title)
-		write.write("\n")
-		write.write(pr_description)
-		write.close
+    ###-------------------------------- Release ---------------------------###
 
-		masterAsBase = prompt(text: 'Do you want set master as base? ["y" for master and "n" for develop]', boolean: true)
-		if (masterAsBase == true)
-			base = branches[:master]
-		else
-			base = branches[:dev]
-		end
+    desc "Release the framework next version. Available bump types are: [patch, minor, major]."
+    lane :release do |options|
+    	bump_type = options[:bump_type] || "patch"
+		tag bump_type:bump_type
+		publish_pod
+	end
 
-		if base 
-			pr_link = sh "hub pull-request -F pr_file -b #{base} --browse"
-		else 
-			pr_link = sh "hub pull-request -F pr_file --browse"
-		end
-
-		sh "rm pr_file"
-		clipboard(value:pr_link)
-    end
-
-    ###-------------------------------- Tag and publish ---------------------------###
-
-	desc "Tag pod"
+	desc "Tag the next release. Available bump types are: patch, minor, major"
     lane :tag do |options|
   		ensure_git_status_clean
   		
   		sh "git fetch --tags"
 	  	last_tag = last_git_tag
-	  	version_number = get_info_plist_value(path: './Pods/Target Support Files/CurrencyText/Info.plist', key: 'CFBundleShortVersionString')
 
-	  	if (Gem::Version.new(last_tag) >= Gem::Version.new(version_number))
-	    	if options[:force] 
-	      		version_number = patch
-	    	else
-	      	raise "There is already a tag with this number version. If you want to force create a tag do: fastlane tag force:true \nYou should first 		update the version number with : fastlane patch | fastlane minor | fastlane major".yellow
-	    	end
+	  	bump_type = options[:bump_type] || "patch"
+		bump_podspec bump_type:bump_type
+
+	  	spec = read_podspec(path: "#{cocoapods[:podspec]}")
+		version_number = spec["version"]
+
+	  	if (Gem::Version.new(version_number) >= Gem::Version.new(last_tag))
+	      	UI.success "All good! New tag is valid: #{version_number} 💪".green
 	  	else
-	    	UI.success "it is ok, all good! last tag #{last_tag} != new version #{version_number} 💪".green
+	      	raise "New version: #{version_number} is <= last tag: #{last_tag}".yellow
 	  	end
 
-	  	version_bump_podspec(path: "#{cocoapods[:podspec]}", version_number: version_number)
-	  	sh "git commit -am \"bump pod version: #{version_number} [ci skip]\""
+	  	sh "git commit -am \"Bump podspec version: #{version_number}\""
 	  	add_git_tag(tag: version_number)
 	  	push_git_tags
 	  	push_to_git_remote
-	  	
 	end
 
-	desc "publish pod"
-    lane :publish do
+	desc "Bump the podspec version. Available bump types are: patch, minor, major."
+    lane :bump_podspec do |options|
+    	bump_type = options[:bump_type] || "patch"
+    	version_bump_podspec(path: "#{cocoapods[:podspec]}", bump_type: bump_type)
+    end
+
+	desc "Publish the new pod version!"
+    lane :publish_pod do
 		pod_push(path: "#{cocoapods[:podspec]}")
 	end
-
 end
-
-

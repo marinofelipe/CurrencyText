@@ -21,21 +21,26 @@ or alternatively using `brew cask install fastlane`
 fastlane ios test
 ```
 Run tests
-### ios open_pr
+### ios release
 ```
-fastlane ios open_pr
+fastlane ios release
 ```
-Create a pull request from the current branch
+Release the framework next version. Available bump types are: [patch, minor, major].
 ### ios tag
 ```
 fastlane ios tag
 ```
-Tag pod
-### ios publish
+Tag the next release. Available bump types are: patch, minor, major
+### ios bump_podspec
 ```
-fastlane ios publish
+fastlane ios bump_podspec
 ```
-publish pod
+Bump the podspec version. Available bump types are: patch, minor, major.
+### ios publish_pod
+```
+fastlane ios publish_pod
+```
+Publish the new pod version!
 
 ----
 
