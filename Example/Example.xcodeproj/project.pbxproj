@@ -12,7 +12,9 @@
 		D54170DC209023D5008995D7 /* UIKitExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54170DB209023D5008995D7 /* UIKitExampleViewController.swift */; };
 		D54170E1209023D7008995D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54170E0209023D7008995D7 /* Assets.xcassets */; };
 		D54170E4209023D7008995D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54170E2209023D7008995D7 /* LaunchScreen.storyboard */; };
-		ED1BCD0D25FE9933006F6DCD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1BCD0C25FE9933006F6DCD /* ContentView.swift */; };
+		ED1BCD0D25FE9933006F6DCD /* SwiftUIExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1BCD0C25FE9933006F6DCD /* SwiftUIExampleView.swift */; };
+		EDF86EB6261B57F400FD9D82 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF86EB5261B57F400FD9D82 /* RootView.swift */; };
+		EDF86EBB261B5DA300FD9D82 /* UIKitExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF86EBA261B5DA300FD9D82 /* UIKitExampleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +27,9 @@
 		D54170E0209023D7008995D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D54170E3209023D7008995D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D54170E5209023D7008995D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED1BCD0C25FE9933006F6DCD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ED1BCD0C25FE9933006F6DCD /* SwiftUIExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleView.swift; sourceTree = "<group>"; };
+		EDF86EB5261B57F400FD9D82 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		EDF86EBA261B5DA300FD9D82 /* UIKitExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExampleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,12 +82,14 @@
 		D54170D8209023D5008995D7 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				D54170E5209023D7008995D7 /* Info.plist */,
 				D54170D9209023D5008995D7 /* AppDelegate.swift */,
+				EDF86EB5261B57F400FD9D82 /* RootView.swift */,
+				ED1BCD0C25FE9933006F6DCD /* SwiftUIExampleView.swift */,
+				EDF86EBA261B5DA300FD9D82 /* UIKitExampleView.swift */,
 				D54170DB209023D5008995D7 /* UIKitExampleViewController.swift */,
-				ED1BCD0C25FE9933006F6DCD /* ContentView.swift */,
 				D54170E0209023D7008995D7 /* Assets.xcassets */,
 				D54170E2209023D7008995D7 /* LaunchScreen.storyboard */,
-				D54170E5209023D7008995D7 /* Info.plist */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -204,8 +210,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D54170DC209023D5008995D7 /* UIKitExampleViewController.swift in Sources */,
-				ED1BCD0D25FE9933006F6DCD /* ContentView.swift in Sources */,
+				EDF86EBB261B5DA300FD9D82 /* UIKitExampleView.swift in Sources */,
+				ED1BCD0D25FE9933006F6DCD /* SwiftUIExampleView.swift in Sources */,
 				D54170DA209023D5008995D7 /* AppDelegate.swift in Sources */,
+				EDF86EB6261B57F400FD9D82 /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +355,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X9MK4PBNUW;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -367,7 +375,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X9MK4PBNUW;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

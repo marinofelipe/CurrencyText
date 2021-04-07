@@ -16,6 +16,15 @@ import CurrencyText
 
 final class UIKitExampleViewController: UIViewController {
 
+    private let outerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+
+        return stackView
+    }()
+
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,22 +32,21 @@ final class UIKitExampleViewController: UIViewController {
         stackView.alignment = .center
         stackView.spacing = 16
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        stackView.layoutMargins = UIEdgeInsets(
+            top: 16,
+            left: 16,
+            bottom: 16,
+            right: 16
+        )
 
         return stackView
     }()
 
     private let textField: UITextField = {
         let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
         textField.placeholder = "Play with me..."
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.heightAnchor
-            .constraint(equalToConstant: 50)
-            .isActive = true
-        textField.widthAnchor
-            .constraint(equalToConstant: 200)
-            .isActive = true
 
         return textField
     }()
@@ -69,6 +77,7 @@ final class UIKitExampleViewController: UIViewController {
     ) {
         super.init(nibName: nil, bundle: nil)
 
+        title = "UIKit"
         setUp()
     }
 
@@ -91,26 +100,27 @@ final class UIKitExampleViewController: UIViewController {
             unformattedValueLabel
         ].forEach(stackView.addArrangedSubview)
 
-        view.addSubview(stackView)
+        outerStackView.addArrangedSubview(stackView)
+        view.addSubview(outerStackView)
 
-        stackView.centerXAnchor
-            .constraint(equalTo: view.centerXAnchor)
-            .isActive = true
-        stackView.topAnchor
+        outerStackView.topAnchor
             .constraint(equalTo: view.layoutMarginsGuide.topAnchor)
             .isActive = true
-        stackView.trailingAnchor
+        outerStackView.trailingAnchor
             .constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
             .isActive = true
-        stackView.leadingAnchor
+        outerStackView.leadingAnchor
             .constraint(equalTo: view.layoutMarginsGuide.leadingAnchor)
+            .isActive = true
+        outerStackView.bottomAnchor
+            .constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
             .isActive = true
     }
     
     private func setupTextFieldWithCurrencyDelegate() {
         let currencyFormatter = CurrencyFormatter {
             $0.maxValue = 100000000
-            $0.minValue = 1
+            $0.minValue = -100000000
             $0.currency = .dollar
             $0.locale = CurrencyLocale.englishUnitedStates
             $0.hasDecimals = true
