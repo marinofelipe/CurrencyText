@@ -32,6 +32,13 @@ let package = Package(
             dependencies: [],
             path: "Sources/Formatter"
         ),
+        .testTarget(
+            name: "CurrencyFormatterTests",
+            dependencies: [
+                .target(name: "CurrencyFormatter")
+            ],
+            path: "Tests/Formatter"
+        ),
 
         /// Can be imported and used to have access to `CurrencyUITextFieldDelegate`.
         /// Useful to `format text field inputs as currency`, based on a the settings of a CurrencyFormatter.
@@ -43,12 +50,11 @@ let package = Package(
             path: "Sources/UITextFieldDelegate"
         ),
         .testTarget(
-            name: "Tests",
+            name: "CurrencyUITextFieldDelegateTests",
             dependencies: [
-                .target(name: "CurrencyFormatter"),
                 .target(name: "CurrencyUITextFieldDelegate")
             ],
-            path: "Tests"
+            path: "Tests/UITextFieldDelegate"
         )
     ]
 )
