@@ -5,11 +5,18 @@ import PackageDescription
 
 let package = Package(
     name: "CurrencyText",
-    platforms: [.iOS(.v9)],
+    platforms: [
+        .iOS(.v9),
+        .macOS(.v10_14)
+    ],
     products: [
         .library(
             name: "CurrencyText",
-            targets: ["CurrencyFormatter", "CurrencyUITextFieldDelegate"]),
+            targets: [
+                "CurrencyFormatter",
+                "CurrencyUITextFieldDelegate"
+            ]
+        )
     ],
     targets: [
         /// Can be imported and used to have access to `CurrencyFormatter`.
@@ -17,17 +24,25 @@ let package = Package(
         .target(
             name: "CurrencyFormatter",
             dependencies: [],
-            path: "Sources/Formatter"),
+            path: "Sources/Formatter"
+        ),
 
         /// Can be imported and used to have access to `CurrencyUITextFieldDelegate`.
         /// Useful to `format text field inputs as currency`, based on a the settings of a CurrencyFormatter.
         .target(
             name: "CurrencyUITextFieldDelegate",
-            dependencies: ["CurrencyFormatter"],
-            path: "Sources/UITextFieldDelegate"),
+            dependencies: [
+                "CurrencyFormatter"
+            ],
+            path: "Sources/UITextFieldDelegate"
+        ),
         .testTarget(
             name: "Tests",
-            dependencies: ["CurrencyFormatter", "CurrencyUITextFieldDelegate"],
-            path: "Tests"),
+            dependencies: [
+                "CurrencyFormatter",
+                "CurrencyUITextFieldDelegate"
+            ],
+            path: "Tests"
+        )
     ]
 )
