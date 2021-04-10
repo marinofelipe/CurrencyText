@@ -16,6 +16,12 @@ let package = Package(
                 "CurrencyFormatter",
                 "CurrencyUITextFieldDelegate"
             ]
+        ),
+        .library(
+            name: "CurrencyFormatter",
+            targets: [
+                "CurrencyFormatter"
+            ]
         )
     ],
     targets: [
@@ -32,15 +38,15 @@ let package = Package(
         .target(
             name: "CurrencyUITextFieldDelegate",
             dependencies: [
-                "CurrencyFormatter"
+                .target(name: "CurrencyFormatter")
             ],
             path: "Sources/UITextFieldDelegate"
         ),
         .testTarget(
             name: "Tests",
             dependencies: [
-                "CurrencyFormatter",
-                "CurrencyUITextFieldDelegate"
+                .target(name: "CurrencyFormatter"),
+                .target(name: "CurrencyUITextFieldDelegate")
             ],
             path: "Tests"
         )
