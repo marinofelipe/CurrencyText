@@ -120,9 +120,7 @@
 		OBJ_33 /* CurrencyText.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = CurrencyText.xcworkspace; sourceTree = SOURCE_ROOT; };
 		OBJ_34 /* UICurrencyTextField.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = UICurrencyTextField.podspec; sourceTree = "<group>"; };
 		OBJ_35 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		OBJ_36 /* PULL_REQUEST_TEMPLATE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PULL_REQUEST_TEMPLATE.md; sourceTree = "<group>"; };
 		OBJ_37 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		OBJ_38 /* ISSUE_TEMPLATE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ISSUE_TEMPLATE.md; sourceTree = "<group>"; };
 		OBJ_39 /* CurrencyText.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = CurrencyText.podspec; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
@@ -228,9 +226,7 @@
 				OBJ_33 /* CurrencyText.xcworkspace */,
 				OBJ_34 /* UICurrencyTextField.podspec */,
 				OBJ_35 /* LICENSE */,
-				OBJ_36 /* PULL_REQUEST_TEMPLATE.md */,
 				OBJ_37 /* README.md */,
-				OBJ_38 /* ISSUE_TEMPLATE.md */,
 				OBJ_39 /* CurrencyText.podspec */,
 			);
 			sourceTree = "<group>";
