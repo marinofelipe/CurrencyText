@@ -11,6 +11,13 @@ let package = Package(
     ],
     products: [
         .library(
+            name: "CurrencyTextSwiftUI",
+            targets: [
+                "CurrencyFormatter",
+                "CurrencyTextField"
+            ]
+        ),
+        .library(
             name: "CurrencyText",
             targets: [
                 "CurrencyFormatter",
@@ -55,6 +62,32 @@ let package = Package(
                 .target(name: "CurrencyUITextFieldDelegate")
             ],
             path: "Tests/UITextFieldDelegate"
+        ),
+
+        /// Can be imported and used to have access to `CurrencyUITextFieldDelegate`.
+        /// Useful to `format text field inputs as currency`, based on a the settings of a CurrencyFormatter.
+        .target(
+            name: "CurrencyTextField",
+            dependencies: [
+                .target(name: "CurrencyFormatter")
+            ],
+            path: "Sources/SwiftUI"
+        ),
+        .testTarget(
+            name: "CurrencyTextFieldTests",
+            dependencies: [
+                .target(name: "CurrencyFormatter"),
+                .target(name: "CurrencyTextField")
+            ],
+            path: "Tests/SwiftUI"
+        ),
+        .testTarget(
+            name: "CurrencyTextFieldSnapshotTests",
+            dependencies: [
+                .target(name: "CurrencyFormatter"),
+                .target(name: "CurrencyTextField")
+            ],
+            path: "Tests/SwiftUISnapshotTests"
         )
     ]
 )
