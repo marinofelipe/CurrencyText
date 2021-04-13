@@ -7,12 +7,17 @@
 //
 
 import UIKit
-import CurrencyText
-/// - note: When using SPM you need to import each target, such as below:
-/// import CurrencyUITextFieldDelegate
-/// import CurrencyFormatter
+
+import CurrencyUITextFieldDelegate
+import CurrencyFormatter
+
+/// - note: When using CocoaPods you can import the main spec, or each sub-spec as below:
+/// // main spec
+/// import CurrencyText
 ///
-/// If you are using CocoaPods you are able to import both `CurrencyText` and the sub-specs mentioned above.
+/// // each sub-spec
+/// import CurrencyFormatter
+/// import CurrencyUITextField
 
 final class UIKitExampleViewController: UIViewController {
 
@@ -120,10 +125,10 @@ final class UIKitExampleViewController: UIViewController {
     private func setupTextFieldWithCurrencyDelegate() {
         let currencyFormatter = CurrencyFormatter {
             $0.maxValue = 100000000
-            $0.minValue = -100000000
+            $0.minValue = 5
             $0.currency = .dollar
             $0.locale = CurrencyLocale.englishUnitedStates
-            $0.hasDecimals = true
+            $0.hasDecimals = false
         }
         
         textFieldDelegate = CurrencyUITextFieldDelegate(formatter: currencyFormatter)

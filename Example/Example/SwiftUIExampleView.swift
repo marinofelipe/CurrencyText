@@ -7,12 +7,24 @@
 //
 
 import SwiftUI
-import CurrencyText
+
+import CurrencyTextField
+import CurrencyFormatter
+
+/// - note: When using CocoaPods you can import the main spec, or each sub-spec as below:
+/// // main spec
+/// import CurrencyText
+///
+/// // each sub-spec
+/// import CurrencyFormatter
+/// import CurrencyTextField
 
 import Combine
 
 struct SwiftUIExampleView: View {
-    @State private var text = ""
+    @State private var text: String?
+    @State private var unformattedText: String?
+    @State private var inputAmount: Decimal?
 
     static var currencyFormatter: CurrencyFormatter = .init()
     static let formatter: NumberFormatter = {
@@ -21,28 +33,40 @@ struct SwiftUIExampleView: View {
     }()
 
     var body: some View {
-        VStack(alignment: .center) {
-            Spacer()
+        Form {
+            Section {
+                CurrencyTextField(
+                    configuration: .init(
+                        placeholder: "Play with me...",
+                        text: $text,
+                        unformattedText: $unformattedText,
+                        inputAmount: $inputAmount,
+                        onCommitHandler: nil,
+                        onEditingChangedHandler: nil
+                    ),
+                    formatter: CurrencyTextFieldFormatter(
+                        formatter: CurrencyFormatter {
+                            $0.maxValue = 100000000
+                            $0.minValue = 5
+                            $0.currency = .dollar
+                            $0.locale = CurrencyLocale.englishUnitedStates
+                            $0.hasDecimals = true
+                        },
+                        clearsWhenValueIsZero: true
+                    )
+                )
+                .frame(
+                    maxWidth: 200
+                )
+                .fixedSize()
+                .textFieldStyle(
+                    RoundedBorderTextFieldStyle()
+                )
 
-            TextField(
-                "Play with me...",
-                text: $text,
-                onEditingChanged: { _ in },
-                onCommit: {
-                    endEditing()
-                }
-            )
-            .frame(
-                maxWidth: 200
-            )
-            .fixedSize()
-            .textFieldStyle(
-                RoundedBorderTextFieldStyle()
-            )
-
-            Text(text)
-
-            Spacer()
+                Text("Formatted value: \(String(describing: text))")
+                Text("Unformatted value: \(String(describing: unformattedText))")
+                Text("Input amount: \(String(describing: inputAmount))")
+            }
         }
         .navigationTitle("SwiftUI")
         .navigationBarTitleDisplayMode(.inline)

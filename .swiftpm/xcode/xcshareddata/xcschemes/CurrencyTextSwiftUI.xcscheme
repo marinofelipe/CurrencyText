@@ -14,48 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CurrencyText"
-               BuildableName = "CurrencyText"
-               BlueprintName = "CurrencyText"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CurrencyFormatter"
-               BuildableName = "CurrencyFormatter"
-               BlueprintName = "CurrencyFormatter"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CurrencyUITextFieldDelegate"
-               BuildableName = "CurrencyUITextFieldDelegate"
-               BlueprintName = "CurrencyUITextFieldDelegate"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "CurrencyTextSwiftUI"
                BuildableName = "CurrencyTextSwiftUI"
                BlueprintName = "CurrencyTextSwiftUI"
@@ -76,9 +34,20 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CurrencyUITextFieldDelegateTests"
-               BuildableName = "CurrencyUITextFieldDelegateTests"
-               BlueprintName = "CurrencyUITextFieldDelegateTests"
+               BlueprintIdentifier = "CurrencyTextFieldSnapshotTests"
+               BuildableName = "CurrencyTextFieldSnapshotTests"
+               BlueprintName = "CurrencyTextFieldSnapshotTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CurrencyTextFieldTests"
+               BuildableName = "CurrencyTextFieldTests"
+               BlueprintName = "CurrencyTextFieldTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -104,9 +73,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CurrencyText"
-            BuildableName = "CurrencyText"
-            BlueprintName = "CurrencyText"
+            BlueprintIdentifier = "CurrencyTextSwiftUI"
+            BuildableName = "CurrencyTextSwiftUI"
+            BlueprintName = "CurrencyTextSwiftUI"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

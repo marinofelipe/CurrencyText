@@ -19,25 +19,11 @@ platform :ios do
 	desc "Run tests"
 	lane :test do
 		scan(
-			workspace: "../CurrencyText.xcworkspace", 
+			project: "CurrencyText.xcodeproj",
 			clean: true, 
 			code_coverage: true, 
 			scheme: "CurrencyText-Package", 
-			device: "iPhone XS Max"
-		)
-
-		coverage_files_to_ignore = [
-    		'Tests/*'
-		]
-
-		slather(
-			proj: "../CurrencyText.xcodeproj", 
-			workspace: "../CurrencyText.xcworkspace",
-			 scheme: "CurrencyText-Package", 
-			 source_directory: "Sources", 
-			 travis: true, 
-			 coveralls: true,
-			 ignore: coverage_files_to_ignore
+			device: "iPhone 12"
 		)
   	end
 
