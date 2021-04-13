@@ -108,10 +108,46 @@ class CurrencyFormatterTests: XCTestCase {
         XCTAssertEqual(formattedString, "€ 300.000,54")
         
         let unformattedString = formatter.unformatted(string: formattedString!)
-        XCTAssertEqual(unformattedString, "30000054")
+        XCTAssertEqual(unformattedString, "300000,54")
         
         let doubleValue = formatter.double(from: "30000054")
         XCTAssertEqual(doubleValue, 30000054.00)
+    }
+
+    func testUnformattedValueWhenHasDecimal() {
+        formatter.locale = CurrencyLocale.portugueseBrazil
+        formatter.currency = .euro
+        formatter.hasDecimals = true
+
+        XCTAssertEqual(
+            formatter.unformatted(string: "€ 300.000,54"),
+            "300000,54"
+        )
+        XCTAssertEqual(
+            formatter.unformatted(string: "¥ 0,99"),
+            "0,99"
+        )
+        XCTAssertEqual(
+            formatter.unformatted(string: "$333,84"),
+            "333,84"
+        )
+    }
+
+    func testUnformattedValueWhenDecimalsAreDisabled() {
+        formatter.hasDecimals = false
+
+        XCTAssertEqual(
+            formatter.unformatted(string: "€ 300.000"),
+            "300000"
+        )
+        XCTAssertEqual(
+            formatter.unformatted(string: "¥3.953"),
+            "3953"
+        )
+        XCTAssertEqual(
+            formatter.unformatted(string: "$999"),
+            "999"
+        )
     }
     
     func testDoubleFromStringForDifferentFormatters() {
@@ -134,17 +170,5 @@ class CurrencyFormatterTests: XCTestCase {
         
         doubleValue = formatter.double(from: "100.12")
         XCTAssertEqual(doubleValue, 100.12)
-    }
-}
-
-// MARK: All Tests
-extension CurrencyFormatterTests {
-    static var allTests = {
-        return [
-            ("testComposing", testComposing),
-            ("testMinAndMaxValues", testMinAndMaxValues),
-            ("testFormatting", testFormatting),
-            ("testDoubleFromStringForDifferentFormatters", testDoubleFromStringForDifferentFormatters),
-        ]
     }
 }

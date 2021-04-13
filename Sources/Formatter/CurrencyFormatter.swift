@@ -274,7 +274,16 @@ extension CurrencyFormatter {
     /// - Parameter string: currency formatted string
     /// - Returns: numerical representation
     public func unformatted(string: String) -> String? {
-        string.numeralFormat()
+        if hasDecimals {
+            return string.trimmingCharacters(
+                in: CharacterSet(
+                    charactersIn: "0123456789\(decimalSeparator)"
+                )
+                .inverted
+            ).replacingOccurrences(of: groupingSeparator, with: "")
+        } else {
+            return string.numeralFormat()
+        }
     }
 }
 

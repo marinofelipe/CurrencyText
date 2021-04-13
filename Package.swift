@@ -64,8 +64,8 @@ let package = Package(
             path: "Tests/UITextFieldDelegate"
         ),
 
-        /// Can be imported and used to have access to `CurrencyUITextFieldDelegate`.
-        /// Useful to `format text field inputs as currency`, based on a the settings of a CurrencyFormatter.
+        /// Can be imported and used to have access to `CurrencyTextField`, a `SwiftUI` text field that sanitises
+        /// user input based on a given `CurrencyFormatter`.
         .target(
             name: "CurrencyTextField",
             dependencies: [
