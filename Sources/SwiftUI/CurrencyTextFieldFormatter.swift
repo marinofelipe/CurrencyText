@@ -70,6 +70,8 @@ public struct CurrencyTextFieldFormatter {
                     from: updatedText
                 )
             }
+        } else if value.isEmpty {
+            return value
         }
 
         let previousValueRange = value.range(of: previousValue ?? "")
