@@ -16,6 +16,7 @@ public struct CurrencyTextField: View {
     ) {
         self.configuration = configuration
         self.formatter = formatter
+        self.editingValue = configuration.text
     }
 
     let configuration: CurrencyTextFieldConfiguration
@@ -24,22 +25,21 @@ public struct CurrencyTextField: View {
     @State private var editingValue: String = "" {
         didSet {
             guard editingValue != oldValue else { return }
-            self.configuration.text.wrappedValue = editingValue
+            self.configuration.$text.wrappedValue = editingValue
             self.configuration.unformattedText?.wrappedValue = formatter.unformattedValue(
                 for: editingValue
-            )
-            self.configuration.inputAmount?.wrappedValue = Decimal(
-                formatter.double(for: configuration.unformattedText?.wrappedValue ?? "") ?? 0
-            )
+            ) ?? ""
+            self.configuration.inputAmount?.wrappedValue = formatter.double(
+                for: configuration.unformattedText?.wrappedValue ?? ""
+            ) ?? 0
         }
     }
 
     public var body: some View {
         VStack {
-
             TextField(
                 configuration.placeholder,
-                text: $editingValue,
+                text: configuration.$text,
                 onEditingChanged: { isEditing in
                     defer {
                         configuration.onEditingChangedHandler?(isEditing)
@@ -47,25 +47,26 @@ public struct CurrencyTextField: View {
 
                     let updatedText = formatter.editingChangedUpdatedFormattedText(
                         isEditing: isEditing,
-                        currentText: self.editingValue
+                        currentText: configuration.$text.wrappedValue
                     )
 
-                    self.editingValue = updatedText ?? ""
+                    configuration.$text.wrappedValue = updatedText ?? ""
+                    editingValue = updatedText ?? ""
                 },
                 onCommit: {
                     configuration.onCommitHandler?()
                 }
             )
             .onReceive(
-                Just(editingValue)
+                Just(configuration.text)
             ) { newValue in
-                let val = self.formatter.getUpdatedFormattedText(
+                let val = formatter.getUpdatedFormattedText(
                     for: newValue,
-                    previousValue: self.configuration.text.wrappedValue
+                    previousValue: editingValue
                 )
-                self.editingValue = val ?? ""
+                configuration.$text.wrappedValue = val ?? ""
+                editingValue = val ?? ""
             }
         }
     }
 }
-

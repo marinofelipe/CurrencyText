@@ -22,9 +22,9 @@ import CurrencyFormatter
 import Combine
 
 struct SwiftUIExampleView: View {
-    @State private var text: String?
-    @State private var unformattedText: String?
-    @State private var inputAmount: Decimal?
+    @State private var text: String = ""
+    @State private var unformattedText: String = ""
+    @State private var inputAmount: Double = 0
 
     static var currencyFormatter: CurrencyFormatter = .init()
     static let formatter: NumberFormatter = {
@@ -77,8 +77,9 @@ struct SwiftUIExampleView: View {
 
 import UIKit
 
-extension View {
+extension SwiftUIExampleView {
     func endEditing() {
+        $text.wrappedValue = ""
         UIApplication.shared.endEditing()
     }
 }

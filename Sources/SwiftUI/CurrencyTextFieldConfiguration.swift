@@ -11,16 +11,16 @@ import struct SwiftUI.Binding
 @available(iOS 13.0, *)
 public struct CurrencyTextFieldConfiguration {
     let placeholder: String
-    let text: Binding<String?>
+    @Binding private(set) var text: String
 
-    let unformattedText: Binding<String?>?
-    let inputAmount: Binding<Decimal?>?
+    let unformattedText: Binding<String>?
+    let inputAmount: Binding<Double>?
 
     let onCommitHandler: (() -> Void)?
     let onEditingChangedHandler: ((Bool) -> Void)?
 
     public static func makeDefault(
-        text: Binding<String?>
+        text: Binding<String>
     ) -> Self {
         .init(
             text: text,
@@ -31,30 +31,17 @@ public struct CurrencyTextFieldConfiguration {
 
     public init(
         placeholder: String = "",
-        text: Binding<String?>,
-        unformattedText: Binding<String?>? = nil,
-        inputAmount: Binding<Decimal?>? = nil,
+        text: Binding<String>,
+        unformattedText: Binding<String>? = nil,
+        inputAmount: Binding<Double>? = nil,
         onCommitHandler: (() -> Void)?,
         onEditingChangedHandler: ((Bool) -> Void)?
     ) {
         self.placeholder = placeholder
-        self.text = text
+        self._text = text
         self.unformattedText = unformattedText
         self.inputAmount = inputAmount
         self.onCommitHandler = onCommitHandler
         self.onEditingChangedHandler = onEditingChangedHandler
-    }
-}
-
-@available(iOS 13.0, *)
-extension CurrencyTextFieldConfiguration: Equatable {
-    public static func == (
-        lhs: CurrencyTextFieldConfiguration,
-        rhs: CurrencyTextFieldConfiguration
-    ) -> Bool {
-        lhs.placeholder == rhs.placeholder
-            && lhs.text.wrappedValue == rhs.text.wrappedValue
-            && lhs.unformattedText?.wrappedValue == rhs.unformattedText?.wrappedValue
-            && lhs.inputAmount?.wrappedValue == rhs.inputAmount?.wrappedValue
     }
 }
