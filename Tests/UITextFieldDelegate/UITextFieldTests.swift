@@ -52,13 +52,3 @@ class UITextFieldTests: XCTestCase {
         XCTAssertEqual(textField.selectedTextRangeOffsetFromEnd, -1)
     }
 }
-
-// MARK: All Tests
-extension UITextFieldTests {
-    static var allTests = {
-        return [
-            ("testUpdatingSelectedTextRange", testUpdatingSelectedTextRange),
-            ("testGettingOffsetFromEnd", testGettingOffsetFromEnd),
-        ]
-    }
-}

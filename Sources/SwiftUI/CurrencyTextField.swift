@@ -9,64 +9,45 @@ import Combine
 import SwiftUI
 
 @available(iOS 13.0, *)
-public struct CurrencyTextField: View {
-    public init(
-        configuration: CurrencyTextFieldConfiguration,
-        formatter: CurrencyTextFieldFormatter
-    ) {
+public struct CurrencyTextField: UIViewRepresentable {
+    private let configuration: CurrencyTextFieldConfiguration
+
+    public init(configuration: CurrencyTextFieldConfiguration) {
         self.configuration = configuration
-        self.formatter = formatter
-        self.editingValue = configuration.text
     }
 
-    let configuration: CurrencyTextFieldConfiguration
-    let formatter: CurrencyTextFieldFormatter
+    public func makeUIView(
+        context: UIViewRepresentableContext<CurrencyTextField>
+    ) -> UITextField {
+        let textField = WrappedTextField(configuration: configuration)
+        textField.placeholder = configuration.placeholder
+        textField.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        textField.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        textField.text = configuration.text
+        textField.keyboardType = .numberPad
+        configuration.underlyingTextFieldConfiguration?(textField)
 
-    @State private var editingValue: String = "" {
-        didSet {
-            guard editingValue != oldValue else { return }
-            self.configuration.$text.wrappedValue = editingValue
-            self.configuration.unformattedText?.wrappedValue = formatter.unformattedValue(
-                for: editingValue
-            ) ?? ""
-            self.configuration.inputAmount?.wrappedValue = formatter.double(
-                for: configuration.unformattedText?.wrappedValue ?? ""
-            ) ?? 0
-        }
+        return textField
     }
 
-    public var body: some View {
-        VStack {
-            TextField(
-                configuration.placeholder,
-                text: configuration.$text,
-                onEditingChanged: { isEditing in
-                    defer {
-                        configuration.onEditingChangedHandler?(isEditing)
-                    }
+    public func updateUIView(
+        _ uiView: UITextField,
+        context: UIViewRepresentableContext<CurrencyTextField>
+    ) {
+        guard configuration.text != uiView.text else { return }
 
-                    let updatedText = formatter.editingChangedUpdatedFormattedText(
-                        isEditing: isEditing,
-                        currentText: configuration.$text.wrappedValue
-                    )
+        uiView.text = configuration.text
+        updateUnformattedTextAndInputValue()
+    }
 
-                    configuration.$text.wrappedValue = updatedText ?? ""
-                    editingValue = updatedText ?? ""
-                },
-                onCommit: {
-                    configuration.onCommitHandler?()
-                }
-            )
-            .onReceive(
-                Just(configuration.text)
-            ) { newValue in
-                let val = formatter.getUpdatedFormattedText(
-                    for: newValue,
-                    previousValue: editingValue
-                )
-                configuration.$text.wrappedValue = val ?? ""
-                editingValue = val ?? ""
-            }
-        }
+    private func updateUnformattedTextAndInputValue() {
+        let unformattedText = configuration.formatter.unformatted(
+            string: configuration.text
+        ) ?? ""
+        configuration.unformattedText?.wrappedValue = unformattedText
+
+        configuration.inputAmount?.wrappedValue = configuration.formatter.double(
+            from: unformattedText
+        )
     }
 }

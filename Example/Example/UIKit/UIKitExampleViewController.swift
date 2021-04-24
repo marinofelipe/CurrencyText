@@ -126,9 +126,9 @@ final class UIKitExampleViewController: UIViewController {
         let currencyFormatter = CurrencyFormatter {
             $0.maxValue = 100000000
             $0.minValue = 5
-            $0.currency = .dollar
-            $0.locale = CurrencyLocale.englishUnitedStates
-            $0.hasDecimals = false
+            $0.currency = .euro
+            $0.locale = CurrencyLocale.germanGermany
+            $0.hasDecimals = true
         }
         
         textFieldDelegate = CurrencyUITextFieldDelegate(formatter: currencyFormatter)

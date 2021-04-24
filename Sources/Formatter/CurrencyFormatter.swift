@@ -280,7 +280,9 @@ extension CurrencyFormatter {
                     charactersIn: "0123456789\(decimalSeparator)"
                 )
                 .inverted
-            ).replacingOccurrences(of: groupingSeparator, with: "")
+            )
+            .replacingOccurrences(of: groupingSeparator, with: "")
+            .replacingOccurrences(of: decimalSeparator, with: ".")
         } else {
             return string.numeralFormat()
         }
@@ -299,6 +301,8 @@ extension CurrencyFormatter: CurrencyAdjusting {
     ///
     /// - Parameter string: The currency formatted String
     /// - Returns: The currency formatted received String with its decimal separator adjusted
+
+    // TODO: Better document that it also adjusts grouping separators
     public func formattedStringWithAdjustedDecimalSeparator(from string: String) -> String? {
         let adjustedString = numeralStringWithAdjustedDecimalSeparator(from: string)
         guard let value = double(from: adjustedString) else { return nil }
