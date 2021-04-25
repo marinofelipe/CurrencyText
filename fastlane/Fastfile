@@ -20,7 +20,7 @@ platform :ios do
 	lane :test do
 		scan(
 			project: "CurrencyText.xcodeproj",
-			clean: true, 
+			clean: true,
 			code_coverage: true, 
 			scheme: "CurrencyText-Package", 
 			device: "iPhone 12"

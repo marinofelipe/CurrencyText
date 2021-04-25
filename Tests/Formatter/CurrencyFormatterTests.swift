@@ -108,10 +108,10 @@ class CurrencyFormatterTests: XCTestCase {
         XCTAssertEqual(formattedString, "€ 300.000,54")
         
         let unformattedString = formatter.unformatted(string: formattedString!)
-        XCTAssertEqual(unformattedString, "300000,54")
+        XCTAssertEqual(unformattedString, "300000.54")
         
-        let doubleValue = formatter.double(from: "30000054")
-        XCTAssertEqual(doubleValue, 30000054.00)
+        let doubleValue = formatter.double(from: "300000.54")
+        XCTAssertEqual(doubleValue, 300000.54)
     }
 
     func testUnformattedValueWhenHasDecimal() {
@@ -121,15 +121,15 @@ class CurrencyFormatterTests: XCTestCase {
 
         XCTAssertEqual(
             formatter.unformatted(string: "€ 300.000,54"),
-            "300000,54"
+            "300000.54"
         )
         XCTAssertEqual(
             formatter.unformatted(string: "¥ 0,99"),
-            "0,99"
+            "0.99"
         )
         XCTAssertEqual(
             formatter.unformatted(string: "$333,84"),
-            "333,84"
+            "333.84"
         )
     }
 
