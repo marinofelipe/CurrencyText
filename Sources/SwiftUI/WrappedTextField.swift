@@ -13,18 +13,18 @@ import CurrencyUITextFieldDelegate
 
 @available(iOS 13.0, *)
 final class WrappedTextField: UITextField, UITextFieldDelegate {
-    private let currencyDelegate: CurrencyUITextFieldDelegate
+    private let currencyTextFieldDelegate: CurrencyUITextFieldDelegate
     private let configuration: CurrencyTextFieldConfiguration
 
     init(configuration: CurrencyTextFieldConfiguration) {
         self.configuration = configuration
-        self.currencyDelegate = CurrencyUITextFieldDelegate(formatter: configuration.formatter)
-        self.currencyDelegate.clearsWhenValueIsZero = configuration.clearsWhenValueIsZero
+        self.currencyTextFieldDelegate = CurrencyUITextFieldDelegate(formatter: configuration.formatter)
+        self.currencyTextFieldDelegate.clearsWhenValueIsZero = configuration.clearsWhenValueIsZero
 
         super.init(frame: .zero)
 
-        self.delegate = currencyDelegate
-        self.currencyDelegate.passthroughDelegate = self
+        self.delegate = currencyTextFieldDelegate
+        self.currencyTextFieldDelegate.passthroughDelegate = self
     }
 
     @available(*, unavailable)
@@ -60,7 +60,7 @@ final class WrappedTextField: UITextField, UITextFieldDelegate {
 
     private func updateUnformattedTextAndInputValue() {
         let unformattedText = configuration.formatter.unformatted(
-            string: configuration.text
+            string: text ?? ""
         ) ?? ""
         configuration.unformattedText?.wrappedValue = unformattedText
 

@@ -64,19 +64,19 @@ let package = Package(
             path: "Tests/UITextFieldDelegate"
         ),
 
-        /// Can be imported and used to have access to `CurrencyTextField`, a `SwiftUI` text field that sanitises
-        /// user input based on a given `CurrencyFormatter`.
+        /// Can be imported and used to have access to `CurrencyTextField`, a `SwiftUI` text field that
+        /// sanitizes user input based on a given `CurrencyFormatter`.
         .target(
             name: "CurrencyTextField",
             dependencies: [
-                .target(name: "CurrencyFormatter")
+                .target(name: "CurrencyFormatter"),
+                .target(name: "CurrencyUITextFieldDelegate")
             ],
             path: "Sources/SwiftUI"
         ),
         .testTarget(
             name: "CurrencyTextFieldTests",
             dependencies: [
-                .target(name: "CurrencyFormatter"),
                 .target(name: "CurrencyTextField")
             ],
             path: "Tests/SwiftUI"
