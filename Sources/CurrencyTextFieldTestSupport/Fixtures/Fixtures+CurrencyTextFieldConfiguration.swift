@@ -11,7 +11,7 @@ import CurrencyFormatter
 import CurrencyTextField
 
 @available(iOS 13.0, *)
-extension CurrencyTextFieldConfiguration {
+public extension CurrencyTextFieldConfiguration {
     static func makeFixture(
         placeholder: String = "some",
         textBinding: Binding<String> = .init(

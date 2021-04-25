@@ -9,6 +9,7 @@ import SwiftUI
 import XCTest
 
 import CurrencyFormatter
+import CurrencyTextFieldTestSupport
 
 @testable import CurrencyTextField
 
@@ -54,11 +55,11 @@ final class WrappedTextFieldTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    private func assembleSut() {
+    private func assembleSut(text: String = "34") {
         sut = WrappedTextField(
             configuration: .makeFixture(
                 textBinding: Binding<String>(
-                    get: { "" },
+                    get: { text },
                     set: { text in
                         self.textSetValues.append(text)
                     }
@@ -91,20 +92,48 @@ final class WrappedTextFieldTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testInit() {
+    func testDelegate() {
         XCTAssertNotNil(sut.delegate)
+    }
+
+    func testInitialTextWhenValueIsInvalid() {
+        assembleSut(text: "some")
+
+        XCTAssertEqual(sut.text?.isEmpty, true)
+    }
+
+    func testInitialTextWhenValueIsValid() {
+        XCTAssertEqual(sut.text, "$0.34")
     }
 
     func testShouldChangeCharactersInRange() {
         _ = sut.delegate?.textField?(
             sut,
-            shouldChangeCharactersIn: NSRange(location: 0, length: 1),
+            shouldChangeCharactersIn: NSRange(location: 5, length: 1),
             replacementString: "3"
         )
 
-        XCTAssertEqual(textSetValues, ["$0.03"])
-        XCTAssertEqual(unformattedTextSetValues, ["0.03"])
-        XCTAssertEqual(inputAmountSetValues, [0.03])
+        XCTAssertEqual(
+            textSetValues,
+            [
+                "$0.34",
+                "$3.43"
+            ]
+        )
+        XCTAssertEqual(
+            unformattedTextSetValues,
+            [
+                "0.34",
+                "3.43"
+            ]
+        )
+        XCTAssertEqual(
+            inputAmountSetValues,
+            [
+                0.34,
+                3.43
+            ]
+        )
         XCTAssertTrue(underlyingTextFieldConfigurationReceivedValues.isEmpty)
         XCTAssertTrue(onEditingChangedReceivedValues.isEmpty)
         XCTAssertEqual(onCommitCallsCount, 0)
@@ -114,9 +143,9 @@ final class WrappedTextFieldTests: XCTestCase {
         sut.becomeFirstResponder()
         _ = sut.delegate?.textFieldDidBeginEditing?(sut)
 
-        XCTAssertTrue(textSetValues.isEmpty)
-        XCTAssertTrue(unformattedTextSetValues.isEmpty)
-        XCTAssertTrue(inputAmountSetValues.isEmpty)
+        XCTAssertEqual(textSetValues.count, 1)
+        XCTAssertEqual(unformattedTextSetValues.count, 1)
+        XCTAssertEqual(inputAmountSetValues.count, 1)
         XCTAssertTrue(underlyingTextFieldConfigurationReceivedValues.isEmpty)
         XCTAssertEqual(onEditingChangedReceivedValues, [true])
         XCTAssertEqual(onCommitCallsCount, 0)
@@ -127,9 +156,9 @@ final class WrappedTextFieldTests: XCTestCase {
         sut.becomeFirstResponder()
         _ = sut.delegate?.textFieldDidEndEditing?(sut)
 
-        XCTAssertTrue(textSetValues.isEmpty)
-        XCTAssertTrue(unformattedTextSetValues.isEmpty)
-        XCTAssertTrue(inputAmountSetValues.isEmpty)
+        XCTAssertEqual(textSetValues.count, 1)
+        XCTAssertEqual(unformattedTextSetValues.count, 1)
+        XCTAssertEqual(inputAmountSetValues.count, 1)
         XCTAssertTrue(underlyingTextFieldConfigurationReceivedValues.isEmpty)
         XCTAssertEqual(onEditingChangedReceivedValues, [false])
         XCTAssertEqual(onCommitCallsCount, 0)
@@ -141,12 +170,66 @@ final class WrappedTextFieldTests: XCTestCase {
         let shouldReturn = sut.delegate?.textFieldShouldReturn?(sut)
 
         XCTAssertEqual(shouldReturn, true)
-        XCTAssertTrue(textSetValues.isEmpty)
-        XCTAssertTrue(unformattedTextSetValues.isEmpty)
-        XCTAssertTrue(inputAmountSetValues.isEmpty)
+        XCTAssertEqual(textSetValues.count, 1)
+        XCTAssertEqual(unformattedTextSetValues.count, 1)
+        XCTAssertEqual(inputAmountSetValues.count, 1)
         XCTAssertTrue(underlyingTextFieldConfigurationReceivedValues.isEmpty)
         XCTAssertTrue(onEditingChangedReceivedValues.isEmpty)
         XCTAssertEqual(onCommitCallsCount, 1)
         XCTAssertFalse(sut.isFirstResponder)
+    }
+
+    func testUpdateConfigurationAndUpdateTextIfNeeded() {
+        formatter.hasDecimals = false
+        sut.updateConfigurationIfNeeded(
+            latest: .makeFixture(
+                textBinding: Binding<String>(
+                    get: { "56" },
+                    set: { text in
+                        self.textSetValues.append(text)
+                    }
+                ),
+                unformattedTextBinding: Binding<String?>(
+                    get: { "unformatted" },
+                    set: { text in
+                        self.unformattedTextSetValues.append(text)
+                    }
+                ),
+                inputAmountBinding: Binding<Double?>(
+                    get: { .zero },
+                    set: { value in
+                        self.inputAmountSetValues.append(value)
+                    }
+                ),
+                formatter: formatter
+            )
+        )
+
+        sut.updateTextIfNeeded()
+
+        XCTAssertEqual(
+            textSetValues,
+            [
+                "$0.34",
+                "$56"
+            ]
+        )
+        XCTAssertEqual(
+            unformattedTextSetValues,
+            [
+                "0.34",
+                "56"
+            ]
+        )
+        XCTAssertEqual(
+            inputAmountSetValues,
+            [
+                0.34,
+                56.0
+            ]
+        )
+        XCTAssertTrue(underlyingTextFieldConfigurationReceivedValues.isEmpty)
+        XCTAssertTrue(onEditingChangedReceivedValues.isEmpty)
+        XCTAssertEqual(onCommitCallsCount, 0)
     }
 }

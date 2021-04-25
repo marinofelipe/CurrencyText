@@ -7,9 +7,9 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Felipe Lefèvre Marino" => "felipemarino91@gmail.com" }
   s.source       = { :git => "https://github.com/marinofelipe/CurrencyText.git", :tag => "#{s.version}" }
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
   
-  s.swift_version = "5.0"
+  s.swift_version = "5.3"
   s.source_files  = "Sources/**/*.swift"
   
   s.subspec 'CurrencyFormatter' do |ss|
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
       ss.dependency 'CurrencyText/CurrencyFormatter'
   end
 
-    s.subspec 'CurrencyTextField' do |ss|
+  s.subspec 'CurrencyTextField' do |ss|
       ss.requires_arc = true
       ss.source_files = "Sources/SwiftUI"
       ss.dependency 'CurrencyText/CurrencyFormatter'

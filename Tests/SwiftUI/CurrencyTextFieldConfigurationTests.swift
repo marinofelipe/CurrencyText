@@ -9,6 +9,7 @@ import SwiftUI
 import XCTest
 
 import CurrencyFormatter
+import CurrencyTextFieldTestSupport
 
 @testable import CurrencyTextField
 

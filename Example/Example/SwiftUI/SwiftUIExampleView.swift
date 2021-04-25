@@ -23,7 +23,7 @@ import Combine
 import UIKit
 
 struct CurrencyData {
-    var text: String = ""
+    var text: String = "10"
     var unformatted: String?
     var input: Double?
 }
@@ -56,8 +56,12 @@ struct SwiftUIExampleView: View {
                             uiTextField.layer.masksToBounds = true
                         },
                         onEditingChanged: { isEditing in
-                            print("onEditingChanged")
-                            print(isEditing)
+                            if isEditing == false {
+                                // How to programmatically clear the text of CurrencyTextField:
+                                // The Binding<String>.text that is passed into CurrencyTextField.configuration can
+                                // manually cleared / updated with an empty String
+                                clearTextFieldText()
+                            }
                         },
                         onCommit: {
                             print("onCommit")
@@ -76,18 +80,13 @@ struct SwiftUIExampleView: View {
         .contentShape(Rectangle()) // makes the whole view area tappable
         .onTapGesture {
             endEditing()
-
-            // How to programmatically clear the text of CurrencyTextField:
-            // The Binding<String>.text that is passed into CurrencyTextField.configuration can
-            // manually cleared / updated with an empty String
-            clearTextFieldText()
         }
     }
 }
 
 private extension SwiftUIExampleView {
     func clearTextFieldText() {
-        $viewModel.data.text.wrappedValue = ""
+        viewModel.data.text = ""
     }
 }
 

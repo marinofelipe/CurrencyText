@@ -23,7 +23,6 @@ public struct CurrencyTextField: UIViewRepresentable {
         textField.placeholder = configuration.placeholder
         textField.setContentHuggingPriority(.defaultHigh, for: .vertical)
         textField.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        textField.text = configuration.text
         textField.keyboardType = .numberPad
         configuration.underlyingTextFieldConfiguration?(textField)
 
@@ -34,20 +33,9 @@ public struct CurrencyTextField: UIViewRepresentable {
         _ uiView: UITextField,
         context: UIViewRepresentableContext<CurrencyTextField>
     ) {
-        guard configuration.text != uiView.text else { return }
+        guard let textField = uiView as? WrappedTextField else { return }
 
-        uiView.text = configuration.text
-        updateUnformattedTextAndInputValue()
-    }
-
-    private func updateUnformattedTextAndInputValue() {
-        let unformattedText = configuration.formatter.unformatted(
-            string: configuration.text
-        ) ?? ""
-        configuration.unformattedText?.wrappedValue = unformattedText
-
-        configuration.inputAmount?.wrappedValue = configuration.formatter.double(
-            from: unformattedText
-        )
+        textField.updateConfigurationIfNeeded(latest: configuration)
+        textField.updateTextIfNeeded()
     }
 }

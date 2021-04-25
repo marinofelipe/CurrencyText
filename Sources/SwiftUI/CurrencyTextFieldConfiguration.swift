@@ -13,7 +13,7 @@ import struct SwiftUI.Binding
 import UIKit
 
 @available(iOS 13.0, *)
-public struct CurrencyTextFieldConfiguration {
+public final class CurrencyTextFieldConfiguration {
     let placeholder: String
 
     @Binding
