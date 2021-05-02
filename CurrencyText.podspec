@@ -27,5 +27,6 @@ Pod::Spec.new do |s|
       ss.requires_arc = true
       ss.source_files = "Sources/SwiftUI"
       ss.dependency 'CurrencyText/CurrencyFormatter'
+      ss.dependency 'CurrencyText/CurrencyUITextField'
   end
 end
