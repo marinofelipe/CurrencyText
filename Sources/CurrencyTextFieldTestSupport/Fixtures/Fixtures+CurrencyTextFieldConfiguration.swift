@@ -28,7 +28,7 @@ public extension CurrencyTextFieldConfiguration {
         ),
         clearsWhenValueIsZero: Bool = true,
         formatter: CurrencyFormatter,
-        underlyingTextFieldConfiguration: ((UITextField) -> Void)? = { _ in },
+        textFieldConfiguration: ((UITextField) -> Void)? = { _ in },
         onEditingChanged: ((Bool) -> Void)? = { _ in },
         onCommit: (() -> Void)? = { }
     ) -> Self {
@@ -39,7 +39,7 @@ public extension CurrencyTextFieldConfiguration {
             inputAmount: inputAmountBinding,
             clearsWhenValueIsZero: clearsWhenValueIsZero,
             formatter: formatter,
-            underlyingTextFieldConfiguration: underlyingTextFieldConfiguration,
+            textFieldConfiguration: textFieldConfiguration,
             onEditingChanged: onEditingChanged,
             onCommit: onCommit
         )

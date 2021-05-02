@@ -23,7 +23,7 @@ final class WrappedTextFieldTests: XCTestCase {
     private var textSetValues: [String]!
     private var unformattedTextSetValues: [String?]!
     private var inputAmountSetValues: [Double?]!
-    private var underlyingTextFieldConfigurationReceivedValues: [UITextField]!
+    private var textFieldConfigurationReceivedValues: [UITextField]!
     private var onEditingChangedReceivedValues: [Bool]!
     private var onCommitCallsCount: Int!
 
@@ -35,7 +35,7 @@ final class WrappedTextFieldTests: XCTestCase {
         textSetValues = []
         unformattedTextSetValues = []
         inputAmountSetValues = []
-        underlyingTextFieldConfigurationReceivedValues = []
+        textFieldConfigurationReceivedValues = []
         onEditingChangedReceivedValues = []
         onCommitCallsCount = 0
         formatter = .init()
@@ -46,7 +46,7 @@ final class WrappedTextFieldTests: XCTestCase {
         textSetValues = nil
         unformattedTextSetValues = nil
         inputAmountSetValues = nil
-        underlyingTextFieldConfigurationReceivedValues = nil
+        textFieldConfigurationReceivedValues = nil
         onEditingChangedReceivedValues = nil
         onCommitCallsCount = nil
         formatter = nil
@@ -77,8 +77,8 @@ final class WrappedTextFieldTests: XCTestCase {
                     }
                 ),
                 formatter: formatter,
-                underlyingTextFieldConfiguration: { textField in
-                    self.underlyingTextFieldConfigurationReceivedValues.append(textField)
+                textFieldConfiguration: { textField in
+                    self.textFieldConfigurationReceivedValues.append(textField)
                 },
                 onEditingChanged: { isEditing in
                     self.onEditingChangedReceivedValues.append(isEditing)
@@ -134,7 +134,7 @@ final class WrappedTextFieldTests: XCTestCase {
                 3.43
             ]
         )
-        XCTAssertTrue(underlyingTextFieldConfigurationReceivedValues.isEmpty)
+        XCTAssertTrue(textFieldConfigurationReceivedValues.isEmpty)
         XCTAssertTrue(onEditingChangedReceivedValues.isEmpty)
         XCTAssertEqual(onCommitCallsCount, 0)
     }
@@ -146,7 +146,7 @@ final class WrappedTextFieldTests: XCTestCase {
         XCTAssertEqual(textSetValues.count, 1)
         XCTAssertEqual(unformattedTextSetValues.count, 1)
         XCTAssertEqual(inputAmountSetValues.count, 1)
-        XCTAssertTrue(underlyingTextFieldConfigurationReceivedValues.isEmpty)
+        XCTAssertTrue(textFieldConfigurationReceivedValues.isEmpty)
         XCTAssertEqual(onEditingChangedReceivedValues, [true])
         XCTAssertEqual(onCommitCallsCount, 0)
         XCTAssertFalse(sut.isFirstResponder)
@@ -159,7 +159,7 @@ final class WrappedTextFieldTests: XCTestCase {
         XCTAssertEqual(textSetValues.count, 1)
         XCTAssertEqual(unformattedTextSetValues.count, 1)
         XCTAssertEqual(inputAmountSetValues.count, 1)
-        XCTAssertTrue(underlyingTextFieldConfigurationReceivedValues.isEmpty)
+        XCTAssertTrue(textFieldConfigurationReceivedValues.isEmpty)
         XCTAssertEqual(onEditingChangedReceivedValues, [false])
         XCTAssertEqual(onCommitCallsCount, 0)
         XCTAssertFalse(sut.isFirstResponder)
@@ -173,7 +173,7 @@ final class WrappedTextFieldTests: XCTestCase {
         XCTAssertEqual(textSetValues.count, 1)
         XCTAssertEqual(unformattedTextSetValues.count, 1)
         XCTAssertEqual(inputAmountSetValues.count, 1)
-        XCTAssertTrue(underlyingTextFieldConfigurationReceivedValues.isEmpty)
+        XCTAssertTrue(textFieldConfigurationReceivedValues.isEmpty)
         XCTAssertTrue(onEditingChangedReceivedValues.isEmpty)
         XCTAssertEqual(onCommitCallsCount, 1)
         XCTAssertFalse(sut.isFirstResponder)
@@ -228,7 +228,7 @@ final class WrappedTextFieldTests: XCTestCase {
                 56.0
             ]
         )
-        XCTAssertTrue(underlyingTextFieldConfigurationReceivedValues.isEmpty)
+        XCTAssertTrue(textFieldConfigurationReceivedValues.isEmpty)
         XCTAssertTrue(onEditingChangedReceivedValues.isEmpty)
         XCTAssertEqual(onCommitCallsCount, 0)
     }

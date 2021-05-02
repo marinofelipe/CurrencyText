@@ -136,7 +136,7 @@ final class UIKitExampleViewController: UIViewController {
         textFieldDelegate.passthroughDelegate = self
         
         textField.delegate = textFieldDelegate
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .numbersAndPunctuation
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

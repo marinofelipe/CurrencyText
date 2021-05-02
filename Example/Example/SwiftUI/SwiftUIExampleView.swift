@@ -23,7 +23,7 @@ import Combine
 import UIKit
 
 struct CurrencyData {
-    var text: String = "10"
+    var text: String = ""
     var unformatted: String?
     var input: Double?
 }
@@ -46,13 +46,14 @@ struct SwiftUIExampleView: View {
                         inputAmount: $viewModel.data.input,
                         clearsWhenValueIsZero: true,
                         formatter: .default,
-                        underlyingTextFieldConfiguration: { uiTextField in
+                        textFieldConfiguration: { uiTextField in
                             uiTextField.borderStyle = .roundedRect
-                            uiTextField.font = .systemFont(ofSize: 20)
+                            uiTextField.font = UIFont.preferredFont(forTextStyle: .body)
                             uiTextField.textColor = .blue
                             uiTextField.layer.borderColor = UIColor.red.cgColor
                             uiTextField.layer.borderWidth = 1
                             uiTextField.layer.cornerRadius = 4
+                            uiTextField.keyboardType = .numbersAndPunctuation
                             uiTextField.layer.masksToBounds = true
                         },
                         onEditingChanged: { isEditing in

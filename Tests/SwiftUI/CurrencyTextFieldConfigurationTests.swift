@@ -32,7 +32,7 @@ final class CurrencyTextFieldConfigurationTests: XCTestCase {
         XCTAssertFalse(sut.clearsWhenValueIsZero)
         XCTAssertNil(sut.unformattedText)
         XCTAssertNil(sut.inputAmount)
-        XCTAssertNil(sut.underlyingTextFieldConfiguration)
+        XCTAssertNil(sut.textFieldConfiguration)
         XCTAssertNil(sut.onEditingChanged)
         XCTAssertNil(sut.onCommit)
     }
@@ -47,7 +47,7 @@ final class CurrencyTextFieldConfigurationTests: XCTestCase {
         XCTAssertEqual(sut.inputAmount?.wrappedValue, .zero)
         XCTAssertTrue(sut.formatter === formatter)
         XCTAssertTrue(sut.clearsWhenValueIsZero)
-        XCTAssertNotNil(sut.underlyingTextFieldConfiguration)
+        XCTAssertNotNil(sut.textFieldConfiguration)
         XCTAssertNotNil(sut.onEditingChanged)
         XCTAssertNotNil(sut.onCommit)
     }

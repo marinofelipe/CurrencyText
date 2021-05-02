@@ -50,7 +50,7 @@ final class CurrencyTextFieldSnapshotTests: XCTestCase {
             configuration: .makeFixture(
                 textBinding: $fakeViewModel.text,
                 formatter: CurrencyFormatter.TestCase.withDecimals.formatter,
-                underlyingTextFieldConfiguration: { textField in
+                textFieldConfiguration: { textField in
                     textField.borderStyle = .roundedRect
                     textField.textAlignment = .center
                     textField.font = .preferredFont(forTextStyle: .body)
