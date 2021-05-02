@@ -5,7 +5,9 @@
 //  Created by Marino Felipe on 11.04.21.
 //
 
+#if canImport(CurrencyFormatter)
 import CurrencyFormatter
+#endif
 
 import Foundation
 import struct SwiftUI.Binding

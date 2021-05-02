@@ -8,8 +8,13 @@
 import Combine
 import UIKit
 
+#if canImport(CurrencyFormatter)
 import CurrencyFormatter
+#endif
+
+#if canImport(CurrencyUITextFieldDelegate)
 import CurrencyUITextFieldDelegate
+#endif
 
 @available(iOS 13.0, *)
 final class WrappedTextField: UITextField {
