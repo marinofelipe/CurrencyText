@@ -11,13 +11,8 @@ import SwiftUI
 import CurrencyTextField
 import CurrencyFormatter
 
-/// - note: When using CocoaPods you can import the main spec, or each sub-spec as below:
-/// // main spec
+/// - note: When using CocoaPods one should import the spec, with access to the full library or defined sub-specs
 /// import CurrencyText
-///
-/// // each sub-spec
-/// import CurrencyFormatter
-/// import CurrencyTextField
 
 import Combine
 import UIKit

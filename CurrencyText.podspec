@@ -1,7 +1,17 @@
 Pod::Spec.new do |s|
   s.name         = "CurrencyText"
   s.version      = "2.1.2"
-  s.summary      = "Currency text formatter that fits your UITextField subclass."
+  s.summary      = "Currency text formatter for UIKit and SwiftUI text fields."
+  s.description  = <<-DESC
+                     Provides a CurrencyText formatter (CurrencyFormatter sub-spec).
+
+                     It can be optionally used alongside `CurrencyUITextField` a custom
+                     UITextFieldDelegate to format UITextField inputs in UIKit.
+                     (CurrencyUITextField sub-spec).
+
+                     Or used in a `CurrencyTextField` for the same functionality in SwiftUI.
+                     (CurrencyTextField sub-spec).
+                   DESC
 
   s.homepage     = "https://github.com/marinofelipe/CurrencyText"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
