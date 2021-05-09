@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CurrencyText"
-  s.version      = "2.1.2"
+  s.version      = "2.2.0"
   s.summary      = "Currency text formatter for UIKit and SwiftUI text fields."
   s.description  = <<-DESC
                      Provides a CurrencyText formatter (CurrencyFormatter sub-spec).
@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
   
   s.swift_version = "5.3"
   s.source_files  = "Sources/**/*.swift"
+  s.exclude_files = "Sources/CurrencyTextFieldTestSupport/*.swift"
   
   s.subspec 'CurrencyFormatter' do |ss|
       ss.requires_arc = true

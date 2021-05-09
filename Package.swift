@@ -6,8 +6,7 @@ import PackageDescription
 let package = Package(
     name: "CurrencyText",
     platforms: [
-        .iOS(.v11),
-        .macOS(.v10_14)
+        .iOS(.v11)
     ],
     products: [
         .library(

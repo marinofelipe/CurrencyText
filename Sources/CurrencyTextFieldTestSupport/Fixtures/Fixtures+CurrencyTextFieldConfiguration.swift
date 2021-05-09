@@ -7,8 +7,13 @@
 
 import SwiftUI
 
+#if canImport(CurrencyFormatter)
 import CurrencyFormatter
+#endif
+
+#if canImport(CurrencyTextField)
 import CurrencyTextField
+#endif
 
 @available(iOS 13.0, *)
 public extension CurrencyTextFieldConfiguration {

@@ -5,7 +5,9 @@
 //  Created by Marino Felipe on 25.04.21.
 //
 
+#if canImport(CurrencyFormatter)
 import CurrencyFormatter
+#endif
 
 public extension CurrencyFormatter {
     enum TestCase: String, CaseIterable {
