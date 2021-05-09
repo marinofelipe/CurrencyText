@@ -54,9 +54,9 @@ extension String: CurrencyString {
         replaceSubrange(decimalsRange, with: "." + decimalChars)
     }
     
-    /// The numeral format of a string - remove all non numerical ocurrences
+    /// The numeral format of a string - remove all non numerical occurrences
     ///
-    /// - Returns: itself without the non numerical characters ocurrences
+    /// - Returns: itself without the non numerical characters occurrences
     public func numeralFormat() -> String {
         return replacingOccurrences(of:"[^0-9]", with: "", options: .regularExpression)
     }

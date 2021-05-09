@@ -15,18 +15,20 @@
 		ED4F57202623914A00E7877F /* CurrencyFormatter in Frameworks */ = {isa = PBXBuildFile; productRef = ED4F571F2623914A00E7877F /* CurrencyFormatter */; };
 		ED4F57222623914A00E7877F /* CurrencyText in Frameworks */ = {isa = PBXBuildFile; productRef = ED4F57212623914A00E7877F /* CurrencyText */; };
 		ED4F57242623914A00E7877F /* CurrencyTextSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = ED4F57232623914A00E7877F /* CurrencyTextSwiftUI */; };
+		ED811552262C50D400F0E36E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED811551262C50D400F0E36E /* View+Extensions.swift */; };
 		EDF86EB6261B57F400FD9D82 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF86EB5261B57F400FD9D82 /* RootView.swift */; };
 		EDF86EBB261B5DA300FD9D82 /* UIKitExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF86EBA261B5DA300FD9D82 /* UIKitExampleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D54170D6209023D5008995D7 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Example.app; path = "/Users/marino.felipe/Documents/projects/personal/CurrencyText/Example/build/Debug-iphoneos/Example.app"; sourceTree = "<absolute>"; };
 		D54170D9209023D5008995D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D54170DB209023D5008995D7 /* UIKitExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExampleViewController.swift; sourceTree = "<group>"; };
 		D54170E0209023D7008995D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D54170E3209023D7008995D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D54170E5209023D7008995D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED1BCD0C25FE9933006F6DCD /* SwiftUIExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleView.swift; sourceTree = "<group>"; };
+		ED8115502629E44E00F0E36E /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED811551262C50D400F0E36E /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		EDF86EB5261B57F400FD9D82 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		EDF86EBA261B5DA300FD9D82 /* UIKitExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExampleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,22 +51,40 @@
 			isa = PBXGroup;
 			children = (
 				D54170D8209023D5008995D7 /* Example */,
+				ED8115502629E44E00F0E36E /* Example.app */,
 			);
 			sourceTree = "<group>";
 		};
 		D54170D8209023D5008995D7 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				ED811555262C514B00F0E36E /* SwiftUI */,
+				ED811554262C514600F0E36E /* UIKit */,
 				D54170E5209023D7008995D7 /* Info.plist */,
 				D54170D9209023D5008995D7 /* AppDelegate.swift */,
 				EDF86EB5261B57F400FD9D82 /* RootView.swift */,
-				ED1BCD0C25FE9933006F6DCD /* SwiftUIExampleView.swift */,
-				EDF86EBA261B5DA300FD9D82 /* UIKitExampleView.swift */,
-				D54170DB209023D5008995D7 /* UIKitExampleViewController.swift */,
 				D54170E0209023D7008995D7 /* Assets.xcassets */,
 				D54170E2209023D7008995D7 /* LaunchScreen.storyboard */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		ED811554262C514600F0E36E /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				EDF86EBA261B5DA300FD9D82 /* UIKitExampleView.swift */,
+				D54170DB209023D5008995D7 /* UIKitExampleViewController.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		ED811555262C514B00F0E36E /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				ED1BCD0C25FE9933006F6DCD /* SwiftUIExampleView.swift */,
+				ED811551262C50D400F0E36E /* View+Extensions.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,7 +109,7 @@
 				ED4F57232623914A00E7877F /* CurrencyTextSwiftUI */,
 			);
 			productName = UICurrencyTextFieldDemo;
-			productReference = D54170D6209023D5008995D7 /* Example.app */;
+			productReference = ED8115502629E44E00F0E36E /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -147,6 +167,7 @@
 				EDF86EBB261B5DA300FD9D82 /* UIKitExampleView.swift in Sources */,
 				ED1BCD0D25FE9933006F6DCD /* SwiftUIExampleView.swift in Sources */,
 				D54170DA209023D5008995D7 /* AppDelegate.swift in Sources */,
+				ED811552262C50D400F0E36E /* View+Extensions.swift in Sources */,
 				EDF86EB6261B57F400FD9D82 /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

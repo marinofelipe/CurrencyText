@@ -85,13 +85,6 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
     
     @discardableResult
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let shouldChangeCharactersInRange = passthroughDelegate?.textField?(textField,
-                                                                            shouldChangeCharactersIn: range,
-                                                                            replacementString: string) ?? true
-        guard shouldChangeCharactersInRange else {
-            return false
-        }
-
         // Store selected text range offset from end, before updating and reformatting the currency string.
         let lastSelectedTextRangeOffsetFromEnd = textField.selectedTextRangeOffsetFromEnd
 
@@ -100,19 +93,26 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
         defer {
             textField.updateSelectedTextRange(lastOffsetFromEnd: lastSelectedTextRangeOffsetFromEnd)
         }
+
+        let returnAndCallPassThroughDelegate: () -> Bool = {
+            self.passthroughDelegate?.textField?(
+                textField,
+                shouldChangeCharactersIn: range,
+                replacementString: string
+            ) ?? false
+        }
         
         guard !string.isEmpty else {
             handleDeletion(in: textField, at: range)
-            return false
+            return returnAndCallPassThroughDelegate()
         }
         guard string.hasNumbers else {
             addNegativeSymbolIfNeeded(in: textField, at: range, replacementString: string)
-            return false
+            return returnAndCallPassThroughDelegate()
         }
         
         setFormattedText(in: textField, inputString: string, range: range)
-        
-        return false
+        return returnAndCallPassThroughDelegate()
     }
 }
 

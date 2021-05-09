@@ -316,24 +316,3 @@ final class CurrencyTextFieldDelegateTests: XCTestCase {
                        "It has passed the correct replacement string")
     }
 }
-
-// MARK: - All Tests
-
-extension CurrencyTextFieldDelegateTests {
-    static var allTests = {
-        return [
-            ("testInit", testInit),
-            ("testMaxDigitsCount", testMaxDigitsCount),
-            ("testDeleting", testDeleting),
-            ("testDeletingNotAtEndIndex", testDeletingNotAtEndIndex),
-            ("testSelectingAndDeletingAll", testSelectingAndDeletingAll),
-            ("testAddingNegativeSymbol", testAddingNegativeSymbol),
-            ("testFormatAfterFirstNumber", testFormatAfterFirstNumber),
-            ("testPastingNonNumeralValues", testPastingNonNumeralValues),
-            ("testInputingNotAtEndIndex", testInputingNotAtEndIndex),
-            ("testInputingNotAtEndIndexSurpassingIntegersLimit", testInputingNotAtEndIndexSurpassingIntegersLimit),
-            ("testClearsWhenValueIsZero", testClearsWhenValueIsZero),
-            ("testSelectedTextRange", testSelectedTextRange),
-        ]
-    }
-}

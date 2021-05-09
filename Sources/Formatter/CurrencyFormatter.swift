@@ -239,7 +239,7 @@ public class CurrencyFormatter: CurrencyFormatting {
         numberFormatter = NumberFormatter()
         numberFormatter.alwaysShowsDecimalSeparator = false
         numberFormatter.numberStyle = .currency
-        
+
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumFractionDigits = 2
         numberFormatter.minimumIntegerDigits = 1
@@ -274,7 +274,18 @@ extension CurrencyFormatter {
     /// - Parameter string: currency formatted string
     /// - Returns: numerical representation
     public func unformatted(string: String) -> String? {
-        string.numeralFormat()
+        if hasDecimals {
+            return string.trimmingCharacters(
+                in: CharacterSet(
+                    charactersIn: "0123456789\(decimalSeparator)"
+                )
+                .inverted
+            )
+            .replacingOccurrences(of: groupingSeparator, with: "")
+            .replacingOccurrences(of: decimalSeparator, with: ".")
+        } else {
+            return string.numeralFormat()
+        }
     }
 }
 
@@ -284,12 +295,14 @@ extension CurrencyFormatter: CurrencyAdjusting {
 
     /// Receives a currency formatted String, and returns it with its decimal separator adjusted.
     ///
-    /// _Note_: Useful when appending values to a currency formatted String.
+    /// - note: Useful for when appending values to a currency formatted String.
     /// E.g. "$ 23.24" after users taps an additional number, is equal = "$ 23.247".
     /// Which gets updated to "$ 232.47".
+    /// - warning: Not only decimal, but also grouping separators are adjusted/updated, based on the
+    /// formatter's setup and the string being formatted.
     ///
     /// - Parameter string: The currency formatted String
-    /// - Returns: The currency formatted received String with its decimal separator adjusted
+    /// - Returns: The currency formatted received String with separators adjusted
     public func formattedStringWithAdjustedDecimalSeparator(from string: String) -> String? {
         let adjustedString = numeralStringWithAdjustedDecimalSeparator(from: string)
         guard let value = double(from: adjustedString) else { return nil }
