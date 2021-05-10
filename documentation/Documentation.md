@@ -14,6 +14,8 @@
   - [All properties of `CurrencyFormatter`](#properties)
 - [SwiftUI](#swiftui)
   - [`CurrencyTextField` - how to configure and use it](#currencytextfield)
+  - [Why do I have to import UIKit?](#whyuikit)
+  - [Why is it only available for iOS?](#whyonlyios)
 
 <a name="currencyformatter"/>
 
@@ -212,46 +214,68 @@ The configuration holds a `CurrencyFormatter` with all format related setup, bin
 
 ```swift
 var body: some View {
-	CurrencyTextField(
-	    configuration: .init(
-	        placeholder: "Play with me...",
-	        text: $viewModel.data.text,
-	        unformattedText: $viewModel.data.unformatted,
-	        inputAmount: $viewModel.data.input,
-	        clearsWhenValueIsZero: true,
-	        formatter: .default,
+   CurrencyTextField(
+      configuration: .init(
+         placeholder: "Play with me...",
+         text: $viewModel.data.text,
+         unformattedText: $viewModel.data.unformatted,
+         inputAmount: $viewModel.data.input,
+         clearsWhenValueIsZero: true,
+         formatter: .default,
 
-	        // The configuration block allows defining the looks 
-	        // and doing additional configuration to
-	        // the underlying UITextField.
-	        // This is needed given that for most `SwiftUI` 
-	        // modifiers there's no API for converting
-	        // back to UIKit - e.g. `Font` is not transformable to `UIFont`.
-	        textFieldConfiguration: { uiTextField in
-	            uiTextField.borderStyle = .roundedRect
-	            uiTextField.font = UIFont.preferredFont(forTextStyle: .body)
-	            uiTextField.textColor = .blue
-	            uiTextField.layer.borderColor = UIColor.red.cgColor
-	            uiTextField.layer.borderWidth = 1
-	            uiTextField.layer.cornerRadius = 4
-	            uiTextField.keyboardType = .numbersAndPunctuation
-	            uiTextField.layer.masksToBounds = true
-	        },
-	        onEditingChanged: { isEditing in
-	            if isEditing == false {
-	                // How to programmatically clear the text of CurrencyTextField:
-	                // The Binding<String>.text that is passed 
-	                // into CurrencyTextField.configuration can
-	                // manually cleared / updated with an empty String
-	                clearTextFieldText()
-	            }
-	        },
-	        onCommit: {
-	            // do something when users have commited their inputs
-	        }
-	    )
-	)
+         // The configuration block allows defining the looks 
+         // and doing additional configuration to
+         // the underlying UITextField.
+         // This is needed given that for most `SwiftUI` 
+         // modifiers there's no API for converting
+         // back to UIKit - e.g. `Font` is not transformable to `UIFont`.
+         textFieldConfiguration: { uiTextField in
+            uiTextField.borderStyle = .roundedRect
+            uiTextField.font = UIFont.preferredFont(forTextStyle: .body)
+            uiTextField.textColor = .blue
+            uiTextField.layer.borderColor = UIColor.red.cgColor
+            uiTextField.layer.borderWidth = 1
+            uiTextField.layer.cornerRadius = 4
+            uiTextField.keyboardType = .numbersAndPunctuation
+            uiTextField.layer.masksToBounds = true
+         },
+         onEditingChanged: { isEditing in
+            if isEditing == false {
+               // How to programmatically clear the text of CurrencyTextField:
+               // The Binding<String>.text that is passed 
+               // into CurrencyTextField.configuration can
+               // manually cleared / updated with an empty String
+               clearTextFieldText()
+            }
+         },
+         onCommit: {
+            // do something when users have committed their inputs
+         }
+      )
+   )
 }
 ```
 
 For more details on specifics please refer to the code documentation and `SwiftUIExampleView` in the [ExampleApp](https://github.com/marinofelipe/CurrencyText/Example/Example/SwiftUI/SwiftUIExampleView.swift).
+
+<a name="whyuikit"/>
+
+###  Why do I have to import UIKit?
+
+As a matter of context, the strategy of bridging the `UIKit` implementation to `SwiftUI` via `UIViewRepresentable` was chosen since there's no API yet for controlling a `SwiftUI.TextField`s `.selectedTextRange`, which is needed in `CurrencyText` for cases e.g. where the currency symbol is at the end and to provide the best user experience the text field has to auto update the `.selectedTextRange` to be before the currency symbol.
+
+With that scenario in mind, and understanding that `CurrencyTextField` uses `UITextField` internally, the easiest way
+to allow users to fully control the component was to give them access to the underlying `UITextField` instance so it could be configured and setup accordingly to their needs.
+
+As alternative it was considered wrapping `UIKit.UITextField`s API, but that layer would be both extra work to develop and confusing for users, given that most of us (Apple third-party developers) are already familiar with  `UIKit.UITextField`'s API.
+Besides that, the framework would never build for other platforms given that  
+
+<a name="whyonlyios"/>
+
+### Why is it only available for iOS?
+
+Connected to what was mentioned above, the `SwiftUI` library currently bridges the `UIKit` implementation and that limits the framework on building only for iOS.
+
+### Thoughts for the future
+
+https://github.com/marinofelipe/CurrencyText/issues/79

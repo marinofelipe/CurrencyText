@@ -1,4 +1,4 @@
-[![Build status](https://github.com/marinofelipe/CurrencyText/actions/workflows/ci.yml/badge.svg)
+![Build status](https://github.com/marinofelipe/CurrencyText/actions/workflows/ci.yml/badge.svg)
 [![Coverate status](https://codecov.io/gh/marinofelipe/CurrencyText/branch/main/graph/badge.svg?token=K4VOS8NH7A)](https://codecov.io/gh/marinofelipe/CurrencyText)
 <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5.3-orange.svg?style=flat" alt="Swift" /></a>
 [![Platform](https://img.shields.io/cocoapods/p/CurrencyText.svg?style=flat)]()
