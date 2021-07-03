@@ -92,6 +92,7 @@ extension CurrencyUITextFieldDelegate: UITextFieldDelegate {
         // respecting previous selected text range offset from end.
         defer {
             textField.updateSelectedTextRange(lastOffsetFromEnd: lastSelectedTextRangeOffsetFromEnd)
+            textField.sendActions(for: .editingChanged)
         }
 
         let returnAndCallPassThroughDelegate: () -> Bool = {
