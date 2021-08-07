@@ -73,7 +73,7 @@ end
 Contributions and feedbacks are always welcome. Please feel free to fork, follow, open issues and pull requests. The issues, milestones, and what we are currently working on can be seen in the main [Project](https://github.com/marinofelipe/CurrencyText/projects/1).
 
 ## Special Thanks
-To [@malcommac](https://github.com/malcommac) for his awesome work with [SwiftRichString](https://github.com/malcommac/SwiftRichString) and [SwfitDate](https://github.com/malcommac/SwiftDate), that inspired me when creating this project.
+To [@malcommac](https://github.com/malcommac) for his awesome work with [SwiftRichString](https://github.com/malcommac/SwiftRichString) and [SwiftDate](https://github.com/malcommac/SwiftDate), that inspired me when creating this project.
 Also to [myanalysis](https://github.com/myanalysis) for contributing so much by finding issues and giving nice suggestions.
 
 ## Copyright
