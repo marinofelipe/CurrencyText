@@ -21,11 +21,12 @@ import SwiftUI
 /// user commits their edits.
 ///
 /// The following example shows a currency text field that performs and action to store the
-/// amount inputted by the user at the moment the user commits the entry:
+/// amount inputted by the user at the moment the user commits the entry, and that becomes first responder on appear:
 ///
 ///     @State private var text: String = ""
 ///     @State private var unformattedText: String?
 ///     @State private var value: Double?
+///     @State private var hasFocus: Bool?
 ///
 ///     var body: some View {
 ///         CurrencyTextField(
@@ -34,6 +35,7 @@ import SwiftUI
 ///                 text: $text,
 ///                 unformattedText: $unformattedText,
 ///                 inputAmount: $value,
+///                 hasFocus: $hasFocus,
 ///                 formatter: CurrencyFormatter.myFormatter,
 ///                 textFieldConfiguration: { uiTextField in
 ///                    uiTextField.font = UIFont.preferredFont(forTextStyle: .body)
@@ -52,6 +54,10 @@ import SwiftUI
 ///         .autocapitalization(.none)
 ///         .disableAutocorrection(true)
 ///         .border(Color(UIColor.separator))
+///         .onAppear {
+///             self.hasFocus = true
+///         }
+///
 ///         Text(username)
 ///             .foregroundColor(isEditing ? .red : .blue)
 ///     }
