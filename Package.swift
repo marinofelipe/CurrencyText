@@ -35,7 +35,7 @@ let package = Package(
             name: "SnapshotTesting",
             url: "https://github.com/pointfreeco/swift-snapshot-testing",
             .upToNextMinor(
-                from: .init(1, 8, 2)
+                from: .init(1, 9, 0)
             )
         )
     ],
