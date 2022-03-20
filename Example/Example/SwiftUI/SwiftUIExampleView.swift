@@ -21,6 +21,7 @@ struct CurrencyData {
     var text: String = ""
     var unformatted: String?
     var input: Double?
+    var hasFocus: Bool?
 }
 
 final class CurrencyViewModel: ObservableObject {
@@ -33,38 +34,7 @@ struct SwiftUIExampleView: View {
     var body: some View {
         Form {
             Section {
-                CurrencyTextField(
-                    configuration: .init(
-                        placeholder: "Play with me...",
-                        text: $viewModel.data.text,
-                        unformattedText: $viewModel.data.unformatted,
-                        inputAmount: $viewModel.data.input,
-                        clearsWhenValueIsZero: true,
-                        formatter: .default,
-                        textFieldConfiguration: { uiTextField in
-                            uiTextField.borderStyle = .roundedRect
-                            uiTextField.font = UIFont.preferredFont(forTextStyle: .body)
-                            uiTextField.textColor = .blue
-                            uiTextField.layer.borderColor = UIColor.red.cgColor
-                            uiTextField.layer.borderWidth = 1
-                            uiTextField.layer.cornerRadius = 4
-                            uiTextField.keyboardType = .numbersAndPunctuation
-                            uiTextField.layer.masksToBounds = true
-                        },
-                        onEditingChanged: { isEditing in
-                            if isEditing == false {
-                                // How to programmatically clear the text of CurrencyTextField:
-                                // The Binding<String>.text that is passed into CurrencyTextField.configuration can
-                                // manually cleared / updated with an empty String
-                                clearTextFieldText()
-                            }
-                        },
-                        onCommit: {
-                            print("onCommit")
-                        }
-                    )
-                )
-                .disabled(false)
+                makeCurrencyTextField()
 
                 Text("Formatted value: \(String(describing: $viewModel.data.text.wrappedValue))")
                 Text("Unformatted value: \(String(describing: $viewModel.data.unformatted.wrappedValue))")
@@ -77,6 +47,45 @@ struct SwiftUIExampleView: View {
         .onTapGesture {
             endEditing()
         }
+        .onAppear {
+            viewModel.data.hasFocus = true
+        }
+    }
+
+    private func makeCurrencyTextField() -> some View {
+        CurrencyTextField(
+            configuration: .init(
+                placeholder: "Play with me...",
+                text: $viewModel.data.text,
+                unformattedText: $viewModel.data.unformatted,
+                inputAmount: $viewModel.data.input,
+                hasFocus: $viewModel.data.hasFocus,
+                clearsWhenValueIsZero: true,
+                formatter: .default,
+                textFieldConfiguration: { uiTextField in
+                    uiTextField.borderStyle = .roundedRect
+                    uiTextField.font = UIFont.preferredFont(forTextStyle: .body)
+                    uiTextField.textColor = .blue
+                    uiTextField.layer.borderColor = UIColor.red.cgColor
+                    uiTextField.layer.borderWidth = 1
+                    uiTextField.layer.cornerRadius = 4
+                    uiTextField.keyboardType = .numbersAndPunctuation
+                    uiTextField.layer.masksToBounds = true
+                },
+                onEditingChanged: { isEditing in
+                    if isEditing == false {
+                        // How to programmatically clear the text of CurrencyTextField:
+                        // The Binding<String>.text that is passed into CurrencyTextField.configuration can
+                        // manually cleared / updated with an empty String
+                        clearTextFieldText()
+                    }
+                },
+                onCommit: {
+                    print("onCommit")
+                }
+            )
+        )
+        .disabled(false)
     }
 }
 
