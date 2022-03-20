@@ -118,5 +118,9 @@ public struct CurrencyTextField: UIViewRepresentable {
 
         textField.updateConfigurationIfNeeded(latest: configuration)
         textField.updateTextIfNeeded()
+
+        if configuration.hasFocus?.wrappedValue == true && textField.isFirstResponder == false {
+            textField.becomeFirstResponder()
+        }
     }
 }
