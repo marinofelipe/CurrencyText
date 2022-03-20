@@ -102,12 +102,7 @@ let package = Package(
             ],
             path: "Tests/SwiftUISnapshotTests",
             resources: [
-                .copy("__Snapshots__/CurrencyTextFieldSnapshotTests/test.germanEuro.png"),
-                .copy("__Snapshots__/CurrencyTextFieldSnapshotTests/test.noDecimals.png"),
-                .copy("__Snapshots__/CurrencyTextFieldSnapshotTests/test.withDecimals.png"),
-                .copy("__Snapshots__/CurrencyTextFieldSnapshotTests/test.withMinMaxValues.png"),
-                .copy("__Snapshots__/CurrencyTextFieldSnapshotTests/test.yenJapanese.png"),
-                .copy("__Snapshots__/CurrencyTextFieldSnapshotTests/testWithCustomTextFiledConfiguration.1.png")
+                .copy("__Snapshots__")
             ]
         ),
 
