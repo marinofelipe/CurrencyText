@@ -23,6 +23,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Run tests
 
+### ios create_test_sim
+
+```sh
+[bundle exec] fastlane ios create_test_sim
+```
+
+
+
 ### ios release
 
 ```sh
