@@ -18,8 +18,6 @@ platform :ios do
   ###-------------------------------- Tests ---------------------------###
 	desc "Run tests"
 	lane :test do
-		create_test_sim
-
 		scan(
 			package_path: "", # root
 			code_coverage: true, 
@@ -29,10 +27,6 @@ platform :ios do
 			output_directory: "fastlane/test_output"
 		)
   	end
-
-  	lane :create_test_sim do 
-  		sh "xcrun simctl create iPhone12-15-4 com.apple.CoreSimulator.SimDeviceType.iPhone-12 com.apple.CoreSimulator.SimRuntime.iOS-15-4"
-	end
 
     ###-------------------------------- Release ---------------------------###
 
