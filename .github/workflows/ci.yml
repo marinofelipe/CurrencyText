@@ -33,8 +33,6 @@ jobs:
           key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
           restore-keys: |
             ${{ runner.os }}-spm-
-      - name: Generate xcodeproj
-        run: swift package generate-xcodeproj
       - name: Execute fastlane `test`
         run: bundle exec fastlane test
       - name: Report code coverage
