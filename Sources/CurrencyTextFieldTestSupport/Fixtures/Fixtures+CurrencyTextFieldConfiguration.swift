@@ -31,8 +31,12 @@ public extension CurrencyTextFieldConfiguration {
             get: { .zero },
             set: { _ in }
         ),
+        hasFocusBinding: Binding<Bool?> = .init(
+            get: { true },
+            set: { _ in }
+        ),
         clearsWhenValueIsZero: Bool = true,
-        formatter: CurrencyFormatter,
+        formatter: CurrencyFormatter = .init(),
         textFieldConfiguration: ((UITextField) -> Void)? = { _ in },
         onEditingChanged: ((Bool) -> Void)? = { _ in },
         onCommit: (() -> Void)? = { }
@@ -42,6 +46,7 @@ public extension CurrencyTextFieldConfiguration {
             text: textBinding,
             unformattedText: unformattedTextBinding,
             inputAmount: inputAmountBinding,
+            hasFocus: hasFocusBinding,
             clearsWhenValueIsZero: clearsWhenValueIsZero,
             formatter: formatter,
             textFieldConfiguration: textFieldConfiguration,

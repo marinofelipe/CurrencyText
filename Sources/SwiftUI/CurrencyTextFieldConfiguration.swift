@@ -28,6 +28,9 @@ public final class CurrencyTextFieldConfiguration {
     @OptionalBinding
     private(set) var inputAmount: Binding<Double?>?
 
+    @OptionalBinding
+    private(set) var hasFocus: Binding<Bool?>?
+
     let clearsWhenValueIsZero: Bool
 
     let formatter: CurrencyFormatter
@@ -42,6 +45,7 @@ public final class CurrencyTextFieldConfiguration {
     ///
     /// - Parameters:
     ///   - text: The text to display and edit.
+    ///   - hasFocus: Binding property to keep track and drive UITextField responder state.
     ///   - formatter: Currency formatter instance that will be used by the TextField. It holds all formatting related settings, such
     ///   as currency, locale, hasDecimals, etc,
     /// - Returns: Initialized instance of `CurrencyTextFieldConfiguration`.
@@ -50,10 +54,12 @@ public final class CurrencyTextFieldConfiguration {
     /// events, or configuring the underlying text field, the initializer can be used instead.
     public static func makeDefault(
         text: Binding<String>,
+        hasFocus: Binding<Bool?>? = nil,
         formatter: CurrencyFormatter
     ) -> Self {
         .init(
             text: text,
+            hasFocus: hasFocus,
             formatter: formatter,
             textFieldConfiguration: nil,
             onEditingChanged: nil,
@@ -68,6 +74,7 @@ public final class CurrencyTextFieldConfiguration {
     ///   - text: The text to display and edit.
     ///   - unformattedText: Binding property that gives the latest unformatted text field text.
     ///   - inputAmount: Binding property that gives the latest Double value for text field text.
+    ///   - hasFocus: Binding property to keep track and drive UITextField responder state.
     ///   - clearsWhenValueIsZero: When `true` the text field text is cleared when user finishes editing with value as zero,
     ///   otherwise if `false` the text field text will keep it's text when value is zero.
     ///   - formatter: Currency formatter instance that will be used by the TextField. It holds all formatting related settings, such
@@ -90,6 +97,7 @@ public final class CurrencyTextFieldConfiguration {
         text: Binding<String>,
         unformattedText: Binding<String?>? = nil,
         inputAmount: Binding<Double?>? = nil,
+        hasFocus: Binding<Bool?>? = nil,
         clearsWhenValueIsZero: Bool = false,
         formatter: CurrencyFormatter,
         textFieldConfiguration: ((UITextField) -> Void)?,
@@ -100,6 +108,7 @@ public final class CurrencyTextFieldConfiguration {
         self._text = text
         self.unformattedText = unformattedText
         self.inputAmount = inputAmount
+        self.hasFocus = hasFocus
         self.formatter = formatter
         self.clearsWhenValueIsZero = clearsWhenValueIsZero
         self.onEditingChanged = onEditingChanged

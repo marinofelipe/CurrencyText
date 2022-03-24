@@ -19,11 +19,12 @@ platform :ios do
 	desc "Run tests"
 	lane :test do
 		scan(
-			project: "CurrencyText.xcodeproj",
-			clean: true,
+			package_path: "", # root
 			code_coverage: true, 
 			scheme: "CurrencyText-Package", 
-			device: "iPhone 12"
+			device: "iPhone 12",
+			result_bundle: true,
+			output_directory: "fastlane/test_output"
 		)
   	end
 

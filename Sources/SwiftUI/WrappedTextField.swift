@@ -71,6 +71,7 @@ extension WrappedTextField: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
+        configuration.hasFocus?.wrappedValue = false
         configuration.onEditingChanged?(false)
     }
 

@@ -23,6 +23,7 @@ final class WrappedTextFieldTests: XCTestCase {
     private var textSetValues: [String]!
     private var unformattedTextSetValues: [String?]!
     private var inputAmountSetValues: [Double?]!
+    private var hasFocusSetValues: [Bool?]!
     private var textFieldConfigurationReceivedValues: [UITextField]!
     private var onEditingChangedReceivedValues: [Bool]!
     private var onCommitCallsCount: Int!
@@ -35,6 +36,7 @@ final class WrappedTextFieldTests: XCTestCase {
         textSetValues = []
         unformattedTextSetValues = []
         inputAmountSetValues = []
+        hasFocusSetValues = []
         textFieldConfigurationReceivedValues = []
         onEditingChangedReceivedValues = []
         onCommitCallsCount = 0
@@ -46,6 +48,7 @@ final class WrappedTextFieldTests: XCTestCase {
         textSetValues = nil
         unformattedTextSetValues = nil
         inputAmountSetValues = nil
+        hasFocusSetValues = nil
         textFieldConfigurationReceivedValues = nil
         onEditingChangedReceivedValues = nil
         onCommitCallsCount = nil
@@ -74,6 +77,12 @@ final class WrappedTextFieldTests: XCTestCase {
                     get: { .zero },
                     set: { value in
                         self.inputAmountSetValues.append(value)
+                    }
+                ),
+                hasFocusBinding: Binding<Bool?>(
+                    get: { false },
+                    set: { value in
+                        self.hasFocusSetValues.append(value)
                     }
                 ),
                 formatter: formatter,
@@ -137,6 +146,7 @@ final class WrappedTextFieldTests: XCTestCase {
         XCTAssertTrue(textFieldConfigurationReceivedValues.isEmpty)
         XCTAssertTrue(onEditingChangedReceivedValues.isEmpty)
         XCTAssertEqual(onCommitCallsCount, 0)
+        XCTAssertTrue(hasFocusSetValues.isEmpty)
     }
 
     func testTextFieldDidBeginEditing() {
@@ -150,6 +160,7 @@ final class WrappedTextFieldTests: XCTestCase {
         XCTAssertEqual(onEditingChangedReceivedValues, [true])
         XCTAssertEqual(onCommitCallsCount, 0)
         XCTAssertFalse(sut.isFirstResponder)
+        XCTAssertTrue(hasFocusSetValues.isEmpty)
     }
 
     func testTextFieldDidEndEditing() {
@@ -163,6 +174,11 @@ final class WrappedTextFieldTests: XCTestCase {
         XCTAssertEqual(onEditingChangedReceivedValues, [false])
         XCTAssertEqual(onCommitCallsCount, 0)
         XCTAssertFalse(sut.isFirstResponder)
+        XCTAssertEqual(
+            hasFocusSetValues,
+            [false],
+            "hasFocus is false on end editing"
+        )
     }
 
     func testTextFieldShouldReturn() {
@@ -177,6 +193,7 @@ final class WrappedTextFieldTests: XCTestCase {
         XCTAssertTrue(onEditingChangedReceivedValues.isEmpty)
         XCTAssertEqual(onCommitCallsCount, 1)
         XCTAssertFalse(sut.isFirstResponder)
+        XCTAssertTrue(hasFocusSetValues.isEmpty)
     }
 
     func testUpdateConfigurationAndUpdateTextIfNeeded() {
@@ -231,5 +248,6 @@ final class WrappedTextFieldTests: XCTestCase {
         XCTAssertTrue(textFieldConfigurationReceivedValues.isEmpty)
         XCTAssertTrue(onEditingChangedReceivedValues.isEmpty)
         XCTAssertEqual(onCommitCallsCount, 0)
+        XCTAssertTrue(hasFocusSetValues.isEmpty)
     }
 }

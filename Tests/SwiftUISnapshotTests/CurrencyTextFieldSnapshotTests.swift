@@ -61,7 +61,7 @@ final class CurrencyTextFieldSnapshotTests: XCTestCase {
 
         assertSnapshot(
             matching: sut,
-            as: .image
+            as: .image(precision: 0.99)
         )
     }
 }
