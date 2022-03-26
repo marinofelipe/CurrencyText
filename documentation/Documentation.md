@@ -14,6 +14,7 @@
   - [All properties of `CurrencyFormatter`](#properties)
 - [SwiftUI](#swiftui)
   - [`CurrencyTextField` - how to configure and use it](#currencytextfield)
+  - [`CurrencyTextField` - focus](#currencytextfield_focus)
   - [Why do I have to import UIKit?](#whyuikit)
   - [Why is it only available for iOS?](#whyonlyios)
 
@@ -253,6 +254,36 @@ var body: some View {
          }
       )
    )
+}
+```
+
+For more details on specifics please refer to the code documentation and `SwiftUIExampleView` in the [ExampleApp](https://github.com/marinofelipe/CurrencyText/Example/Example/SwiftUI/SwiftUIExampleView.swift).
+
+<a name="currencytextfield_focus"/>
+
+### `CurrencyTextField` - focus
+
+`CurrencyTextField` is bridged from `UIKit` to `SwiftUI` via `UIViewRepresentable`, it isn't a vanilla `SwiftUI.TextField` and thus does not have native [focused](https://developer.apple.com/documentation/swiftui/menu/focused(_:)) support.
+
+In order to control and observe the focus/isFirstResponder one can pass a `Biniding<Bool?>` when configuring a `CurrencyTextField`, which can be initially set as true if the text field should appear selected.
+
+```swift
+struct MyView: View {
+    @State private var hasFocus: Bool?
+    @State private var text = ""
+
+    var body: some View {
+        CurrencyTextField(
+            configuration: .init(
+                text: $text,
+                hasFocus: $hasFocus,
+                // ...
+            )
+        )
+        .onAppear {
+            hasFocus = true
+        }
+    }
 }
 ```
 
