@@ -250,4 +250,71 @@ final class WrappedTextFieldTests: XCTestCase {
         XCTAssertEqual(onCommitCallsCount, 0)
         XCTAssertTrue(hasFocusSetValues.isEmpty)
     }
+
+    func testUpdateConfigurationWithDifferentFormatterInstances() {
+        let callUpdateConfigurationIfNeeded: (CurrencyFormatter) -> Void = { [unowned self] formatter in
+            self.sut.updateConfigurationIfNeeded(
+                latest: .makeFixture(
+                    textBinding: Binding<String>(
+                        get: { "56" },
+                        set: { text in
+                            self.textSetValues.append(text)
+                        }
+                    ),
+                    unformattedTextBinding: Binding<String?>(
+                        get: { "unformatted" },
+                        set: { text in
+                            self.unformattedTextSetValues.append(text)
+                        }
+                    ),
+                    inputAmountBinding: Binding<Double?>(
+                        get: { .zero },
+                        set: { value in
+                            self.inputAmountSetValues.append(value)
+                        }
+                    ),
+                    formatter: formatter
+                )
+            )
+        }
+
+        formatter.hasDecimals = false
+        callUpdateConfigurationIfNeeded(self.formatter)
+        sut.updateTextIfNeeded()
+
+        let otherFormatter = CurrencyFormatter {
+            $0.currency = .euro
+            $0.locale = CurrencyLocale.german
+            $0.hasDecimals = false
+        }
+        callUpdateConfigurationIfNeeded(otherFormatter)
+        sut.updateTextIfNeeded()
+
+        XCTAssertEqual(
+            textSetValues,
+            [
+                "$0.34",
+                "$56",
+                "56 €"
+            ]
+        )
+
+        let yetAnotherFormatter = CurrencyFormatter {
+            $0.currency = .brazilianReal
+            $0.locale = CurrencyLocale.portugueseBrazil
+            $0.hasDecimals = false
+        }
+        callUpdateConfigurationIfNeeded(yetAnotherFormatter)
+        sut.updateTextIfNeeded()
+
+        XCTAssertEqual(
+            textSetValues,
+            [
+                "$0.34",
+                "$56",
+                "56 €",
+                "R$ 56"
+            ]
+        )
+    }
 }
