@@ -42,6 +42,7 @@ final class WrappedTextField: UITextField {
         guard configuration !== self.configuration else { return }
 
         self.configuration = configuration
+        self.currencyTextFieldDelegate.formatter = configuration.formatter
     }
 
     func updateTextIfNeeded() {
