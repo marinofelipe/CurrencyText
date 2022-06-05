@@ -46,7 +46,16 @@ final class WrappedTextField: UITextField {
     }
 
     func updateTextIfNeeded() {
-        guard configuration.text != text else { return }
+        var updatedText: String?
+        if let text = text, text.isEmpty == false {
+            updatedText = configuration
+                .formatter
+                .formattedStringWithAdjustedDecimalSeparator(from: text)
+        }
+
+        guard configuration.text != text || (updatedText != text && text?.isEmpty == false) else {
+            return
+        }
 
         updateText()
     }
