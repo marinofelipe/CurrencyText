@@ -28,7 +28,10 @@ final class CurrencyTextFieldConfigurationTests: XCTestCase {
         let sut = CurrencyTextFieldConfiguration.makeDefault(
             text: textBinding,
             hasFocus: hasFocusBinding,
-            formatter: formatter
+            formatter: .init(
+                get: { formatter },
+                set: { _ in }
+            )
         )
 
         XCTAssertEqual(sut.placeholder, "")
@@ -45,7 +48,12 @@ final class CurrencyTextFieldConfigurationTests: XCTestCase {
 
     func testInit() {
         let formatter = CurrencyFormatter()
-        let sut = CurrencyTextFieldConfiguration.makeFixture(formatter: formatter)
+        let sut = CurrencyTextFieldConfiguration.makeFixture(
+            formatter: .init(
+                get: { formatter },
+                set: { _ in }
+            )
+        )
 
         XCTAssertEqual(sut.placeholder, "some")
         XCTAssertEqual(sut.text, "text")
