@@ -30,6 +30,9 @@ final class CurrencyViewModel: ObservableObject {
 
 struct SwiftUIExampleView: View {
     @ObservedObject private var viewModel = CurrencyViewModel()
+    @State private var currencyFormatter = CurrencyFormatter.default
+    @State private var shouldClearTextField = false
+    @State private var currency: Currency = .euro
 
     var body: some View {
         Form {
@@ -39,14 +42,39 @@ struct SwiftUIExampleView: View {
                 Text("Formatted value: \(String(describing: $viewModel.data.text.wrappedValue))")
                 Text("Unformatted value: \(String(describing: $viewModel.data.unformatted.wrappedValue))")
                 Text("Input amount: \(String(describing: $viewModel.data.input.wrappedValue))")
+
+                Picker(
+                    "Change currency",
+                    selection: $currency
+                ) {
+                    ForEach(
+                        [
+                            Currency.euro,
+                            Currency.dollar,
+                            Currency.brazilianReal,
+                            Currency.yen
+                        ],
+                        id: \.self
+                    ) {
+                        Text($0.rawValue).tag($0)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .onChange(of: currency) { newValue in
+                    currencyFormatter = .init {
+                        $0.currency = newValue
+                    }
+                }
+
+                Button("Toggle clear text field on focus change") {
+                    shouldClearTextField.toggle()
+                }
+                .buttonStyle(.plain)
+                .foregroundColor(.blue)
             }
         }
         .navigationTitle("SwiftUI")
         .navigationBarTitleDisplayMode(.inline)
-        .contentShape(Rectangle()) // makes the whole view area tappable
-        .onTapGesture {
-            endEditing()
-        }
         .onAppear {
             viewModel.data.hasFocus = true
         }
@@ -61,7 +89,7 @@ struct SwiftUIExampleView: View {
                 inputAmount: $viewModel.data.input,
                 hasFocus: $viewModel.data.hasFocus,
                 clearsWhenValueIsZero: true,
-                formatter: .default,
+                formatter: $currencyFormatter,
                 textFieldConfiguration: { uiTextField in
                     uiTextField.borderStyle = .roundedRect
                     uiTextField.font = UIFont.preferredFont(forTextStyle: .body)
@@ -73,7 +101,7 @@ struct SwiftUIExampleView: View {
                     uiTextField.layer.masksToBounds = true
                 },
                 onEditingChanged: { isEditing in
-                    if isEditing == false {
+                    if isEditing == false && shouldClearTextField {
                         // How to programmatically clear the text of CurrencyTextField:
                         // The Binding<String>.text that is passed into CurrencyTextField.configuration can
                         // manually cleared / updated with an empty String
@@ -98,11 +126,11 @@ private extension SwiftUIExampleView {
 private extension CurrencyFormatter {
     static let `default`: CurrencyFormatter = {
         .init {
-            $0.maxValue = 100000000
-            $0.minValue = 5
             $0.currency = .euro
             $0.locale = CurrencyLocale.germanGermany
             $0.hasDecimals = true
+            $0.minValue = 5
+            $0.maxValue = 100000000
         }
     }()
 }
