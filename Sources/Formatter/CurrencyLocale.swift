@@ -23,7 +23,7 @@ extension Locale: LocaleConvertible {
 }
 
 /// Defines locales available in system
-public enum CurrencyLocale: String, LocaleConvertible {
+public enum CurrencyLocale: String, LocaleConvertible, CaseIterable {
     
     case current = "current"
     case autoUpdating = "currentAutoUpdating"

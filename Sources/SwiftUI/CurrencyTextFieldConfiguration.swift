@@ -33,7 +33,8 @@ public final class CurrencyTextFieldConfiguration {
 
     let clearsWhenValueIsZero: Bool
 
-    let formatter: CurrencyFormatter
+    @Binding
+    var formatter: CurrencyFormatter
 
     let onCommit: (() -> Void)?
 
@@ -46,8 +47,8 @@ public final class CurrencyTextFieldConfiguration {
     /// - Parameters:
     ///   - text: The text to display and edit.
     ///   - hasFocus: Binding property to keep track and drive UITextField responder state.
-    ///   - formatter: Currency formatter instance that will be used by the TextField. It holds all formatting related settings, such
-    ///   as currency, locale, hasDecimals, etc,
+    ///   - formatter: Currency formatter binding that will be used by the TextField. It holds all formatting related settings, such
+    ///   as currency, locale, hasDecimals, etc, and propagates formatting updates.
     /// - Returns: Initialized instance of `CurrencyTextFieldConfiguration`.
     ///
     /// - note: Only text and formatter are set. When additional configurations are needed, like performing actions on text field
@@ -55,7 +56,7 @@ public final class CurrencyTextFieldConfiguration {
     public static func makeDefault(
         text: Binding<String>,
         hasFocus: Binding<Bool?>? = nil,
-        formatter: CurrencyFormatter
+        formatter: Binding<CurrencyFormatter>
     ) -> Self {
         .init(
             text: text,
@@ -77,8 +78,8 @@ public final class CurrencyTextFieldConfiguration {
     ///   - hasFocus: Binding property to keep track and drive UITextField responder state.
     ///   - clearsWhenValueIsZero: When `true` the text field text is cleared when user finishes editing with value as zero,
     ///   otherwise if `false` the text field text will keep it's text when value is zero.
-    ///   - formatter: Currency formatter instance that will be used by the TextField. It holds all formatting related settings, such
-    ///   as currency, locale, hasDecimals, etc.
+    ///   - formatter: Currency formatter binding that will be used by the TextField. It holds all formatting related settings, such
+    ///   as currency, locale, hasDecimals, etc, and propagates formatting updates.
     ///   - textFieldConfiguration: Closure to `configure the underlying UITextField`.
     ///   Unfortunately, so far, for many things there are no APIs provided by Apple to go from SwiftUI to UIKit,
     ///   like conversion of Font to UIFont. This configuration block allows the user to configure
@@ -99,7 +100,7 @@ public final class CurrencyTextFieldConfiguration {
         inputAmount: Binding<Double?>? = nil,
         hasFocus: Binding<Bool?>? = nil,
         clearsWhenValueIsZero: Bool = false,
-        formatter: CurrencyFormatter,
+        formatter: Binding<CurrencyFormatter>,
         textFieldConfiguration: ((UITextField) -> Void)?,
         onEditingChanged: ((Bool) -> Void)? = nil,
         onCommit: (() -> Void)? = nil
@@ -109,7 +110,7 @@ public final class CurrencyTextFieldConfiguration {
         self.unformattedText = unformattedText
         self.inputAmount = inputAmount
         self.hasFocus = hasFocus
-        self.formatter = formatter
+        self._formatter = formatter
         self.clearsWhenValueIsZero = clearsWhenValueIsZero
         self.onEditingChanged = onEditingChanged
         self.onCommit = onCommit

@@ -14,9 +14,17 @@ import CurrencyTextFieldTestSupport
 @testable import CurrencyTextField
 
 @available(iOS 13.0, *)
+private final class ViewModel: ObservableObject {
+    @Published var text: String = "56"
+}
+
+@available(iOS 13.0, *)
 final class WrappedTextFieldTests: XCTestCase {
     private var sut: WrappedTextField!
     private var formatter: CurrencyFormatter!
+
+    @ObservedObject
+    private var viewModel: ViewModel = .init()
 
     // MARK: - Accessors
 
@@ -85,7 +93,10 @@ final class WrappedTextFieldTests: XCTestCase {
                         self.hasFocusSetValues.append(value)
                     }
                 ),
-                formatter: formatter,
+                formatter: Binding<CurrencyFormatter>(
+                    get: { self.formatter },
+                    set: { _ in }
+                ),
                 textFieldConfiguration: { textField in
                     self.textFieldConfigurationReceivedValues.append(textField)
                 },
@@ -218,7 +229,10 @@ final class WrappedTextFieldTests: XCTestCase {
                         self.inputAmountSetValues.append(value)
                     }
                 ),
-                formatter: formatter
+                formatter: Binding<CurrencyFormatter>(
+                    get: { self.formatter },
+                    set: {_ in }
+                )
             )
         )
 
@@ -273,7 +287,10 @@ final class WrappedTextFieldTests: XCTestCase {
                             self.inputAmountSetValues.append(value)
                         }
                     ),
-                    formatter: formatter
+                    formatter: .init(
+                        get: { formatter },
+                        set: { _ in }
+                    )
                 )
             )
         }
@@ -316,5 +333,50 @@ final class WrappedTextFieldTests: XCTestCase {
                 "R$ 56"
             ]
         )
+
+        XCTAssertEqual(
+            sut.text,
+            "R$ 56"
+        )
+    }
+
+    func testUpdateTextIfNeededWhenFormatterChangesAndStatefulTextBinding() {
+        formatter = CurrencyFormatter {
+            $0.currency = .euro
+            $0.locale = CurrencyLocale.german
+            $0.hasDecimals = false
+        }
+
+        let configuration = CurrencyTextFieldConfiguration.makeFixture(
+            textBinding: $viewModel.text,
+            formatter: .init(
+                get: { self.formatter },
+                set: { _ in }
+            )
+        )
+
+        let callUpdateFunctions: (CurrencyTextFieldConfiguration) -> Void = { [unowned self] configuration in
+            self.sut.updateConfigurationIfNeeded(latest: configuration)
+            self.sut.updateTextIfNeeded()
+        }
+
+        callUpdateFunctions(configuration)
+
+        XCTAssertEqual(sut.text, "56 €")
+        XCTAssertEqual(viewModel.text, "56 €")
+
+        formatter.currency = .dollar
+        formatter.locale = CurrencyLocale.englishUnitedStates
+        callUpdateFunctions(configuration)
+
+        XCTAssertEqual(sut.text, "$56")
+        XCTAssertEqual(viewModel.text, "$56")
+
+        formatter.currency = .brazilianReal
+        formatter.locale = CurrencyLocale.portugueseBrazil
+        callUpdateFunctions(configuration)
+
+        XCTAssertEqual(sut.text, "R$ 56")
+        XCTAssertEqual(viewModel.text, "R$ 56")
     }
 }

@@ -32,7 +32,10 @@ final class CurrencyTextFieldSnapshotTests: XCTestCase {
             let sut = CurrencyTextField(
                 configuration: .makeFixture(
                     textBinding: $fakeViewModel.text,
-                    formatter: testCase.formatter
+                    formatter: .init(
+                        get: { testCase.formatter },
+                        set: { _ in }
+                    )
                 )
             ).frame(width: 300, height: 80)
 
@@ -49,7 +52,10 @@ final class CurrencyTextFieldSnapshotTests: XCTestCase {
         let sut = CurrencyTextField(
             configuration: .makeFixture(
                 textBinding: $fakeViewModel.text,
-                formatter: CurrencyFormatter.TestCase.withDecimals.formatter,
+                formatter: .init(
+                    get: { CurrencyFormatter.TestCase.withDecimals.formatter },
+                    set: { _ in }
+                ),
                 textFieldConfiguration: { textField in
                     textField.borderStyle = .roundedRect
                     textField.textAlignment = .center

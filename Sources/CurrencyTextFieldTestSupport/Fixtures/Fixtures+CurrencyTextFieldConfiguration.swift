@@ -36,7 +36,10 @@ public extension CurrencyTextFieldConfiguration {
             set: { _ in }
         ),
         clearsWhenValueIsZero: Bool = true,
-        formatter: CurrencyFormatter = .init(),
+        formatter: Binding<CurrencyFormatter> = .init(
+            get: { .init() },
+            set: { _ in }
+        ),
         textFieldConfiguration: ((UITextField) -> Void)? = { _ in },
         onEditingChanged: ((Bool) -> Void)? = { _ in },
         onCommit: (() -> Void)? = { }
