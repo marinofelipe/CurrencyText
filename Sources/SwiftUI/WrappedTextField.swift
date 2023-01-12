@@ -70,8 +70,10 @@ extension WrappedTextField: UITextFieldDelegate {
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String
     ) -> Bool {
-        configuration.$text.wrappedValue = textField.text ?? ""
-        updateUnformattedTextAndInputValue()
+        DispatchQueue.main.async {
+            self.configuration.$text.wrappedValue = textField.text ?? ""
+            self.updateUnformattedTextAndInputValue()
+        }
 
         return false
     }
