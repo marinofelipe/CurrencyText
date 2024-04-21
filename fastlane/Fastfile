@@ -14,6 +14,10 @@ end
 default_platform(:ios)
 
 platform :ios do
+
+	def is_ci 
+		ENV['CI'] == 'true'
+	end
   
   ###-------------------------------- Tests ---------------------------###
 	desc "Run tests"
@@ -24,7 +28,8 @@ platform :ios do
 			scheme: "CurrencyText-Package", 
 			device: "iPhone 12",
 			result_bundle: true,
-			output_directory: "fastlane/test_output"
+			output_directory: "fastlane/test_output",
+			xcodebuild_formatter: is_ci ? 'xcbeautify -q --is-ci --renderer github-actions' : 'xcbeautify -q'
 		)
   	end
 
