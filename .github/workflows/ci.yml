@@ -1,11 +1,7 @@
 name: CI
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
-
   workflow_dispatch:
 
 env:
@@ -15,7 +11,6 @@ jobs:
   test:
     name: "Test"
     runs-on: macos-latest
-    if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v2
       - name: Check cache for Bundler dependencies
@@ -39,8 +34,8 @@ jobs:
       - name: Execute fastlane `test`
         run: bundle exec fastlane test
       - name: Report code coverage
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: true
-          verbose: true
-          gcov_path_exclude: Tests/**/*
+          token: ${{ secrets.CODECOV_TOKEN }}
+          exclude: Tests/**/*
