@@ -1,11 +1,7 @@
 name: CI
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
-
   workflow_dispatch:
 
 env:
@@ -15,7 +11,6 @@ jobs:
   test:
     name: "Test"
     runs-on: macos-latest
-    if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v2
       - name: Check cache for Bundler dependencies
