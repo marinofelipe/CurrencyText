@@ -26,7 +26,7 @@ platform :ios do
 			package_path: "", # root
 			code_coverage: true, 
 			scheme: "CurrencyText-Package", 
-			device: "iPhone 12",
+			device: "iPhone 15 Pro (17.5)",
 			result_bundle: true,
 			output_directory: "fastlane/test_output",
 			xcodebuild_formatter: is_ci ? 'xcbeautify -q --is-ci --renderer github-actions' : 'xcbeautify -q'
