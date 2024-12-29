@@ -70,7 +70,7 @@ extension WrappedTextField: UITextFieldDelegate {
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String
     ) -> Bool {
-        DispatchQueue.main.async {
+        Task { @MainActor in
             self.configuration.$text.wrappedValue = textField.text ?? ""
             self.updateUnformattedTextAndInputValue()
         }
