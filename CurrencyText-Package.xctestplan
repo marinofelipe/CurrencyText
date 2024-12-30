@@ -1,0 +1,49 @@
+{
+  "configurations" : [
+    {
+      "id" : "0B05C04B-EDC2-4C2F-84B1-6DAB2FF7F614",
+      "name" : "Configuration 1",
+      "options" : {
+        "region" : "US"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CurrencyFormatterTests",
+        "name" : "CurrencyFormatterTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CurrencyTextFieldSnapshotTests",
+        "name" : "CurrencyTextFieldSnapshotTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CurrencyTextFieldTests",
+        "name" : "CurrencyTextFieldTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CurrencyUITextFieldDelegateTests",
+        "name" : "CurrencyUITextFieldDelegateTests"
+      }
+    }
+  ],
+  "version" : 1
+}
