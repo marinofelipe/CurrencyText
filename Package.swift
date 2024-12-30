@@ -37,6 +37,13 @@ let package = Package(
             .upToNextMinor(
                 from: .init(1, 9, 0)
             )
+        ),
+        .package(
+            name: "ConcurrencyExtras",
+            url: "https://github.com/pointfreeco/swift-concurrency-extras",
+            .upToNextMinor(
+                from: .init(1, 3, 1)
+            )
         )
     ],
     targets: [
@@ -86,7 +93,8 @@ let package = Package(
             name: "CurrencyTextFieldTests",
             dependencies: [
                 .target(name: "CurrencyTextField"),
-                .target(name: "CurrencyTextFieldTestSupport")
+                .target(name: "CurrencyTextFieldTestSupport"),
+                .product(name: "ConcurrencyExtras", package: "ConcurrencyExtras")
             ],
             path: "Tests/SwiftUI"
         ),
