@@ -29,7 +29,8 @@ platform :ios do
 			device: "iPhone 15 Pro (17.5)",
 			result_bundle: true,
 			output_directory: "fastlane/test_output",
-			xcodebuild_formatter: is_ci ? 'xcbeautify -q --is-ci --renderer github-actions' : 'xcbeautify -q'
+			xcodebuild_formatter: is_ci ? 'xcbeautify -q --is-ci --renderer github-actions' : 'xcbeautify -q',
+			output_types: 'junit',
 		)
   	end
 
