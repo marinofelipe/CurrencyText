@@ -16,6 +16,7 @@ import UIKit
 
 /// A type that hold all configuration and settings for a currency text field.
 @available(iOS 13.0, *)
+@MainActor
 public final class CurrencyTextFieldConfiguration {
     let placeholder: String
 

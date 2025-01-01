@@ -13,6 +13,7 @@ import CurrencyFormatter
 #endif
 
 /// Custom text field delegate, that formats user inputs based on a given currency formatter.
+@MainActor
 public class CurrencyUITextFieldDelegate: NSObject {
 
     public var formatter: (CurrencyFormatting & CurrencyAdjusting)!

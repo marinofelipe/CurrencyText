@@ -14,6 +14,7 @@ import CurrencyTextFieldTestSupport
 @testable import CurrencyTextField
 
 @available(iOS 13.0, *)
+@MainActor
 final class CurrencyTextFieldConfigurationTests: XCTestCase {
     func testMakeDefault() {
         let textBinding = Binding<String>(

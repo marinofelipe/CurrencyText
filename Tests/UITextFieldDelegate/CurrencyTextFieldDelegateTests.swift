@@ -10,6 +10,7 @@ import XCTest
 @testable import CurrencyUITextFieldDelegate
 @testable import CurrencyFormatter
 
+@MainActor
 final class CurrencyTextFieldDelegateTests: XCTestCase {
     // MARK: - Properties
 
