@@ -8,7 +8,7 @@ env:
   DEVELOPER_DIR: /Applications/Xcode_16.app/Contents/Developer
 
 concurrency:
-  group: '${{ github.workflow }}-${{ github.head_ref }}'
+  group: "${{ github.workflow }}-${{ github.head_ref }}"
   cancel-in-progress: true
 
 jobs:
@@ -16,10 +16,10 @@ jobs:
     name: "Test"
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
-      
+      - uses: actions/checkout@v5
+
       - name: Check cache for Bundler dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -32,7 +32,7 @@ jobs:
           bundle install
 
       - name: Check cache for Swift Package Manager dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: .build
           key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
